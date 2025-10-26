@@ -1,31 +1,46 @@
 package com.example.appbienvenidos.view.fragments;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.view.activities.LoginActivity;
+
+import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 
-public class DiscoverFragment extends Fragment {
-
+public class onboardingActivity extends AppCompatActivity {
     private Button continuer, passer;
-
+    private ViewPager2 v2;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_discover, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_onboarding);
 
-        continuer = view.findViewById(R.id.btn_continue);
-        passer = view.findViewById(R.id.btn_passer);
+        continuer = findViewById(R.id.btn_continue);
+        passer = findViewById(R.id.btn_passer);
+        v2 = findViewById(R.id.viewPager);
 
-        continuer.setOnClickListener( v-> {
+        v2.setAdapter(new onboardingadapter(this));
 
-                Intent intent = new Intent(getActivity(), DiscoverFragment2.class);
-                startActivity(intent);
+        continuer.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                if(v2.getCurrentItem() < 2){
+                    v2.setCurrentItem(v2.getCurrentItem()+1);
+                } else{
+                    startActivity(new Intent(onboardingActivity.this, LoginActivity.class));
+                }
+            }
         });
-        return view;
+
+        passer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(onboardingActivity.this, LoginActivity.class));
+            }
+        });
     }
 }

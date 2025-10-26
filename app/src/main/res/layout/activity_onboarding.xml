@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/creme_background"
+    android:fontFamily="@font/poppins_black"
+    android:id="@+id/main_onboarding"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_textview"
+        android:paddingLeft="100sp"
+        android:paddingRight="100sp"
+        android:text="Continuer"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:backgroundTint="@null" />
+
+    <Button
+        android:id="@+id/btn_passer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
+        android:text="Passer"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        app:backgroundTint="@color/creme_background" />
+
+</LinearLayout>

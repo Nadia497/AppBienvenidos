@@ -46,20 +46,4 @@
         app:shapeAppearanceOverlay="@style/RoundedImageStyle"
         />
 
-    <Button
-        android:id="@+id/btn_continue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Commencer"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:paddingLeft="100sp"
-        android:paddingRight="100sp"
-        android:layout_marginTop="37dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/border_textview"
-        app:backgroundTint="@null"
-        />
-
-
 </LinearLayout>
