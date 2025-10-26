@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fontFamily="@font/poppins_black"
+    android:background="@color/creme_background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1/3"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_textview"
+        />
+
+    <TextView
+        android:id="@+id/phrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Découvrez des pépites locales"
+        android:layout_gravity="center_horizontal"
+        android:textSize="40sp"
+        android:paddingLeft="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_black"
+        />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/img"
+        android:layout_margin="30dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+        />
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continuer"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:paddingLeft="100sp"
+        android:paddingRight="100sp"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/border_textview"
+        app:backgroundTint="@null"
+        />
+
+    <Button
+        android:id="@+id/btn_passer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Passer"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        app:backgroundTint="@color/creme_background"
+        />
+
+</LinearLayout>
