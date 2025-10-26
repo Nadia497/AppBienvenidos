@@ -6,6 +6,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.view.activities.LoginActivity;
+import com.example.appbienvenidos.view.activities.SignupActivity;
 
 import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
@@ -39,7 +40,7 @@ public class onboardingActivity extends AppCompatActivity {
         passer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(onboardingActivity.this, LoginActivity.class));
+                startActivity(new Intent(onboardingActivity.this, SignupActivity.class));
             }
         });
     }
