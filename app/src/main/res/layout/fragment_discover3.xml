@@ -26,9 +26,9 @@
         android:id="@+id/phrase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vivez des expériences uniques "
+        android:text="                  Vivez des expériences uniques "
         android:layout_gravity="center_horizontal"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:paddingLeft="20sp"
         android:textColor="@color/black"
         android:layout_marginTop="40dp"
@@ -36,12 +36,12 @@
         />
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_gravity="center_vertical"
         android:src="@drawable/img3"
-        android:layout_margin="30dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/RoundedImageStyle"
         />

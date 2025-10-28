@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.WelcomeActivity"
-    android:background="#FDFDED"
+    android:background="@color/creme_background"
     >
 
     <LinearLayout
@@ -51,7 +51,7 @@
             ></TextView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/Seconnecter"
+            android:id="@+id/Inscrire"
             android:text="S'insrire"
             android:padding="12dp"
             android:layout_width="300dp"
@@ -65,8 +65,8 @@
             app:cornerRadius="8dp"
             />
 
-        <Button
-            android:id="@+id/Inscrire"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Seconnecter"
             android:text="Se connecter"
             android:textColor="#FBC02D"
             android:padding="12dp"
@@ -80,13 +80,13 @@
             app:strokeWidth="2dp"
             app:strokeColor="#FBC02D"
             android:fontFamily="serif"
-            ></Button>
+            />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Explorer"
             android:text="Explorer"
             android:padding="12dp"
-            android:layout_width=               "300dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             app:backgroundTint="#d9498b"
