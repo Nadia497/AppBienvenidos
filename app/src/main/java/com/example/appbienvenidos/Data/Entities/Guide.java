@@ -31,8 +31,21 @@ public class Guide {
     @ColumnInfo(name = "is_available")
     private boolean is_availalble ;
 
+    @ColumnInfo(name = "city_served")
+    private String cityServed;
+
+    //Getters and Setters
+
     public int getUser_id() {
         return User_id;
+    }
+
+    public String getCityServed() {
+        return cityServed;
+    }
+
+    public void setCityServed(String cityServed) {
+        this.cityServed = cityServed;
     }
 
     public void setUser_id(int user_id) {
