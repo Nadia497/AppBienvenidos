@@ -11,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBienvenidos">
-        <activity android:name=".view.fragments.onboardingActivity"></activity>
         <activity
-            android:name=".view.activities.WelcomeActivity"
+            android:name=".view.activities.SpotDetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
