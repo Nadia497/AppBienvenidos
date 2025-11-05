@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.WelcomeActivity"
-    android:background="@color/creme_background"
+    tools:context=".vew.activities.WelcomeActivity"
+    android:background="#FDFDED"
     >
 
     <LinearLayout
@@ -31,6 +31,7 @@
 
         <TextView
             android:shadowColor="#55000000"
+            android:textColor="#FBBF24"
             android:id="@+id/Bienvenidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +39,6 @@
             android:textSize="55sp"
             style="@style/AppTitleStyle"
             android:layout_marginTop="30dp"
-            android:fontFamily="cursive"
             ></TextView>
 
         <TextView
@@ -46,12 +46,12 @@
             android:layout_height="wrap_content"
             android:text="Le monde à portée de main"
             android:textColor="#E996C4"
-            android:textSize="22dp"
-            android:fontFamily="cursive"
+            android:textSize="18dp"
+            android:fontFamily="serif"
             ></TextView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/Inscrire"
+            android:id="@+id/Seconnecter"
             android:text="S'insrire"
             android:padding="12dp"
             android:layout_width="300dp"
@@ -65,8 +65,8 @@
             app:cornerRadius="8dp"
             />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/Seconnecter"
+        <Button
+            android:id="@+id/Inscrire"
             android:text="Se connecter"
             android:textColor="#FBC02D"
             android:padding="12dp"
@@ -80,7 +80,7 @@
             app:strokeWidth="2dp"
             app:strokeColor="#FBC02D"
             android:fontFamily="serif"
-            />
+            ></Button>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Explorer"
@@ -89,7 +89,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
-            app:backgroundTint="#d9498b"
+            app:backgroundTint="#E996C4"
             android:textSize="25dp"
             android:elevation="4dp"
             app:cornerRadius="8dp"
@@ -101,4 +101,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    <!--android:backgroundTint="#FBC02D"-->
