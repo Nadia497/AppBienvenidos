@@ -4,43 +4,348 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbarSize="4dp"
-    android:orientation="vertical">
+    android:background="@color/creme_background"
+    android:orientation="vertical"
+    android:scrollbarSize="4dp">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="154dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="    Profile"
-        android:textSize="30dp"
+        android:layout_margin="10dp"
+        android:fontFamily="cursive"
+        android:text="   Profile"
+        android:textSize="40dp"
         tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_margin="10dp"/>
+        tools:layout_editor_absoluteY="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="147dp"
+            android:layout_height="142dp"
+            app:srcCompat="@drawable/No_profile"
+            tools:layout_editor_absoluteX="35dp"
+            tools:layout_editor_absoluteY="9dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="20"
+                android:fontFamily="@font/poppins_black"
+                android:text="Fatima.L"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_role_profile"
+                android:paddingLeft="15dp"
+                android:paddingRight="20dp"
+                android:text="🌟 Local "
+                android:textColor="#8B6B00"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="25dp"
+                android:text="Marrakech, Maroc"
+                android:textColor="@color/gray"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Apersux de mes contributions"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="147dp"
-            android:layout_height="142dp"
-            app:srcCompat="@drawable/no_profile"
-            tools:layout_editor_absoluteX="35dp"
-            tools:layout_editor_absoluteY="9dp" />
-
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="25dp"
-            android:text="Fatima.L"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="176dp"
-            tools:layout_editor_absoluteY="98dp" />
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_white_profile"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            app:elevation="18dp"
+            android:translationZ="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_white_profile"
+                android:text="24"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Spots partagés"
+                android:textSize="14dp"
+                tools:textColor="@color/gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_white_profile"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            app:elevation="18dp"
+            android:translationZ="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_white_profile"
+                android:text="      5"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Itinéraires crées"
+                android:textSize="14dp"
+                tools:textColor="@color/gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_white_profile"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            app:elevation="18dp"
+            android:translationZ="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_white_profile"
+                    android:text="4,8"
+                    android:textSize="26dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="⭐⭐⭐"
+                    android:layout_gravity="top"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Avis voyageurs"
+                android:textSize="14dp"
+                tools:textColor="@color/gray" />
+        </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="Mes spots et itinéraires"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_white_profile"
+        android:layout_margin="10dp"
+        app:elevation="18dp"
+        android:translationZ="8dp"
+        >
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="100dp"
+            android:layout_height="132dp"
+            android:layout_marginLeft="15dp"
+            app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+            app:srcCompat="@drawable/koutoubia"
+
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Itinéraire:Une journée à Marrakech comme un local"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Publiée le 12 janvier 2024"
+                android:textColor="@color/gray"
+                android:textSize="12dp"
+                android:layout_marginTop="10dp"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="125dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:srcCompat="@drawable/gmaps" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:backgroundTint="@color/gray_claire"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="✏️ Modifier"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="Actions rapides"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCreateSpot"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Créer un nouveau Spot"
+            android:backgroundTint="@color/brand_yellow"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_add_24"
+            app:iconTint="@android:color/white"
+            app:iconPadding="8dp" />
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.Button"
+            android:text="Créer un nouveau Spot"
+            android:backgroundTint="#F4B7B8"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_route_24"
+            app:iconTint="@android:color/white"
+            app:iconPadding="8dp"
+            />
+
+    </LinearLayout>
+
+
 </LinearLayout>
