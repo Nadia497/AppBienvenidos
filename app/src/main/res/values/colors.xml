@@ -3,9 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#A9A9A9</color>
-    <color name="creme_background">#FFF8ED</color> <!-- C'est une estimation du crème clair -->
+    <color name="gray_claire">#D5D4D4</color>
+    <color name="creme_background">#FFFDF5</color> <!-- C'est une estimation du crème clair -->
     <color name="brand_yellow">#FFC107</color> <!-- Pour le bouton "S'inscrire" par exemple -->
-    <color name="brand_pink">#E91E63</color><!-- Pour le texte "BienEnidos" par exemple -->
+    <color name="brand_pink">#E91E63</color> <!-- Pour le texte "BienEnidos" par exemple -->
+    <color name="amber_400">#FFC107</color>
+    <color name="pink_300">#F48FB1</color>
+    <color name="off_white">#FFF9F0</color>
     <color name="Gold">#FFD700</color>
-
 </resources>

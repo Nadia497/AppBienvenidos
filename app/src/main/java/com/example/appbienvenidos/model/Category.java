@@ -1,17 +1,9 @@
-package com.example.appbienvenidos.Data.Entities;
-
-import androidx.room.ColumnInfo;
-import androidx.room.PrimaryKey;
-import androidx.room.Entity;
-
-@Entity(tableName = "Category")
+package com.example.appbienvenidos.model;
 
 public class Category {
 
-    @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "name")
     private String name;
 
     //Constructeur
@@ -39,3 +31,4 @@ public class Category {
         this.name = name;
     }
 }
+

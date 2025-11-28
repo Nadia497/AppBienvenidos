@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/creme_background"
+    android:clickable="true"
+    android:focusable="true"> <!-- Fond Crème -->
+
+    <!-- HEADER -->
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_circle_white_n"
+        android:contentDescription="Retour"
+        android:src="@drawable/ic_media_previous_n"
+        android:elevation="2dp"
+        android:paddingStart="10dp"
+        android:textColor="#333333"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter un Spot"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <!-- CONTENU SCROLLABLE -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ZONE UPLOAD PHOTO -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/bg_dashed_border_n"
+                android:layout_marginTop="24dp"
+                android:id="@+id/container_photo">
+                <!--CLAQUE 1 : Ce qu'on voit quand on n'a pas une image -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:id="@+id/imageContainer"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/image_vide"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@android:drawable/ic_menu_gallery"
+                        app:tint="#CCCCCC"
+                         />
+
+                    <TextView
+                        android:id="@+id/addimg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Ajouter une photo"
+                        android:textColor="#999999" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/image_plain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <!-- CHAMP NOM -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Nom du lieu"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_white_profile_n"
+                android:hint="Ex: Jardin Majorelle"
+                android:id="@+id/name"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#333333"
+                android:textColorHint="#BBBBBB"
+                android:textSize="14sp"
+                android:elevation="5dp"/>
+
+            <!-- CHAMP LOCALISATION -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Localisation"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:id="@+id/location"
+                android:background="@drawable/bg_white_profile_n"
+                android:drawableStart="@drawable/ic_location_n"
+                android:drawablePadding="10dp"
+                android:hint="Ex: Rue Yves Saint Laurent, Marrakech"
+                android:paddingStart="12dp"
+                android:paddingEnd="16dp"
+                android:textColor="#333333"
+                android:textColorHint="#BBBBBB"
+                android:textSize="14sp"
+                app:drawableTint="#999999"
+                android:elevation="5dp"/>
+
+            <!-- CATEGORIES (SCROLL HORIZONTAL) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Catégorie"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="5dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Item Sélectionné -->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_selected_n"
+                        android:text="Restaurant"
+                        android:id="@+id/restaurant"
+                        android:textAllCaps="false"
+                        android:textColor="#999999"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:layout_marginEnd="8dp"/>
+
+                    <!-- Items Non-sélectionnés -->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:text="Café"
+                        android:id="@+id/cafe"
+                        android:textAllCaps="false"
+                        android:textColor="#999999"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:layout_marginEnd="8dp"/>  <!--android:textAllCaps="false": Sans cette option, Android transforme TOUT LE TEXTE EN MAJUSCULES-->
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:text="Paysage"
+                        android:id="@+id/paysage"
+                        android:textAllCaps="false"
+                        android:textColor="#999999"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:layout_marginEnd="8dp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:text="Culture"
+                        android:id="@+id/culture"
+                        android:textAllCaps="false"
+                        android:textColor="#999999"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:text="Shopping"
+                        android:id="@+id/shopping"
+                        android:textAllCaps="false"
+                        android:textColor="#999999"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:text="Hôtel"
+                        android:id="@+id/hotel"
+                        android:textAllCaps="false"
+                        android:textColor="#999999"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- DESCRIPTION -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_centerVertical="true"/>
+
+                <!-- Badge IA -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✨ Aide-moi à écrire"
+                    android:textSize="10sp"
+                    android:textColor="#8A2BE2"
+                    android:background="@drawable/bg_badge_purple_n"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="5"
+                android:id="@+id/description"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_white_profile_n"
+                android:gravity="top|start"
+                android:hint="Partagez votre expérience, ce que vous avez aimé..."
+                android:padding="16dp"
+                android:textColor="#333333"
+                android:textColorHint="#BBBBBB"
+                android:textSize="14sp"
+                android:elevation="5dp"/>
+
+            <!-- BOUTON VALIDER -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_button_yellow_n"
+                android:text="Publier le Spot"
+                android:id="@+id/btnpublier"
+                android:textAllCaps="false"
+                android:textColor="#1A1A1A"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:elevation="4dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,13 +37,26 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.firebase.analytics)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation(libs.room.runtime)
-    annotationProcessor(libs.room.compiler)
     implementation("com.google.android.material:material:1.12.0")
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("org.osmdroid:osmdroid-android:6.1.14")
-
+    //firebase
+    // 1. LE CHEF D'ORCHESTRE (Le BOM)
+    // Il gère les versions pour tout le monde. Plus besoin de mettre les numéros en bas.
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+    implementation("com.google.firebase:firebase-auth")
+    // 3. Pour stocker les Images (Au lieu du Base64)
+    implementation("com.google.firebase:firebase-storage")
+    // 2. AJOUTEZ ANALYTICS (Ce que vous cherchiez)
+    implementation("com.google.firebase:firebase-analytics")
+    // 1. Pour la Base de données (Remplacer SQLite)
+    implementation("com.google.firebase:firebase-firestore")
+    //glide pour afficher les img depuis une URL depuis firebase
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }
+
+apply(plugin = "com.google.gms.google-services")

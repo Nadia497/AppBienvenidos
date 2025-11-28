@@ -1,37 +1,16 @@
-package com.example.appbienvenidos.Data.Entities;
-
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
-import androidx.room.ColumnInfo;
-
-@Entity(tableName = "Guide",
-        foreignKeys = @ForeignKey(entity = User.class,
-                parentColumns = "id",
-                childColumns = "user_id",
-                onDelete = ForeignKey.CASCADE)) // Si l'utilisateur est supprimé, le guide aussi)
+package com.example.appbienvenidos.model;
 
 public class Guide {
-
-    @PrimaryKey //le user_id est à la fois l id du guide et du user
-    //puisque l user peut lui mem devenir un guide
-
-    @ColumnInfo(name = "User_id")
     private int User_id ;
 
-    @ColumnInfo(name = "Specialities")
     private String Specialities ;
 
-    @ColumnInfo(name = "Languages")
     private String Languages ;
 
-    @ColumnInfo(name = "Hourly_rate")
     private String Hourly_rate ;
 
-    @ColumnInfo(name = "is_available")
     private boolean is_availalble ;
 
-    @ColumnInfo(name = "city_served")
     private String cityServed;
 
     //Getters and Setters
@@ -84,4 +63,5 @@ public class Guide {
         this.is_availalble = is_availalble;
     }
 }
+
 

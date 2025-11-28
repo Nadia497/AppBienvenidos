@@ -1,42 +1,11 @@
-package com.example.appbienvenidos.Data.Entities;
-
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "SpotRating",
-        foreignKeys = {
-                // Clé étrangère de l'utilisateur qui a fait le "rating"
-                @ForeignKey(entity = User.class,
-                        parentColumns = "id",
-                        childColumns = "user_id",
-                        onDelete = ForeignKey.CASCADE), // Si l'utilisateur est supprimé, ses évaluations le sont aussi
-                // Clé étrangère vers le spot qui a été évalué
-                @ForeignKey(entity = Spot.class,
-                        parentColumns = "id",
-                        childColumns = "spot_id",
-                        onDelete = ForeignKey.CASCADE) // Si le spot est supprimé, ses évaluations le sont aussi
-        })
+package com.example.appbienvenidos.model;
 
 public class SpotRating {
-
-    @PrimaryKey(autoGenerate = true)
     private int id;
-
-    @ColumnInfo(name = "user_id")
     private int userId; // ID de l'utilisateur qui a posté l'évaluation
-
-    @ColumnInfo(name = "spot_id")
     private int spotId; // ID du spot évalué
-
-    @ColumnInfo(name = "rating")
     private float rating;
-
-    @ColumnInfo(name = "comment")
     private String comment;
-
-    @ColumnInfo(name = "rating_date")
     private String ratingDate;
 
     public SpotRating(int id, int userId, int spotId, float rating, String comment, String ratingDate) {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "707085012684",
+    "project_id": "appbienvenidos",
+    "storage_bucket": "appbienvenidos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707085012684:android:b4d4373a197f37ccfafc69",
+        "android_client_info": {
+          "package_name": "com.example.appbienvenidos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGxqBn-ngYbt3uysdqO-wwVBLAbRffYlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

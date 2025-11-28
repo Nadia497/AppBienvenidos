@@ -6,33 +6,65 @@
     android:layout_height="match_parent"
     android:background="@color/creme_background"
     android:orientation="vertical"
-    android:scrollbarSize="4dp">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:fontFamily="cursive"
-        android:text="   Profile"
-        android:textSize="40dp"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="16dp" />
+    android:scrollbarSize="4dp"
+    android:id="@+id/mainprofile">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="cursive"
+            android:text="Profile"
+            android:textSize="30dp"
+            android:paddingLeft="130dp"
+            android:paddingTop="7dp"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="128dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚙️"
+            android:textSize="18dp"
+            android:backgroundTint="@color/creme_background"
+            android:layout_marginLeft="25dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/info_pers"
+        android:layout_width="match_parent"
         android:layout_height="146dp"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        >
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="147dp"
-            android:layout_height="142dp"
-            app:srcCompat="@drawable/No_profile"
+            android:id="@+id/imageprofile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true"
+            android:background="@drawable/circle_background_n"
+            app:shapeAppearanceOverlay="@style/CircleImage"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/no_profile"
             tools:layout_editor_absoluteX="35dp"
-            tools:layout_editor_absoluteY="9dp" />
+            tools:layout_editor_absoluteY="9dp"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="3dp"
+            />
 
 
         <LinearLayout
@@ -41,39 +73,41 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:layout_weight="20"
                 android:fontFamily="@font/poppins_black"
-                android:text="Fatima.L"
+                android:text=""
+                android:textColor="@color/gray_claire"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="176dp"
                 tools:layout_editor_absoluteY="98dp" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_role_profile"
+                android:background="@drawable/bg_role_profile_n"
                 android:paddingLeft="15dp"
                 android:paddingRight="20dp"
-                android:text="🌟 Local "
+                android:text=""
                 android:textColor="#8B6B00"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="25dp"
-                android:text="Marrakech, Maroc"
+                android:text=""
                 android:textColor="@color/gray"
                 android:textSize="15dp" />
 
@@ -85,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="10dp"
         android:text="Apersux de mes contributions"
         android:textColor="@color/black"
@@ -93,27 +127,30 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/statistique"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/spot_stat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/bg_white_profile"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_white_profile_n"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="20dp"
-            android:paddingRight="10dp"
+            android:paddingRight="20dp"
             android:paddingBottom="20dp"
             app:elevation="18dp"
             android:translationZ="8dp">
 
             <TextView
+                android:id="@+id/spot_nbr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_white_profile"
+                android:background="@drawable/bg_white_profile_n"
                 android:text="24"
                 android:textSize="26dp"
                 android:textStyle="bold" />
@@ -123,28 +160,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="Spots partagés"
-                android:textSize="14dp"
+                android:textSize="10dp"
                 tools:textColor="@color/gray" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/iten_stat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/bg_white_profile"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_white_profile_n"
             android:orientation="vertical"
             android:paddingLeft="10dp"
             android:paddingTop="20dp"
-            android:paddingRight="10dp"
+            android:paddingRight="20dp"
             android:paddingBottom="20dp"
             app:elevation="18dp"
             android:translationZ="8dp">
 
             <TextView
+                android:id="@+id/iten_nbr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_white_profile"
-                android:text="      5"
+                android:background="@drawable/bg_white_profile_n"
+                android:text="     5"
                 android:textSize="26dp"
                 android:textStyle="bold" />
 
@@ -152,20 +191,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Itinéraires crées"
-                android:textSize="14dp"
+                android:text="  Itinéraires crées"
+                android:textSize="10dp"
                 tools:textColor="@color/gray" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/avis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/bg_white_profile"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_white_profile_n"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingTop="20dp"
-            android:paddingRight="10dp"
+            android:paddingRight="20dp"
             android:paddingBottom="20dp"
             app:elevation="18dp"
             android:translationZ="8dp">
@@ -175,20 +215,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/nbr_stars"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_white_profile"
+                    android:background="@drawable/bg_white_profile_n"
                     android:text="4,8"
                     android:textSize="26dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/stars"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:text="⭐⭐⭐"
                     android:layout_gravity="top"
-                    android:textSize="12dp" />
+                    android:textSize="10dp" />
 
             </LinearLayout>
 
@@ -197,7 +239,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="Avis voyageurs"
-                android:textSize="14dp"
+                android:textSize="10dp"
                 tools:textColor="@color/gray" />
         </LinearLayout>
 
@@ -207,7 +249,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="Mes spots et itinéraires"
         android:textColor="@color/black"
@@ -215,10 +257,11 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/spot_partager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/bg_white_profile"
+        android:background="@drawable/bg_white_profile_n"
         android:layout_margin="10dp"
         app:elevation="18dp"
         android:translationZ="8dp"
@@ -226,9 +269,11 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="100dp"
-            android:layout_height="132dp"
-            android:layout_marginLeft="15dp"
+            android:id="@+id/img_spot"
+            android:layout_width="85dp"
+            android:layout_height="102dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             app:shapeAppearanceOverlay="@style/RoundedImageStyle"
             app:srcCompat="@drawable/koutoubia"
 
@@ -237,25 +282,30 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="15dp"
             android:orientation="vertical"
             >
             <TextView
+                android:id="@+id/spot_description"
                 android:layout_marginTop="10dp"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Itinéraire:Une journée à Marrakech comme un local"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="12dp"
                 android:textStyle="bold"
                 />
             <TextView
+                android:id="@+id/publ_date"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Publiée le 12 janvier 2024"
                 android:textColor="@color/gray"
-                android:textSize="12dp"
-                android:layout_marginTop="10dp"
+                android:textSize="10dp"
+                android:layout_marginTop="0dp"
                 />
 
 
@@ -267,23 +317,24 @@
             >
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="125dp"
+                android:layout_width="80dp"
                 android:layout_height="70dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="1dp"
                 app:shapeAppearanceOverlay="@style/RoundedImageStyle"
                 app:srcCompat="@drawable/gmaps" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/modifier_spot"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/gray_claire"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:text="✏️ Modifier"
+                android:padding="0dp"
+                android:text="Modifier"
                 android:textColor="@color/black"
-                android:textSize="12dp"
+                android:textSize="10dp"
 
                 android:textStyle="bold" />
 
@@ -297,7 +348,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="Actions rapides"
         android:textColor="@color/black"
@@ -326,10 +377,11 @@
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             app:cornerRadius="10dp"
-            app:icon="@drawable/ic_add_24"
+            app:icon="@drawable/ic_add_24_n"
             app:iconTint="@android:color/white"
             app:iconPadding="8dp" />
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -340,12 +392,22 @@
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             app:cornerRadius="10dp"
-            app:icon="@drawable/ic_route_24"
+            app:icon="@drawable/ic_route_24_n"
             app:iconTint="@android:color/white"
             app:iconPadding="8dp"
             />
 
     </LinearLayout>
+    <FrameLayout
+        android:id="@+id/fragment_overlay_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- elevation permet de s'assurer qu'il passe au-dessus des autres éléments -->
 
 
 </LinearLayout>
