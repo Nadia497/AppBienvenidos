@@ -59,7 +59,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     //glide pour afficher les img depuis une URL depuis firebase
     implementation("com.github.bumptech.glide:glide:4.16.0")
-}
     implementation("de.hdodenhof:circleimageview:3.1.0")
+}
 
 apply(plugin = "com.google.gms.google-services")
