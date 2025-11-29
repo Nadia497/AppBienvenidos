@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.view.activities.SignupActivity ;
 import com.example.appbienvenidos.view.activities.LoginActivity;
-import com.example.appbienvenidos.view.activities.SignupActivity;
 
 import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
