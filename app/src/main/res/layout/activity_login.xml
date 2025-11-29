@@ -1,6 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".view.activities.WelcomeActivity"
+    android:background="#FDFDED">
 
+    <!-- ScrollView pour gérer les petits écrans lors de l'ouverture du clavier -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="40dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- LOGO ET TITRE -->
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/petitlogo"/>
+
+            <TextView
+                android:id="@+id/Bienvenidos"
+                style="@style/AppTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pacifico"
+                android:shadowColor="#55000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FBC02D"
+                android:text="Bienvenidos"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="cursive"
+                android:text="Bon retour parmi nous !"
+                android:textColor="#E996C4"
+                android:textSize="24sp" />
+
+            <!-- FORMULAIRE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- EMAIL -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:text="Email" />
+
+                <EditText
+                    android:id="@+id/editTextEmailLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginBottom="20dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:drawableStart="@android:drawable/ic_dialog_email"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="#AAAAAA"
+                    android:inputType="textEmailAddress"
+                    android:hint="exemple@email.com"/>
+
+                <!-- MOT DE PASSE -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:text="Mot de passe" />
+
+                <EditText
+                    android:id="@+id/editTextPasswordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/edittext_singup"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:drawableStart="@android:drawable/ic_lock_idle_lock"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="#AAAAAA"
+                    android:inputType="textPassword"
+                    android:hint="••••••••"/>
+
+                <!-- MOT DE PASSE OUBLIÉ -->
+                <TextView
+                    android:id="@+id/forgotPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="#888888"
+                    android:text="Mot de passe oublié ?"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <!-- BOUTON CONNEXION -->
+                <Button
+                    android:id="@+id/btnSeConnecter"
+                    android:text="Se connecter"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    app:elevation="10dp"
+                    app:backgroundTint="#FBC02D"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
+            <!-- PIED DE PAGE : INSCRIPTION -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#666666"
+                    android:text="Pas encore de compte ? "/>
+
+                <TextView
+                    android:id="@+id/textGoToRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#FBC02D"
+                    android:padding="5dp"
+                    android:text="S'inscrire"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
