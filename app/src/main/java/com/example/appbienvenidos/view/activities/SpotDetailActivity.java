@@ -35,6 +35,7 @@ public class SpotDetailActivity extends AppCompatActivity {
 
     RatingBar ratingbar;
 
+    //MapView map;
 
     // Déclaration des variables
     private MapView map;

@@ -6,15 +6,13 @@
     <color name="gray_claire">#D5D4D4</color>
     <color name="creme_background">#FFFDF5</color> <!-- C'est une estimation du crème clair -->
     <color name="brand_yellow">#FFC107</color> <!-- Pour le bouton "S'inscrire" par exemple -->
-<<<<<<< Updated upstream
+
     <color name="brand_pink">#E91E63</color> <!-- Pour le texte "BienEnidos" par exemple -->
     <color name="amber_400">#FFC107</color>
     <color name="pink_300">#F48FB1</color>
     <color name="off_white">#FFF9F0</color>
-=======
->>>>>>> Stashed changes
+
     <color name="Gold">#FFD700</color>
-    <color name="brand_pink">#E91E63</color> <!-- Pour le texte "BienEnidos" par exemple -->
     <color name="orange">#FBAF3A</color> <!-- essai-->
     <color name="jaune_pastel">#FDEBD0</color>
 
