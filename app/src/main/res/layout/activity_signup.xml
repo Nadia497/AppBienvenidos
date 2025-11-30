@@ -121,7 +121,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_20sdp">
 
             <!-- NOM / PRENOM -->
             <LinearLayout
@@ -133,7 +134,8 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="Nom"/>
+                    android:text="Nom"
+                    />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -162,7 +164,8 @@
                     android:drawablePadding="@dimen/_8sdp"
                     android:drawableTint="#AAAAAA"
                     android:inputType="textPersonName"
-                    android:hint="Nom"/>
+                    android:hint="Nom"
+                    android:textSize="@dimen/_13sdp"/>
 
                 <!-- Champ PRENOM avec icône -->
                 <EditText
@@ -177,7 +180,8 @@
                     android:drawablePadding="8dp"
                     android:drawableTint="#AAAAAA"
                     android:inputType="textPersonName"
-                    android:hint="Prénom"/>
+                    android:hint="Prénom"
+                    android:textSize="@dimen/_13sdp"/>
             </LinearLayout>
 
             <!-- EMAIL -->
@@ -199,7 +203,8 @@
                 android:drawablePadding="10dp"
                 android:drawableTint="#AAAAAA"
                 android:inputType="textEmailAddress"
-                android:hint="exemple@email.com"/>
+                android:hint="exemple@email.com"
+                android:textSize="@dimen/_13sdp"/>
 
             <!-- LOCATION -->
             <TextView
@@ -220,7 +225,8 @@
                 android:drawablePadding="10dp"
                 android:drawableTint="#AAAAAA"
                 android:inputType="textPostalAddress"
-                android:hint="Ville, Pays"/>
+                android:hint="Ville, Pays"
+                android:textSize="@dimen/_13sdp"/>
 
             <!-- MOT DE PASSE -->
             <TextView
