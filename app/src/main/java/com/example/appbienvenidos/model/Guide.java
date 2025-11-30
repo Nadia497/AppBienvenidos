@@ -4,7 +4,7 @@ import com.google.firebase.firestore.DocumentId;
 
 public class Guide {
 
-    @DocumentId // Récupère l'ID du document (qui est aussi l'ID du User)
+    @DocumentId // Récupère l'ID du document
     private String uid;
 
     // Infos copiées du User
@@ -14,15 +14,16 @@ public class Guide {
 
     // Infos spécifiques au Guide
     private String cityServed;
-    private String hourlyRate;
-    private String specialities;
-    private boolean isAvailable;
+    private String hourlyRate;    // Nom correct : hourlyRate
+    private String specialities;  // Nom correct : specialities
+    private String languages;     // J'ai AJOUTÉ cette variable qui manquait
+    private boolean isAvailable;  // Nom correct : isAvailable
 
     // 1. Constructeur VIDE (Obligatoire Firebase)
     public Guide() { }
 
     // 2. Constructeur COMPLET
-    public Guide(String uid, String firstName, String lastName, String profileImageUrl, String cityServed, String hourlyRate, String specialities, boolean isAvailable) {
+    public Guide(String uid, String firstName, String lastName, String profileImageUrl, String cityServed, String hourlyRate, String specialities, String languages, boolean isAvailable) {
         this.uid = uid;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,59 +31,38 @@ public class Guide {
         this.cityServed = cityServed;
         this.hourlyRate = hourlyRate;
         this.specialities = specialities;
+        this.languages = languages;
         this.isAvailable = isAvailable;
     }
 
-    // 3. Getters
-    public String getUid() { return uid; }
-    public String getFirstName() { return firstName; }
-    public String getLastName() { return lastName; }
+    // 3. Getters et Setters (Tout est corrigé ici)
 
-<<<<<<< HEAD
+    public String getUid() { return uid; }
+    public void setUid(String uid) { this.uid = uid; }
+
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+
     public String getFullName() { return firstName + " " + lastName; }
 
     public String getProfileImageUrl() { return profileImageUrl; }
-    public String getCityServed() { return cityServed; }
-    public String getHourlyRate() { return hourlyRate; }
-    public String getSpecialities() { return specialities; }
-    public boolean isAvailable() { return isAvailable; }
-
-    // Setters
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
     public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
+
+    public String getCityServed() { return cityServed; }
     public void setCityServed(String cityServed) { this.cityServed = cityServed; }
-=======
-    public String getSpecialities() {
-        return Specialities;
-    }
 
-    public void setSpecialities(String specialities) {
-        Specialities = specialities;
-    }
+    public String getHourlyRate() { return hourlyRate; } // Corrigé (pas de _)
+    public void setHourlyRate(String hourlyRate) { this.hourlyRate = hourlyRate; }
 
-    public String getLanguages() {
-        return Languages;
-    }
+    public String getSpecialities() { return specialities; } // Corrigé (petit s)
+    public void setSpecialities(String specialities) { this.specialities = specialities; }
 
-    public void setLanguages(String languages) {
-        Languages = languages;
-    }
+    public String getLanguages() { return languages; } // Corrigé (variable ajoutée)
+    public void setLanguages(String languages) { this.languages = languages; }
 
-    public String getHourly_rate() {
-        return Hourly_rate;
-    }
-
-    public void setHourly_rate(String hourly_rate) {
-        Hourly_rate = hourly_rate;
-    }
-
-    public boolean isIs_availalble() {
-        return is_availalble;
-    }
-
-    public void setIs_availalble(boolean is_availalble) {
-        this.is_availalble = is_availalble;
-    }
->>>>>>> 485ab257c7b2d84ec53a0df3f0dd2ae8354e3938
+    public boolean isAvailable() { return isAvailable; } // Corrigé (pas de isIs_...)
+    public void setAvailable(boolean available) { isAvailable = available; }
 }
