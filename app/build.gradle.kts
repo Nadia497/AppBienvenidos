@@ -60,6 +60,8 @@ dependencies {
 
     //sdp
     implementation("com.intuit.sdp:sdp-android:1.1.0")
+    //circle image view
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }
 
 apply(plugin = "com.google.gms.google-services")

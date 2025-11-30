@@ -63,5 +63,3 @@ public class Guide {
         this.is_availalble = is_availalble;
     }
 }
-
-

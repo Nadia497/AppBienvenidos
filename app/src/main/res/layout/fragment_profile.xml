@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFDED"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="50dp">
+
+    <!-- TA CARDVIEW PHOTO (Celle qu'on a corrigé ensemble) -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="60dp"
+        app:cardElevation="10dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/outline_person_24"
+            android:background="#FFFFFF"
+            android:padding="20dp"/>
+
+        <!-- La bordure (Optionnel si tu as fait le fichier circle_border) -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle_border"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mon Nom"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voyageur passionné"
+        android:textSize="16sp"
+        android:textColor="#E996C4"
+        android:layout_marginBottom="30dp"/>
+
+    <!-- Bouton Modifier -->
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Modifier mon profil"
+        android:backgroundTint="#FBC02D"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Se déconnecter"
+        android:backgroundTint="#CCCCCC"
+        android:textColor="#000000"/>
+
+</LinearLayout>

@@ -1,4 +1,5 @@
 package com.example.appbienvenidos.view.activities;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.google.android.material.button.MaterialButton;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+
 public class SpotDetailActivity extends AppCompatActivity {
     // Déclaration des variables
     LinearLayout LayoutImage, actions_ask_or_share, layoutInfosMap;
@@ -33,11 +35,17 @@ public class SpotDetailActivity extends AppCompatActivity {
 
     RatingBar ratingbar;
 
-    MapView map;
+    //MapView map;
+
+    // Déclaration des variables
+    private MapView map;
+    private MaterialButton btnShare, btnAskUser;
+    private TextView txtNomSpot, txtDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         // 1. Configuration d'OSMDroid (
         // Cela permet à la carte de charger les tuiles (images de la carte)
@@ -53,6 +61,7 @@ public class SpotDetailActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+
         });
 
         // 2. Initialisation des Vues (Liaison avec le XML)
@@ -67,7 +76,6 @@ public class SpotDetailActivity extends AppCompatActivity {
         // 5. Gestion des clics sur les boutons
         setupButtons();
     }
-
     private void initViews() {
         LayoutImage = findViewById(R.id.LayoutImage);
         textviewaction = findViewById(R.id.textviewaction);
@@ -176,5 +184,6 @@ public class SpotDetailActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         map.onPause();
+
     }
 }
