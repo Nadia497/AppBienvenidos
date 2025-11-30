@@ -1,67 +1,54 @@
 package com.example.appbienvenidos.model;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class Guide {
-    private int User_id ;
 
-    private String Specialities ;
+    @DocumentId // Récupère l'ID du document (qui est aussi l'ID du User)
+    private String uid;
 
-    private String Languages ;
+    // Infos copiées du User
+    private String firstName;
+    private String lastName;
+    private String profileImageUrl;
 
-    private String Hourly_rate ;
-
-    private boolean is_availalble ;
-
+    // Infos spécifiques au Guide
     private String cityServed;
+    private String hourlyRate;
+    private String specialities;
+    private boolean isAvailable;
 
-    //Getters and Setters
+    // 1. Constructeur VIDE (Obligatoire Firebase)
+    public Guide() { }
 
-    public int getUser_id() {
-        return User_id;
-    }
-
-    public String getCityServed() {
-        return cityServed;
-    }
-
-    public void setCityServed(String cityServed) {
+    // 2. Constructeur COMPLET
+    public Guide(String uid, String firstName, String lastName, String profileImageUrl, String cityServed, String hourlyRate, String specialities, boolean isAvailable) {
+        this.uid = uid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.profileImageUrl = profileImageUrl;
         this.cityServed = cityServed;
+        this.hourlyRate = hourlyRate;
+        this.specialities = specialities;
+        this.isAvailable = isAvailable;
     }
 
-    public void setUser_id(int user_id) {
-        User_id = user_id;
-    }
+    // 3. Getters
+    public String getUid() { return uid; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
 
-    public String getSpecialities() {
-        return Specialities;
-    }
+    public String getFullName() { return firstName + " " + lastName; }
 
-    public void setSpecialities(String specialities) {
-        Specialities = specialities;
-    }
+    public String getProfileImageUrl() { return profileImageUrl; }
+    public String getCityServed() { return cityServed; }
+    public String getHourlyRate() { return hourlyRate; }
+    public String getSpecialities() { return specialities; }
+    public boolean isAvailable() { return isAvailable; }
 
-    public String getLanguages() {
-        return Languages;
-    }
-
-    public void setLanguages(String languages) {
-        Languages = languages;
-    }
-
-    public String getHourly_rate() {
-        return Hourly_rate;
-    }
-
-    public void setHourly_rate(String hourly_rate) {
-        Hourly_rate = hourly_rate;
-    }
-
-    public boolean isIs_availalble() {
-        return is_availalble;
-    }
-
-    public void setIs_availalble(boolean is_availalble) {
-        this.is_availalble = is_availalble;
-    }
+    // Setters
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
+    public void setCityServed(String cityServed) { this.cityServed = cityServed; }
 }
-
-
