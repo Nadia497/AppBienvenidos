@@ -41,6 +41,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
     implementation("com.google.android.material:material:1.12.0")
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("org.osmdroid:osmdroid-android:6.1.14")
@@ -57,6 +59,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     //glide pour afficher les img depuis une URL depuis firebase
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }
 
 apply(plugin = "com.google.gms.google-services")

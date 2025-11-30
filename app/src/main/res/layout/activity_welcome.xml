@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vew.activities.WelcomeActivity"
+    tools:context=".view.activities.WelcomeActivity"
     android:background="#FDFDED"
     >
 
@@ -51,7 +51,7 @@
             ></TextView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/Seconnecter"
+            android:id="@+id/Inscrire"
             android:text="S'insrire"
             android:padding="12dp"
             android:layout_width="300dp"
@@ -66,7 +66,7 @@
             />
 
         <Button
-            android:id="@+id/Inscrire"
+            android:id="@+id/Seconnecter"
             android:text="Se connecter"
             android:textColor="#FBC02D"
             android:padding="12dp"
