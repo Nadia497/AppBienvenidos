@@ -38,6 +38,7 @@ public class Guide {
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
 
+<<<<<<< HEAD
     public String getFullName() { return firstName + " " + lastName; }
 
     public String getProfileImageUrl() { return profileImageUrl; }
@@ -51,4 +52,37 @@ public class Guide {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
     public void setCityServed(String cityServed) { this.cityServed = cityServed; }
+=======
+    public String getSpecialities() {
+        return Specialities;
+    }
+
+    public void setSpecialities(String specialities) {
+        Specialities = specialities;
+    }
+
+    public String getLanguages() {
+        return Languages;
+    }
+
+    public void setLanguages(String languages) {
+        Languages = languages;
+    }
+
+    public String getHourly_rate() {
+        return Hourly_rate;
+    }
+
+    public void setHourly_rate(String hourly_rate) {
+        Hourly_rate = hourly_rate;
+    }
+
+    public boolean isIs_availalble() {
+        return is_availalble;
+    }
+
+    public void setIs_availalble(boolean is_availalble) {
+        this.is_availalble = is_availalble;
+    }
+>>>>>>> 485ab257c7b2d84ec53a0df3f0dd2ae8354e3938
 }
