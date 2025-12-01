@@ -53,173 +53,187 @@
             />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/NomDuSpot"
-        android:text="Spot Name"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:fontFamily="sans-serif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/LayoutImage"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#000000"
-        />
 
-    <RatingBar
-        android:id="@+id/ratingbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1"
-        app:layout_constraintTop_toBottomOf="@id/NomDuSpot"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
-        android:rating="0"
-        android:isIndicator="false"
-        style="?android:attr/ratingBarStyleSmall"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:progressTint="@color/Gold"
-       />
-
-
-    <TextView
-        android:id="@+id/UserPublicationDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ratingbar"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        android:text="User and Publication date"
-        android:layout_marginTop="15dp"
-        android:textColor="#8E8E8E"
-        android:fontFamily="serif"
-        />
-
-    <TextView
-        android:id="@+id/textviewaction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/UserPublicationDate"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        android:text="Actions :"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="15dp"
-        android:textColor="#000000"
-        />
-
-    <LinearLayout
-        android:id="@+id/actions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/textviewaction"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        >
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/AskUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:text="Poser une question "
-            android:textSize="15sp"
-            android:fontFamily="serif"
-            android:textColor="#000000"
-            app:backgroundTint="#FBC02D"
-            app:cornerRadius="8dp"
-            app:elevation="6dp"
-            android:layout_margin="5dp"
-            app:icon="@drawable/chaticon"
-            app:iconTint="#000000"
-            />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/Share"
-            android:text="Partager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:textSize="15sp"
-            android:fontFamily="serif"
-            android:textColor="#000000"
-            app:backgroundTint="#FFFFFF"
-            app:cornerRadius="8dp"
-            app:elevation="6dp"
-            android:layout_margin="5dp"
-            app:icon="@drawable/sharethis"
-            />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textviewDescriptionwithdetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/actions"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="20dp"
-        android:text="Description Détaillée :"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        android:textSize="16sp"
-        android:textColor="#000000"
-        />
-
-    <TextView
-        android:id="@+id/Descriptionwithdetails"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textviewDescriptionwithdetails"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi"
-        android:textColor="#8E8E8E"
-        android:fontFamily="serif"
-        android:textSize="14sp"
-        />
-
-    <TextView
-        android:id="@+id/Informationspratique"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Descriptionwithdetails"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:textSize="16sp"
-        android:text="Informations pratique :"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif"
-        android:textStyle="bold"
-        />
+        app:layout_constraintTop_toBottomOf="@id/LayoutImage">
 
-    <org.osmdroid.views.MapView
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@id/Informationspratique"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp" />
+        <!-- Conteneur pour les éléments qui scrollent -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/NomDuSpot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif"
+                android:text="Spot Name"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!-- Attention: j'ai changé layout_constraintTop pour 'parent' ici car il est dans le scrollview -->
+
+            <RatingBar
+                android:id="@+id/ratingbar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:progressTint="@color/Gold"
+                android:rating="0"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:stepSize="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/NomDuSpot" />
+
+
+            <TextView
+                android:id="@+id/UserPublicationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="serif"
+                android:text="User and Publication date"
+                android:textColor="#8E8E8E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingbar" />
+
+            <TextView
+                android:id="@+id/textviewaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif"
+                android:text="Actions :"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/UserPublicationDate" />
+
+            <LinearLayout
+                android:id="@+id/actions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textviewaction">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/AskUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="serif"
+                    android:minHeight="48dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Poser une question "
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:backgroundTint="#FBC02D"
+                    app:cornerRadius="8dp"
+                    app:elevation="6dp"
+                    app:icon="@drawable/chaticon"
+                    app:iconTint="#000000" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="serif"
+                    android:minHeight="48dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Partager"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:backgroundTint="#FFFFFF"
+                    app:cornerRadius="8dp"
+                    app:elevation="6dp"
+                    app:icon="@drawable/sharethis" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textviewDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif"
+                android:text="Description :"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actions" />
+
+            <TextView
+                android:id="@+id/Description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="serif"
+                android:text="Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi
+                Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi
+                Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi
+                Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi"
+                android:textColor="#8E8E8E"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textviewDescription" />
+
+            <TextView
+                android:id="@+id/Localisation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif"
+                android:text="Localisation :"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Description" />
+
+            <org.osmdroid.views.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Localisation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
