@@ -12,11 +12,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:paddingTop="40dp"
         android:paddingBottom="40dp"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <!-- HEADER LOGO & TITRE -->
         <ImageView
@@ -154,7 +156,6 @@
                     android:background="@drawable/edittext_singup"
                     android:layout_marginEnd="5dp"
                     android:padding="10dp"
-                    android:drawableStart="@drawable/outline_person_24"
                     android:drawablePadding="8dp"
                     android:drawableTint="#AAAAAA"
                     android:inputType="textPersonName"
@@ -169,7 +170,6 @@
                     android:background="@drawable/edittext_singup"
                     android:layout_marginStart="5dp"
                     android:padding="10dp"
-                    android:drawableStart="@drawable/outline_person_24"
                     android:drawablePadding="8dp"
                     android:drawableTint="#AAAAAA"
                     android:inputType="textPersonName"
