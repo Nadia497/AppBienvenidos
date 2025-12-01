@@ -61,7 +61,6 @@
             android:textColor="@color/white"
             android:fontFamily="serif"
             app:elevation="18dp"
-            android:translationZ="8dp"
             app:backgroundTint="#FBC02D"
             app:cornerRadius="8dp"
             />

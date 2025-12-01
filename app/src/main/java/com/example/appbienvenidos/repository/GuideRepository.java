@@ -15,7 +15,29 @@ public class GuideRepository {
     // 1. Initialisation de la connexion
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    // 2. La Méthode Publique (L'API)
+    // 2. Les Méthodes Publiques (L'API)
+    public void getAllGuides(MutableLiveData<List<Guide>> liveData) {
+
+        db.collection("guides")
+                .whereEqualTo("isAvailable", true)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<Guide> guideList = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        try {
+                            Guide guide = document.toObject(Guide.class);
+                            guideList.add(guide);
+                        } catch (Exception e) {
+                            Log.e("GuideRepo", "Erreur conversion : " + e.getMessage());
+                        }
+                    }
+                    liveData.setValue(guideList);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("GuideRepo", "Erreur réseau : " + e.getMessage());
+                    liveData.setValue(null);
+                });
+    }
     public void getGuidesByCity(String city, MutableLiveData<List<Guide>> liveData) {
 
         // 3. Construction de la Requête
