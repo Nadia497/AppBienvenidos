@@ -1,136 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDED">
+    tools:context=".view.activities.WelcomeActivity"
+    android:background="@color/creme_background"
+    >
 
-    <!-- DÉCORATION 1 : Cercle Jaune en haut à droite (coupé) -->
-    <View
-        android:id="@+id/circleTop"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/circle_shape_yellow"
-        android:backgroundTint="#20FBC02D"
-        android:translationX="50dp"
-        android:translationY="-50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- DÉCORATION 2 : Cercle Rose en bas à gauche (coupé) -->
-    <View
-        android:id="@+id/circleBottom"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:background="@drawable/circle_shape_pink"
-        android:backgroundTint="#15E996C4"
-        android:translationX="-80dp"
-        android:translationY="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- CONTENU PRINCIPAL -->
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/petitlogo"
-        android:elevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Bienvenidos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="serif"
-        android:text="Bienvenidos"
-        android:textColor="#FBC02D"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.05"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <TextView
-        android:id="@+id/subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="serif"
-        android:text="Le monde à portée de main"
-        android:textColor="#E996C4"
-        android:textSize="18sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bienvenidos" />
-
-    <!-- ZONE DES BOUTONS -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="40dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center_vertical|center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginTop="80dp">
 
-        <!-- Bouton S'INSCRIRE : Le plus important -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/Inscrire"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:fontFamily="serif"
-            android:text="Créer un compte"
-            android:textAllCaps="false"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:backgroundTint="#FBC02D"
-            app:cornerRadius="12dp"
-            app:elevation="6dp"
-            android:layout_marginBottom="16dp"
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/petitlogo"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+
             />
 
-        <!-- Bouton SE CONNECTER : Style contour -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/Seconnecter"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:fontFamily="serif"
-            android:text="Se connecter"
-            android:textAllCaps="false"
-            android:textColor="#FBC02D"
-            android:textSize="18sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="#FBC02D"
-            app:strokeWidth="2dp"
-            android:layout_marginBottom="24dp"
-            />
-
-        <!-- Bouton EXPLORER : Discret -->
         <TextView
-            android:id="@+id/Explorer"
+            android:shadowColor="#55000000"
+            android:textColor="#FBBF24"
+            android:id="@+id/Bienvenidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="serif"
-            android:text="Continuer en mode visiteur"
-            android:textColor="#E996C4"
-            android:textSize="16sp"
-            android:padding="10dp"
+            android:text="Bienvenidos"
+            android:textSize="55sp"
+            style="@style/AppTitleStyle"
+            android:layout_marginTop="30dp"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Le monde à portée de main"
+            android:textColor="#E996C4"
+            android:textSize="18dp"
+            android:fontFamily="serif"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Inscrire"
+            android:text="S'insrire"
+            android:padding="12dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:fontFamily="serif"
+            app:elevation="18dp"
+            app:backgroundTint="#FBC02D"
+            app:cornerRadius="8dp"
+            />
+
+        <Button
+            android:id="@+id/Seconnecter"
+            android:text="Se connecter"
+            android:textColor="#FBC02D"
+            android:padding="12dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="@android:color/transparent"
+            android:textSize="25dp"
+            android:elevation="4dp"
+            app:cornerRadius="8dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#FBC02D"
+            android:fontFamily="serif"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Explorer"
+            android:text="Explorer"
+            android:padding="12dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            app:backgroundTint="#E996C4"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:elevation="4dp"
+            app:cornerRadius="8dp"
+            android:fontFamily="serif"/>
+
+
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

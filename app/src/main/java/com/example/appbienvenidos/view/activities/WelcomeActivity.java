@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.view.fragments.onboardingActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -47,6 +48,8 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
+                // On envoie un message pour dire : "La destination finale est SIGNUP"
+                intent.putExtra("DESTINATION", "SIGNUP");
                 startActivity(intent);
             }
         });
@@ -66,7 +69,9 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // On va directement sur la page principale avec la barre de navigation
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, onboardingActivity.class);
+                // On envoie un message pour dire : "La destination finale est HOME"
+                intent.putExtra("DESTINATION", "HOME");
                 startActivity(intent);
 
                 // Optionnel : finish() pour fermer la page de bienvenue

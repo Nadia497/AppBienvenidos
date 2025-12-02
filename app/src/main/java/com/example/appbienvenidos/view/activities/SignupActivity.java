@@ -34,7 +34,7 @@ public class SignupActivity extends AppCompatActivity {
 
     // UI Elements
     EditText editTextFirstName, editTextLastName, editTextEmail, editTextLocation, editTextPasswordHash;
-    Button btnRoleTraveler, btnRoleLocal, btnSinscrire;
+    TextView btnRoleTraveler, btnRoleLocal, btnSinscrire;
     TextView alreadyRegistred, seConnecter;
     CardView btnChangePhoto;
     ImageView userPhotoView;
@@ -109,11 +109,16 @@ public class SignupActivity extends AppCompatActivity {
 
     private void updateRoleUI() {
         if (selectedRole.equals("Voyageur")) {
-            btnRoleTraveler.setTextColor(Color.BLACK);
-            btnRoleLocal.setTextColor(Color.parseColor("#F8AFCB"));
+            btnRoleTraveler.setBackgroundResource(R.drawable.bg_role_active);
+            btnRoleTraveler.setTextColor(Color.WHITE);
+            btnRoleLocal.setBackgroundResource(0);
+            btnRoleLocal.setTextColor(Color.parseColor("#8D6E63"));
+
         } else {
-            btnRoleTraveler.setTextColor(Color.parseColor("#F8AFCB"));
-            btnRoleLocal.setTextColor(Color.BLACK);
+            btnRoleTraveler.setBackgroundResource(0);
+            btnRoleTraveler.setTextColor(Color.parseColor("#8D6E63"));
+            btnRoleLocal.setBackgroundResource(R.drawable.bg_role_active);
+            btnRoleLocal.setTextColor(Color.WHITE);
         }
     }
 
@@ -129,6 +134,9 @@ public class SignupActivity extends AppCompatActivity {
             Uri imageUri = data.getData();
             imageUriString = imageUri.toString();
             userPhotoView.setImageURI(imageUri);
+            userPhotoView.setColorFilter(null);
+            userPhotoView.setPadding(0, 0, 0, 0);
+            userPhotoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             userPhotoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
     }

@@ -29,9 +29,9 @@ public class SpotDetailActivity extends AppCompatActivity {
     MaterialButton AskUser, Share;
 
     ImageView FirstImage, SecondImage, ThirdImage;
-    TextView NomDuSpot, SmallDescription, UserPublicationDate, textviewaction,
-            textviewDescriptionwithdetails, Descriptionwithdetails,
-            Informationspratique, infoAdresse, infoHeures, infoContact;
+    TextView NomDuSpot, UserPublicationDate, textviewaction,
+            textviewDescription, Description,
+            Localisation, infoAdresse, infoHeures, infoContact;
 
     RatingBar ratingbar;
 
@@ -89,13 +89,13 @@ public class SpotDetailActivity extends AppCompatActivity {
         ThirdImage = findViewById(R.id.ThirdImage);
 
 
-        Informationspratique = findViewById(R.id.Informationspratique);
-        Descriptionwithdetails = findViewById(R.id.Descriptionwithdetails);
+        Localisation = findViewById(R.id.Localisation);
+        Description = findViewById(R.id.Description);
 
         ratingbar = findViewById(R.id.ratingbar);
 
         textviewaction = findViewById(R.id.textviewaction);
-        textviewDescriptionwithdetails = findViewById(R.id.textviewDescriptionwithdetails);
+        textviewDescription = findViewById(R.id.textviewDescription);
 
         map = findViewById(R.id.map);
         NomDuSpot = findViewById(R.id.NomDuSpot);
@@ -121,8 +121,7 @@ public class SpotDetailActivity extends AppCompatActivity {
 
             // Assignation aux
             if (nom != null) NomDuSpot.setText(nom);
-            if (descCourt != null) SmallDescription.setText(descCourt);
-            if (descLong != null) Descriptionwithdetails.setText(descLong);
+            if (descLong != null) Description.setText(descLong);
             if (datePub != null) UserPublicationDate.setText(datePub);
 
             // Infos du spot

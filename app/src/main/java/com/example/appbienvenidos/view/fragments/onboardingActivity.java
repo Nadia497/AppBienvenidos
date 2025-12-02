@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.view.activities.MainActivity;
 import com.example.appbienvenidos.view.activities.SignupActivity ;
 import com.example.appbienvenidos.view.activities.LoginActivity;
 
@@ -13,6 +14,7 @@ import android.content.Intent;
 
 public class onboardingActivity extends AppCompatActivity {
     private Button continuer, passer;
+    private String destinationfinale;
     private ViewPager2 v2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,11 @@ public class onboardingActivity extends AppCompatActivity {
 
         v2.setAdapter(new onboardingadapter(this));
 
+        // 1. On récupère l'information envoyée depuis l'écran précédent
+        if(getIntent().hasExtra("DESTINATION")){
+            destinationfinale = getIntent().getStringExtra("DESTINATION");
+        }
+
         continuer.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -32,7 +39,12 @@ public class onboardingActivity extends AppCompatActivity {
                 if(v2.getCurrentItem() < 2){
                     v2.setCurrentItem(v2.getCurrentItem()+1);
                 } else{
-                    startActivity(new Intent(onboardingActivity.this, LoginActivity.class));
+                    if("HOME".equals(destinationfinale)){
+                        startActivity(new Intent(onboardingActivity.this, MainActivity.class));
+                    }
+                    else{
+                        startActivity(new Intent(onboardingActivity.this, SignupActivity.class));
+                    }
                 }
             }
         });
@@ -40,7 +52,13 @@ public class onboardingActivity extends AppCompatActivity {
         passer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(onboardingActivity.this, SignupActivity.class));
+                if("HOME".equals(destinationfinale)){
+                    startActivity(new Intent(onboardingActivity.this, MainActivity.class));
+                }
+                else{
+                    startActivity(new Intent(onboardingActivity.this, SignupActivity.class));
+                }
+
             }
         });
     }

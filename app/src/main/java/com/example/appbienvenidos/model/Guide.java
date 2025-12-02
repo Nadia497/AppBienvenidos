@@ -1,65 +1,68 @@
 package com.example.appbienvenidos.model;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class Guide {
-    private int User_id ;
 
-    private String Specialities ;
+    @DocumentId // Récupère l'ID du document
+    private String uid;
 
-    private String Languages ;
+    // Infos copiées du User
+    private String firstName;
+    private String lastName;
+    private String profileImageUrl;
 
-    private String Hourly_rate ;
-
-    private boolean is_availalble ;
-
+    // Infos spécifiques au Guide
     private String cityServed;
+    private String hourlyRate;    // Nom correct : hourlyRate
+    private String specialities;  // Nom correct : specialities
+    private String languages;     // J'ai AJOUTÉ cette variable qui manquait
+    private boolean isAvailable;  // Nom correct : isAvailable
 
-    //Getters and Setters
+    // 1. Constructeur VIDE (Obligatoire Firebase)
+    public Guide() { }
 
-    public int getUser_id() {
-        return User_id;
-    }
-
-    public String getCityServed() {
-        return cityServed;
-    }
-
-    public void setCityServed(String cityServed) {
+    // 2. Constructeur COMPLET
+    public Guide(String uid, String firstName, String lastName, String profileImageUrl, String cityServed, String hourlyRate, String specialities, String languages, boolean isAvailable) {
+        this.uid = uid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.profileImageUrl = profileImageUrl;
         this.cityServed = cityServed;
+        this.hourlyRate = hourlyRate;
+        this.specialities = specialities;
+        this.languages = languages;
+        this.isAvailable = isAvailable;
     }
 
-    public void setUser_id(int user_id) {
-        User_id = user_id;
-    }
+    // 3. Getters et Setters (Tout est corrigé ici)
 
-    public String getSpecialities() {
-        return Specialities;
-    }
+    public String getUid() { return uid; }
+    public void setUid(String uid) { this.uid = uid; }
 
-    public void setSpecialities(String specialities) {
-        Specialities = specialities;
-    }
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public String getLanguages() {
-        return Languages;
-    }
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public void setLanguages(String languages) {
-        Languages = languages;
-    }
+    public String getFullName() { return firstName + " " + lastName; }
 
-    public String getHourly_rate() {
-        return Hourly_rate;
-    }
+    public String getProfileImageUrl() { return profileImageUrl; }
+    public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
 
-    public void setHourly_rate(String hourly_rate) {
-        Hourly_rate = hourly_rate;
-    }
+    public String getCityServed() { return cityServed; }
+    public void setCityServed(String cityServed) { this.cityServed = cityServed; }
 
-    public boolean isIs_availalble() {
-        return is_availalble;
-    }
+    public String getHourlyRate() { return hourlyRate; } // Corrigé (pas de _)
+    public void setHourlyRate(String hourlyRate) { this.hourlyRate = hourlyRate; }
 
-    public void setIs_availalble(boolean is_availalble) {
-        this.is_availalble = is_availalble;
-    }
+    public String getSpecialities() { return specialities; } // Corrigé (petit s)
+    public void setSpecialities(String specialities) { this.specialities = specialities; }
+
+    public String getLanguages() { return languages; } // Corrigé (variable ajoutée)
+    public void setLanguages(String languages) { this.languages = languages; }
+
+    public boolean isAvailable() { return isAvailable; } // Corrigé (pas de isIs_...)
+    public void setAvailable(boolean available) { isAvailable = available; }
 }

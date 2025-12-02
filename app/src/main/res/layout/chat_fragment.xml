@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/creme_background"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!--Header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:src="@drawable/petitlogo" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="274dp"
+            android:layout_height="76dp"
+            android:gravity="center"
+            android:text="Nadia Azizi"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/creme_background"
+            android:src="@drawable/ic_more_vert_n"
+            android:layout_marginRight="@dimen/_8sdp"
+            />
+    </LinearLayout>
+
+    <!--body-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="@dimen/_16sdp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Bar de recherche -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rechercher"
+                android:textSize="@dimen/_18sdp"
+                android:textColor="@color/black"
+                android:background="@drawable/bg_white_profile_n"
+                android:elevation="@dimen/_4sdp"
+                android:padding="@dimen/_7sdp"
+                android:paddingEnd="@dimen/_40sdp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:imeOptions="actionSearch"
+                android:drawablePadding="@dimen/_10sdp"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                app:drawableTint="#999999"/>
+
+            <!-- ZONE DE CONTACTS -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="717dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:id="@+id/disc_container">
+
+                <!-- Zone de discussion vide -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/vide"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/_200sdp"
+                        android:layout_height="@dimen/_200sdp"
+                        android:src="@drawable/discussion_n"
+                        android:id="@+id/img_vide"
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:layout_marginLeft="@dimen/_40sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_70sdp"
+                        android:text="Pas de discussion encore"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        android:textColor="#999999"/>
+
+                </LinearLayout>
+
+                <!-- Zone de discussion plain -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/plain"
+                    android:visibility="gone"
+                    >
+                    <!-- un seul contact -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg_white_profile_n"
+                        android:elevation="@dimen/_6sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:padding="@dimen/_8sdp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/img2_profile"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_60sdp"
+                            android:src="@drawable/no_profile"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:text="Mezrhab Hanane"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/_14sdp"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:layout_marginLeft="@dimen/_4sdp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#999999"
+                                android:text="dernière message"
+                                android:textSize="@dimen/_12sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:layout_marginLeft="@dimen/_4sdp"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#999999"
+                            android:text="Hier"
+                            android:textSize="@dimen/_12sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_34sdp"
+                            />
+
+                    </LinearLayout>
+
+                    <!-- un seul contact -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg_white_profile_n"
+                        android:elevation="@dimen/_6sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:padding="@dimen/_8sdp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/img_profile"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_60sdp"
+                            android:src="@drawable/no_profile"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:text="Naimi Zineb"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/_14sdp"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:layout_marginLeft="@dimen/_4sdp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#999999"
+                                android:text="dernière message"
+                                android:textStyle=""
+                                android:textSize="@dimen/_12sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:layout_marginLeft="@dimen/_4sdp"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_43sdp"
+                            android:text="Hier"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
