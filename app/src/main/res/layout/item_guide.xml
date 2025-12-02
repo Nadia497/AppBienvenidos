@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GuideCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/GuidePhoto"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/CircleImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/_12sdp"
+            tools:src="@tools:sample/avatars" />
+
+
+        <TextView
+            android:id="@+id/GuideName"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/GuidePhoto"
+            app:layout_constraintTop_toTopOf="@+id/GuidePhoto"
+            android:text="Naimi Zineb"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/GuideCity"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/GuideName"
+            app:layout_constraintStart_toEndOf="@+id/GuidePhoto"
+            android:text="Oujda, Iris"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/gray"
+            />
+
+        <RatingBar
+            android:id="@+id/ratingGuidebar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:progressTint="@color/Gold"
+            android:rating="0"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:stepSize="1"
+            app:layout_constraintStart_toEndOf="@+id/GuidePhoto"
+            app:layout_constraintTop_toBottomOf="@+id/GuideCity" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ShowGuideProfile"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="Voir le profil"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginTop="5dp"
+            app:backgroundTint="#FFD700"
+            app:cornerRadius="20dp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@+id/GuideCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+           />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
