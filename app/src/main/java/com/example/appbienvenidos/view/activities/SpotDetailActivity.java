@@ -18,17 +18,23 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.example.appbienvenidos.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 // Imports pour la carte (OSMDroid)
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import com.bumptech.glide.Glide;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpotDetailActivity extends AppCompatActivity {
     // Déclaration des variables
     LinearLayout LayoutImage, actions_ask_or_share, layoutInfosMap;
     MaterialButton AskUser, Share;
 
-    ImageView FirstImage, SecondImage, ThirdImage;
+    ShapeableImageView FirstImage, SecondImage, ThirdImage;
     TextView NomDuSpot, UserPublicationDate, textviewaction,
             textviewDescription, Description,
             Localisation, infoAdresse, infoHeures, infoContact;
@@ -75,6 +81,9 @@ public class SpotDetailActivity extends AppCompatActivity {
 
         // 5. Gestion des clics sur les boutons
         setupButtons();
+
+        //6. Gestion des photos du Spot
+        setupimages();
     }
     private void initViews() {
         LayoutImage = findViewById(R.id.LayoutImage);
@@ -131,6 +140,49 @@ public class SpotDetailActivity extends AppCompatActivity {
 
             // Mise à jour de la barre d'étoiles
             ratingbar.setRating(note);
+        }
+    }
+
+
+    private void setupimages() {
+
+        ArrayList<String> listePhotos = getIntent().getStringArrayListExtra("Photos_key");
+
+        if (listePhotos == null) {
+            listePhotos = new ArrayList<>();
+        }
+
+        int nombrePhoto = listePhotos.size();
+        if (nombrePhoto >= 1) {
+            FirstImage.setVisibility(View.VISIBLE);
+
+            // Glide charge l'URL dans l'image
+            Glide.with(this)
+                    .load(listePhotos.get(0))
+                    .centerCrop()
+                    .into(FirstImage);
+
+        }
+
+        if (nombrePhoto >= 2) {
+            SecondImage.setVisibility(View.VISIBLE);
+
+            // Glide charge l'URL dans l'image
+            Glide.with(this)
+                    .load(listePhotos.get(1))
+                    .centerCrop()
+                    .into(SecondImage);
+
+        }
+
+        if (nombrePhoto >= 3) {
+            ThirdImage.setVisibility(View.VISIBLE);
+
+            // Glide charge l'URL dans l'image
+            Glide.with(this)
+                    .load(listePhotos.get(2))
+                    .centerCrop()
+                    .into(ThirdImage);
         }
     }
 
