@@ -8,15 +8,25 @@ public class User {
     private String PasswordHash;  //Stocker un hash, pas le mot de passe en clair
     private String Location;
     private String Profile_Picture_URL;
-    private String Bio;
     private String Role;
     private String Registration_Date;
+    //Constructeur sans password
+    public User(String lastName, String First_Name, String Email,
+                String Location, String Profile_Picture_URL,
+                 String Role) {
 
-    //Constructeur utilisé par le Room pour créer nos objets
+        this.lastName = lastName;
+        this.First_Name = First_Name;
+        this.Email = Email;
+        this.Location = Location;
+        this.Profile_Picture_URL = Profile_Picture_URL;
+        this.Role = Role;
+    }
+    //Constructeur complet
 
     public User(String lastName, String First_Name, String Email,
                 String PasswordHash, String Location, String Profile_Picture_URL,
-                String Bio, String Role, String Registration_Date) {
+                 String Role, String Registration_Date) {
 
         this.lastName = lastName;
         this.First_Name = First_Name;
@@ -24,7 +34,6 @@ public class User {
         this.PasswordHash = PasswordHash;
         this.Location = Location;
         this.Profile_Picture_URL = Profile_Picture_URL;
-        this.Bio = Bio;
         this.Role = Role;
         this.Registration_Date = Registration_Date;
     }
@@ -87,15 +96,6 @@ public class User {
     public void setProfile_Picture_URL(String profile_Picture_URL) {
         Profile_Picture_URL = profile_Picture_URL;
     }
-
-    public String getBio() {
-        return Bio;
-    }
-
-    public void setBio(String bio) {
-        Bio = bio;
-    }
-
     public String getRole() {
         return Role;
     }
