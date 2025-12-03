@@ -134,10 +134,10 @@ public class SignupActivity extends AppCompatActivity {
             Uri imageUri = data.getData();
             imageUriString = imageUri.toString();
             userPhotoView.setImageURI(imageUri);
-            userPhotoView.setColorFilter(null);
+            userPhotoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             userPhotoView.setPadding(0, 0, 0, 0);
-            userPhotoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            userPhotoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            userPhotoView.setColorFilter(null);
+
         }
     }
 
