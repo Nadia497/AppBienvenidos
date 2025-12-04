@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/creme_background"
+    android:clickable="true"
+    android:focusable="true"> <!-- Fond Crème -->
+
+    <!-- HEADER -->
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_circle_white_n"
+        android:contentDescription="Retour"
+        android:src="@drawable/ic_media_previous_n"
+        android:elevation="2dp"
+        android:paddingStart="10dp"
+        android:textColor="#333333"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paramètre"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <!-- CONTENU SCROLLABLE -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_14sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="Compte"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"/>
+
+            <!-- info personnelles -->
+            <include
+                android:id="@+id/info_pers"
+                layout="@layout/item_setting_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12sdp"/>
+
+            <!-- Notifications -->
+            <include
+                android:id="@+id/notifs"
+                layout="@layout/item_setting_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12sdp"/>
+
+            <!-- Thème -->
+            <include
+                android:id="@+id/theme"
+                layout="@layout/item_setting_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12sdp"/>
+
+            <!-- langue -->
+            <include
+                android:id="@+id/language"
+                layout="@layout/item_setting_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12sdp"/>
+
+            <!-- bouton déconnexion -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnlogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_22sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_16sdp"
+                app:cardElevation="@dimen/_2sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_14sdp">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:background="@drawable/circle_background_n"
+                        android:backgroundTint="#FFEBEE">
+
+                        <ImageView
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_logout_n"
+                            app:tint="#D32F2F"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:text="Se déconnecter"
+                        android:textColor="#D32F2F"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_14sdp"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:src="@drawable/ic_chevronright_n"
+                        app:tint="#D32F2F"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

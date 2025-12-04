@@ -22,18 +22,18 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:layout_width="@dimen/_45sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginLeft="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_14sdp"
             android:src="@drawable/petitlogo" />
 
         <TextView
             android:id="@+id/username"
-            android:layout_width="274dp"
+            android:layout_width="257dp"
             android:layout_height="76dp"
             android:gravity="center"
-            android:text="Nadia Azizi"
+            android:text="  Nadia Azizi"
             android:textColor="@color/black"
             android:textSize="@dimen/_20sdp"
             android:textStyle="bold"
@@ -44,10 +44,10 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/creme_background"
-            android:src="@drawable/ic_more_vert_n"
             android:layout_marginRight="@dimen/_8sdp"
-            />
+            android:backgroundTint="@color/creme_background"
+            android:src="@drawable/ic_more_vert_n" />
+
     </LinearLayout>
 
     <!--body-->
@@ -82,40 +82,38 @@
                 android:drawableStart="@android:drawable/ic_menu_search"
                 app:drawableTint="#999999"/>
 
+            <!-- Zone de discussion vide -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/vide"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/img_vide"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:src="@drawable/discussion_n" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pas de discussion encore"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
             <!-- ZONE DE CONTACTS -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="717dp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:id="@+id/disc_container">
-
-                <!-- Zone de discussion vide -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/vide"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:layout_width="@dimen/_200sdp"
-                        android:layout_height="@dimen/_200sdp"
-                        android:src="@drawable/discussion_n"
-                        android:id="@+id/img_vide"
-                        android:layout_marginTop="@dimen/_40sdp"
-                        android:layout_marginLeft="@dimen/_40sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_70sdp"
-                        android:text="Pas de discussion encore"
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        android:textColor="#999999"/>
-
-                </LinearLayout>
 
                 <!-- Zone de discussion plain -->
                 <LinearLayout

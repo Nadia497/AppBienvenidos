@@ -65,7 +65,14 @@
 
     </androidx.cardview.widget.CardView>
 
-
+    <ImageView
+        android:id="@+id/bannerphoto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_26sdp"
+        app:layout_constraintTop_toBottomOf="@+id/searchContainer"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:scaleType="centerCrop"
+        />
 
     <TextView
         android:id="@+id/Textnormal"
