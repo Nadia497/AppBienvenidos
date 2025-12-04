@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.WelcomeActivity"
-    android:background="#FDFDED">
+    android:background="@color/creme_background">
 
     <!-- ScrollView pour gérer les petits écrans lors de l'ouverture du clavier -->
     <ScrollView
@@ -48,10 +48,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
-                android:fontFamily="cursive"
+                android:fontFamily="serif"
                 android:text="Bon retour parmi nous !"
                 android:textColor="#E996C4"
-                android:textSize="24sp" />
+                android:textSize="13sp" />
 
             <!-- FORMULAIRE -->
             <LinearLayout
@@ -64,9 +64,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:textStyle="bold"
                     android:textColor="#555555"
-                    android:text="Email" />
+                    android:text="Email"
+                    android:textSize="@dimen/_13sdp"/>
 
                 <EditText
                     android:id="@+id/editTextEmailLogin"
@@ -80,16 +80,17 @@
                     android:drawablePadding="10dp"
                     android:drawableTint="#AAAAAA"
                     android:inputType="textEmailAddress"
-                    android:hint="exemple@email.com"/>
+                    android:hint="exemple@email.com"
+                    android:textSize="@dimen/_13sdp"/>
 
                 <!-- MOT DE PASSE -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:textStyle="bold"
                     android:textColor="#555555"
-                    android:text="Mot de passe" />
+                    android:text="Mot de passe"
+                    android:textSize="@dimen/_13sdp"/>
 
                 <EditText
                     android:id="@+id/editTextPasswordLogin"
@@ -124,7 +125,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:textSize="22sp"
-                    android:textStyle="bold"
                     android:fontFamily="serif"
                     app:elevation="10dp"
                     app:backgroundTint="#FBC02D"

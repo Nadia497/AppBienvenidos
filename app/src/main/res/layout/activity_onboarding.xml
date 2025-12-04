@@ -16,13 +16,11 @@
 
     <Button
         android:id="@+id/btn_continue"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/border_textview"
-        android:paddingLeft="100sp"
-        android:paddingRight="100sp"
         android:text="Continuer"
         android:textColor="@color/black"
         android:textSize="25sp"

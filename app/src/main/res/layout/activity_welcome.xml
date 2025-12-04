@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.WelcomeActivity"
-    android:background="#FDFDED"
+    android:background="@color/creme_background"
     >
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
 
-            ></ImageView>
+            />
 
         <TextView
             android:shadowColor="#55000000"
@@ -39,7 +39,7 @@
             android:textSize="55sp"
             style="@style/AppTitleStyle"
             android:layout_marginTop="30dp"
-            ></TextView>
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
             android:textColor="#E996C4"
             android:textSize="18dp"
             android:fontFamily="serif"
-            ></TextView>
+            />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Inscrire"
@@ -61,7 +61,6 @@
             android:textColor="@color/white"
             android:fontFamily="serif"
             app:elevation="18dp"
-            android:translationZ="8dp"
             app:backgroundTint="#FBC02D"
             app:cornerRadius="8dp"
             />
@@ -81,7 +80,7 @@
             app:strokeWidth="2dp"
             app:strokeColor="#FBC02D"
             android:fontFamily="serif"
-            ></Button>
+            />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Explorer"
