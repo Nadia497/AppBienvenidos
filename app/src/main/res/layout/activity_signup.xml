@@ -136,17 +136,17 @@
                 </FrameLayout>
 
 
-            <!--<TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ajouter une photo"
-                android:textSize="12sp"
-                android:textColor="#888888"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@id/cardProfile"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>-->
-            <!-- CONTENEUR FORMULAIRE -->
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ajouter une photo"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/cardProfile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>-->
+                <!-- CONTENEUR FORMULAIRE -->
                 <!-- NOM / PRENOM -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -154,180 +154,173 @@
                     android:layout_marginBottom="15dp"
                     android:orientation="horizontal">
 
-                <!-- Champ NOM avec icône -->
+                    <!-- Champ NOM avec icône -->
+                    <EditText
+                        android:id="@+id/editTextFirstName"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:background="@drawable/edittext_singup"
+                        android:layout_marginEnd="5dp"
+                        android:paddingStart="16dp"
+                        android:textSize="14sp"
+                        android:inputType="textPersonName"
+                        android:hint="Nom"/>
+
+                    <!-- Champ PRENOM avec icône -->
+                    <EditText
+                        android:id="@+id/editTextLastName"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:background="@drawable/edittext_singup"
+                        android:layout_marginEnd="5dp"
+                        android:paddingStart="16dp"
+                        android:textSize="14sp"
+                        android:inputType="textPersonName"
+                        android:hint="Prénom"/>
+                </LinearLayout>
+
+                <!-- EMAIL -->
+
+                <!-- Champ EMAIL avec icône système -->
                 <EditText
-                    android:id="@+id/editTextFirstName"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/edittext_singup"
-                    android:layout_marginEnd="5dp"
-                    android:padding="10dp"
-                    android:drawableStart="@drawable/outline_person_24"
-                    android:drawablePadding="@dimen/_8sdp"
-                    android:drawableTint="#AAAAAA"
-                    android:inputType="textPersonName"
-                    android:hint="Nom"
-                    android:textSize="@dimen/_13sdp"/>
+                    android:layout_marginBottom="12dp"
+                    android:paddingStart="16dp"
+                    android:drawableStart="@android:drawable/ic_dialog_email"
+                    android:drawablePadding="12dp"
+                    android:drawableTint="#BDBDBD"
+                    android:inputType="textEmailAddress"
+                    android:hint="exemple@email.com"/>
 
-                <!-- Champ PRENOM avec icône -->
+                <!-- LOCATION -->
+
+                <!-- Champ LOCATION avec icône MAP -->
                 <EditText
-                    android:id="@+id/editTextLastName"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:id="@+id/editTextLocation"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/edittext_singup"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="12dp"
                     android:padding="10dp"
-                    android:drawableStart="@drawable/outline_person_24"
-                    android:drawablePadding="8dp"
-                    android:drawableTint="#AAAAAA"
-                    android:inputType="textPersonName"
-                    android:hint="Prénom"
-                    android:textSize="@dimen/_13sdp"/>
-            </LinearLayout>
-
-            <!-- EMAIL -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Email" />
-
-            <!-- Champ EMAIL avec icône système -->
-            <EditText
-                android:id="@+id/editTextEmail"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/edittext_singup"
-                android:layout_marginBottom="15dp"
-                android:padding="10dp"
-                android:drawableStart="@android:drawable/ic_dialog_email"
-                android:drawablePadding="10dp"
-                android:drawableTint="#AAAAAA"
-                android:inputType="textEmailAddress"
-                android:hint="exemple@email.com"
-                android:textSize="@dimen/_13sdp"/>
-
-            <!-- LOCATION -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Location" />
-
-            <!-- Champ LOCATION avec icône MAP -->
-            <EditText
-                android:id="@+id/editTextLocation"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/edittext_singup"
-                android:layout_marginBottom="15dp"
-                android:padding="10dp"
-                android:drawableStart="@drawable/ic_location_n"
-                android:drawablePadding="10dp"
-                android:drawableTint="#AAAAAA"
-                android:inputType="textPostalAddress"
-                android:hint="Ville, Pays"
-                android:textSize="@dimen/_13sdp"/>
-
-            <!-- MOT DE PASSE -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Mot de passe" />
-
-            <!-- Champ PASSWORD avec icône LOCK -->
-            <EditText
-                android:id="@+id/editTextPasswordHash"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/edittext_singup"
-                android:layout_marginBottom="20dp"
-                android:padding="10dp"
-                android:drawableStart="@android:drawable/ic_lock_idle_lock"
-                android:drawablePadding="10dp"
-                android:drawableTint="#AAAAAA"
-                android:inputType="textPassword"
-                android:hint="••••••••"/>
-
-            <!-- ROLE -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Rôle" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="@drawable/rounded_corners"
-                android:padding="4dp"
-                android:layout_marginBottom="25dp">
-
-                <Button
-                    android:id="@+id/roleTraveler"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="45dp"
-                    android:backgroundTint="@android:color/transparent"
-                    android:text="Voyageur"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-
-                <Button
-                    android:id="@+id/roleLocal"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="45dp"
-                    android:text="Local"
+                    android:drawableStart="@drawable/ic_location_n"
+                    android:drawablePadding="12dp"
                     android:textSize="14sp"
-                    android:textColor="#F8AFCB"
-                    android:backgroundTint="@color/creme_background"
-                    app:cornerRadius="8dp"/>
-            </LinearLayout>
+                    android:drawableTint="#BDBDBD"
+                    android:inputType="textPostalAddress"
+                    android:hint="Ville, Pays"/>
 
-            <!-- BOUTON S'INSCRIRE -->
-            <Button
-                android:id="@+id/Sinscrire"
-                android:text="S'inscrire"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:fontFamily="serif"
-                app:elevation="10dp"
-                app:backgroundTint="#FBC02D"
-                app:cornerRadius="12dp"/>
+                <!-- MOT DE PASSE -->
 
-            <!-- LIEN CONNEXION -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                <!-- Champ PASSWORD avec icône LOCK -->
+                <EditText
+                    android:id="@+id/editTextPasswordHash"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginBottom="24dp"
+                    android:paddingStart="16dp"
+                    android:drawableStart="@android:drawable/ic_lock_idle_lock"
+                    android:drawablePadding="12dp"
+                    android:textSize="14sp"
+                    android:drawableTint="#BDBDBD"
+                    android:inputType="textPassword"
+                    android:hint="••••••••"/>
 
+                <!-- ROLE -->
                 <TextView
-                    android:id="@+id/alreadyRegistred"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
-                    android:text="As-tu déjà un compte ? "/>
+                    android:layout_marginBottom="5dp"
+                    android:text="Rôle" />
 
-                <TextView
-                    android:id="@+id/SeConnecter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_role_container"
+                    android:padding="4dp"
+                    android:layout_marginBottom="25dp">
+
+                    <!-- BOUTON 1 : VOYAGEUR (Sélectionné) -->
+                    <TextView
+                        android:id="@+id/roleTraveler"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_role_active"
+                        android:gravity="center"
+                        android:text="Voyageur"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+                    <!-- BOUTON 2 : LOCAL (Non sélectionné) -->
+                    <TextView
+                        android:id="@+id/roleLocal"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:text="Local"
+                        android:textColor="#8D6E63"
+                        android:textStyle="normal"
+                        android:textSize="14sp"
+                        android:clickable="true"
+                        android:focusable="true"/>
+                </LinearLayout>
+
+                <!-- BOUTON S'INSCRIRE -->
+                <Button
+                    android:id="@+id/Sinscrire"
+                    android:text="S'inscrire"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/btn_gradient_singup"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#FBC02D"
-                    android:padding="5dp"
-                    android:text="Se connecter"/>
-            </LinearLayout>
+                    android:textAllCaps="false"
+                    android:fontFamily="serif"
+                    app:backgroundTint="#FBC02D"
+                    app:cornerRadius="12dp"/>
 
-        </LinearLayout>
-    </LinearLayout>
+                <!-- LIEN CONNEXION -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/alreadyRegistred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#888"
+                        android:text="As-tu déjà un compte ? "/>
+
+                    <TextView
+                        android:id="@+id/SeConnecter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="#FBC02D"
+                        android:padding="5dp"
+                        android:text="Se connecter"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

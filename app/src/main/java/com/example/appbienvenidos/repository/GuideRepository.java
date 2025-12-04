@@ -18,7 +18,7 @@ public class GuideRepository {
     // 2. Les Méthodes Publiques (L'API)
     public void getAllGuides(MutableLiveData<List<Guide>> liveData) {
 
-        db.collection("guides")
+        db.collection("Guide")
                 .whereEqualTo("isAvailable", true)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -41,7 +41,7 @@ public class GuideRepository {
     public void getGuidesByCity(String city, MutableLiveData<List<Guide>> liveData) {
 
         // 3. Construction de la Requête
-        db.collection("guides") // On cible la table "guides"
+        db.collection("Guide") // On cible la table "guides"
                 .whereEqualTo("cityServed", city) // Filtre SQL
                 .whereEqualTo("isAvailable", true) // Filtre SQL
 

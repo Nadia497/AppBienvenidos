@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/creme_background">
+
+    android:background="@color/creme_background">
 
     <LinearLayout
         android:id="@+id/entete"
@@ -39,8 +40,11 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_10sdp"
         app:cardCornerRadius="25dp"
-        app:cardElevation="6dp"
+        app:cardElevation="@dimen/_2sdp"
+        app:strokeWidth="0dp"
         app:cardBackgroundColor="@android:color/white"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@+id/entete">
 
         <EditText
@@ -61,24 +65,16 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/bannerphoto"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_26sdp"
-        app:layout_constraintTop_toBottomOf="@+id/searchContainer"
-        android:layout_marginTop="@dimen/_20sdp"
-         android:src="@drawable/bannerGuide"
-        android:scaleType="centerCrop"
-        />
+
 
     <TextView
         android:id="@+id/Textnormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/bannerphoto"
+        app:layout_constraintTop_toBottomOf="@id/searchContainer"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:text="Découvrez nos Experts locaux "
         android:textSize="@dimen/_17sdp"
         android:textStyle="bold"
@@ -93,7 +89,8 @@
         app:layout_constraintTop_toBottomOf="@id/Textnormal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -43,6 +43,8 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.GuideViewHol
 
     // Remplissage des données (Binding)
     @Override
+
+    //holder est l objet créer et renvoyé avec onCreateViewHolder
     public void onBindViewHolder(@NonNull GuideViewHolder holder, int position) {
         Guide currentGuide = guides.get(position);
 

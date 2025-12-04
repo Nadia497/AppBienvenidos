@@ -186,6 +186,8 @@ public class SpotDetailActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void setupMap() {
         map.setMultiTouchControls(true);
 
