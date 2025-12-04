@@ -3,10 +3,6 @@ package com.example.appbienvenidos.model;
 import com.google.firebase.firestore.DocumentId;
 
 public class Guide {
-<<<<<<< HEAD
-    private String User_id ;
-=======
->>>>>>> 701973df8b0518db770fcf37a33319cf489c8bc7
 
     @DocumentId // Récupère l'ID du document
     private String uid;
@@ -26,24 +22,12 @@ public class Guide {
     // 1. Constructeur VIDE (Obligatoire Firebase)
     public Guide() { }
 
-<<<<<<< HEAD
-    public String getUser_id() {
-        return User_id;
-    }
-
-    public String getCityServed() {
-        return cityServed;
-    }
-
-    public void setCityServed(String cityServed) {
-=======
     // 2. Constructeur COMPLET
     public Guide(String uid, String firstName, String lastName, String profileImageUrl, String cityServed, String hourlyRate, String specialities, String languages, boolean isAvailable) {
         this.uid = uid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.profileImageUrl = profileImageUrl;
->>>>>>> 701973df8b0518db770fcf37a33319cf489c8bc7
         this.cityServed = cityServed;
         this.hourlyRate = hourlyRate;
         this.specialities = specialities;
@@ -51,13 +35,7 @@ public class Guide {
         this.isAvailable = isAvailable;
     }
 
-<<<<<<< HEAD
-    public void setUser_id(String user_id) {
-        User_id = user_id;
-    }
-=======
     // 3. Getters et Setters (Tout est corrigé ici)
->>>>>>> 701973df8b0518db770fcf37a33319cf489c8bc7
 
     public String getUid() { return uid; }
     public void setUid(String uid) { this.uid = uid; }

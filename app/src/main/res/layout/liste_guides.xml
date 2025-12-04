@@ -67,7 +67,7 @@
         android:layout_height="@dimen/_26sdp"
         app:layout_constraintTop_toBottomOf="@+id/searchContainer"
         android:layout_marginTop="@dimen/_20sdp"
-         android:src="@drawable/bannerGuide"
+         android:src="@drawable/bannerguide"
         android:scaleType="centerCrop"
         />
 
