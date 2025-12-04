@@ -2,6 +2,10 @@ package com.example.appbienvenidos.view.activities;
 
 import android.os.Bundle;
 
+import com.cloudinary.android.MediaManager;
+import java.util.HashMap;
+import java.util.Map;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -15,6 +19,14 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
+
+        try {
+            Map config = new HashMap();
+            config.put("cloud_name", "dyum7o6ry"); // Trouve-le sur ton dashboard
+            MediaManager.init(this, config);
+        } catch (Exception e) {
+            // Déjà initialisé, on ignore
+        }
 
        BottomNavigationView bottomNav = findViewById(R.id.navigation_bar);
 

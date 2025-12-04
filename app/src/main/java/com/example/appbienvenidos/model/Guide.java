@@ -1,7 +1,7 @@
 package com.example.appbienvenidos.model;
 
 public class Guide {
-    private int User_id ;
+    private String User_id ;
 
     private String Specialities ;
 
@@ -15,7 +15,7 @@ public class Guide {
 
     //Getters and Setters
 
-    public int getUser_id() {
+    public String getUser_id() {
         return User_id;
     }
 
@@ -27,7 +27,7 @@ public class Guide {
         this.cityServed = cityServed;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         User_id = user_id;
     }
 
