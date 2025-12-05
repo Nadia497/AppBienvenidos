@@ -1,18 +1,19 @@
 package com.example.appbienvenidos.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.appbienvenidos.view.activities.GuideDetailsActivity;
 import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.Guide;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,13 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.GuideViewHol
         // On remplit les textes avec les données du Guide
         holder.txtName.setText(currentGuide.getFullName());
         holder.txtCity.setText(currentGuide.getCityServed());
+        holder.ShowGuideProfile.setOnClickListener(v ->{
+            Intent intent = new Intent(context, GuideDetailsActivity.class);
+            intent.putExtra("GUIDE_KEY", currentGuide);
+            context.startActivity(intent);
+
+
+        });
 
         // Chargement de l'image avec Glide
         if (currentGuide.getProfileImageUrl() != null && !currentGuide.getProfileImageUrl().isEmpty()) {
@@ -72,6 +80,7 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.GuideViewHol
 
         TextView txtName, txtCity;
         ImageView imgPhoto;
+        MaterialButton ShowGuideProfile ;
 
         public GuideViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +88,7 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.GuideViewHol
             txtName = itemView.findViewById(R.id.GuideName);
             txtCity = itemView.findViewById(R.id.GuideCity);
             imgPhoto = itemView.findViewById(R.id.GuidePhoto);
+            ShowGuideProfile = itemView.findViewById(R.id.ShowGuideProfile);
         }
     }
 }

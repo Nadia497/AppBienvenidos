@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
     private ImageView profileImage;
     private TextView profileName, role, location, spotNbr, itinNbr, starsValue;
     private Button modifierSpot;
-    private com.google.android.material.floatingactionbutton.FloatingActionButton btnCreatSpot;
+    private  com.google.android.material.button.MaterialButton btnCreatSpot;
     private User user;
     private ProfileViewModel viewModel;
     private String currentUserId;

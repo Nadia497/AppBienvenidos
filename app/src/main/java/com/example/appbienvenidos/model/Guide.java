@@ -1,8 +1,9 @@
 package com.example.appbienvenidos.model;
 
 import com.google.firebase.firestore.DocumentId;
+import java.io.Serializable;
 
-public class Guide {
+public class Guide implements Serializable{
 
     @DocumentId // Récupère l'ID du document
     private String uid;

@@ -21,10 +21,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.view.adapter.GuideAdapter;
 import com.example.appbienvenidos.viewmodel.GuideViewModel;
+import com.google.android.material.button.MaterialButton;
 
 
 public class GuideFragment extends Fragment {
     private RecyclerView recyclerViewGuides;
+
+    private MaterialButton ShowGuideProfile ;
     private EditText SearchField;
     private ProgressBar progressBar;
     private GuideAdapter GuideAdapter;
@@ -51,6 +54,7 @@ public class GuideFragment extends Fragment {
 
         GuideViewModel.loadGuides(""); // Charge tout au début
     }
+
 
     private void initView(View view) {
         recyclerViewGuides = view.findViewById(R.id.recyclerViewGuides);
