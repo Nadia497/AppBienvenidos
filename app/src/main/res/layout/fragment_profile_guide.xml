@@ -1,50 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/creme_background"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingTop="50dp">
+    android:fillViewport="true"
+    android:background="@color/creme_background">
 
-    <!-- TA CARDVIEW PHOTO (Celle qu'on a corrigé ensemble) -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:cardCornerRadius="60dp"
-        app:cardElevation="10dp"
-        android:layout_marginBottom="20dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/outline_person_24"
-            android:background="#FFFFFF"
-            android:padding="20dp"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/circle_border"/>
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guide name"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="60dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guide local"
-        android:textSize="16sp"
-        android:textColor="#E996C4"
-        android:layout_marginBottom="30dp"/>
+        <!-- BLOC PHOTO AVEC CAMÉRA -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="15dp">
 
+            <!-- Le Cercle Photo -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPhotoContainer"
+                android:layout_width="105dp"
+                android:layout_height="105dp"
+                app:cardCornerRadius="52.5dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-</LinearLayout>
+                <ImageView
+                    android:id="@+id/user_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/outline_person_24"
+                    android:padding="20dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Le bouton Caméra -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnChangePhoto"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
+                app:cardBackgroundColor="#FBC02D"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    app:tint="#FFFFFF"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- NOM DE L'UTILISATEUR -->
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mon Nom"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"/>
+
+        <!-- DESCRIPTION -->
+        <TextView
+            android:id="@+id/UserState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guide local"
+            android:textSize="16sp"
+            android:textColor="#E996C4"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

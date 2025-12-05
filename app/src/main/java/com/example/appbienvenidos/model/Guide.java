@@ -54,15 +54,15 @@ public class Guide {
     public String getCityServed() { return cityServed; }
     public void setCityServed(String cityServed) { this.cityServed = cityServed; }
 
-    public String getHourlyRate() { return hourlyRate; } // Corrigé (pas de _)
+    public String getHourlyRate() { return hourlyRate; } // Corrigé
     public void setHourlyRate(String hourlyRate) { this.hourlyRate = hourlyRate; }
 
-    public String getSpecialities() { return specialities; } // Corrigé (petit s)
+    public String getSpecialities() { return specialities; } // Corrigé
     public void setSpecialities(String specialities) { this.specialities = specialities; }
 
-    public String getLanguages() { return languages; } // Corrigé (variable ajoutée)
+    public String getLanguages() { return languages; } // Corrigé
     public void setLanguages(String languages) { this.languages = languages; }
 
-    public boolean isAvailable() { return isAvailable; } // Corrigé (pas de isIs_...)
+    public boolean isAvailable() { return isAvailable; } // Corrigé
     public void setAvailable(boolean available) { isAvailable = available; }
 }

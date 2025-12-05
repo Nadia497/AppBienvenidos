@@ -65,22 +65,37 @@
             android:orientation="vertical">
 
             <!-- Bar de recherche -->
-            <EditText
+            <androidx.cardview.widget.CardView
+                android:id="@+id/searchContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="@dimen/_2sdp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/entete"
+                >
+
+            <EditText
+                android:id="@+id/searchField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
                 android:hint="Rechercher"
-                android:textSize="@dimen/_18sdp"
-                android:textColor="@color/black"
-                android:background="@drawable/bg_white_profile_n"
-                android:elevation="@dimen/_4sdp"
-                android:padding="@dimen/_7sdp"
-                android:paddingEnd="@dimen/_40sdp"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:textColorHint="#9E9E9E"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:drawablePadding="10dp"
                 android:inputType="text"
                 android:maxLines="1"
-                android:imeOptions="actionSearch"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableStart="@android:drawable/ic_menu_search"
-                app:drawableTint="#999999"/>
+                android:imeOptions="actionSearch" />
+            </androidx.cardview.widget.CardView>
 
             <!-- Zone de discussion vide -->
             <LinearLayout

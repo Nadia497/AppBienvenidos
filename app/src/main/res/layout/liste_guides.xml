@@ -31,6 +31,7 @@
             android:text="Guides Locaux"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             />
     </LinearLayout>
 
@@ -45,7 +46,8 @@
         app:cardBackgroundColor="@android:color/white"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/entete">
+        app:layout_constraintTop_toBottomOf="@+id/entete"
+        >
 
         <EditText
             android:id="@+id/searchField"
@@ -53,6 +55,7 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="Où souhaitez-vous aller ?"
+            android:drawableStart="@android:drawable/ic_menu_search"
             android:textColorHint="#9E9E9E"
             android:textColor="#000000"
             android:textSize="15sp"
@@ -85,6 +88,7 @@
         android:text="Découvrez nos Experts locaux "
         android:textSize="@dimen/_17sdp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         />
 
     <androidx.recyclerview.widget.RecyclerView

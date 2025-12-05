@@ -27,6 +27,18 @@ public class User {
         this.Registration_Date = Registration_Date;
     }
 
+    public User(String lastName, String firstName, String Email, String Location, String Role, String photoUrl) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.Email = Email;
+        this.Location = Location;
+        this.Role = Role;
+        this.photoUrl = photoUrl;
+
+        this.PasswordHash = ""; // On ne stocke pas le mot de passe ici si on utilise Firebase Auth
+
+
+    }
     public User() {
     }
 

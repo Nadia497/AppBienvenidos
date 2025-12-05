@@ -35,6 +35,19 @@
             android:layout_marginStart="@dimen/_12sdp"
             tools:src="@tools:sample/avatars" />
 
+        <ImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:tint="#9E9E9E"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
         <TextView
             android:id="@+id/GuideName"
@@ -57,7 +70,7 @@
             app:layout_constraintStart_toEndOf="@+id/GuidePhoto"
             android:text="Oujda, Iris"
             android:textSize="@dimen/_10sdp"
-            android:textColor="@color/gray"
+            android:textColor="@color/pink_300"
             />
 
         <RatingBar

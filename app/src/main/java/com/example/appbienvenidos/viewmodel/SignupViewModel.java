@@ -17,10 +17,10 @@ public class SignupViewModel extends ViewModel {
         repository = new AuthRepository();
     }
 
-    public void signup(String email, String password, String fName, String lName, String loc, String role, String photoUri) {
+    public void signup(String email, String password, String firstName, String lastName, String loc, String role, String photoUrl) {
 
         // 1. Validation des champs
-        if (email.isEmpty() || password.isEmpty() || fName.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || firstName.isEmpty()) {
             errorMessage.setValue("Veuillez remplir tous les champs !");
             return;
         }
@@ -31,7 +31,7 @@ public class SignupViewModel extends ViewModel {
         }
 
         // 2. Création de l'objet User
-        User newUser = new User(lName, fName, email, loc, role, photoUri);
+        User newUser = new User(email, password, firstName, lastName, loc, role);
 
         // 3. Appel au Repository
         repository.registerUser(email, password, newUser, isSuccess, errorMessage);

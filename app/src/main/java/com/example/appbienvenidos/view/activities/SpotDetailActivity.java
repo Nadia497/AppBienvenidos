@@ -118,7 +118,6 @@ public class SpotDetailActivity extends AppCompatActivity {
         if (intent != null) {
             // Textes
             String nom = intent.getStringExtra("NomDuSpot_key");
-            String descCourt = intent.getStringExtra("SmallDescription_key");
             String descLong = intent.getStringExtra("Descriptionwithdetails_key");
             String datePub = intent.getStringExtra("UserPublicationDate_key");
             String adresse = intent.getStringExtra("Adresse_key");
