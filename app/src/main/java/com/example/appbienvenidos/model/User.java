@@ -1,6 +1,7 @@
 package com.example.appbienvenidos.model;
 
 public class User {
+    private int id;
     private String lastName;
     private String firstName;
     private String Email;
