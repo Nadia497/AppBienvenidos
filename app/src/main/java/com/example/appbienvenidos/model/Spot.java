@@ -19,7 +19,7 @@ public class Spot implements Serializable {
     private String total_Rating;
     private String publication_Date;
 
-    // 1. Constructeur VIDE (OBLIGATOIRE)
+    // 1. Constructeur VIDE
     public Spot() { }
 
     // 2. Constructeur COMPLET
