@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/creme_background"
+    android:background="@color/background_app"
     android:clickable="true"
     android:focusable="true"> <!-- Fond Crème -->
 
@@ -21,10 +21,10 @@
         android:src="@drawable/ic_media_previous_n"
         android:elevation="2dp"
         android:paddingStart="10dp"
-        android:textColor="#333333"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/surface_card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/icon_tint"
         />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Paramètre"
-        android:textColor="#333333"
+        android:textColor="@color/text_primary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnBack"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_8sdp"
                 android:text="Compte"
-                android:textColor="@color/gray"
+                android:textColor="@color/text_secondary"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12sdp"/>
 
@@ -102,9 +102,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_22sdp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="@dimen/_16sdp"
-                app:cardElevation="@dimen/_2sdp">
+                app:cardElevation="@dimen/_2sdp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

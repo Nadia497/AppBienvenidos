@@ -1,10 +1,16 @@
 package com.example.appbienvenidos.view.activities;
 
+import static android.app.ProgressDialog.show;
+
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +26,7 @@ public class ParametreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametre);
 
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         //information personnelle
         info_pers = findViewById(R.id.info_pers);
         reglage(info_pers, "informations personnelles", R.drawable.outline_person_24, "");
@@ -34,9 +41,10 @@ public class ParametreActivity extends AppCompatActivity {
 
         //theme
         theme = findViewById(R.id.theme);
-        reglage(theme, "Thème", 0, "Clair");
+        String currentThemeTxt = (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) ? "Sombre" : "Clair";
+        reglage(theme, "Thème", 0, currentThemeTxt);
 
-
+        theme.setOnClickListener(v -> showThemeDialog());
 
 
     }
@@ -48,5 +56,39 @@ public class ParametreActivity extends AppCompatActivity {
                 view.findViewById(R.id.rowIcon)).setImageResource(image);
 
         ((TextView) view.findViewById(R.id.rowValue)).setText(value);
+    }
+
+    private void showThemeDialog(){
+        final String[] themes = {"Clair", "Sombre"};
+
+        //on vérifier quel est le mode actuel pour cocher la bonne case
+        int checkedItem = 0;
+        int currentMode = AppCompatDelegate.getDefaultNightMode();
+        if(currentMode == AppCompatDelegate.MODE_NIGHT_YES){
+            checkedItem = 1;
+        }
+        else if (currentMode == AppCompatDelegate.MODE_NIGHT_NO){
+            checkedItem = 0;
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Choisir le thème")
+                .setSingleChoiceItems(themes, checkedItem, (dialog, which) -> {
+                    if(which == 0){
+                        //forcer le mode clair
+
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        ((TextView)
+                        theme.findViewById(R.id.rowValue)).setText("Clair");
+                    }
+                    else if(which == 1){
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        ((TextView)
+                                theme.findViewById(R.id.rowValue)).setText("Sombre");
+                    }
+                    dialog.dismiss();
+                })
+                .setNegativeButton("Annuler", null)
+                .show();
     }
 }

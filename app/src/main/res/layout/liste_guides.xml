@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/creme_background">
+    android:backgroundTint="@color/background_app">
 
     <LinearLayout
         android:id="@+id/entete"
@@ -30,6 +30,7 @@
             android:text="Guides Locaux"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
+            android:textColor="@color/text_primary"
             />
     </LinearLayout>
 
@@ -40,7 +41,7 @@
         android:layout_margin="@dimen/_10sdp"
         app:cardCornerRadius="25dp"
         app:cardElevation="6dp"
-        app:cardBackgroundColor="@android:color/white"
+        app:cardBackgroundColor="@color/surface_card"
         app:layout_constraintTop_toBottomOf="@+id/entete">
 
         <EditText
@@ -49,8 +50,8 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="Où souhaitez-vous aller ?"
-            android:textColorHint="#9E9E9E"
-            android:textColor="#000000"
+            android:textColorHint="@color/gray_light"
+            android:textColor="@color/text_primary"
             android:textSize="15sp"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
@@ -80,6 +81,7 @@
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:text="Découvrez nos Experts locaux "
+        android:textColor="@color/text_primary"
         android:textSize="@dimen/_17sdp"
         android:textStyle="bold"
         />
@@ -89,7 +91,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_12sdp"
-        android:backgroundTint="@color/creme_background"
+        android:backgroundTint="@color/background_app"
         app:layout_constraintTop_toBottomOf="@id/Textnormal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

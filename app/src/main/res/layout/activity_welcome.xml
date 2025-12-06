@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.WelcomeActivity"
-    android:background="@color/creme_background"
+    android:background="@color/background_app"
     >
 
     <LinearLayout
@@ -31,7 +31,7 @@
 
         <TextView
             android:shadowColor="#55000000"
-            android:textColor="#FBBF24"
+            android:textColor="@color/brand_yellow"
             android:id="@+id/Bienvenidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,17 +58,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:textSize="25dp"
-            android:textColor="@color/white"
+            android:textColor="@color/surface_card"
             android:fontFamily="serif"
             app:elevation="18dp"
-            app:backgroundTint="#FBC02D"
+            app:backgroundTint="@color/brand_yellow"
             app:cornerRadius="8dp"
             />
 
         <Button
             android:id="@+id/Seconnecter"
             android:text="Se connecter"
-            android:textColor="#FBC02D"
+            android:textColor="@color/brand_yellow"
             android:padding="12dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:elevation="4dp"
             app:cornerRadius="8dp"
             app:strokeWidth="2dp"
-            app:strokeColor="#FBC02D"
+            app:strokeColor="@color/brand_yellow"
             android:fontFamily="serif"
             />
 
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             app:backgroundTint="#E996C4"
-            android:textColor="@color/white"
+            android:textColor="@color/surface_card"
             android:textSize="25dp"
             android:elevation="4dp"
             app:cornerRadius="8dp"

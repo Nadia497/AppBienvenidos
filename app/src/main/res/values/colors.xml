@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="gray">#A9A9A9</color>
-    <color name="gray_claire">#D5D4D4</color>
-    <color name="creme_background">#FFFDF5</color> <!-- C'est une estimation du crème clair -->
-    <color name="brand_yellow">#FFC107</color> <!-- Pour le bouton "S'inscrire" par exemple -->
+    <color name="black_pure">#FF000000</color>
+    <color name="white_pure">#FFFFFFFF</color>
+    <color name="gray_dark">#A9A9A9</color>
+    <color name="gray_light">#D5D4D4</color>
+    <color name="creme_base">#FFFDF5</color> <!-- C'est une estimation du crème clair -->
+    <color name="yellow_base">#FFC107</color> <!-- Pour le bouton "S'inscrire" par exemple -->
+    <color name="pink_base">#E91E63</color> <!-- Pour le texte "BienEnidos" par exemple -->
 
-    <color name="brand_pink">#E91E63</color> <!-- Pour le texte "BienEnidos" par exemple -->
     <color name="amber_400">#FFC107</color>
     <color name="pink_300">#F48FB1</color>
     <color name="off_white">#FFF9F0</color>
-
     <color name="Gold">#FFD700</color>
     <color name="orange">#FBAF3A</color> <!-- essai-->
     <color name="jaune_pastel">#FDEBD0</color>
+
+    <!-- Fond de l'écran : Crème le jour-->
+    <color name="background_app">@color/creme_base</color>
+
+    <!-- Fond des cartes/boutons blancs : blanc le jour-->
+    <color name="surface_card">@color/white_pure</color>
+
+    <!-- Text principale : black le jour-->
+    <color name="text_primary">@color/black_pure</color>
+
+    <!-- Fond de l'écran : text secondaire le jour-->
+    <color name="text_secondary">@color/gray_dark</color>
+
+    <!-- Couleurs de marque reste souvent les mêmes -->
+    <color name="brand_yellow">@color/yellow_base</color>
+    <color name="brand_pink">@color/pink_base</color>
+
+    <color name="button_grey_bg">#EEEEEE</color>
+
+    <!-- Couleurs des icône : black le jour-->
+    <color name="icon_tint">@color/black_pure</color>
 
 </resources>

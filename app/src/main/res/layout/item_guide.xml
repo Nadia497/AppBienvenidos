@@ -9,7 +9,7 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="6dp"
-    app:cardBackgroundColor="@android:color/white">
+    app:cardBackgroundColor="@color/surface_card">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
             app:layout_constraintStart_toEndOf="@+id/GuidePhoto"
             app:layout_constraintTop_toTopOf="@+id/GuidePhoto"
             android:text="Naimi Zineb"
+            android:textColor="@color/text_primary"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
             />
@@ -51,7 +52,7 @@
             app:layout_constraintStart_toEndOf="@+id/GuidePhoto"
             android:text="Oujda, Iris"
             android:textSize="@dimen/_10sdp"
-            android:textColor="@color/gray"
+            android:textColor="@color/text_secondary"
             />
 
         <RatingBar
