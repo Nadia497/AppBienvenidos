@@ -56,8 +56,6 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.GuideViewHol
             Intent intent = new Intent(context, GuideDetailsActivity.class);
             intent.putExtra("GUIDE_KEY", currentGuide);
             context.startActivity(intent);
-
-
         });
 
         // Chargement de l'image avec Glide

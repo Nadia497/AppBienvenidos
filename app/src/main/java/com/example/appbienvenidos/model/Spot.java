@@ -1,120 +1,70 @@
 package com.example.appbienvenidos.model;
-import java.util.List;
-public class Spot {
 
+import com.google.firebase.firestore.DocumentId;
+import java.io.Serializable;
+import java.util.List;
+
+public class Spot implements Serializable {
+
+    @DocumentId // L'ID du document
     private String id;
 
-    private String Publisher_id;
+    private String publisher_id;
+    private String title;
+    private String description;
+    private String adress;
+    private String category_id;
+    private List<String> image_URL;
+    private String average_Rating;
+    private String total_Rating;
+    private String publication_Date;
 
-    private String Title;
+    // 1. Constructeur VIDE (OBLIGATOIRE)
+    public Spot() { }
 
-    private String Description;
-
-    private String Adress;
-
-    private String Category_id;
-
-    private List<String> Image_URLs;
-
-    private String Average_Rating;
-
-    private String Total_Rating;
-
-    private String Publication_Date;
-
-
-    public Spot(String Publisher_id , String Title,
-                String Description, String Adress ,
-                String Category_id , List<String> Image_URLs ,
-                String Average_Rating , String Total_Rating , String Publication_Date){
-        this.Publisher_id = Publisher_id;
-        this.Title = Title ;
-        this.Description = Description ;
-        this.Adress = Adress ;
-        this.Category_id = Category_id ;
-        this.Image_URLs = Image_URLs ;
-        this.Average_Rating = Average_Rating;
-        this.Total_Rating = Total_Rating;
-        this.Publication_Date = Publication_Date ;
+    // 2. Constructeur COMPLET
+    public Spot(String publisher_id, String title, String description, String adress, String category_id, List<String> image_URL, String average_Rating, String total_Rating, String publication_Date) {
+        this.publisher_id = publisher_id;
+        this.title = title;
+        this.description = description;
+        this.adress = adress;
+        this.category_id = category_id;
+        this.image_URL = image_URL;
+        this.average_Rating = average_Rating;
+        this.total_Rating = total_Rating;
+        this.publication_Date = publication_Date;
     }
 
-    public String getId() {
-        return id;
-    }
+    // 3. GETTERS et SETTERS
+    // (Mis à jour avec les nouveaux noms)
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    public String getPublisher_id() {
-        return Publisher_id;
-    }
+    public String getPublisher_id() { return publisher_id; }
+    public void setPublisher_id(String publisher_id) { this.publisher_id = publisher_id; }
 
-    public void setPublisher_id(String publisher_id) {
-        Publisher_id = publisher_id;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public String getTitle() {
-        return Title;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setTitle(String title) {
-        Title = title;
-    }
+    public String getAdress() { return adress; }
+    public void setAdress(String adress) { this.adress = adress; }
 
-    public String getDescription() {
-        return Description;
-    }
+    public String getCategory_id() { return category_id; }
+    public void setCategory_id(String category_id) { this.category_id = category_id; }
 
-    public void setDescription(String description) {
-        Description = description;
-    }
+    public List<String> getImage_URL() { return image_URL; }
+    public void setImage_URL(List<String> image_URL) { this.image_URL = image_URL; }
 
-    public String getAdress() {
-        return Adress;
-    }
+    public String getAverage_Rating() { return average_Rating; }
+    public void setAverage_Rating(String average_Rating) { this.average_Rating = average_Rating; }
 
-    public void setAdress(String adress) {
-        Adress = adress;
-    }
+    public String getTotal_Rating() { return total_Rating; }
+    public void setTotal_Rating(String total_Rating) { this.total_Rating = total_Rating; }
 
-    public String getCategory_id() {
-        return Category_id;
-    }
-
-    public void setCategory_id(String category_id) {
-        Category_id = category_id;
-    }
-
-    public List<String> getImage_URL() {
-        return Image_URLs;
-    }
-
-    public void setImage_URL(List<String> image_URLs) {
-        Image_URLs = image_URLs;
-    }
-
-    public String getAverage_Rating() {
-        return Average_Rating;
-    }
-
-    public void setAverage_Rating(String average_Rating) {
-        Average_Rating = average_Rating;
-    }
-
-    public String getTotal_Rating() {
-        return Total_Rating;
-    }
-
-    public void setTotal_Rating(String total_Rating) {
-        Total_Rating = total_Rating;
-    }
-
-    public String getPublication_Date() {
-        return Publication_Date;
-    }
-
-    public void setPublication_Date(String publication_Date) {
-        Publication_Date = publication_Date;
-    }
+    public String getPublication_Date() { return publication_Date; }
+    public void setPublication_Date(String publication_Date) { this.publication_Date = publication_Date; }
 }
