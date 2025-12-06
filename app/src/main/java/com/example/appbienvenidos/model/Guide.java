@@ -16,8 +16,8 @@ public class Guide implements Serializable{
     // Infos spécifiques au Guide
     private String cityServed;
     private String hourlyRate;
-    private String specialities;
-    private String languages;
+    private String Specialities;
+    private String langages;
     private String phoneNumber;
     private boolean isAvailable;
 
@@ -32,8 +32,8 @@ public class Guide implements Serializable{
         this.profileImageUrl = profileImageUrl;
         this.cityServed = cityServed;
         this.hourlyRate = hourlyRate;
-        this.specialities = specialities;
-        this.languages = languages;
+        this.Specialities = specialities;
+        this.langages = languages;
         this.phoneNumber = phoneNumber ;
         this.isAvailable = isAvailable;
     }
@@ -60,11 +60,11 @@ public class Guide implements Serializable{
     public String getHourlyRate() { return hourlyRate; } // Corrigé
     public void setHourlyRate(String hourlyRate) { this.hourlyRate = hourlyRate; }
 
-    public String getSpecialities() { return specialities; } // Corrigé
-    public void setSpecialities(String specialities) { this.specialities = specialities; }
+    public String getSpecialities() { return Specialities; } // Corrigé
+    public void setSpecialities(String Specialities) { this.Specialities = Specialities; }
 
-    public String getLanguages() { return languages; } // Corrigé
-    public void setLanguages(String languages) { this.languages = languages; }
+    public String getLangages() { return langages; } // Corrigé
+    public void setLanguages(String languages) { this.langages = languages; }
 
     public String getPhoneNumber() { return phoneNumber; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }

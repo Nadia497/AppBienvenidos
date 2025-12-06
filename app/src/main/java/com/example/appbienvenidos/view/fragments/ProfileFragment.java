@@ -85,7 +85,7 @@ public class ProfileFragment extends Fragment {
         //observer les données
         viewModel.getUser().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
-                profileName.setText(user.getFirstName() + " " + user.getLastName());
+                profileName.setText(user.getFullName());
                 location.setText(user.getLocation());
                 role.setText(user.getRole());
 

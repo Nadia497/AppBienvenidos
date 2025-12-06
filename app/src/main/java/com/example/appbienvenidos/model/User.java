@@ -58,6 +58,10 @@ public class User {
         firstName = firstName;
     }
 
+    public String getFullName(){
+        return firstName + " " + lastName ;
+    }
+
     public String getEmail() {
         return Email;
     }
