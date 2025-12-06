@@ -1,14 +1,14 @@
 package com.example.appbienvenidos.model;
 
 public class SpotRating {
-    private int id;
-    private int userId; // ID de l'utilisateur qui a posté l'évaluation
-    private int spotId; // ID du spot évalué
+    private String id;
+    private String userId; // ID de l'utilisateur qui a posté l'évaluation
+    private String spotId; // ID du spot évalué
     private float rating;
     private String comment;
     private String ratingDate;
 
-    public SpotRating(int id, int userId, int spotId, float rating, String comment, String ratingDate) {
+    public SpotRating(String id, String userId, String spotId, float rating, String comment, String ratingDate) {
         this.id = id;
         this.userId = userId;
         this.spotId = spotId;
@@ -17,27 +17,27 @@ public class SpotRating {
         this.ratingDate = ratingDate;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public int getSpotId() {
+    public String getSpotId() {
         return spotId;
     }
 
-    public void setSpotId(int spotId) {
+    public void setSpotId(String spotId) {
         this.spotId = spotId;
     }
 

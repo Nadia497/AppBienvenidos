@@ -62,6 +62,14 @@ dependencies {
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     //circle image view
     implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    // Ajoutez ceci pour le MVVM
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
+    //cloudinary
+    implementation("com.cloudinary:cloudinary-android:2.5.0")
 }
 
 apply(plugin = "com.google.gms.google-services")

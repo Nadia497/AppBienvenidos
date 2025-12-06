@@ -1,14 +1,14 @@
 package com.example.appbienvenidos.model;
 
 public class Message {
-    private int id;
-    private int senderId; // Foreign Key to User
-    private int receiverId; // Foreign Key to User
+    private String id;
+    private String senderId; // Foreign Key to User
+    private String receiverId; // Foreign Key to User
     private String messageContent;
     private String timestamp; // Format YYYY-MM-DD HH:MM:SS
     private boolean isRead; // True ou False
 
-    public Message(int senderId, int receiverId, String messageContent, String timestamp, boolean isRead) {
+    public Message(String senderId, String receiverId, String messageContent, String timestamp, boolean isRead) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.messageContent = messageContent;
@@ -16,27 +16,27 @@ public class Message {
         this.isRead = isRead;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getSenderId() {
+    public String getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(int senderId) {
+    public void setSenderId(String senderId) {
         this.senderId = senderId;
     }
 
-    public int getReceiverId() {
+    public String getReceiverId() {
         return receiverId;
     }
 
-    public void setReceiverId(int receiverId) {
+    public void setReceiverId(String receiverId) {
         this.receiverId = receiverId;
     }
 

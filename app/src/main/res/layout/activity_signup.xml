@@ -136,17 +136,17 @@
                 </FrameLayout>
 
 
-            <!--<TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ajouter une photo"
-                android:textSize="12sp"
-                android:textColor="#888888"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@id/cardProfile"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>-->
-            <!-- CONTENEUR FORMULAIRE -->
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ajouter une photo"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/cardProfile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>-->
+                <!-- CONTENEUR FORMULAIRE -->
                 <!-- NOM / PRENOM -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -238,45 +238,45 @@
                     android:layout_marginBottom="5dp"
                     android:text="Rôle" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/bg_role_container"
-                android:padding="4dp"
-                android:layout_marginBottom="25dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_role_container"
+                    android:padding="4dp"
+                    android:layout_marginBottom="25dp">
 
-                <!-- BOUTON 1 : VOYAGEUR (Sélectionné) -->
-                <TextView
-                    android:id="@+id/roleTraveler"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_role_active"
-                    android:gravity="center"
-                    android:text="Voyageur"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:clickable="true"
-                    android:focusable="true"/>
+                    <!-- BOUTON 1 : VOYAGEUR (Sélectionné) -->
+                    <TextView
+                        android:id="@+id/roleTraveler"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_role_active"
+                        android:gravity="center"
+                        android:text="Voyageur"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:clickable="true"
+                        android:focusable="true"/>
 
-                <!-- BOUTON 2 : LOCAL (Non sélectionné) -->
-                <TextView
-                    android:id="@+id/roleLocal"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:gravity="center"
-                    android:text="Local"
-                    android:textColor="#8D6E63"
-                    android:textStyle="normal"
-                    android:textSize="14sp"
-                    android:clickable="true"
-                    android:focusable="true"/>
-            </LinearLayout>
+                    <!-- BOUTON 2 : LOCAL (Non sélectionné) -->
+                    <TextView
+                        android:id="@+id/roleLocal"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:text="Local"
+                        android:textColor="#8D6E63"
+                        android:textStyle="normal"
+                        android:textSize="14sp"
+                        android:clickable="true"
+                        android:focusable="true"/>
+                </LinearLayout>
 
                 <!-- BOUTON S'INSCRIRE -->
                 <Button

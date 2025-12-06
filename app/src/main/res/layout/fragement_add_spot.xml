@@ -87,12 +87,27 @@
                         android:textColor="#999999" />
                 </LinearLayout>
 
-                <ImageView
+                <!-- Zone des images séléctionner -->
+                <HorizontalScrollView
                     android:id="@+id/image_plain"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:visibility="gone" />
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/image_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_8sdp">
+
+                        <!-- les images seront ajoutées ici -->
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
             </FrameLayout>
 
             <!-- CHAMP NOM -->
@@ -136,6 +151,8 @@
                 android:drawableStart="@drawable/ic_location_n"
                 android:drawablePadding="10dp"
                 android:hint="Ex: Rue Yves Saint Laurent, Marrakech"
+                android:drawableEnd="@android:drawable/ic_menu_search"
+                android:drawableTint="@color/black"
                 android:paddingStart="12dp"
                 android:paddingEnd="16dp"
                 android:textColor="#333333"
@@ -254,6 +271,7 @@
 
                 <!-- Badge IA -->
                 <TextView
+                    android:id="@+id/ai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✨ Aide-moi à écrire"

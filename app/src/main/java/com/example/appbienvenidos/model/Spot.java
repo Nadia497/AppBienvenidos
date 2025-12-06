@@ -1,10 +1,10 @@
 package com.example.appbienvenidos.model;
-
+import java.util.List;
 public class Spot {
 
-    private int id;
+    private String id;
 
-    private int Publisher_id;
+    private String Publisher_id;
 
     private String Title;
 
@@ -12,9 +12,9 @@ public class Spot {
 
     private String Adress;
 
-    private int Category_id;
+    private String Category_id;
 
-    private String Image_URL;
+    private List<String> Image_URLs;
 
     private String Average_Rating;
 
@@ -23,34 +23,34 @@ public class Spot {
     private String Publication_Date;
 
 
-    public Spot(int Publisher_id , String Title,
+    public Spot(String Publisher_id , String Title,
                 String Description, String Adress ,
-                int Category_id , String Image_URL ,
+                String Category_id , List<String> Image_URLs ,
                 String Average_Rating , String Total_Rating , String Publication_Date){
         this.Publisher_id = Publisher_id;
         this.Title = Title ;
         this.Description = Description ;
         this.Adress = Adress ;
         this.Category_id = Category_id ;
-        this.Image_URL = Image_URL ;
+        this.Image_URLs = Image_URLs ;
         this.Average_Rating = Average_Rating;
         this.Total_Rating = Total_Rating;
         this.Publication_Date = Publication_Date ;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getPublisher_id() {
+    public String getPublisher_id() {
         return Publisher_id;
     }
 
-    public void setPublisher_id(int publisher_id) {
+    public void setPublisher_id(String publisher_id) {
         Publisher_id = publisher_id;
     }
 
@@ -78,20 +78,20 @@ public class Spot {
         Adress = adress;
     }
 
-    public int getCategory_id() {
+    public String getCategory_id() {
         return Category_id;
     }
 
-    public void setCategory_id(int category_id) {
+    public void setCategory_id(String category_id) {
         Category_id = category_id;
     }
 
-    public String getImage_URL() {
-        return Image_URL;
+    public List<String> getImage_URL() {
+        return Image_URLs;
     }
 
-    public void setImage_URL(String image_URL) {
-        Image_URL = image_URL;
+    public void setImage_URL(List<String> image_URLs) {
+        Image_URLs = image_URLs;
     }
 
     public String getAverage_Rating() {

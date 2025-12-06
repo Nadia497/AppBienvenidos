@@ -3,50 +3,43 @@ package com.example.appbienvenidos.model;
 public class User {
     private int id;
     private String lastName;
-    private String First_Name;
+    private String firstName;
     private String Email;
     private String PasswordHash;  //Stocker un hash, pas le mot de passe en clair
     private String Location;
-    private String Profile_Picture_URL;
+    private String photoUrl;
     private String Role;
     private String Registration_Date;
     //Constructeur sans password
-    public User(String lastName, String First_Name, String Email,
-                String Location, String Profile_Picture_URL,
+    public User(String lastName, String firstName, String Email,
+                String Location, String photoUrl,
                  String Role) {
 
         this.lastName = lastName;
-        this.First_Name = First_Name;
+        this.firstName = firstName;
         this.Email = Email;
         this.Location = Location;
-        this.Profile_Picture_URL = Profile_Picture_URL;
+        this.photoUrl = photoUrl;
         this.Role = Role;
     }
     //Constructeur complet
 
-    public User(String lastName, String First_Name, String Email,
-                String PasswordHash, String Location, String Profile_Picture_URL,
-                 String Role, String Registration_Date) {
+
+    public User(String lastName, String firstName, String Email,
+                String PasswordHash, String Location, String photoUrl,
+                String Role, String Registration_Date) {
 
         this.lastName = lastName;
-        this.First_Name = First_Name;
+        this.firstName = firstName;
         this.Email = Email;
         this.PasswordHash = PasswordHash;
         this.Location = Location;
-        this.Profile_Picture_URL = Profile_Picture_URL;
+        this.photoUrl = photoUrl;
         this.Role = Role;
         this.Registration_Date = Registration_Date;
     }
 
     public User() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getLastName() {
@@ -57,12 +50,12 @@ public class User {
         lastName = last_Name;
     }
 
-    public String getFirst_Name() {
-        return First_Name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_Name(String first_Name) {
-        First_Name = first_Name;
+    public void setFirstName(String firstName) {
+        firstName = firstName;
     }
 
     public String getEmail() {
@@ -89,13 +82,15 @@ public class User {
         Location = location;
     }
 
-    public String getProfile_Picture_URL() {
-        return Profile_Picture_URL;
+
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
-    public void setProfile_Picture_URL(String profile_Picture_URL) {
-        Profile_Picture_URL = profile_Picture_URL;
+    public void setPhotoUrl(String photoUrl) {
+        photoUrl = photoUrl;
     }
+
     public String getRole() {
         return Role;
     }

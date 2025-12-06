@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDED"
+    android:background="@color/creme_background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingTop="50dp">
@@ -24,7 +24,6 @@
             android:background="#FFFFFF"
             android:padding="20dp"/>
 
-        <!-- La bordure (Optionnel si tu as fait le fichier circle_border) -->
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mon Nom"
+        android:text="Guide name"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#000000"/>
@@ -42,25 +41,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Voyageur passionné"
+        android:text="Guide local"
         android:textSize="16sp"
         android:textColor="#E996C4"
         android:layout_marginBottom="30dp"/>
 
-    <!-- Bouton Modifier -->
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Modifier mon profil"
-        android:backgroundTint="#FBC02D"
-        android:textColor="#FFFFFF"/>
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Se déconnecter"
-        android:backgroundTint="#CCCCCC"
-        android:textColor="#000000"/>
 
 </LinearLayout>

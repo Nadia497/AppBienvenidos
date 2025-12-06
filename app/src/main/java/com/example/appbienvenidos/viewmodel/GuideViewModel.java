@@ -43,7 +43,12 @@ public class GuideViewModel extends ViewModel {
             repository.getAllGuides(guides);
         } else {
             // Si une ville est précisée -> On filtre
-            repository.getGuidesByCity(city, guides);
+            String formattedCity = city.trim();
+
+            if (formattedCity.length() > 0) {
+                formattedCity = formattedCity.substring(0, 1).toUpperCase() + formattedCity.substring(1).toLowerCase();
+            }
+            repository.getGuidesByCity(formattedCity, guides);
         }
     }
 }
