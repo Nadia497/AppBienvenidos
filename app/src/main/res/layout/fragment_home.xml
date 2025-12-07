@@ -26,17 +26,41 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="10dp">
-
+                android:layout_marginBottom="@dimen/_20sdp">
 
                 <ImageView
-                    android:id="@+id/headerLogo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/petitlogo"
-                    android:layout_centerInParent="true"/>
+                    android:id="@+id/imageView2"
+                    android:layout_width="55dp"
+                    android:layout_height="33dp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:src="@drawable/petitlogo" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="115dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="119dp"
+                    android:layout_toEndOf="@+id/imageView2"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="Bienvenidos"
+                    style="@style/AppTitleStyle"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="-10dp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:backgroundTint="@color/creme_background"
+                    android:src="@drawable/ic_more_vert_n" />
             </RelativeLayout>
+
 
             <!-- 2. BARRE DE RECHERCHE -->
             <EditText
