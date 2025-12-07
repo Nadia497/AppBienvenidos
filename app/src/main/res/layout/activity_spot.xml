@@ -171,7 +171,8 @@
                     app:backgroundTint="#FFFFFF"
                     app:cornerRadius="8dp"
                     app:elevation="6dp"
-                    app:icon="@drawable/sharethis" />
+                    app:icon="@drawable/sharethis"
+                    app:iconTint="#000000"/>
 
             </LinearLayout>
 
