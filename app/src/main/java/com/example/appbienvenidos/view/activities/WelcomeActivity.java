@@ -47,7 +47,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Inscrire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, onboardingActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
                 // On envoie un message pour dire : "La destination finale est SIGNUP"
                 intent.putExtra("DESTINATION", "SIGNUP");
                 startActivity(intent);

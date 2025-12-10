@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.view.fragments.ChatFragment;
 import com.example.appbienvenidos.view.fragments.HomeFragment;
+import com.example.appbienvenidos.view.fragments.GuideFragment;
 import com.example.appbienvenidos.view.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity{
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity{
                selectedFragment = new ChatFragment();
            }else if(itemId == R.id.nav_profile){
                selectedFragment = new ProfileFragment();
-           }
+           }else if(itemId == R.id.nav_guide){
+            selectedFragment = new GuideFragment();
+        }
            if(selectedFragment !=null){
                loadFragment(selectedFragment);
                return true;

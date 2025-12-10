@@ -40,7 +40,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:textColor="#FBC02D"
+                android:textColor="@color/brand_yellow"
                 android:text="Bienvenidos"
                 android:textSize="40sp" />
 
@@ -50,7 +50,7 @@
                 android:layout_marginBottom="40dp"
                 android:fontFamily="serif"
                 android:text="Bon retour parmi nous !"
-                android:textColor="#E996C4"
+                android:textColor="@color/pink_300"
                 android:textSize="13sp" />
 
             <!-- FORMULAIRE -->
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/text_primary"
                     android:text="Email"
                     android:textSize="@dimen/_13sdp"/>
 
@@ -78,7 +78,9 @@
                     android:paddingEnd="15dp"
                     android:drawableStart="@android:drawable/ic_dialog_email"
                     android:drawablePadding="10dp"
-                    android:drawableTint="#AAAAAA"
+                    android:drawableTint="@color/gray_dark"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
                     android:inputType="textEmailAddress"
                     android:hint="exemple@email.com"
                     android:textSize="@dimen/_13sdp"/>
@@ -88,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:textColor="#555555"
+                    android:textColor="@color/text_primary"
                     android:text="Mot de passe"
                     android:textSize="@dimen/_13sdp"/>
 
@@ -101,7 +103,9 @@
                     android:paddingEnd="15dp"
                     android:drawableStart="@android:drawable/ic_lock_idle_lock"
                     android:drawablePadding="10dp"
-                    android:drawableTint="#AAAAAA"
+                    android:drawableTint="@color/text_secondary"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
                     android:inputType="textPassword"
                     android:hint="••••••••"/>
 
@@ -113,7 +117,7 @@
                     android:layout_gravity="end"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
-                    android:textColor="#888888"
+                    android:textColor="@color/text_secondary"
                     android:text="Mot de passe oublié ?"
                     android:clickable="true"
                     android:focusable="true"/>
@@ -122,12 +126,13 @@
                 <Button
                     android:id="@+id/btnSeConnecter"
                     android:text="Se connecter"
+                    android:textColor="@color/surface_card"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:textSize="22sp"
                     android:fontFamily="serif"
                     app:elevation="10dp"
-                    app:backgroundTint="#FBC02D"
+                    app:backgroundTint="@color/brand_yellow"
                     app:cornerRadius="12dp" />
 
             </LinearLayout>
@@ -142,7 +147,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="@color/text_secondary"
                     android:text="Pas encore de compte ? "/>
 
                 <TextView
@@ -150,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="#FBC02D"
+                    android:textColor="@color/brand_yellow"
                     android:padding="5dp"
                     android:text="S'inscrire"/>
             </LinearLayout>

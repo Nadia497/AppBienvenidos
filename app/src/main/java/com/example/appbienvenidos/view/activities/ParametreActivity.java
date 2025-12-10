@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,12 +20,14 @@ import com.example.appbienvenidos.R;
 import com.google.android.material.card.MaterialCardView;
 
 public class ParametreActivity extends AppCompatActivity {
-    private Button btnback;
+    private ImageButton btnback;
     private View info_pers, notifs, theme, language, logout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametre);
+
+        btnback = findViewById(R.id.btnBack);
 
         int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         //information personnelle
@@ -37,15 +40,16 @@ public class ParametreActivity extends AppCompatActivity {
 
         //language
         language = findViewById(R.id.language);
-        reglage(language, "Language",0 ,"Français");
+        reglage(language, "Language",R.drawable.ic_language ,"Français");
 
         //theme
         theme = findViewById(R.id.theme);
         String currentThemeTxt = (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) ? "Sombre" : "Clair";
-        reglage(theme, "Thème", 0, currentThemeTxt);
+        reglage(theme, "Thème", R.drawable.ic_theme, currentThemeTxt);
 
         theme.setOnClickListener(v -> showThemeDialog());
 
+        btnback.setOnClickListener(v -> finish());
 
     }
     private void reglage(View view, String title, int image, String value){

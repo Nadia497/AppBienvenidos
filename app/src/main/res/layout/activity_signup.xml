@@ -108,8 +108,7 @@
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/outline_person_24"
-                                android:padding="25dp"
-                                app:tint="@color/icon_tint"/>
+                                android:padding="25dp"/>
                         </androidx.cardview.widget.CardView>
 
                         <!-- 3. Le bouton Caméra -->
@@ -129,8 +128,7 @@
                                 android:layout_width="18dp"
                                 android:layout_height="18dp"
                                 android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_camera"
-                                app:tint="@color/icon_tint"/>
+                                android:src="@android:drawable/ic_menu_camera"/>
                         </androidx.cardview.widget.CardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -157,7 +155,7 @@
 
                     <!-- Champ NOM avec icône -->
                     <EditText
-                        android:id="@+id/editTextFirstName"
+                        android:id="@+id/editTextLastName"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="50dp"
@@ -172,7 +170,7 @@
 
                     <!-- Champ PRENOM avec icône -->
                     <EditText
-                        android:id="@+id/editTextLastName"
+                        android:id="@+id/editTextFirstName"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="50dp"
@@ -268,7 +266,7 @@
                         android:background="@drawable/bg_role_active"
                         android:gravity="center"
                         android:text="Voyageur"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/white_pure"
                         android:textStyle="bold"
                         android:textSize="14sp"
                         android:clickable="true"
@@ -280,11 +278,11 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:background="@android:color/transparent"
+                        android:background="@color/surface_card"
                         android:gravity="center"
                         android:text="Local"
-                        android:textColor="#8D6E63"
-                        android:textStyle="normal"
+                        android:textColor="@color/pink_300"
+                        android:textStyle="bold"
                         android:textSize="14sp"
                         android:clickable="true"
                         android:focusable="true"/>
@@ -301,6 +299,7 @@
                     android:textStyle="bold"
                     android:textAllCaps="false"
                     android:fontFamily="serif"
+                    android:textColor="@color/surface_card"
                     app:backgroundTint="@color/brand_yellow"
                     app:cornerRadius="12dp"/>
 

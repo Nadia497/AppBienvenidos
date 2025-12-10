@@ -147,7 +147,7 @@
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:text="Poser une question "
-                    android:textColor="@color/text_primary"
+                    android:textColor="@color/black_pure"
                     android:textSize="15sp"
                     app:backgroundTint="@color/brand_yellow"
                     app:cornerRadius="8dp"
@@ -169,8 +169,9 @@
                     android:textSize="15sp"
                     app:backgroundTint="@color/surface_card"
                     app:cornerRadius="8dp"
-                    app:elevation="6dp"
-                    app:icon="@drawable/sharethis" />
+                    app:elevation="10dp"
+                    app:icon="@drawable/sharethis"
+                    app:iconTint="@color/icon_tint"/>
 
             </LinearLayout>
 

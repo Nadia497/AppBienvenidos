@@ -33,6 +33,10 @@
 
     <color name="button_grey_bg">#EEEEEE</color>
 
+    <color name="textrole">#8B6B00</color>
+    <color name="backgroundrole">#80CEB050</color>
+
+
     <!-- Couleurs des icône : black le jour-->
     <color name="icon_tint">@color/black_pure</color>
 

@@ -16,6 +16,11 @@
     <!-- Fond de l'écran : gris clair-->
     <color name="text_secondary">#B0B0B0</color>
 
+    <color name="textrole">#000000</color>
+    <color name="backgroundrole">@color/brand_yellow</color>
+
+
+
     <!-- Couleurs de marque reste souvent les mêmes -->
     <color name="brand_yellow">#FFD54F</color>
     <color name="brand_pink">#F06292</color>

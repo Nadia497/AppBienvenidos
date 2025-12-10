@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,14 +20,18 @@ import androidx.cardview.widget.CardView; // Important pour le bouton photo
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.cloudinary.android.MediaManager;
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.viewmodel.SignupViewModel;
+import com.example.appbienvenidos.repository.AuthRepository;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -34,10 +39,11 @@ public class SignupActivity extends AppCompatActivity {
 
     // UI Elements
     EditText editTextFirstName, editTextLastName, editTextEmail, editTextLocation, editTextPasswordHash;
-    Button btnRoleTraveler, btnRoleLocal, btnSinscrire;
+    TextView btnRoleTraveler, btnRoleLocal, btnSinscrire;
     TextView alreadyRegistred, seConnecter;
     CardView btnChangePhoto;
     ImageView userPhotoView;
+    private SignupViewModel viewModel;
 
     // Variables logiques
     String selectedRole = "Voyageur";
@@ -53,9 +59,16 @@ public class SignupActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup);
 
+        try {
+            Map config = new HashMap();
+            config.put("cloud_name", "dyum7o6ry"); // Votre Cloud Name
+            config.put("secure", true);
+            MediaManager.init(this, config);
+        } catch (Exception e) {
+            // C'est normal si c'est déjà initialisé, on ne fait rien
+        }
+
         // Initialisation de Firebase
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
 
         // Gestion des marges
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -63,8 +76,20 @@ public class SignupActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        viewModel = new ViewModelProvider(this).get(SignupViewModel.class);
         initViews();
+        viewModel.isSuccess.observe(this, success -> {
+            if (success){
+                Toast.makeText(this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
+                startActivity((new Intent(this, MainActivity.class)));
+                finish();
+            }
+        });
+        viewModel.errorMessage.observe(this, message -> {
+            if (message != null && !message.isEmpty()) {
+                Toast.makeText(this, "Erreur : " + message, Toast.LENGTH_LONG).show();
+            }
+        });
 
         // Gestion Photo
         btnChangePhoto.setOnClickListener(v -> pickImage());
@@ -80,7 +105,17 @@ public class SignupActivity extends AppCompatActivity {
         });
 
         // Gestion Inscription
-        btnSinscrire.setOnClickListener(v -> registerUserWithFirebase());
+        btnSinscrire.setOnClickListener(v -> {
+            viewModel.signup(
+                    editTextEmail.getText().toString().trim(),        // 1. Email
+                    editTextPasswordHash.getText().toString().trim(), // 2. Password (Mot de passe)
+                    editTextFirstName.getText().toString().trim(),    // 3. FirstName (Prénom)
+                    editTextLastName.getText().toString().trim(),     // 4. LastName (Nom)
+                    editTextLocation.getText().toString().trim(),     // 5. Location
+                    selectedRole,                                     // 6. Role
+                    imageUriString
+            );
+        });
 
         // Navigation vers Login
         seConnecter.setOnClickListener(v -> {
@@ -109,11 +144,16 @@ public class SignupActivity extends AppCompatActivity {
 
     private void updateRoleUI() {
         if (selectedRole.equals("Voyageur")) {
-            btnRoleTraveler.setTextColor(Color.BLACK);
-            btnRoleLocal.setTextColor(Color.parseColor("#F8AFCB"));
+            btnRoleTraveler.setBackgroundResource(R.drawable.bg_role_active);
+            btnRoleTraveler.setTextColor(Color.WHITE);
+            btnRoleLocal.setBackgroundResource(0);
+            btnRoleLocal.setTextColor(ContextCompat.getColor(this, R.color.pink_300));
+
         } else {
-            btnRoleTraveler.setTextColor(Color.parseColor("#F8AFCB"));
-            btnRoleLocal.setTextColor(Color.BLACK);
+            btnRoleTraveler.setBackgroundResource(0);
+            btnRoleTraveler.setTextColor(ContextCompat.getColor(this, R.color.pink_300));
+            btnRoleLocal.setBackgroundResource(R.drawable.bg_role_active);
+            btnRoleLocal.setTextColor(ContextCompat.getColor(this, R.color.white_pure));
         }
     }
 
@@ -130,63 +170,10 @@ public class SignupActivity extends AppCompatActivity {
             imageUriString = imageUri.toString();
             userPhotoView.setImageURI(imageUri);
             userPhotoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            userPhotoView.setPadding(0, 0, 0, 0);
+            userPhotoView.setColorFilter(null);
+
         }
     }
 
-    // --- C'EST ICI QUE TOUT SE PASSE ---
-    private void registerUserWithFirebase() {
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPasswordHash.getText().toString().trim();
-        String firstName = editTextFirstName.getText().toString().trim();
-        String lastName = editTextLastName.getText().toString().trim();
-        String location = editTextLocation.getText().toString().trim();
-
-        // 1. Validation basique
-        if (email.isEmpty() || password.isEmpty() || firstName.isEmpty()) {
-            Toast.makeText(this, "Remplissez tous les champs !", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (password.length() < 6) {
-            Toast.makeText(this, "Le mot de passe doit faire 6 caractères min.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // 2. Création du compte AUTH (Email/Password)
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> {
-                    // SUCCÈS : Le compte existe, on a un ID (uid)
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String uid = user.getUid();
-
-                    // 3. Préparation des données pour FIRESTORE
-                    // On utilise une Map (Clé -> Valeur) c'est plus simple que l'objet User pour commencer
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("firstName", firstName);
-                    userMap.put("lastName", lastName);
-                    userMap.put("email", email);
-                    userMap.put("role", selectedRole);
-                    userMap.put("location", location);
-                    userMap.put("photoUrl", imageUriString); // Note: Idéalement il faut uploader l'image dans Storage
-
-                    // 4. Enregistrement dans la collection "users"
-                    db.collection("users").document(uid).set(userMap)
-                            .addOnSuccessListener(aVoid -> {
-                                // TOUT EST BON !
-                                Toast.makeText(SignupActivity.this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
-
-                                // On redirige vers l'accueil ou le login
-                                startActivity(new Intent(SignupActivity.this, MainActivity.class)); // ou LoginActivity
-                                finish();
-                            })
-                            .addOnFailureListener(e -> {
-                                Toast.makeText(SignupActivity.this, "Erreur sauvegarde données : " + e.getMessage(), Toast.LENGTH_LONG).show();
-                            });
-
-                })
-                .addOnFailureListener(e -> {
-                    // ERREUR (Email déjà pris, pas internet, etc.)
-                    Toast.makeText(SignupActivity.this, "Erreur : " + e.getMessage(), Toast.LENGTH_LONG).show();
-                });
-    }
 }

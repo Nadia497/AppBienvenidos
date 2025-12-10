@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainprofile"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app">
@@ -32,19 +33,32 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_35sdp"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_margin="@dimen/_1sdp"
                     android:src="@drawable/petitlogo" />
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="241dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
                     android:layout_marginStart="12dp"
-                    android:text="Mon Espace Local"
+                    android:gravity="center"
+                    android:text="Profile"
                     android:textColor="@color/text_primary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/parametre"
+                    android:layout_width="49dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:backgroundTint="@color/background_app"
+                    android:src="@drawable/ic_more_vert_n"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:tint="@color/icon_tint" />
             </LinearLayout>
 
             <!-- PROFIL: Photo + Infos + Badge -->
@@ -67,7 +81,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/_20sdp"
                     android:orientation="vertical">
 
                     <TextView
@@ -75,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_black"
-                        android:text="Fatima L."
+                        android:text=""
                         android:textColor="@color/text_primary"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -85,13 +99,13 @@
                         android:id="@+id/role"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/_4sdp"
                         android:background="@drawable/bg_role_profile_n"
                         android:paddingHorizontal="@dimen/_8sdp"
                         android:paddingVertical="@dimen/_4sdp"
-                        android:text="🎧 Local Expert"
+                        android:text=""
                         android:textColor="#8B6B00"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -99,7 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="Marrakech, Maroc"
+                        android:text=""
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -119,7 +133,7 @@
                 android:id="@+id/statistique"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="@dimen/_20sdp"
                 android:baselineAligned="false"
                 android:orientation="horizontal">
 
@@ -128,7 +142,7 @@
                     android:id="@+id/spot_stat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/surface_card"
                     app:cardCornerRadius="12dp"
@@ -301,32 +315,24 @@
                     <!-- Bouton Modifier (Droite) -->
                     <LinearLayout
                         android:id="@+id/modifier_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="33dp"
+                        android:layout_height="32dp"
                         android:gravity="center"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/gmaps"
-                            android:scaleType="fitCenter"/>
 
                         <Button
                             android:id="@+id/modifier_spot"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:backgroundTint="@color/button_grey_bg"
-                            android:text="⋮ Modifier"
-                            android:textColor="@color/text_primary"
-                            android:textSize="10sp"
-                            android:paddingHorizontal="8dp"
-                            app:cornerRadius="8dp"
                             style="@style/Widget.MaterialComponents.Button.TextButton"
-                            />
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:paddingHorizontal="8dp"
+                            android:text="⋮"
+                            android:textColor="@color/text_primary"
+                            android:textSize="18sp"
+                            app:cornerRadius="8dp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
