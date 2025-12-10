@@ -169,7 +169,7 @@
                     android:textSize="15sp"
                     app:backgroundTint="@color/surface_card"
                     app:cornerRadius="8dp"
-                    app:elevation="10dp"
+                    app:elevation="6dp"
                     app:icon="@drawable/sharethis"
                     app:iconTint="@color/icon_tint"/>
 

@@ -15,15 +15,15 @@ public class Spot implements Serializable {
     private String adress;
     private String category_id;
     private List<String> image_URL;
-    private String average_Rating;
-    private String total_Rating;
+    private double average_Rating;
+    private double total_Rating;
     private String publication_Date;
 
     // 1. Constructeur VIDE
     public Spot() { }
 
     // 2. Constructeur COMPLET
-    public Spot(String publisher_id, String title, String description, String adress, String category_id, List<String> image_URL, String average_Rating, String total_Rating, String publication_Date) {
+    public Spot(String publisher_id, String title, String description, String adress, String category_id, List<String> image_URL, double average_Rating, double total_Rating, String publication_Date) {
         this.publisher_id = publisher_id;
         this.title = title;
         this.description = description;
@@ -59,11 +59,11 @@ public class Spot implements Serializable {
     public List<String> getImage_URL() { return image_URL; }
     public void setImage_URL(List<String> image_URL) { this.image_URL = image_URL; }
 
-    public String getAverage_Rating() { return average_Rating; }
-    public void setAverage_Rating(String average_Rating) { this.average_Rating = average_Rating; }
+    public double getAverage_Rating() { return average_Rating; }
+    public void setAverage_Rating(double average_Rating) { this.average_Rating = average_Rating; }
 
-    public String getTotal_Rating() { return total_Rating; }
-    public void setTotal_Rating(String total_Rating) { this.total_Rating = total_Rating; }
+    public double getTotal_Rating() { return total_Rating; }
+    public void setTotal_Rating(double total_Rating) { this.total_Rating = total_Rating; }
 
     public String getPublication_Date() { return publication_Date; }
     public void setPublication_Date(String publication_Date) { this.publication_Date = publication_Date; }

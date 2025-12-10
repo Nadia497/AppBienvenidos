@@ -199,7 +199,7 @@
             android:id="@+id/titleSpots"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ses découvertes (Spots)"
+            android:text="Spots publiés"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary"

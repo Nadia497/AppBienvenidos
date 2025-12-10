@@ -64,8 +64,8 @@ public class AddSpotViewmodel extends ViewModel{
                 address,
                 categoryId,
                 imageUrls,
-                "0.0",
-                "0",
+                0.0,
+                0,
                 currentDate
         );
 
