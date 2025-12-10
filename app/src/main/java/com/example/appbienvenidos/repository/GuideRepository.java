@@ -38,6 +38,7 @@ public class GuideRepository {
                     liveData.setValue(null);
                 });
     }
+
     public void getGuidesByCity(String city, MutableLiveData<List<Guide>> liveData) {
 
         // 3. Construction de la Requête

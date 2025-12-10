@@ -119,19 +119,36 @@
                 android:textStyle="bold"
                 android:textColor="#333333" />
 
-            <EditText
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/_37sdp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_white_profile_n"
-                android:hint="Ex: Jardin Majorelle"
-                android:id="@+id/name"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#333333"
-                android:textColorHint="#BBBBBB"
-                android:textSize="14sp"
-                android:elevation="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:strokeWidth="0dp">
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+
+                    android:hint="Ex: Jardin Majorelle"
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+
+                    android:inputType="textCapWords"
+                    android:maxLines="1" />
+
+            </androidx.cardview.widget.CardView>
 
             <!-- CHAMP LOCALISATION -->
             <TextView
@@ -142,24 +159,41 @@
                 android:textStyle="bold"
                 android:textColor="#333333" />
 
-            <EditText
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="8dp"
-                android:id="@+id/location"
-                android:background="@drawable/bg_white_profile_n"
-                android:drawableStart="@drawable/ic_location_n"
-                android:drawablePadding="10dp"
-                android:hint="Ex: Rue Yves Saint Laurent, Marrakech"
-                android:drawableEnd="@android:drawable/ic_menu_search"
-                android:drawableTint="@color/black"
-                android:paddingStart="12dp"
-                android:paddingEnd="16dp"
-                android:textColor="#333333"
-                android:textColorHint="#BBBBBB"
-                android:textSize="14sp"
-                app:drawableTint="#999999"
-                android:elevation="5dp"/>
+                android:layout_height="@dimen/_37sdp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:strokeWidth="0dp">
+
+                <EditText
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+
+                    android:hint="Ex: Rue Yves Saint Laurent, Marrakech"
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+
+                    android:drawableStart="@drawable/ic_location_n"
+                    android:drawableEnd="@android:drawable/ic_menu_search"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:drawableTint="@color/gray"
+
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionSearch" />
+
+            </androidx.cardview.widget.CardView>
 
             <!-- CATEGORIES (SCROLL HORIZONTAL) -->
             <TextView
@@ -179,8 +213,9 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="@dimen/_40sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <!-- Item Sélectionné -->
                     <androidx.appcompat.widget.AppCompatButton
@@ -285,20 +320,36 @@
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
-            <EditText
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minLines="5"
-                android:id="@+id/description"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_white_profile_n"
-                android:gravity="top|start"
-                android:hint="Partagez votre expérience, ce que vous avez aimé..."
-                android:padding="16dp"
-                android:textColor="#333333"
-                android:textColorHint="#BBBBBB"
-                android:textSize="14sp"
-                android:elevation="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:strokeWidth="0dp">
+
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+
+                    android:hint="Partagez votre expérience, ce que vous avez aimé..."
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+
+                    android:minLines="5"
+                    android:gravity="top|start"
+                    android:padding="20dp"
+
+                    android:inputType="textMultiLine|textCapSentences" />
+
+            </androidx.cardview.widget.CardView>
 
             <!-- BOUTON VALIDER -->
             <androidx.appcompat.widget.AppCompatButton

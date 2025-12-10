@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager; // Important pour la map
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -27,7 +25,6 @@ import com.bumptech.glide.Glide;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SpotDetailActivity extends AppCompatActivity {
     // Déclaration des variables
@@ -60,7 +57,7 @@ public class SpotDetailActivity extends AppCompatActivity {
         Configuration.getInstance().setUserAgentValue(getPackageName());
 
         EdgeToEdge.enable(this);
-        setContentView(R.layout.item_spot);
+        setContentView(R.layout.activity_spot);
 
         // Gestion des marges pour les barres système
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.Spot), (v, insets) -> {
@@ -118,7 +115,6 @@ public class SpotDetailActivity extends AppCompatActivity {
         if (intent != null) {
             // Textes
             String nom = intent.getStringExtra("NomDuSpot_key");
-            String descCourt = intent.getStringExtra("SmallDescription_key");
             String descLong = intent.getStringExtra("Descriptionwithdetails_key");
             String datePub = intent.getStringExtra("UserPublicationDate_key");
             String adresse = intent.getStringExtra("Adresse_key");

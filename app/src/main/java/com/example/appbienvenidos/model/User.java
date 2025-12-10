@@ -10,20 +10,8 @@ public class User {
     private String photoUrl;
     private String Role;
     private String Registration_Date;
-    //Constructeur sans password
-    public User(String lastName, String firstName, String Email,
-                String Location, String photoUrl,
-                 String Role) {
 
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.Email = Email;
-        this.Location = Location;
-        this.photoUrl = photoUrl;
-        this.Role = Role;
-    }
-    //Constructeur complet
-
+    //Constructeur utilisé par le Room pour créer nos objets
 
     public User(String lastName, String firstName, String Email,
                 String PasswordHash, String Location, String photoUrl,
@@ -39,6 +27,18 @@ public class User {
         this.Registration_Date = Registration_Date;
     }
 
+    public User(String lastName, String firstName, String Email, String Location, String Role, String photoUrl) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.Email = Email;
+        this.Location = Location;
+        this.Role = Role;
+        this.photoUrl = photoUrl;
+
+        this.PasswordHash = ""; // On ne stocke pas le mot de passe ici si on utilise Firebase Auth
+
+
+    }
     public User() {
     }
 
@@ -56,6 +56,10 @@ public class User {
 
     public void setFirstName(String firstName) {
         firstName = firstName;
+    }
+
+    public String getFullName(){
+        return firstName + " " + lastName ;
     }
 
     public String getEmail() {
@@ -81,7 +85,6 @@ public class User {
     public void setLocation(String location) {
         Location = location;
     }
-
 
     public String getPhotoUrl() {
         return photoUrl;

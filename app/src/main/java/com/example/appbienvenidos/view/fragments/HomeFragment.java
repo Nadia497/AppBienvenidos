@@ -9,17 +9,30 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
+import com.example.appbienvenidos.viewmodel.HomeViewModel;
 
 import androidx.cardview.widget.CardView;
 import android.content.Intent;
+import android.widget.EditText;
 
 
 public class HomeFragment extends Fragment {
     @Nullable
     @Override
+    private HomeViewModel homeViewModel;
+    private SpotAdapter itineraireAdadpter;
+    private SpotAdapter newSpotAdapter;
+    private EditText searchEditText;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
+        setupRecyclerViews(view);
+
+        searchEditText = findViewById(R.id.searchEditText);
+        
         // 2. On récupère la CardView grâce à son ID
         CardView cardMarrakech = view.findViewById(R.id.cardItineraryMarrakech);
 
