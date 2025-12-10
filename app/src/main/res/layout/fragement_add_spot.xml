@@ -129,7 +129,7 @@
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 app:strokeWidth="0dp">
 
                 <EditText
@@ -139,8 +139,8 @@
                     android:background="@null"
 
                     android:hint="Ex: Jardin Majorelle"
-                    android:textColorHint="#9E9E9E"
-                    android:textColor="#000000"
+                    android:textColorHint="@color/text_secondary"
+                    android:textColor="@color/text_primary"
                     android:textSize="14sp"
 
                     android:paddingStart="20dp"
@@ -168,7 +168,7 @@
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 app:strokeWidth="0dp">
 
                 <EditText
@@ -178,8 +178,8 @@
                     android:background="@null"
 
                     android:hint="Ex: Rue Yves Saint Laurent, Marrakech"
-                    android:textColorHint="#9E9E9E"
-                    android:textColor="#000000"
+                    android:textColorHint="@color/text_secondary"
+                    android:textColor="@color/text_primary"
                     android:textSize="14sp"
 
                     android:drawableStart="@drawable/ic_location_n"
@@ -329,7 +329,7 @@
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 app:strokeWidth="0dp">
 
                 <EditText
@@ -339,8 +339,8 @@
                     android:background="@null"
 
                     android:hint="Partagez votre expérience, ce que vous avez aimé..."
-                    android:textColorHint="#9E9E9E"
-                    android:textColor="#333333"
+                    android:textColorHint="@color/text_secondary"
+                    android:textColor="@color/text_primary"
                     android:textSize="14sp"
 
                     android:minLines="5"
