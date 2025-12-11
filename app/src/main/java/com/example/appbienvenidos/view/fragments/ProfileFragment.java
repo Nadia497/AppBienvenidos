@@ -1,10 +1,12 @@
 package com.example.appbienvenidos.view.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,11 +24,9 @@ import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.User;
 import com.example.appbienvenidos.view.activities.AddSpot;
+import com.example.appbienvenidos.view.activities.ParametreActivity;
 import com.example.appbienvenidos.viewmodel.ProfileViewModel;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -36,6 +36,7 @@ public class ProfileFragment extends Fragment {
     private ImageView profileImage;
     private TextView profileName, role, location, spotNbr, itinNbr, starsValue;
     private Button modifierSpot;
+    private ImageButton parametre;
     private  com.google.android.material.button.MaterialButton btnCreatSpot;
     private User user;
     private ProfileViewModel viewModel;
@@ -78,6 +79,7 @@ public class ProfileFragment extends Fragment {
         starsValue = view.findViewById(R.id.nbr_stars);
         modifierSpot = view.findViewById(R.id.modifier_spot);
         btnCreatSpot = view.findViewById(R.id.btnCreateSpot);
+        parametre = view.findViewById(R.id.parametre);
 
         //initialisation du viewmodel
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
@@ -89,12 +91,20 @@ public class ProfileFragment extends Fragment {
                 location.setText(user.getLocation());
                 role.setText(user.getRole());
 
-                if (user.getPhotoUrl() != null && !user.getPhotoUrl().isEmpty()) {
+                String urlPhoto = user.getPhotoUrl();
+                //Affichage de l'url de l'image dans le logcat
+                Log.d("DEBUG_IMAGE", "URL reçue : "+urlPhoto);
+
+                if (urlPhoto != null && !urlPhoto.isEmpty()) {
                     Glide.with(this)
-                            .load(user.getPhotoUrl())
+                            .load(urlPhoto)
                             .placeholder(R.drawable.ic_launcher_background)
+                            .error(R.drawable.no_profile)
                             .circleCrop()
                             .into(profileImage);
+                }
+                else {
+                    profileImage.setImageResource(R.drawable.no_profile);
                 }
             }
         });
@@ -107,7 +117,11 @@ public class ProfileFragment extends Fragment {
         //charger les données
         viewModel.loadUserProfile(currentUserId);
 
-
+        // les paramètres
+        parametre.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ParametreActivity.class);
+            startActivity(intent);
+        });
         // Quand on clique sur l'image -> ouvrir la galrie
         profileImage.setOnClickListener(v -> {
             // 1. On crée une intention : "Je veux choisir (ACTION_PICK) une donnée externe"

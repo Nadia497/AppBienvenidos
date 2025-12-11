@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_pure">#FF000000</color>
+    <color name="white_pure">#FFFFFFFF</color>
+    <!-- Couleur pour le mode sombre (night) -->
+
+    <!-- Fond de l'écran presque noir -->
+    <color name="background_app">#121212</color>
+
+    <!-- Fond des cartes/boutons gris fancé -->
+    <color name="surface_card">#1E1E1E</color>
+
+    <!-- Text principale : blanc cassé-->
+    <color name="text_primary">#E1E1E1</color>
+
+    <!-- Fond de l'écran : gris clair-->
+    <color name="text_secondary">#B0B0B0</color>
+
+    <color name="textrole">#000000</color>
+    <color name="backgroundrole">@color/brand_yellow</color>
+
+
+
+    <!-- Couleurs de marque reste souvent les mêmes -->
+    <color name="brand_yellow">#FFD54F</color>
+    <color name="brand_pink">#F06292</color>
+
+    <color name="button_grey_bg">#333333</color>
+
+    <!-- Couleurs des icône : black le jour-->
+    <color name="icon_tint">#FFFFFF</color>
+</resources>

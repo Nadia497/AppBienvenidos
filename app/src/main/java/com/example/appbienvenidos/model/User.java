@@ -1,38 +1,39 @@
 package com.example.appbienvenidos.model;
 
+import com.google.firebase.firestore.PropertyName;
+
 public class User {
-    private int id;
     private String lastName;
     private String firstName;
-    private String Email;
+    private String email;
     private String PasswordHash;  //Stocker un hash, pas le mot de passe en clair
-    private String Location;
+    private String location;
     private String photoUrl;
-    private String Role;
+    private String role;
     private String Registration_Date;
 
     //Constructeur utilisé par le Room pour créer nos objets
 
-    public User(String lastName, String firstName, String Email,
-                String PasswordHash, String Location, String photoUrl,
-                String Role, String Registration_Date) {
+    public User(String lastName, String firstName, String email,
+                String PasswordHash, String location, String photoUrl,
+                String role, String Registration_Date) {
 
         this.lastName = lastName;
         this.firstName = firstName;
-        this.Email = Email;
+        this.email = email;
         this.PasswordHash = PasswordHash;
-        this.Location = Location;
+        this.location = location;
         this.photoUrl = photoUrl;
-        this.Role = Role;
+        this.role = role;
         this.Registration_Date = Registration_Date;
     }
 
-    public User(String lastName, String firstName, String Email, String Location, String Role, String photoUrl) {
+    public User(String lastName, String firstName, String email, String location, String role, String photoUrl) {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.Email = Email;
-        this.Location = Location;
-        this.Role = Role;
+        this.email = email;
+        this.location = location;
+        this.role = role;
         this.photoUrl = photoUrl;
 
         this.PasswordHash = ""; // On ne stocke pas le mot de passe ici si on utilise Firebase Auth
@@ -42,32 +43,40 @@ public class User {
     public User() {
     }
 
+    @PropertyName("lastName")
     public String getLastName() {
         return lastName;
     }
 
+    @PropertyName("lastName")
     public void setLastName(String last_Name) {
-        lastName = last_Name;
+        this.lastName = last_Name;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    @PropertyName("firstName")
+    public String getFirstName() { return firstName; }
 
-    public void setFirstName(String firstName) {
-        firstName = firstName;
-    }
+    @PropertyName("firstName")
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    @PropertyName("First_Name") // Au cas où
+    public void setFirst_Name_Alt(String firstName) { this.firstName = firstName; }
 
     public String getFullName(){
-        return firstName + " " + lastName ;
+
+        String f = firstName != null ? firstName:"";
+        String l = lastName != null ?lastName:"";
+        return (l + " " + f).trim() ;
     }
 
+    @PropertyName("email")
     public String getEmail() {
-        return Email;
+        return email;
     }
 
+    @PropertyName("email")
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPasswordHash() {
@@ -78,28 +87,31 @@ public class User {
         PasswordHash = passwordHash;
     }
 
-    public String getLocation() {
-        return Location;
-    }
+    @PropertyName("location")
+    public String getLocation() {   return location;   }
 
+    @PropertyName("location")
     public void setLocation(String location) {
-        Location = location;
+        this.location = location;
     }
 
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
+    // 1. Le Getter principal (utilisé par l'appli)
+    // Par défaut, on le lie à "photoUrl"
+    @PropertyName("photoUrl")
+    public String getPhotoUrl() { return photoUrl; }
 
-    public void setPhotoUrl(String photoUrl) {
-        photoUrl = photoUrl;
-    }
+    // 2. Setter 1 : Pour le nom standard "photoUrl"
+    @PropertyName("photoUrl")
+    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
 
+    @PropertyName("role")
     public String getRole() {
-        return Role;
+        return role;
     }
 
+    @PropertyName("role")
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
     public String getRegistration_Date() {

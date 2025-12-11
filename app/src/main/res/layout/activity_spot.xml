@@ -3,9 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Spot"
-    android:background="@color/creme_background"
+    android:background="@color/background_app"
     >
 
     <LinearLayout
@@ -77,7 +76,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
                 android:text="Spot Name"
-                android:textColor="#000000"
+                android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +109,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="serif"
                 android:text="User and Publication date"
-                android:textColor="#8E8E8E"
+                android:textColor="@color/text_secondary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ratingbar" />
 
@@ -122,7 +121,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
                 android:text="Actions :"
-                android:textColor="#000000"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,9 +147,9 @@
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:text="Poser une question "
-                    android:textColor="#000000"
+                    android:textColor="@color/black_pure"
                     android:textSize="15sp"
-                    app:backgroundTint="#FBC02D"
+                    app:backgroundTint="@color/brand_yellow"
                     app:cornerRadius="8dp"
                     app:elevation="6dp"
                     app:icon="@drawable/chaticon"
@@ -166,13 +165,13 @@
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:text="Partager"
-                    android:textColor="#000000"
+                    android:textColor="@color/text_primary"
                     android:textSize="15sp"
-                    app:backgroundTint="#FFFFFF"
+                    app:backgroundTint="@color/surface_card"
                     app:cornerRadius="8dp"
                     app:elevation="6dp"
                     app:icon="@drawable/sharethis"
-                    app:iconTint="#000000"/>
+                    app:iconTint="@color/icon_tint"/>
 
             </LinearLayout>
 
@@ -184,7 +183,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
                 android:text="Description :"
-                android:textColor="#000000"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -202,7 +201,7 @@
                 Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi
                 Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi
                 Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi Cet endroit est ldnh hdsiofze siy cdbjhcija zdugziuhoi"
-                android:textColor="#8E8E8E"
+                android:textColor="@color/text_secondary"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -216,7 +215,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
                 android:text="Localisation :"
-                android:textColor="#000000"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"

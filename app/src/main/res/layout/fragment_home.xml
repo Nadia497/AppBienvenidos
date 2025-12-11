@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDF5"> <!-- Le fond crème -->
+    android:background="@color/background_app"
+    android:fillViewport="true">
 
     <!-- CONTENU PRINCIPAL (SCROLLABLE) -->
     <ScrollView
@@ -43,15 +44,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_search"
+                android:backgroundTint="@color/surface_card"
                 android:hint="Rechercher une ville, un spot..."
                 android:textSize="14sp"
-                android:textColorHint="#999"
+                android:textColorHint="@color/text_secondary"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:drawableStart="@android:drawable/ic_menu_search"
                 android:drawableEnd="@android:drawable/ic_menu_sort_by_size"
                 android:drawablePadding="12dp"
-                android:drawableTint="#757575"
+                android:drawableTint="@color/text_secondary"
                 android:layout_marginBottom="20dp"/>
 
             <!-- 3. FILTRES (CHIPS) - Scroll Horizontal -->
@@ -71,6 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp"
                         android:layout_marginEnd="10dp">
@@ -78,14 +81,14 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:src="@android:drawable/ic_menu_myplaces"
-                            app:tint="#E91E63"/>
+                            app:tint="@color/brand_pink"/>
                         <TextView
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:text="Gastronomie"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="#333"
+                            android:textColor="@color/text_primary"
                             android:layout_marginStart="6dp"/>-->
                     </LinearLayout>
 
@@ -94,6 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp"
                         android:layout_marginEnd="10dp">
@@ -101,14 +105,14 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:src="@android:drawable/ic_menu_agenda"
-                            app:tint="#FFA726"/>
+                            app:tint="@color/brand_yellow"/>
                         <TextView
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
                             android:text="Culture"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="#333"
+                            android:textColor="@color/text_primary"
                             android:layout_marginStart="6dp"/>
                     </LinearLayout>
 
@@ -117,6 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp"
                         android:layout_marginEnd="10dp">
@@ -131,7 +136,7 @@
                             android:text="Nature"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="#333"
+                            android:textColor="@color/text_primary"
                             android:layout_marginStart="6dp"/>
                     </LinearLayout>
 
@@ -140,6 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp">
                         <ImageView
@@ -153,7 +159,7 @@
                             android:text="Événem."
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="#333"
+                            android:textColor="@color/text_primary"
                             android:layout_marginStart="6dp"/>
                     </LinearLayout>
 
@@ -167,7 +173,7 @@
                 android:text="Itinéraires du Jour"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/text_primary"
                 android:layout_marginBottom="15dp"/>
 
             <!-- SCROLL HORIZONTAL DES CARTES -->
@@ -381,7 +387,7 @@
                 android:text="Nouveaux Spots à Proximité"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/text_primary"
                 android:layout_marginBottom="15dp"/>
 
             <LinearLayout

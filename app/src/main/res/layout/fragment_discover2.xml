@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/creme_background"
+    android:background="@color/background_app"
     android:fontFamily="@font/poppins_black"
     android:orientation="vertical">
 
@@ -18,7 +18,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="2/3"
-        android:textColor="@color/black"
+        android:textColor="@color/black_pure"
         android:textSize="15sp" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:fontFamily="@font/poppins_black"
         android:paddingLeft="20sp"
         android:text="Connectez-vous avec des habitants "
-        android:textColor="@color/black"
+        android:textColor="@color/text_primary"
         android:textSize="34sp" />
 
     <com.google.android.material.imageview.ShapeableImageView

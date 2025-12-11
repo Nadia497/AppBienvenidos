@@ -6,16 +6,17 @@
     android:id="@+id/GuideCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
+    app:cardBackgroundColor="@color/surface_card"
 
     android:layout_marginTop="@dimen/_8sdp"
     android:layout_marginBottom="@dimen/_8sdp"
     android:layout_marginStart="@dimen/_13sdp"
     android:layout_marginEnd="@dimen/_13sdp"
 
-    app:strokeWidth="0dp"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="5dp"
-    app:cardBackgroundColor="@color/white">
+    app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,7 +42,7 @@
             android:layout_height="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_8sdp"
-            app:tint="#9E9E9E"
+            app:tint="@color/text_secondary"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
@@ -57,6 +58,7 @@
             app:layout_constraintStart_toEndOf="@+id/GuidePhoto"
             app:layout_constraintTop_toTopOf="@+id/GuidePhoto"
             android:text="Naimi Zineb"
+            android:textColor="@color/text_primary"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
             />

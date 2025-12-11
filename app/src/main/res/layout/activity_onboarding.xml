@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/creme_background"
+    android:background="@color/background_app"
     android:fontFamily="@font/poppins_black"
     android:id="@+id/main_onboarding"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -22,7 +22,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/border_textview"
         android:text="Continuer"
-        android:textColor="@color/black"
+        android:textColor="@color/black_pure"
         android:textSize="25sp"
         app:backgroundTint="@null" />
 
@@ -34,8 +34,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="100dp"
         android:text="Passer"
-        android:textColor="@color/gray"
+        android:textColor="@color/text_secondary"
         android:textSize="20sp"
-        app:backgroundTint="@color/creme_background" />
+        app:backgroundTint="@color/background_app" />
 
 </LinearLayout>

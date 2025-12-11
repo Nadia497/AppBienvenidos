@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/creme_background"
+    android:background="@color/background_app"
     android:clickable="true"
     android:focusable="true"> <!-- Fond Crème -->
 
@@ -21,8 +21,9 @@
         android:src="@drawable/ic_media_previous_n"
         android:elevation="2dp"
         android:paddingStart="10dp"
-        android:textColor="#333333"
-        android:backgroundTint="@color/white"
+        android:textColor="@color/text_secondary"
+        android:backgroundTint="@color/surface_card"
+        app:tint="@color/icon_tint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
          />
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ajouter un Spot"
-        android:textColor="#333333"
+        android:textColor="@color/text_primary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnBack"
@@ -75,7 +76,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:src="@android:drawable/ic_menu_gallery"
-                        app:tint="#CCCCCC"
+                        app:tint="@color/text_secondary"
                          />
 
                     <TextView
@@ -84,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Ajouter une photo"
-                        android:textColor="#999999" />
+                        android:textColor="@color/text_secondary" />
                 </LinearLayout>
 
                 <!-- Zone des images séléctionner -->
@@ -117,7 +118,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Nom du lieu"
                 android:textStyle="bold"
-                android:textColor="#333333" />
+                android:textColor="@color/text_primary" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -128,7 +129,7 @@
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 app:strokeWidth="0dp">
 
                 <EditText
@@ -138,8 +139,8 @@
                     android:background="@null"
 
                     android:hint="Ex: Jardin Majorelle"
-                    android:textColorHint="#9E9E9E"
-                    android:textColor="#000000"
+                    android:textColorHint="@color/text_secondary"
+                    android:textColor="@color/text_primary"
                     android:textSize="14sp"
 
                     android:paddingStart="20dp"
@@ -147,7 +148,6 @@
 
                     android:inputType="textCapWords"
                     android:maxLines="1" />
-
             </androidx.cardview.widget.CardView>
 
             <!-- CHAMP LOCALISATION -->
@@ -157,7 +157,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Localisation"
                 android:textStyle="bold"
-                android:textColor="#333333" />
+                android:textColor="@color/text_primary" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -168,7 +168,7 @@
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 app:strokeWidth="0dp">
 
                 <EditText
@@ -178,8 +178,8 @@
                     android:background="@null"
 
                     android:hint="Ex: Rue Yves Saint Laurent, Marrakech"
-                    android:textColorHint="#9E9E9E"
-                    android:textColor="#000000"
+                    android:textColorHint="@color/text_secondary"
+                    android:textColor="@color/text_primary"
                     android:textSize="14sp"
 
                     android:drawableStart="@drawable/ic_location_n"
@@ -187,7 +187,7 @@
                     android:drawablePadding="10dp"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:drawableTint="@color/gray"
+                    android:drawableTint="@color/icon_tint"
 
                     android:inputType="text"
                     android:maxLines="1"
@@ -202,7 +202,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Catégorie"
                 android:textStyle="bold"
-                android:textColor="#333333" />
+                android:textColor="@color/text_primary" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -225,7 +225,7 @@
                         android:text="Restaurant"
                         android:id="@+id/restaurant"
                         android:textAllCaps="false"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_secondary"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:layout_marginEnd="8dp"/>
@@ -238,7 +238,7 @@
                         android:text="Café"
                         android:id="@+id/cafe"
                         android:textAllCaps="false"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_secondary"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:layout_marginEnd="8dp"/>  <!--android:textAllCaps="false": Sans cette option, Android transforme TOUT LE TEXTE EN MAJUSCULES-->
@@ -250,7 +250,7 @@
                         android:text="Paysage"
                         android:id="@+id/paysage"
                         android:textAllCaps="false"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_secondary"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:layout_marginEnd="8dp"/>
@@ -262,7 +262,7 @@
                         android:text="Culture"
                         android:id="@+id/culture"
                         android:textAllCaps="false"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_secondary"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"/>
 
@@ -273,7 +273,7 @@
                         android:text="Shopping"
                         android:id="@+id/shopping"
                         android:textAllCaps="false"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_secondary"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"/>
 
@@ -284,7 +284,7 @@
                         android:text="Hôtel"
                         android:id="@+id/hotel"
                         android:textAllCaps="false"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_secondary"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"/>
                 </LinearLayout>
@@ -301,7 +301,7 @@
                     android:layout_height="wrap_content"
                     android:text="Description"
                     android:textStyle="bold"
-                    android:textColor="#333333"
+                    android:textColor="@color/text_primary"
                     android:layout_centerVertical="true"/>
 
                 <!-- Badge IA -->
@@ -329,7 +329,7 @@
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 app:strokeWidth="0dp">
 
                 <EditText
@@ -339,8 +339,8 @@
                     android:background="@null"
 
                     android:hint="Partagez votre expérience, ce que vous avez aimé..."
-                    android:textColorHint="#9E9E9E"
-                    android:textColor="#333333"
+                    android:textColorHint="@color/text_secondary"
+                    android:textColor="@color/text_primary"
                     android:textSize="14sp"
 
                     android:minLines="5"
