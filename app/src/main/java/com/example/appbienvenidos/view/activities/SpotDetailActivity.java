@@ -235,4 +235,6 @@ public class SpotDetailActivity extends AppCompatActivity {
         map.onPause();
 
     }
+
+
 }
