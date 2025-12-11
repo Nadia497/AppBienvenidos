@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/creme_background"
+    android:background="@color/background_app"
     android:clickable="true"
     android:focusable="true">
 
@@ -35,8 +35,8 @@
             android:layout_width="257dp"
             android:layout_height="76dp"
             android:gravity="center"
-            android:text="  Nadia Azizi"
-            android:textColor="@color/black"
+            android:text=""
+            android:textColor="@color/text_primary"
             android:textSize="@dimen/_20sdp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
@@ -47,8 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="@dimen/_8sdp"
-            android:backgroundTint="@color/creme_background"
-            android:src="@drawable/ic_more_vert_n" />
+            android:backgroundTint="@color/background_app"
+            android:src="@drawable/ic_more_vert_n"
+            app:tint="@color/icon_tint" />
 
     </LinearLayout>
 
@@ -70,12 +71,12 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/searchContainer"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_3sdp"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="@dimen/_2sdp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/surface_card"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 app:layout_constraintTop_toBottomOf="@+id/entete"
@@ -85,18 +86,21 @@
                 android:id="@+id/searchField"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:hint="Rechercher"
-                android:drawableStart="@android:drawable/ic_menu_search"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#000000"
-                android:textSize="15sp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:drawablePadding="10dp"
+                android:textSize="@dimen/_18sdp"
+                android:textColor="@color/text_primary"
+                android:background="@drawable/bg_white_profile_n"
+                android:backgroundTint="@color/surface_card"
+                android:textColorHint="@color/text_secondary"
+                android:elevation="@dimen/_4sdp"
+                android:padding="@dimen/_7sdp"
+                android:paddingEnd="@dimen/_40sdp"
                 android:inputType="text"
                 android:maxLines="1"
-                android:imeOptions="actionSearch" />
+                android:imeOptions="actionSearch"
+                android:drawablePadding="@dimen/_10sdp"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                app:drawableTint="@color/text_secondary"/>
             </androidx.cardview.widget.CardView>
 
             <!-- Zone de discussion vide -->
@@ -119,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pas de discussion encore"
-                    android:textColor="#999999"
+                    android:textColor="@color/text_secondary"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
@@ -146,9 +150,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:background="@drawable/bg_white_profile_n"
+                        android:backgroundTint="@color/surface_card"
                         android:elevation="@dimen/_6sdp"
                         android:layout_margin="@dimen/_10sdp"
                         android:padding="@dimen/_8sdp"
+                        android:gravity="center_vertical"
                         >
 
                         <ImageView
@@ -167,7 +173,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/text_primary"
                                 android:text="Mezrhab Hanane"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/_14sdp"
@@ -178,7 +184,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#999999"
+                                android:textColor="@color/text_secondary"
                                 android:text="dernière message"
                                 android:textSize="@dimen/_12sdp"
                                 android:layout_marginTop="@dimen/_3sdp"
@@ -190,7 +196,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#999999"
+                            android:textColor="@color/text_secondary"
                             android:text="Hier"
                             android:textSize="@dimen/_12sdp"
                             android:layout_gravity="center"
@@ -205,9 +211,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:background="@drawable/bg_white_profile_n"
+                        android:backgroundTint="@color/surface_card"
                         android:elevation="@dimen/_6sdp"
                         android:layout_margin="@dimen/_10sdp"
                         android:padding="@dimen/_8sdp"
+                        android:gravity="center_vertical"
                         >
 
                         <ImageView
@@ -226,7 +234,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:textColor="@color/text_primary"
                                 android:text="Naimi Zineb"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/_14sdp"
@@ -237,7 +245,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#999999"
+                                android:textColor="@color/text_secondary"
                                 android:text="dernière message"
                                 android:textStyle=""
                                 android:textSize="@dimen/_12sdp"
@@ -253,7 +261,7 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_43sdp"
                             android:text="Hier"
-                            android:textColor="#999999"
+                            android:textColor="@color/text_secondary"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="" />
 

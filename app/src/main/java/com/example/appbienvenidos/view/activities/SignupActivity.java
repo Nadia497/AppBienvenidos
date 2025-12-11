@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +22,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.cloudinary.android.MediaManager;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.viewmodel.SignupViewModel;
 import com.example.appbienvenidos.repository.AuthRepository;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -54,6 +59,15 @@ public class SignupActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup);
 
+        try {
+            Map config = new HashMap();
+            config.put("cloud_name", "dyum7o6ry"); // Votre Cloud Name
+            config.put("secure", true);
+            MediaManager.init(this, config);
+        } catch (Exception e) {
+            // C'est normal si c'est déjà initialisé, on ne fait rien
+        }
+
         // Initialisation de Firebase
 
         // Gestion des marges
@@ -69,6 +83,11 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
                 startActivity((new Intent(this, MainActivity.class)));
                 finish();
+            }
+        });
+        viewModel.errorMessage.observe(this, message -> {
+            if (message != null && !message.isEmpty()) {
+                Toast.makeText(this, "Erreur : " + message, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -88,12 +107,12 @@ public class SignupActivity extends AppCompatActivity {
         // Gestion Inscription
         btnSinscrire.setOnClickListener(v -> {
             viewModel.signup(
-                    editTextEmail.getText().toString().trim(),
-                    editTextPasswordHash.getText().toString().trim(),
-                    editTextFirstName.getText().toString().trim(),
-                    editTextLastName.getText().toString().trim(),
-                    editTextLocation.getText().toString().trim(),
-                    selectedRole,
+                    editTextEmail.getText().toString().trim(),        // 1. Email
+                    editTextPasswordHash.getText().toString().trim(), // 2. Password (Mot de passe)
+                    editTextFirstName.getText().toString().trim(),    // 3. FirstName (Prénom)
+                    editTextLastName.getText().toString().trim(),     // 4. LastName (Nom)
+                    editTextLocation.getText().toString().trim(),     // 5. Location
+                    selectedRole,                                     // 6. Role
                     imageUriString
             );
         });
@@ -128,13 +147,13 @@ public class SignupActivity extends AppCompatActivity {
             btnRoleTraveler.setBackgroundResource(R.drawable.bg_role_active);
             btnRoleTraveler.setTextColor(Color.WHITE);
             btnRoleLocal.setBackgroundResource(0);
-            btnRoleLocal.setTextColor(Color.parseColor("#8D6E63"));
+            btnRoleLocal.setTextColor(ContextCompat.getColor(this, R.color.pink_300));
 
         } else {
             btnRoleTraveler.setBackgroundResource(0);
-            btnRoleTraveler.setTextColor(Color.parseColor("#8D6E63"));
+            btnRoleTraveler.setTextColor(ContextCompat.getColor(this, R.color.pink_300));
             btnRoleLocal.setBackgroundResource(R.drawable.bg_role_active);
-            btnRoleLocal.setTextColor(Color.WHITE);
+            btnRoleLocal.setTextColor(ContextCompat.getColor(this, R.color.white_pure));
         }
     }
 
