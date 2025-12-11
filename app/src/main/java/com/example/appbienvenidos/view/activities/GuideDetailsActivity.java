@@ -19,6 +19,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.appbienvenidos.model.Guide;
 import com.example.appbienvenidos.view.adapter.SpotAdapter;
@@ -40,6 +42,9 @@ public class GuideDetailsActivity extends AppCompatActivity {
             GuideLanguages;
     RecyclerView recyclerSpotsGuide;
     MaterialButton btnCallGuide;
+
+    private SpotViewModel spotviewmodel ;
+    private SpotAdapter spotadapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

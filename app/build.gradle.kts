@@ -58,6 +58,8 @@ dependencies {
     //glide pour afficher les img depuis une URL depuis firebase
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
     //sdp
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     //circle image view
