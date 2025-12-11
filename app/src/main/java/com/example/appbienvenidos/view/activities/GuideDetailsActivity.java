@@ -1,6 +1,7 @@
 package com.example.appbienvenidos.view.activities;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
@@ -24,6 +26,7 @@ public class GuideDetailsActivity extends AppCompatActivity {
     TextView GuideName, GuideCity, GuideHourlyRate, GuideSpecialities, GuideLanguages;
     RecyclerView recyclerSpotsGuide;
     MaterialButton btnCallGuide;
+    LinearLayout layoutNoData;
 
     private SpotViewModel spotViewModel;
     private SpotAdapter spotAdapter;
@@ -66,6 +69,7 @@ public class GuideDetailsActivity extends AppCompatActivity {
         recyclerSpotsGuide = findViewById(R.id.recyclerSpotsGuide);
 
         btnCallGuide = findViewById(R.id.btnCallGuide);
+        layoutNoData = findViewById(R.id.layoutNoData);
     }
 
     private void setupGuideInfo(Guide guide) {
@@ -110,8 +114,16 @@ public class GuideDetailsActivity extends AppCompatActivity {
         spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
 
         spotViewModel.getSpots().observe(this, spots -> {
-            if (spots != null) {
+            if (spots != null && !spots.isEmpty()) {
+                // CAS A : IL Y A DES SPOTS
+                recyclerSpotsGuide.setVisibility(View.VISIBLE);
+                layoutNoData.setVisibility(View.GONE);
+
                 spotAdapter.setSpot(spots);
+            } else {
+                // CAS B : C'EST VIDE (ou null)
+                recyclerSpotsGuide.setVisibility(View.GONE);
+                layoutNoData.setVisibility(View.VISIBLE);
             }
         });
 

@@ -7,7 +7,6 @@
     android:background="@color/background_app"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingTop="50dp"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,6 +40,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/background_app"
                 android:padding="20dp">
 
                 <!-- Photo -->
@@ -219,6 +219,34 @@
             app:layout_constraintTop_toBottomOf="@id/titleSpots"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSpotsGuide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:src="@drawable/nodata"
+                app:tint="@null"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aucun spot publié pour le moment"
+                android:textColor="#BDBDBD"
+                android:textSize="14sp"
+               />
+
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
