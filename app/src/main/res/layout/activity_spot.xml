@@ -81,7 +81,18 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <!-- Attention: j'ai changé layout_constraintTop pour 'parent' ici car il est dans le scrollview -->
+
+            <TextView
+                android:id="@+id/SpotAdress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="serif"
+                android:text="Adresse"
+                android:textColor="@color/text_secondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/NomDuSpot" />
 
             <RatingBar
                 android:id="@+id/ratingbar"
@@ -98,7 +109,7 @@
                 android:scaleY="1.5"
                 android:stepSize="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/NomDuSpot" />
+                app:layout_constraintTop_toBottomOf="@id/SpotAdress" />
 
 
             <TextView

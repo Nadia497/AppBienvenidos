@@ -35,7 +35,7 @@ public class SpotDetailActivity extends AppCompatActivity {
     MaterialButton AskUser, Share;
     ShapeableImageView FirstImage, SecondImage, ThirdImage;
     TextView NomDuSpot, UserPublicationDate, textviewaction,
-            textviewDescription, Description,
+            textviewDescription, Description, SpotAdress,
             infoAdresse;
     RatingBar ratingbar;
     MapView map;
@@ -106,6 +106,7 @@ public class SpotDetailActivity extends AppCompatActivity {
 
         map = findViewById(R.id.map);
         NomDuSpot = findViewById(R.id.NomDuSpot);
+        SpotAdress = findViewById(R.id.SpotAdress);
         UserPublicationDate = findViewById(R.id.UserPublicationDate);
     }
 
@@ -114,6 +115,7 @@ public class SpotDetailActivity extends AppCompatActivity {
         NomDuSpot.setText(currentSpot.getTitle());
         Description.setText(currentSpot.getDescription());
         UserPublicationDate.setText(currentSpot.getPublication_Date());
+        SpotAdress.setText(currentSpot.getAdress());
 
         if (infoAdresse != null) {
             infoAdresse.setText(currentSpot.getAdress());
