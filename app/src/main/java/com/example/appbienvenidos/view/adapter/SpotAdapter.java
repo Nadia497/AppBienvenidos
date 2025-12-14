@@ -52,7 +52,7 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.SpotViewHolder
 
         // Affichage des textes
         holder.SpotName.setText(currentSpot.getTitle());
-        holder.SpotCity.setText(currentSpot.getAdress());
+        holder.PublicationDate.setText(currentSpot.getPublication_Date());
         holder.SpotDescription.setText(currentSpot.getDescription());
         holder.SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
 
@@ -77,14 +77,14 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.SpotViewHolder
     }
 
     static class SpotViewHolder extends RecyclerView.ViewHolder {
-        TextView SpotName , SpotCity,SpotRating,SpotDescription;
+        TextView SpotName , PublicationDate,SpotRating,SpotDescription;
         ImageView SpotImage;
 
         public SpotViewHolder(@NonNull View itemView) {
             super(itemView);
 
             SpotName = itemView.findViewById(R.id.SpotName);
-            SpotCity = itemView.findViewById(R.id.SpotCity);
+            PublicationDate = itemView.findViewById(R.id.PublicationDate);
             SpotRating = itemView.findViewById(R.id.SpotRating);
             SpotDescription = itemView.findViewById(R.id.SpotDescription);
             SpotImage = itemView.findViewById(R.id.SpotImage);

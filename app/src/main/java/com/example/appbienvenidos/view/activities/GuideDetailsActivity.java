@@ -103,7 +103,7 @@ public class GuideDetailsActivity extends AppCompatActivity {
     private void setupSpotsList(Guide guide) {
 
         // 1. Configurer le RecyclerView
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerSpotsGuide.setLayoutManager(layoutManager);
 
         // 2. Initialiser l'Adapter
