@@ -13,9 +13,9 @@ public class GuideViewModel extends ViewModel {
 
     // Lien vers repo
     private final GuideRepository repository;
-
     // Le conteneur des guides
     private final MutableLiveData<List<Guide>> guides = new MutableLiveData<>();
+    private MutableLiveData<Guide> guideLiveData = new MutableLiveData<>();
 
     // Le conteneur de l'état de chargement (loading)
     private final MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
@@ -28,11 +28,24 @@ public class GuideViewModel extends ViewModel {
     public LiveData<List<Guide>> getGuides() {
         return guides;
     }
-
+    public LiveData<Guide> getGuide(){return guideLiveData; }
     public LiveData<Boolean> getIsLoading() {
         return isLoading;
     }
 
+    public void loadGuideProfile(String userId){
+        repository.getGuide(userId, new GuideRepository.OneGuideCallback() {
+            @Override
+            public void onSuccess(Guide guide) {
+                guideLiveData.setValue(guide);
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
+    }
     public void loadGuides(String city) {
         // 1. On signale que le chargement commence
         isLoading.setValue(true);

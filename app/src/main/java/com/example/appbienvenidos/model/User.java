@@ -1,6 +1,9 @@
 package com.example.appbienvenidos.model;
 
 import com.google.firebase.firestore.PropertyName;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
 
 public class User {
     private String lastName;
@@ -10,13 +13,14 @@ public class User {
     private String location;
     private String photoUrl;
     private String role;
-    private String Registration_Date;
+    @ServerTimestamp // <--- IMPORTANT : Gère la conversion Timestamp Firestore
+    private Date Registration_Date;
 
     //Constructeur utilisé par le Room pour créer nos objets
 
     public User(String lastName, String firstName, String email,
                 String PasswordHash, String location, String photoUrl,
-                String role, String Registration_Date) {
+                String role, Date Registration_Date) {
 
         this.lastName = lastName;
         this.firstName = firstName;
@@ -114,11 +118,9 @@ public class User {
         this.role = role;
     }
 
-    public String getRegistration_Date() {
-        return Registration_Date;
-    }
+    @PropertyName("Registration_Date")
+    public Date getRegistrationDate() { return Registration_Date; }
 
-    public void setRegistration_Date(String registration_Date) {
-        Registration_Date = registration_Date;
-    }
+    @PropertyName("Registration_Date")
+    public void setRegistrationDate(Date registrationDate) { this.Registration_Date = registrationDate; }
 }

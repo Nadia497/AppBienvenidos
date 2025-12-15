@@ -8,8 +8,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.cloudinary.android.MediaManager; // Cloudinary
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
+import java.util.HashMap;
 
 import java.util.Map;
+import java.util.Objects;
+
 public class ProfileRepository {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -28,6 +31,11 @@ public class ProfileRepository {
         void onError(String msg);   //échec de l'envoi
     }
 
+    public interface ActionCallBack {
+        void onSuccess();
+        void onError(String msg);
+    }
+
     // --- FONCTION 1 : RÉCUPÉRER L'UTILISATEUR ---
     // Elle prend l'ID de l'user et le "callback" (le téléphone pour rappeler)
     public void getUserProfile(String UserId, UserCallback callback){
@@ -39,6 +47,8 @@ public class ProfileRepository {
                     // documentSnapshot = le dossier papier virtuel reçu de Firebase
                     if(documentSnapshot.exists()) {
                         Log.d("DEBUG_PROFILE", "Document trouvé : "+ documentSnapshot.getData());
+                        Log.d("DEBUG_IMAGE", "Document trouvé : "+ documentSnapshot.getData());
+
                         // 3. Magie ! On transforme le JSON de Firebase directement en objet Java 'User'
                         try{
                             User user = documentSnapshot.toObject(User.class);
@@ -85,6 +95,7 @@ public class ProfileRepository {
 
                         String imageUrl = (String) resultData.get("secure_url");
                         Log.d("DEBUG_PROFILE", "Upload réussi, URL : " + imageUrl);
+                        Log.d("DEBUG_IMAGE", "Upload réussi, URL : " + imageUrl);
                         updateFireStoreImage(UserId, imageUrl, callback);
                     }
 
@@ -110,12 +121,29 @@ public class ProfileRepository {
         db.collection("users").document(UserId)
 
                 // 2. On change SEULEMENT le champ "PhotoUrl" avec le nouveau lien
-                .update("PhotoUrl", imageUrl)
+                .update("photoUrl", imageUrl)
 
                 // 3. Si ça marche, on prévient enfin le ViewModel : "Tout est fini !"
                 .addOnSuccessListener(aVoid -> callback.onSuccess(imageUrl))
 
                 // 4. Si ça rate
                 .addOnFailureListener(e -> callback.onError("Erreur MAJ DB: "+ e.getMessage()));
+    }
+
+    public void updateUser(String UserId, String lastName, String firstName, String location, String role, ActionCallBack callBack){
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("lastName", lastName);
+        updates.put("firstName", firstName);
+        updates.put("location", location);
+        updates.put("role", role);
+
+        db.collection("users").document(UserId)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    callBack.onSuccess();
+                })
+                .addOnFailureListener(e ->{
+                    callBack.onError(e.getMessage());
+                });
     }
 }
