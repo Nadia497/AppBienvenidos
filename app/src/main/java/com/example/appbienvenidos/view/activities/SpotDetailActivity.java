@@ -3,55 +3,51 @@ package com.example.appbienvenidos.view.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager; // Important pour la map
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.model.Spot;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
-// Imports pour la carte (OSMDroid)
+
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
-import com.bumptech.glide.Glide;
 
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class SpotDetailActivity extends AppCompatActivity {
-    // Déclaration des variables
-    LinearLayout LayoutImage, actions_ask_or_share, layoutInfosMap;
-    MaterialButton AskUser, Share;
 
+    // --- 1. Variables UI ---
+    LinearLayout LayoutImage;
+    MaterialButton AskUser, Share;
     ShapeableImageView FirstImage, SecondImage, ThirdImage;
     TextView NomDuSpot, UserPublicationDate, textviewaction,
-            textviewDescription, Description,
-            Localisation, infoAdresse, infoHeures, infoContact;
-
+            textviewDescription, Description, SpotAdress,
+            infoAdresse;
     RatingBar ratingbar;
+    MapView map;
 
-    //MapView map;
 
-    // Déclaration des variables
-    private MapView map;
-    private MaterialButton btnShare, btnAskUser;
-    private TextView txtNomSpot, txtDescription;
+    private Spot currentSpot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        // 1. Configuration d'OSMDroid (
-        // Cela permet à la carte de charger les tuiles (images de la carte)
+        // Configuration OSMDroid (Carte)
         Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         Configuration.getInstance().setUserAgentValue(getPackageName());
@@ -59,33 +55,40 @@ public class SpotDetailActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_spot);
 
-        // Gestion des marges pour les barres système
+        // Marges système
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.Spot), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-
         });
 
-        // 2. Initialisation des Vues (Liaison avec le XML)
+        // A. Initialisation des liens XML
         initViews();
 
-        // 3. Récupération des données envoyées depuis l'activité précédente
-        getAndSetData();
 
-        // 4. Configuration de la carte (Zoom, point de départ)
-        setupMap();
+        currentSpot = (Spot) getIntent().getSerializableExtra("SPOT_KEY");
 
-        // 5. Gestion des clics sur les boutons
-        setupButtons();
+        if (currentSpot != null) {
+            // C. Remplissage des textes
+            fillData();
 
-        //6. Gestion des photos du Spot
-        setupimages();
+            // D. Affichage des images
+            setupImages();
+
+            // E. Configuration de la carte
+            setupMap();
+
+            // F. Configuration des boutons
+            setupButtons();
+
+        } else {
+            Toast.makeText(this, "Erreur : Spot introuvable", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
+
     private void initViews() {
         LayoutImage = findViewById(R.id.LayoutImage);
-        textviewaction = findViewById(R.id.textviewaction);
-        //layoutInfosMap = findViewById(R.id.layoutInfosMap);
 
         AskUser = findViewById(R.id.AskUser);
         Share = findViewById(R.id.Share);
@@ -94,101 +97,71 @@ public class SpotDetailActivity extends AppCompatActivity {
         SecondImage = findViewById(R.id.SecondImage);
         ThirdImage = findViewById(R.id.ThirdImage);
 
-
-        Localisation = findViewById(R.id.Localisation);
         Description = findViewById(R.id.Description);
-
         ratingbar = findViewById(R.id.ratingbar);
+
 
         textviewaction = findViewById(R.id.textviewaction);
         textviewDescription = findViewById(R.id.textviewDescription);
 
         map = findViewById(R.id.map);
         NomDuSpot = findViewById(R.id.NomDuSpot);
+        SpotAdress = findViewById(R.id.SpotAdress);
         UserPublicationDate = findViewById(R.id.UserPublicationDate);
     }
 
-    private void getAndSetData() {
-        // On récupère l'intent
-        Intent intent = getIntent();
+    private void fillData() {
 
-        if (intent != null) {
-            // Textes
-            String nom = intent.getStringExtra("NomDuSpot_key");
-            String descLong = intent.getStringExtra("Descriptionwithdetails_key");
-            String datePub = intent.getStringExtra("UserPublicationDate_key");
-            String adresse = intent.getStringExtra("Adresse_key");
-            String heures = intent.getStringExtra("Heures_key");
-            String prix = intent.getStringExtra("Prix_key");
+        NomDuSpot.setText(currentSpot.getTitle());
+        Description.setText(currentSpot.getDescription());
+        UserPublicationDate.setText(currentSpot.getPublication_Date());
+        SpotAdress.setText(currentSpot.getAdress());
 
-            // Note (Rating)
-            float note = intent.getFloatExtra("Rating_key", 0f);
-
-            // Assignation aux
-            if (nom != null) NomDuSpot.setText(nom);
-            if (descLong != null) Description.setText(descLong);
-            if (datePub != null) UserPublicationDate.setText(datePub);
-
-            // Infos du spot
-            if (adresse != null) infoAdresse.setText("Adresse : " + adresse);
-            if (heures != null) infoHeures.setText("Horaires : " + heures);
-            if (prix != null) infoContact.setText("Prix : " + prix);
-
-            // Mise à jour de la barre d'étoiles
-            ratingbar.setRating(note);
+        if (infoAdresse != null) {
+            infoAdresse.setText(currentSpot.getAdress());
         }
+
+        ratingbar.setRating((float) currentSpot.getAverage_Rating());
     }
 
+    private void setupImages() {
 
-    private void setupimages() {
+        List<String> listePhotos = currentSpot.getImage_URL();
 
-        ArrayList<String> listePhotos = getIntent().getStringArrayListExtra("Photos_key");
+        FirstImage.setVisibility(View.GONE);
+        SecondImage.setVisibility(View.GONE);
+        ThirdImage.setVisibility(View.GONE);
 
-        if (listePhotos == null) {
-            listePhotos = new ArrayList<>();
+        if (listePhotos == null || listePhotos.isEmpty()) {
+            return;
         }
 
         int nombrePhoto = listePhotos.size();
+
         if (nombrePhoto >= 1) {
             FirstImage.setVisibility(View.VISIBLE);
-
-            // Glide charge l'URL dans l'image
-            Glide.with(this)
-                    .load(listePhotos.get(0))
-                    .centerCrop()
-                    .into(FirstImage);
-
+            Glide.with(this).load(listePhotos.get(0)).centerCrop().into(FirstImage);
         }
 
         if (nombrePhoto >= 2) {
             SecondImage.setVisibility(View.VISIBLE);
-
-            // Glide charge l'URL dans l'image
-            Glide.with(this)
-                    .load(listePhotos.get(1))
-                    .centerCrop()
-                    .into(SecondImage);
-
+            Glide.with(this).load(listePhotos.get(1)).centerCrop().into(SecondImage);
         }
 
+        // Photo 3
         if (nombrePhoto >= 3) {
             ThirdImage.setVisibility(View.VISIBLE);
-
-            // Glide charge l'URL dans l'image
-            Glide.with(this)
-                    .load(listePhotos.get(2))
-                    .centerCrop()
-                    .into(ThirdImage);
+            Glide.with(this).load(listePhotos.get(2)).centerCrop().into(ThirdImage);
         }
     }
 
-
-
     private void setupMap() {
+        if (map == null) return;
+
         map.setMultiTouchControls(true);
 
-        double lat = getIntent().getDoubleExtra("Lat_key", 48.8583);
-        double lon = getIntent().getDoubleExtra("Lon_key", 2.2944);
+        double lat = 31.6295; // Marrakech par défaut
+        double lon = -7.9811;
 
         GeoPoint startPoint = new GeoPoint(lat, lon);
         map.getController().setZoom(15.0);
@@ -197,16 +170,13 @@ public class SpotDetailActivity extends AppCompatActivity {
 
     private void setupButtons() {
         AskUser.setOnClickListener(v -> {
-
-            Toast.makeText(SpotDetailActivity.this, "Ouvrir le chat...", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(SpotDetailActivity.this, "Ouvrir le chat avec le créateur...", Toast.LENGTH_SHORT).show();
         });
 
         Share.setOnClickListener(v -> {
             try {
-                // --- TEST : On met un texte FIXE. N'utilise pas NomDuSpot ici ---
-                String message = "Ceci est un test de partage";
-                // ---------------------------------------------------------------
+                String nom = currentSpot.getTitle();
+                String message = "Regarde ce spot incroyable sur Bienvenidos : " + nom;
 
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
@@ -217,22 +187,20 @@ public class SpotDetailActivity extends AppCompatActivity {
                 startActivity(shareIntent);
 
             } catch (Exception e) {
-                Toast.makeText(SpotDetailActivity.this, "Erreur: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(SpotDetailActivity.this, "Erreur de partage", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    // Gérer le cycle de vie de la Map pour économiser la batterie
     @Override
     public void onResume() {
         super.onResume();
-        map.onResume();
+        if (map != null) map.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        map.onPause();
-
+        if (map != null) map.onPause();
     }
 }

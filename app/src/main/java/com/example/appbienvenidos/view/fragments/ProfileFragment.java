@@ -19,13 +19,17 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.User;
 import com.example.appbienvenidos.view.activities.AddSpot;
 import com.example.appbienvenidos.view.activities.ParametreActivity;
+import com.example.appbienvenidos.view.adapter.SpotAdapter;
 import com.example.appbienvenidos.viewmodel.ProfileViewModel;
+import com.example.appbienvenidos.viewmodel.SpotViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static android.app.Activity.RESULT_OK;
@@ -36,10 +40,16 @@ public class ProfileFragment extends Fragment {
     private ImageView profileImage;
     private TextView profileName, role, location, spotNbr, itinNbr, starsValue;
     private Button modifierSpot;
+
+    private RecyclerView recyclerSpotsLocal;
+    private SpotAdapter spotAdapter;
+
     private ImageButton parametre;
     private  com.google.android.material.button.MaterialButton btnCreatSpot;
     private User user;
     private ProfileViewModel viewModel;
+    private SpotViewModel spotViewModel;
+
     private String currentUserId;
     private FirebaseAuth mAuth;
 
@@ -80,9 +90,28 @@ public class ProfileFragment extends Fragment {
         modifierSpot = view.findViewById(R.id.modifier_spot);
         btnCreatSpot = view.findViewById(R.id.btnCreateSpot);
         parametre = view.findViewById(R.id.parametre);
+        recyclerSpotsLocal = view.findViewById(R.id.recyclerSpotsLocal);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerSpotsLocal.setLayoutManager(layoutManager);
+
+        spotAdapter = new SpotAdapter();
+        recyclerSpotsLocal.setAdapter(spotAdapter);
+
 
         //initialisation du viewmodel
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+
+        spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
+        spotViewModel.getSpots().observe(getViewLifecycleOwner(), spots -> {
+            if (spots != null && !spots.isEmpty()) {
+                recyclerSpotsLocal.setVisibility(View.VISIBLE);
+                spotAdapter.setSpot(spots);
+            } else {
+                recyclerSpotsLocal.setVisibility(View.GONE);
+            }
+        });
+        spotViewModel.loadSpotByPublisher(currentUserId);
 
         //observer les données
         viewModel.getUser().observe(getViewLifecycleOwner(), user -> {
