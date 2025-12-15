@@ -10,16 +10,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.Spot;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
+import com.example.appbienvenidos.viewmodel.SpotViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.SpotViewHolder>{
+public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static final int TYPE_PROFILE_GUIDE=0;
     public static final int TYPE_HOME_CARD=1;
@@ -27,8 +29,6 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.SpotViewHolder
     private Context context ;
     private int displayMode =TYPE_PROFILE_GUIDE;
 
-    private Handler sliderHandler = new Handler(Looper.getMainLooper());
-    private Runnable sliderRunnable;
     public SpotAdapter(){
         this.displayMode = TYPE_PROFILE_GUIDE;
     }
@@ -50,12 +50,17 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.SpotViewHolder
     // Création de la vue
     @NonNull
     @Override
-    public SpotViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         this.context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View view = inflater.inflate(R.layout.item_spot_profile_guide ,parent ,false);
-        return new SpotViewHolder(view);
+        if(viewType == TYPE_HOME_CARD) {
+            View view =  inflater.inflate(R.layout.item_spot_card,parent,false);
+            return new HomeViewHolder(view);
+        }else {
+            View view = inflater.inflate(R.layout.item_spot_profile_guide, parent, false);
+            return new SpotViewHolder(view);
+        }
     }
 
     // Nombre d'éléments
@@ -66,52 +71,14 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.SpotViewHolder
 
     // Remplissage des données (Binding)
     @Override
-    public void onBindViewHolder(@NonNull SpotAdapter.SpotViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Spot currentSpot = spots.get(position);
 
-        // Affichage des textes
-        holder.SpotName.setText(currentSpot.getTitle());
-        holder.SpotCity.setText(currentSpot.getAdress());
-        holder.SpotDescription.setText(currentSpot.getDescription());
-        holder.SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
-
-        if(getItemViewType(position) == TYPE_HOME_CARD){
-            if (currentSpot.getImage_URL()!= null && !currentSpot.getImage_URL().isEmpty){
-                Glide.with(context)
-                        .Load(currentSpot.getImage_URL().get(0))
-                        .centerCrop()
-                        .placeholder(R.mipmap.ic_launcher)
-                        .into(holder.SpotImage);
-            }
-            holder.itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, SpotDetail)
-            });
+        if(holder instanceof HomeViewHolder){
+            ((HomeViewHolder) holder).bind(currentSpot, context);
+        }else if(holder instanceof SpotViewHolder){
+            ((SpotViewHolder) holder).bind(currentSpot, context);
         }
-        // Affichage de l'image
-        if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
-            CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL());
-            holder.viewPagerCard.setAdapter(imgAdapter);
-
-            holder.startAutoScroll(currentSpot.getImage_URL().size());
-
-        }else{
-            holder.stopAutoScroll();
-        }
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent =  new Intent(context, SpotDetailActivity.class);
-            intent.putExtra("SPOT_KEY", currentSpot);
-            context.startActivity(intent);
-        });
-
-        // Quand on clique sur la carte, on ouvre le détail
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, SpotDetailActivity.class);
-
-            // On envoie l'objet Spot entier
-            intent.putExtra("SPOT_KEY", currentSpot);
-
-            context.startActivity(intent);
-        });
     }
 
     static class SpotViewHolder extends RecyclerView.ViewHolder {
@@ -127,25 +94,107 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.SpotViewHolder
             SpotDescription = itemView.findViewById(R.id.SpotDescription);
             SpotImage = itemView.findViewById(R.id.SpotImage);
         }
+        public void bind(Spot currentSpot, Context context){
+            SpotName.setText(currentSpot.getTitle());
+            SpotCity.setText(currentSpot.getAdress());
+            SpotDescription.setText(currentSpot.getDescription());
+            SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
 
-
-    }
-    public void startAutoScroll(int totalImages){
-        spotAutoScroll();
-        if (totalImages <= 1) return;
-        sliderRunnable = new Runnable(){
-            @Override
-            public void run(){
-                int current = viewPagerCard.getCurrentItem();
-                int next = (current == totalImages-1)? 0: current+1;
-                viewPagerCard.setCurrentItem(next, true);
-                sliderHandler.postDelayed(this, 3000);
+            if (currentSpot.getImage_URL()!= null && !currentSpot.getImage_URL().isEmpty()){
+                Glide.with(context)
+                        .load(currentSpot.getImage_URL().get(0))
+                        .centerCrop()
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(SpotImage);
             }
-        };
-        sliderHandler.postDelayed(sliderRunnable, 3000);
+            // Quand on clique sur la carte, on ouvre le détail
+
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, SpotDetailActivity.class);
+
+                // On envoie l'objet Spot entier
+                intent.putExtra("SPOT_KEY", currentSpot);
+
+                context.startActivity(intent);
+            });
+        }
+
+
+        }
+    static class HomeViewHolder extends RecyclerView.ViewHolder {
+        TextView SpotName, SpotCity, SpotRating, SpotCategory;
+        ImageView SpotImage;
+        ViewPager2 viewPagerCard;
+        private Handler sliderHandler = new Handler(Looper.getMainLooper());
+        private Runnable sliderRunnable;
+
+        public HomeViewHolder(@Nullable View itemView) {
+            super(itemView);
+            SpotName = itemView.findViewById(R.id.cardSpotTitle);
+            SpotCity = itemView.findViewById(R.id.SpotCity);
+            SpotRating = itemView.findViewById(R.id.cardSpotRating);
+            SpotImage = itemView.findViewById(R.id.SpotImage);
+            SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
+            viewPagerCard = itemView.findViewById(R.id.cardViewPager);
+        }
+
+        public void bind(Spot currentSpot, Context context) {
+            SpotName.setText(currentSpot.getTitle());
+            SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
+            if (SpotName != null){
+                SpotName.setText(currentSpot.getTitle());
+            }
+            if (SpotRating != null){
+                SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
+            }
+
+            if (SpotCategory != null) {
+                String cat =  currentSpot.getCategoryNameDisplay();
+
+                    SpotCategory.setText(cat);
+
+                if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
+                    CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL());
+                    viewPagerCard.setAdapter(imgAdapter);
+
+                    startAutoScroll(currentSpot.getImage_URL().size());
+
+                } else {
+                    stopAutoScroll();
+                }
+                itemView.setOnClickListener(v -> {
+                    Intent intent = new Intent(context, SpotDetailActivity.class);
+                    intent.putExtra("SPOT_KEY", currentSpot);
+                    context.startActivity(intent);
+                });
+            }
+        }
+
+        public void startAutoScroll(int totalImages) {
+            stopAutoScroll();
+            if (totalImages <= 1) return;
+            sliderRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    int current = viewPagerCard.getCurrentItem();
+                    int next = (current == totalImages - 1) ? 0 : current + 1;
+                    viewPagerCard.setCurrentItem(next, true);
+                    sliderHandler.postDelayed(this, 3000);
+                }
+            };
+            sliderHandler.postDelayed(sliderRunnable, 3000);
+        }
+
+        public void stopAutoScroll() {
+            if (sliderRunnable != null)
+                sliderHandler.removeCallbacks(sliderRunnable);
+        }
+
+
     }
-    public void stopAutoScroll(){
-        if (sliderRunnable !=null)
-            sliderHandler.removeCallBacks(sliderRunnable);
+
     }
-}
+
+
+
+

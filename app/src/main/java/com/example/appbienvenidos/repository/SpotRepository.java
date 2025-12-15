@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.appbienvenidos.model.Guide;
 import com.example.appbienvenidos.model.Spot;
+import com.example.appbienvenidos.model.Category;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -57,6 +58,15 @@ public class SpotRepository {
                     Log.e("SpotRepo", "Erreur réseau : " + e.getMessage());
                     LiveData.setValue(null);
                 });
+    }
+    public void getAllCategories(MutableLiveData<List<Category>> liveData){
+        db.collection("Category")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots ->{
+                    List<Category> list = queryDocumentSnapshots.toObjects(Category.class);
+                    liveData.setValue(list);
+                })
+                .addOnFailureListener(e-> liveData.setValue(null));
     }
 
 }
