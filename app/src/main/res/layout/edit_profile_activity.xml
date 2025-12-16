@@ -333,7 +333,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/roleTravler"
+                android:id="@+id/roleTraveler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_role_active"
@@ -373,7 +373,7 @@
                 android:padding="10dp"
                 android:textSize="14sp"
                 android:inputType="textPostalAddress"
-                android:hint="Spécialité (ex : Cuisine, Tradition, Avanture, ...)"
+                android:hint="Spécialité (ex : Cuisine, Tradition, Aventure, ...)"
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"/>
 

@@ -60,7 +60,7 @@
             android:text="Place Jemaa el-Fna"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/black_pure"
+            android:textColor="@color/text_primary"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintStart_toEndOf="@+id/SpotImage"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="4.8"
                 android:textSize="12sp"
-                android:textColor="#757575"
+                android:textColor="@color/text_secondary"
                 android:textStyle="bold"/>
         </LinearLayout>
 
@@ -116,7 +116,7 @@
             android:layout_marginEnd="12dp"
             android:text="Une place animée avec des charmeurs de serpents et des stands de nourriture..."
             android:textSize="11sp"
-            android:textColor="#757575"
+            android:textColor="@color/text_secondary"
             android:maxLines="2"
             android:ellipsize="end"
             android:lineSpacingExtra="2dp"

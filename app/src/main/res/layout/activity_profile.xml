@@ -91,7 +91,7 @@
                         android:fontFamily="@font/poppins_black"
                         android:text=""
                         android:textColor="@color/text_primary"
-                        android:textSize="22sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <!-- Badge Local Expert -->
@@ -159,7 +159,7 @@
                             android:id="@+id/spot_nbr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="24"
+                            android:text=""
                             android:textColor="@color/text_primary"
                             android:textSize="22sp"
                             android:textStyle="bold" />
@@ -175,7 +175,7 @@
 
                 <!-- Carte Stat 2 -->
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/iten_stat"
+                    android:id="@+id/total_rating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -195,7 +195,7 @@
                             android:id="@+id/iten_nbr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5"
+                            android:text=""
                             android:textColor="@color/text_primary"
                             android:textSize="22sp"
                             android:textStyle="bold" />
@@ -203,7 +203,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Itinéraires Créés"
+                            android:text="Nombre de likes"
                             android:textSize="10sp"
                             android:textColor="@color/text_secondary" />
                     </LinearLayout>
@@ -230,7 +230,7 @@
                             android:id="@+id/nbr_stars"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4,8 ⭐"
+                            android:text=" ⭐"
                             android:textColor="@color/text_primary"
                             android:textSize="22sp"
                             android:textStyle="bold" />
@@ -238,9 +238,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Avis Moyens"
+                            android:text="Avis Moyens          "
                             android:textSize="10sp"
-                            android:textColor="@color/text_secondary" />
+                            android:textColor="@color/text_secondary"
+                            android:layout_marginBottom="@dimen/_3sdp"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
@@ -265,9 +266,37 @@
 
 
             <!-- ACTIONS RAPIDES (LES DEUX BOUTONS DU BAS) -->
+            <LinearLayout
+                android:id="@+id/layoutNoData"
+                android:layout_width="309dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerSpotsGuide">
+
+                <ImageView
+                    android:layout_width="212dp"
+                    android:layout_height="121dp"
+                    android:src="@drawable/nodata"
+                    app:tint="@null" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aucun spot publié pour le moment"
+                    android:textColor="#BDBDBD"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="12dp"
                 android:text="Actions Rapides"
                 android:textColor="@color/text_primary"

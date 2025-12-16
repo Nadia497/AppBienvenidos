@@ -1,6 +1,8 @@
 package com.example.appbienvenidos.model;
 
 import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.PropertyName;
+
 import java.io.Serializable;
 
 public class Guide implements Serializable{
@@ -40,6 +42,8 @@ public class Guide implements Serializable{
 
     // 3. Getters et Setters
 
+    public String getFullName() { return firstName + " " + lastName; }
+
     public String getUid() { return uid; }
     public void setUid(String uid) { this.uid = uid; }
 
@@ -49,26 +53,38 @@ public class Guide implements Serializable{
     public String getLastName() { return lastName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public String getFullName() { return firstName + " " + lastName; }
-
     public String getProfileImageUrl() { return profileImageUrl; }
     public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
 
+    // --- CORRECTION DES NOMS ---
+
+    @PropertyName("cityServed") // Match le Log
     public String getCityServed() { return cityServed; }
+    @PropertyName("cityServed")
     public void setCityServed(String cityServed) { this.cityServed = cityServed; }
 
-    public String getHourlyRate() { return hourlyRate; } // Corrigé
+    @PropertyName("hourlyRate") // Match le Log
+    public String getHourlyRate() { return hourlyRate; }
+    @PropertyName("hourlyRate")
     public void setHourlyRate(String hourlyRate) { this.hourlyRate = hourlyRate; }
 
-    public String getSpecialities() { return Specialities; } // Corrigé
-    public void setSpecialities(String Specialities) { this.Specialities = Specialities; }
+    @PropertyName("specialities") // Match le Log
+    public String getSpecialities() { return Specialities; }
+    @PropertyName("specialities")
+    public void setSpecialities(String specialities) { this.Specialities = specialities; }
 
-    public String getLangages() { return langages; } // Corrigé
-    public void setLanguages(String languages) { this.langages = languages; }
+    @PropertyName("langages") // Match le Log (qui semble écrit 'langages' et pas 'languages')
+    public String getLangages() { return langages; }
+    @PropertyName("langages")
+    public void setLangages(String langages) { this.langages = langages; }
 
+    @PropertyName("phoneNumber") // Match le Log
     public String getPhoneNumber() { return phoneNumber; }
+    @PropertyName("phoneNumber")
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public boolean isAvailable() { return isAvailable; } // Corrigé
-    public void setAvailable(boolean available) { isAvailable = available; }
+    @PropertyName("available")
+    public boolean isAvailable() { return isAvailable; }
+    @PropertyName("available")
+    public void setAvailable(boolean available) { this.isAvailable = available; }
 }

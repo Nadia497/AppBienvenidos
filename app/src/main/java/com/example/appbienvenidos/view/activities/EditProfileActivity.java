@@ -107,6 +107,25 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 Log.e("TEST_DEBUG", "1. Role brut reçu de la BDD: '" + userRole + "'");
 
+                // Dans EditProfileActivity.java, bloc "Guide"
+
+                Log.e("TEST_ULTIME", "Je lance la recherche manuelle pour l'ID: " + currrentUserId);
+
+                com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                        .collection("Guide") // <--- Vérifiez ce nom
+                        .document(currrentUserId)
+                        .get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                Log.e("TEST_ULTIME", "TROUVÉ ! Données brutes : " + documentSnapshot.getData());
+                            } else {
+                                Log.e("TEST_ULTIME", "PAS TROUVÉ. Le document avec l'ID " + currrentUserId + " n'existe pas dans la collection 'Guide'.");
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            Log.e("TEST_ULTIME", "ERREUR CRITIQUE : " + e.getMessage());
+                        });
+
                 if (userRole == null) userRole = "Local";
 
                 selectedRole = userRole;
@@ -125,14 +144,16 @@ public class EditProfileActivity extends AppCompatActivity {
 
                     guideViewModel.loadGuideProfile(currrentUserId);
 
-                    guideViewModel.getGuide().observe(this, guideResuperer -> {
-                        if(guideResuperer != null){
-                            guide = guideResuperer;
-                            specialite.setText(guideResuperer.getSpecialities());
-                            languages.setText(guideResuperer.getLangages());
-                            cityServed.setText(guideResuperer.getCityServed());
-                            hourlyRate.setText(guideResuperer.getHourlyRate());
-                            phoneNumber.setText(guideResuperer.getPhoneNumber());
+                    guideViewModel.getGuide().observe(this, guideRecuperer -> {
+                        if(guideRecuperer != null){
+                            guide = guideRecuperer;
+                            specialite.setText(guideRecuperer.getSpecialities());
+                            languages.setText(guideRecuperer.getLangages());
+                            cityServed.setText(guideRecuperer.getCityServed());
+                            hourlyRate.setText(guideRecuperer.getHourlyRate());
+                            phoneNumber.setText(guideRecuperer.getPhoneNumber());
+
+                            if(available != null) available.setChecked(guideRecuperer.isAvailable());
                         }
                     });
 
@@ -191,13 +212,28 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
         save.setOnClickListener(v -> {
+            //les champs commun entre tous les users
             String updateFirstName = firstname.getText().toString().trim();
             String updateLastName = lastname.getText().toString().trim();
             String updatedLocation = location.getText().toString().trim();
 
+            //les champs des guides
+            String updateSpec = specialite.getText().toString().trim();
+            String updateLang = languages.getText().toString().trim();
+            String updateCity = cityServed.getText().toString().trim();
+            String updateRate = hourlyRate.getText().toString().trim();
+            String updateTele = phoneNumber.getText().toString().trim();
+
             if(updatedLocation.isEmpty() || updateFirstName.isEmpty() || updateLastName.isEmpty()){
                 Toast.makeText(this, "Veuillez remplir tous les champs s'il vous plaiez!", Toast.LENGTH_SHORT).show();
                 return;
+            }
+
+            if("Guide".equalsIgnoreCase(selectedRole)){
+                if(updateSpec.isEmpty() || updateLang.isEmpty() || updateCity.isEmpty() || updateRate.isEmpty() || updateTele.isEmpty()){
+                    Toast.makeText(this, "Veuillez remplir les informations du guide", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
 
             //mise à jour les information dans la collection "users"
@@ -211,10 +247,23 @@ public class EditProfileActivity extends AppCompatActivity {
                     guide = new Guide();
                     guide.setUid(currrentUserId);
                 }
+                else {
+                    guide.setUid(currrentUserId);
+                }
                 //c'est trés important de modifier les infos du guide aussi pour correspondre aux informations modifiers du user
                 guide.setFirstName(updateFirstName);
                 guide.setLastName(updateLastName);
                 guide.setProfileImageUrl(urlPhoto);
+
+                guide.setSpecialities(updateSpec);
+                guide.setLangages(updateLang);
+                guide.setCityServed(updateCity);
+                guide.setPhoneNumber(updateTele);
+                guide.setHourlyRate(updateRate);
+
+                if(available != null){
+                    guide.setAvailable(available.isChecked());
+                }
 
                 guidereRepository.addGuide(guide, new GuideRepository.GuideCallback() {
                     @Override

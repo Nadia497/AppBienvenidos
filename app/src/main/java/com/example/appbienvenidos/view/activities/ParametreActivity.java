@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appbienvenidos.R;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ParametreActivity extends AppCompatActivity {
     private ImageButton btnback;
@@ -55,6 +56,24 @@ public class ParametreActivity extends AppCompatActivity {
         });
 
         btnback.setOnClickListener(v -> finish());
+
+        logout = findViewById(R.id.btnlogout);
+        logout.setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                    .setTitle("Déconnexion")
+                    .setMessage("Voulez-vous vraiment vous déconnecter ?")
+                    .setNegativeButton("Annuler", null)
+                    .setPositiveButton("Déconnecter", (dialog, which) -> {
+                        //la déconnexion de firabase aussi
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(this, LoginActivity.class);
+                        //pour empêcher l'utilisateur de revenir en arrière avec le btn retour
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    })
+                    .show();
+        });
 
     }
     private void reglage(View view, String title, int image, String value){

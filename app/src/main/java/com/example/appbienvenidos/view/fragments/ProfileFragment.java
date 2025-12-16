@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import android.net.Uri;
@@ -38,10 +39,11 @@ public class ProfileFragment extends Fragment {
     private static final int PICK_IMAGE = 100;
     //C'est un code secret (un numéro) que vous choisissez. Il sert à reconnaître cette demande précise quand la galerie se refermera
     private ImageView profileImage;
-    private TextView profileName, role, location, spotNbr, itinNbr, starsValue;
+    private TextView profileName, role, location, spotNbr, total_likes, starsValue;
     private Button modifierSpot;
 
     private RecyclerView recyclerSpotsLocal;
+    private LinearLayout nodata;
     private SpotAdapter spotAdapter;
 
     private ImageButton parametre;
@@ -85,12 +87,13 @@ public class ProfileFragment extends Fragment {
         role = view.findViewById(R.id.role);
         location = view.findViewById(R.id.location);
         spotNbr = view.findViewById(R.id.spot_nbr);
-        itinNbr = view.findViewById(R.id.iten_nbr);
+        total_likes = view.findViewById(R.id.total_rating);
         starsValue = view.findViewById(R.id.nbr_stars);
         modifierSpot = view.findViewById(R.id.modifier_spot);
         btnCreatSpot = view.findViewById(R.id.btnCreateSpot);
         parametre = view.findViewById(R.id.parametre);
         recyclerSpotsLocal = view.findViewById(R.id.recyclerSpotsLocal);
+        nodata = view.findViewById(R.id.layoutNoData);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerSpotsLocal.setLayoutManager(layoutManager);
@@ -106,9 +109,14 @@ public class ProfileFragment extends Fragment {
         spotViewModel.getSpots().observe(getViewLifecycleOwner(), spots -> {
             if (spots != null && !spots.isEmpty()) {
                 recyclerSpotsLocal.setVisibility(View.VISIBLE);
+                nodata.setVisibility(View.GONE);
                 spotAdapter.setSpot(spots);
+                int nbrSpot = spots.size();
+                spotNbr.setText(String.valueOf(nbrSpot));
             } else {
                 recyclerSpotsLocal.setVisibility(View.GONE);
+                nodata.setVisibility(View.VISIBLE);
+                spotNbr.setText("0");
             }
         });
         spotViewModel.loadSpotByPublisher(currentUserId);
