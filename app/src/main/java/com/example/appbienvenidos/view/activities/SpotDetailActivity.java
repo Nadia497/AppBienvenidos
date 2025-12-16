@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -27,6 +28,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -189,20 +191,42 @@ public class SpotDetailActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
     private void setupMap() {
         if (map == null) return;
 
-        map.setMultiTouchControls(true);
+        // On bloque les mouvements sur la petite carte pour éviter les conflits avec le scroll de la page
+        map.setMultiTouchControls(false);
 
-        double lat = 31.6295; // Marrakech par défaut
-        double lon = -7.9811;
+        double lat = currentSpot.getLatitude();
+        double lon = currentSpot.getLongitude();
 
-        GeoPoint startPoint = new GeoPoint(lat, lon);
-        map.getController().setZoom(15.0);
-        map.getController().setCenter(startPoint);
+
+        GeoPoint spotPoint = new GeoPoint(lat, lon);
+        map.getController().setZoom(16.0);
+        map.getController().setCenter(spotPoint);
+
+        Marker startMarker = new Marker(map);
+        startMarker.setPosition(spotPoint);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        startMarker.setTitle(currentSpot.getTitle());
+
+
+        startMarker.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_location_n));
+
+        map.getOverlays().clear();
+        map.getOverlays().add(startMarker);
+        map.invalidate();
+
+        View mapOverlay = findViewById(R.id.mapOverlay);
+
+        mapOverlay.setOnClickListener(v -> {
+            Intent intent = new Intent(SpotDetailActivity.this, FullMapActivity.class);
+            intent.putExtra("LAT", currentSpot.getLatitude());
+            intent.putExtra("LON", currentSpot.getLongitude());
+            intent.putExtra("TITLE", currentSpot.getTitle());
+            startActivity(intent);
+        });
     }
-
     private void setupButtons() {
         AskUser.setOnClickListener(v -> {
             Toast.makeText(SpotDetailActivity.this, "Ouvrir le chat avec le créateur...", Toast.LENGTH_SHORT).show();

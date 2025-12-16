@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/LayoutImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -236,16 +236,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Description" />
 
-            <org.osmdroid.views.MapView
-                android:id="@+id/map"
+            <!-- Conteneur pour empiler la carte et le bouton transparent -->
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Localisation" />
+                app:layout_constraintTop_toBottomOf="@id/Localisation"
+                app:layout_constraintStart_toStartOf="parent">
 
+                <org.osmdroid.views.MapView
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <View
+                    android:id="@+id/mapOverlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
