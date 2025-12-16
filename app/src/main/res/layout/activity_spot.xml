@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:id="@+id/LayoutImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +21,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/FirstImage"
-            android:layout_width="120dp"
-            android:layout_height="160dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:src="@drawable/image1"
             android:scaleType="centerCrop"
@@ -32,8 +33,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/SecondImage"
-            android:layout_width="120dp"
-            android:layout_height="160dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:src="@drawable/img2"
             android:scaleType="centerCrop"
@@ -42,8 +44,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ThirdImage"
-            android:layout_width="120dp"
-            android:layout_height="160dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:src="@drawable/im3"
             android:scaleType="centerCrop"

@@ -130,6 +130,7 @@ public class SpotDetailActivity extends AppCompatActivity {
     private void setupImages() {
         List<String> listePhotos = currentSpot.getImage_URL();
 
+        // 1. On cache tout le monde au début
         FirstImage.setVisibility(View.GONE);
         SecondImage.setVisibility(View.GONE);
         ThirdImage.setVisibility(View.GONE);
@@ -142,51 +143,48 @@ public class SpotDetailActivity extends AppCompatActivity {
 
         int nombre = listePhotos.size();
 
-        // --- CORRECTION DU DESIGN ---
-
-        // Si 1 seule photo : On force le LayoutImage à prendre toute la largeur
-        // et on donne un poids énorme à la première image.
-        if (nombre == 1) {
+        // 2. On affiche et configure seulement celles qui existent
+        if (nombre >= 1) {
             configureImage(FirstImage, listePhotos.get(0), 0, listePhotos);
-
-            // Force la largeur MAX
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) FirstImage.getLayoutParams();
-            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
-            params.weight = 0; // Pas besoin de poids si c'est le seul
-            FirstImage.setLayoutParams(params);
-
         }
-        // Si plusieurs photos : On partage l'espace
-        else {
-            if (nombre >= 1) configureImage(FirstImage, listePhotos.get(0), 0, listePhotos);
-            if (nombre >= 2) configureImage(SecondImage, listePhotos.get(1), 1, listePhotos);
-            if (nombre >= 3) configureImage(ThirdImage, listePhotos.get(2), 2, listePhotos);
+        if (nombre >= 2) {
+            configureImage(SecondImage, listePhotos.get(1), 1, listePhotos);
+        }
+        if (nombre >= 3) {
+            configureImage(ThirdImage, listePhotos.get(2), 2, listePhotos);
         }
     }
 
     private void configureImage(ShapeableImageView imageView, String url, int position, List<String> allPhotos) {
         imageView.setVisibility(View.VISIBLE);
 
-        // Si on est dans le cas "Plusieurs photos", on applique le poids
-        if (allPhotos.size() > 1) {
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageView.getLayoutParams();
-            params.width = 0;
-            params.weight = 1;
-            imageView.setLayoutParams(params);
-        }
+        // --- LA PARTIE IMPORTANTE POUR LA TAILLE ---
+        // On récupère les règles de mise en page de l'image
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageView.getLayoutParams();
 
+        // On dit : "Ta largeur est flexible (0dp)"
+        params.width = 0;
+
+        // On dit : "Tu pèses 1 unité".
+        // Si tu es seule, tu prends 100% de la place.
+        // Si vous êtes deux, vous prenez 50% chacune.
+        params.weight = 1;
+
+        // On applique les nouvelles règles
+        imageView.setLayoutParams(params);
+        // -------------------------------------------
+
+        // Chargement avec Glide
         Glide.with(this)
                 .load(url)
                 .centerCrop()
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(imageView);
 
-        // --- CLIC : OUVRIR LA GALERIE ---
+        // Clic pour agrandir
         imageView.setOnClickListener(v -> {
             Intent intent = new Intent(SpotDetailActivity.this, FullScreenActivity.class);
-            // On envoie la liste complète des photos
             intent.putStringArrayListExtra("IMAGES_LIST", new ArrayList<>(allPhotos));
-            // On envoie la position de la photo cliquée (0, 1 ou 2)
             intent.putExtra("SELECTED_POSITION", position);
             startActivity(intent);
         });
