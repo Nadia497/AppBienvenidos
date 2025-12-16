@@ -1,6 +1,8 @@
 package com.example.appbienvenidos.model;
 
 import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.Exclude;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,6 +16,8 @@ public class Spot implements Serializable {
     private String description;
     private String adress;
     private String category_id;
+    @Exclude
+    private String categoryNameDisplay;
     private List<String> image_URL;
     private double average_Rating;
     private double total_Rating;
@@ -56,6 +60,10 @@ public class Spot implements Serializable {
     public String getCategory_id() { return category_id; }
     public void setCategory_id(String category_id) { this.category_id = category_id; }
 
+    @Exclude
+    public String getCategoryNameDisplay(){return categoryNameDisplay;}
+    @Exclude
+    public void setCategoryNameDisplay(String name){this.categoryNameDisplay=name;}
     public List<String> getImage_URL() { return image_URL; }
     public void setImage_URL(List<String> image_URL) { this.image_URL = image_URL; }
 
