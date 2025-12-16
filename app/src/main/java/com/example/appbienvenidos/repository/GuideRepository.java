@@ -59,7 +59,7 @@ public class GuideRepository {
     public void getAllGuides(MutableLiveData<List<Guide>> liveData) {
 
         db.collection("Guide")
-                .whereEqualTo("isAvailable", true)
+                .whereEqualTo("available", true)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     List<Guide> guideList = new ArrayList<>();
@@ -84,7 +84,7 @@ public class GuideRepository {
         // 3. Construction de la Requête
         db.collection("Guide") // On cible la table "guides"
                 .whereEqualTo("cityServed", city) // Filtre SQL
-                .whereEqualTo("isAvailable", true) // Filtre SQL
+                .whereEqualTo("available", true) // Filtre SQL
 
                 // 4. Exécution Asynchrone
                 // .get() envoie la demande à internet

@@ -30,6 +30,7 @@
         <activity android:name=".view.fragments.onboardingActivity" />
         <activity android:name=".view.activities.ParametreActivity" />
         <activity android:name=".view.activities.EditProfileActivity" />
+        <activity android:name=".view.activities.FullScreenActivity" />
         <activity
             android:name=".view.activities.SpotDetailActivity"
             android:exported="true"/>

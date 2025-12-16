@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpotDetailActivity extends AppCompatActivity {
@@ -125,7 +128,6 @@ public class SpotDetailActivity extends AppCompatActivity {
     }
 
     private void setupImages() {
-
         List<String> listePhotos = currentSpot.getImage_URL();
 
         FirstImage.setVisibility(View.GONE);
@@ -133,26 +135,61 @@ public class SpotDetailActivity extends AppCompatActivity {
         ThirdImage.setVisibility(View.GONE);
 
         if (listePhotos == null || listePhotos.isEmpty()) {
+            LayoutImage.setVisibility(View.GONE);
             return;
         }
+        LayoutImage.setVisibility(View.VISIBLE);
 
-        int nombrePhoto = listePhotos.size();
+        int nombre = listePhotos.size();
 
-        if (nombrePhoto >= 1) {
-            FirstImage.setVisibility(View.VISIBLE);
-            Glide.with(this).load(listePhotos.get(0)).centerCrop().into(FirstImage);
+        // --- CORRECTION DU DESIGN ---
+
+        // Si 1 seule photo : On force le LayoutImage à prendre toute la largeur
+        // et on donne un poids énorme à la première image.
+        if (nombre == 1) {
+            configureImage(FirstImage, listePhotos.get(0), 0, listePhotos);
+
+            // Force la largeur MAX
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) FirstImage.getLayoutParams();
+            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+            params.weight = 0; // Pas besoin de poids si c'est le seul
+            FirstImage.setLayoutParams(params);
+
+        }
+        // Si plusieurs photos : On partage l'espace
+        else {
+            if (nombre >= 1) configureImage(FirstImage, listePhotos.get(0), 0, listePhotos);
+            if (nombre >= 2) configureImage(SecondImage, listePhotos.get(1), 1, listePhotos);
+            if (nombre >= 3) configureImage(ThirdImage, listePhotos.get(2), 2, listePhotos);
+        }
+    }
+
+    private void configureImage(ShapeableImageView imageView, String url, int position, List<String> allPhotos) {
+        imageView.setVisibility(View.VISIBLE);
+
+        // Si on est dans le cas "Plusieurs photos", on applique le poids
+        if (allPhotos.size() > 1) {
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageView.getLayoutParams();
+            params.width = 0;
+            params.weight = 1;
+            imageView.setLayoutParams(params);
         }
 
-        if (nombrePhoto >= 2) {
-            SecondImage.setVisibility(View.VISIBLE);
-            Glide.with(this).load(listePhotos.get(1)).centerCrop().into(SecondImage);
-        }
+        Glide.with(this)
+                .load(url)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(imageView);
 
-        // Photo 3
-        if (nombrePhoto >= 3) {
-            ThirdImage.setVisibility(View.VISIBLE);
-            Glide.with(this).load(listePhotos.get(2)).centerCrop().into(ThirdImage);
-        }
+        // --- CLIC : OUVRIR LA GALERIE ---
+        imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(SpotDetailActivity.this, FullScreenActivity.class);
+            // On envoie la liste complète des photos
+            intent.putStringArrayListExtra("IMAGES_LIST", new ArrayList<>(allPhotos));
+            // On envoie la position de la photo cliquée (0, 1 ou 2)
+            intent.putExtra("SELECTED_POSITION", position);
+            startActivity(intent);
+        });
     }
 
     private void setupMap() {

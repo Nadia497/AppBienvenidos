@@ -167,6 +167,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     intent.putExtra("SPOT_KEY", currentSpot);
                     context.startActivity(intent);
                 });
+
             }
         }
 
