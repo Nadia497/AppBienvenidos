@@ -27,6 +27,10 @@
 
     <color name="button_grey_bg">#333333</color>
 
+    <color name="enregistrer">#F3E5F5</color>
+
+    <color name="brand_green">#48A84C</color>
+
     <!-- Couleurs des icône : black le jour-->
     <color name="icon_tint">#FFFFFF</color>
 </resources>

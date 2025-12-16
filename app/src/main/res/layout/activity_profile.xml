@@ -255,88 +255,14 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Carte Item Spot -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/spot_partager"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerSpotsLocal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="@color/surface_card"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                android:orientation="horizontal"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/img_spot"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearanceOverlay="@style/RoundedImageStyle"
-                        app:srcCompat="@drawable/koutoubia" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="12dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/modifier_container"
-                        app:layout_constraintStart_toEndOf="@id/img_spot"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/spot_description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="2"
-                            android:text="Itinéraire : 1 journée à Marrakech comme un local"
-                            android:textColor="@color/text_primary"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/publ_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Publié le 12 janv. 2024"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <!-- Bouton Modifier (Droite) -->
-                    <LinearLayout
-                        android:id="@+id/modifier_container"
-                        android:layout_width="33dp"
-                        android:layout_height="32dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-
-                        <Button
-                            android:id="@+id/modifier_spot"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_35sdp"
-                            android:paddingHorizontal="8dp"
-                            android:text="⋮"
-                            android:textColor="@color/text_primary"
-                            android:textSize="18sp"
-                            app:cornerRadius="8dp" />
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
 
             <!-- ACTIONS RAPIDES (LES DEUX BOUTONS DU BAS) -->
             <TextView

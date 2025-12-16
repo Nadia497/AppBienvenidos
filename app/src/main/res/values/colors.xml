@@ -36,6 +36,9 @@
     <color name="textrole">#8B6B00</color>
     <color name="backgroundrole">#80CEB050</color>
 
+    <color name="enregistrer">#8A2BE2</color>
+
+    <color name="brand_green">#48A84C</color>
 
     <!-- Couleurs des icône : black le jour-->
     <color name="icon_tint">@color/black_pure</color>

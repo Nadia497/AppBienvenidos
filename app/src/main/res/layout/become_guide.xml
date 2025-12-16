@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_20sdp"
+    android:background="@color/background_app"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Devenir un Guide"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="@dimen/_14sdp"/>
+
+    <EditText
+        android:id="@+id/specialities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Vos spécialités (ex: Histoire, Cuisine)"
+        android:layout_marginBottom="@dimen/_8sdp"/>
+
+    <EditText
+        android:id="@+id/language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Langues parlées"
+        android:layout_marginBottom="@dimen/_8sdp"/>
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ville desservie"
+        android:layout_marginBottom="@dimen/_8sdp"/>
+
+    <EditText
+        android:id="@+id/Rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tarif horaire (MAD)"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/tele"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Votre numéros de Téléphone"
+        android:inputType="numberDecimal"/>
+
+</LinearLayout>

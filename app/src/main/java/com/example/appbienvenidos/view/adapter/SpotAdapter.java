@@ -82,14 +82,14 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
     static class SpotViewHolder extends RecyclerView.ViewHolder {
-        TextView SpotName , SpotCity,SpotRating,SpotDescription;
+        TextView SpotName , PublicationDate,SpotRating,SpotDescription;
         ImageView SpotImage;
 
         public SpotViewHolder(@NonNull View itemView) {
             super(itemView);
 
             SpotName = itemView.findViewById(R.id.SpotName);
-            SpotCity = itemView.findViewById(R.id.SpotCity);
+            PublicationDate = itemView.findViewById(R.id.PublicationDate);
             SpotRating = itemView.findViewById(R.id.SpotRating);
             SpotDescription = itemView.findViewById(R.id.SpotDescription);
             SpotImage = itemView.findViewById(R.id.SpotImage);

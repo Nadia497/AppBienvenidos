@@ -15,6 +15,46 @@ public class GuideRepository {
     // 1. Initialisation de la connexion
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    public interface GuideCallback{
+        void onSuccess();
+        void onError(String msg);
+    }
+    public interface OneGuideCallback{
+        void onSuccess(Guide guide );
+        void onError(String msg);
+    }
+
+    public void addGuide(Guide guide, GuideCallback callback){
+        db.collection("Guide").document(guide.getUid()).set(guide)
+                .addOnSuccessListener(aVoid -> callback.onSuccess())
+                .addOnFailureListener(e -> callback.onError(e.getMessage()));
+    }
+
+    public void getGuide(String userId, OneGuideCallback callback){
+        Log.d("DEBUG_GUIDE", "Tentative de récupération du guide pour ID: " + userId);
+        db.collection("Guide").document(userId).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if(documentSnapshot.exists()){
+                        Log.d("DEBUG_GUIDE", "Document trouvé : "+ documentSnapshot.getData());
+                        try{
+                            Guide guide = documentSnapshot.toObject(Guide.class);
+                            callback.onSuccess(guide);
+                        } catch (Exception e){
+                            Log.d("DEBUG_GUIDE", "Erreur de conversion mapping : "+ e.getMessage());
+                            callback.onError("Utilisateur non trouvé");
+
+                        }
+                    }
+                    else {
+                        Log.d("DEBUG_GUIDE", "guide n'est pas trouvé ");
+                        callback.onError("Aucun guide trouvé");
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.d("DEBUG_GUIDE", "erreur connexion firebase : "+e.getMessage());
+                    callback.onError(e.getMessage());
+                });
+    }
     // 2. Les Méthodes Publiques (L'API)
     public void getAllGuides(MutableLiveData<List<Guide>> liveData) {
 

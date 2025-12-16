@@ -2,6 +2,7 @@ package com.example.appbienvenidos.view.activities;
 
 import static android.app.ProgressDialog.show;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,10 @@ public class ParametreActivity extends AppCompatActivity {
         reglage(theme, "Thème", R.drawable.ic_theme, currentThemeTxt);
 
         theme.setOnClickListener(v -> showThemeDialog());
+        info_pers.setOnClickListener(v ->{
+            Intent intent = new Intent(this, EditProfileActivity.class);
+            startActivity(intent);
+        });
 
         btnback.setOnClickListener(v -> finish());
 

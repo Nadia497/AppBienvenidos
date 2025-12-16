@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app">
+
+    <!--Header-->
+    <LinearLayout
+        android:id="@+id/entete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main"
+        android:layout_margin="@dimen/_8sdp"
+        android:gravity="center_vertical" >
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:background="@drawable/bg_circle_white_n"
+            android:backgroundTint="@color/surface_card"
+            android:contentDescription="Retour"
+            android:elevation="2dp"
+            android:paddingStart="10dp"
+            android:src="@drawable/ic_media_previous_n"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/icon_tint" />
+
+        <TextView
+            android:layout_width="230dp"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="Modifier le profil"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/enregistrer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_card"
+            android:text="Enregistrer"
+            android:textColor="@color/enregistrer"
+            app:backgroundTint="@null"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+
+        app:layout_constraintTop_toBottomOf="@id/entete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/background_app">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_20sdp">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp">
+                <!-- NOUVEAU BLOC PHOTO CORRIGÉ -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <!-- 2. La CardView qui coupe la photo en rond (Masque) -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardPhotoContainer"
+                        android:layout_width="105dp"
+                        android:layout_height="105dp"
+                        app:cardCornerRadius="52.5dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/surface_card"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <!-- 1. Le cercle (pointillé ou bordure) en arrière-plan -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/circle_border" />
+                        <ImageView
+                            android:id="@+id/user_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/outline_person_24"
+                            android:padding="25dp"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- 3. Le bouton Caméra -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnChangePhoto"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/brand_yellow"
+                        app:cardElevation="6dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:id="@+id/btn_add_img"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_menu_camera"/>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ajouter une photo"
+                android:textSize="12sp"
+                android:textColor="#888888"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/cardProfile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>-->
+            <!-- CONTENEUR FORMULAIRE -->
+            <!-- NOM / PRENOM -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+
+                <!-- Champ NOM avec icône -->
+                <TextView
+                    android:id="@+id/labelLastName"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_14sdp"
+                    android:inputType="textPersonName"
+                    android:text="  Nom "
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+
+                <!-- Champ PRENOM avec icône -->
+                <TextView
+                    android:id="@+id/labelFirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_14sdp"
+                    android:inputType="textPersonName"
+                    android:text="     Prénom"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <!-- Champ NOM avec icône -->
+                <EditText
+                    android:id="@+id/editTextLastName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginEnd="5dp"
+                    android:paddingStart="16dp"
+                    android:textSize="14sp"
+                    android:inputType="textPersonName"
+                    android:hint="Nom"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"/>
+
+                <!-- Champ PRENOM avec icône -->
+                <EditText
+                    android:id="@+id/editTextFirstName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginEnd="5dp"
+                    android:paddingStart="16dp"
+                    android:textSize="14sp"
+                    android:inputType="textPersonName"
+                    android:hint="Prénom"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"/>
+            </LinearLayout>
+
+            <!-- LOCATION -->
+
+            <!-- Champ LOCATION avec icône MAP -->
+            <TextView
+                android:id="@+id/labelville"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="  Localisation "
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginBottom="2dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/editTextLocation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_singup"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:drawableStart="@drawable/ic_location_n"
+                android:drawablePadding="12dp"
+                android:textSize="14sp"
+                android:drawableTint="#BDBDBD"
+                android:inputType="textPostalAddress"
+                android:hint="Ville, Pays"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"/>
+
+            <!-- EMAIL -->
+
+            <!-- Champ EMAIL avec icône système -->
+            <TextView
+                android:id="@+id/labelemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="  E-mail "
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginBottom="2dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_singup"
+                android:paddingStart="16dp"
+                android:gravity="center_vertical"
+                android:drawableStart="@android:drawable/ic_dialog_email"
+                android:drawablePadding="12dp"
+                android:drawableTint="#BDBDBD"
+                android:inputType="textEmailAddress"
+                android:hint="exemple@email.com"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="  L'adresse email ne peut pas être modifiée."
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_8sdp" />
+
+
+
+            <!-- ROLE -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="  Rôle"
+                android:textStyle="bold"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/text_primary"/>
+
+            <LinearLayout
+                android:id="@+id/role"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_role_container"
+                android:padding="4dp"
+                android:layout_marginBottom="25dp"
+                android:visibility="visible">
+
+                <!-- BOUTON 1 : VOYAGEUR (Sélectionné) -->
+                <TextView
+                    android:id="@+id/roleLocal"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_role_active"
+                    android:gravity="center"
+                    android:text="Local"
+                    android:textColor="@color/white_pure"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <!-- BOUTON 2 : LOCAL (Non sélectionné) -->
+                <TextView
+                    android:id="@+id/roleGuide"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:background="@color/surface_card"
+                    android:gravity="center"
+                    android:text="Guide"
+                    android:textColor="@color/pink_300"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/roleTravler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_role_active"
+                android:gravity="center"
+                android:text="Voyageur"
+                android:textColor="@color/white_pure"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_6sdp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/info_guide">
+            <!-- Champ Spécialities -->
+            <TextView
+                android:id="@+id/labelspec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="  Spécialité "
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="2dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/editTextSpecilite"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_singup"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:inputType="textPostalAddress"
+                android:hint="Spécialité (ex : Cuisine, Tradition, Avanture, ...)"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"/>
+
+                <!-- Champ City Served -->
+                <TextView
+                    android:id="@+id/labelcityserved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="  Région servie "
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginBottom="2dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/editTextCityserved"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginBottom="12dp"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:inputType="textPostalAddress"
+                    android:hint="Villes ou région servie"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"/>
+
+                <!-- Champ Langues -->
+                <TextView
+                    android:id="@+id/labellanguages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="  Langues "
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginBottom="2dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/editTextLanguages"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginBottom="12dp"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:inputType="textPostalAddress"
+                    android:hint="ex : Français, Anglais, Arabe, ..."
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"/>
+
+                <!-- Champ hourlyRtae -->
+                <TextView
+                    android:id="@+id/labelRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="  Taux horaire "
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginBottom="2dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/editTextRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginBottom="12dp"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:inputType="numberDecimal"
+                    android:hint=" Le montant est en MAD"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"/>
+
+                <!-- Champ Phone Number -->
+                <TextView
+                    android:id="@+id/labeltele"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="  Numéro de téléphone "
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginBottom="2dp"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/editTextTele"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_singup"
+                    android:layout_marginBottom="12dp"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:inputType="textPostalAddress"
+                    android:hint="Entrer votre numéro de téléphone ."
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"/>
+
+                <!-- SECTION DISPONIBILITÉ -->
+                <TextView
+                    android:id="@+id/labelAvailability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  Statut"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginBottom="4dp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp"
+                    android:layout_marginBottom="@dimen/_12sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <!-- Icône de statut (Vert/Gris) -->
+                        <FrameLayout
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:background="@drawable/circle_background_n"
+                            android:backgroundTint="@color/surface_card">
+
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_check_circle_n"
+                                app:tint="@color/brand_green" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_10sdp">
+
+                            <TextView
+                                android:id="@+id/tvAvailabilityTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Disponible pour des visites"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvAvailabilitySubtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Visible dans les recherches"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="@dimen/_8sdp" />
+                        </LinearLayout>
+
+                        <!-- Le Switch de contrôle -->
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchAvailability"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="@color/brand_green"
+                            app:trackTint="@color/text_secondary"
+                            />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:drawableStart="@drawable/ic_gpp_maybe_n"
+                android:drawableTint="@color/enregistrer"
+                android:text=" Sécurité"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginBottom="4dp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface_card"
+                app:cardCornerRadius="@dimen/_16sdp"
+                app:cardElevation="@dimen/_1sdp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:id="@+id/pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_12sdp"
+                    android:orientation="horizontal">
+
+                    <!-- Fond de l'icône (Beige clair) -->
+                    <FrameLayout
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:background="@drawable/circle_background_n"
+                        android:backgroundTint="@color/background_app"> <!-- Couleur crème plus foncée -->
+
+                        <ImageView
+                            android:id="@+id/rowIcon"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/outline_person_24"
+                            app:tint="@color/enregistrer" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="@dimen/_44sdp">
+
+                        <!-- Texte optionnel à droite (ex: Activées) -->
+                        <TextView
+                            android:id="@+id/rowTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Changer de mot de passe"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/rowValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Envoie un lien de réinitialisation"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="8dp"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:src="@drawable/ic_chevronright_n"
+                        app:tint="@color/text_secondary" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
