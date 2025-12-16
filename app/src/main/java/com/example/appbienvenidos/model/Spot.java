@@ -4,6 +4,7 @@ import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class Spot implements Serializable {
@@ -15,6 +16,8 @@ public class Spot implements Serializable {
     private String title;
     private String description;
     private String adress;
+    private double latitude;
+    private double longitude;
     private String category_id;
     @Exclude
     private String categoryNameDisplay;
@@ -27,11 +30,13 @@ public class Spot implements Serializable {
     public Spot() { }
 
     // 2. Constructeur COMPLET
-    public Spot(String publisher_id, String title, String description, String adress, String category_id, List<String> image_URL, double average_Rating, double total_Rating, String publication_Date) {
+    public Spot(String publisher_id, String title, String description, String adress,double latitude, double longitude, String category_id, List<String> image_URL, double average_Rating, double total_Rating, String publication_Date) {
         this.publisher_id = publisher_id;
         this.title = title;
         this.description = description;
         this.adress = adress;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.category_id = category_id;
         this.image_URL = image_URL;
         this.average_Rating = average_Rating;
@@ -56,6 +61,12 @@ public class Spot implements Serializable {
 
     public String getAdress() { return adress; }
     public void setAdress(String adress) { this.adress = adress; }
+
+    public double getLatitude() { return latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+
+    public double getLongitude() { return longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
 
     public String getCategory_id() { return category_id; }
     public void setCategory_id(String category_id) { this.category_id = category_id; }

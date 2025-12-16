@@ -27,7 +27,7 @@ public class AddSpotViewmodel extends ViewModel{
     public LiveData<String> getToastMessage() { return toastMessage; }
     public LiveData<Boolean> getIsLoading() { return isLoading; }
 
-    public void publishSpot(String title, String address, String description, List<Uri> imageUris, String categoryId, String userId){
+    public void publishSpot(String title, String address, String description, double Lat, double Lng, List<Uri> imageUris, String categoryId, String userId){
 
         if(title.isEmpty() || address.isEmpty() || description.isEmpty()){
             toastMessage.setValue("Veuillez remplir tous les champs !");
@@ -43,7 +43,7 @@ public class AddSpotViewmodel extends ViewModel{
         repository.UploadImages(imageUris, new AddSpotRepository.ImagesCallback(){
             @Override
             public void onSuccess(List<String> imageUrls) {
-                creatSpotInFirestore(title, address, description, imageUrls, categoryId, userId);
+                creatSpotInFirestore(title, address, description, Lat, Lng, imageUrls, categoryId, userId);
             }
 
             @Override
@@ -54,7 +54,7 @@ public class AddSpotViewmodel extends ViewModel{
         });
     }
 
-    public void creatSpotInFirestore(String title, String address, String description, List<String> imageUrls, String categoryId, String userId){
+    public void creatSpotInFirestore(String title, String address, String description, double lat, double lng, List<String> imageUrls, String categoryId, String userId){
         String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
         Spot spot = new Spot(
@@ -62,6 +62,8 @@ public class AddSpotViewmodel extends ViewModel{
                 title,
                 description,
                 address,
+                lat,
+                lng,
                 categoryId,
                 imageUrls,
                 0.0,

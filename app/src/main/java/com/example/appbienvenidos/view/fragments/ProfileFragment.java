@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment {
         role = view.findViewById(R.id.role);
         location = view.findViewById(R.id.location);
         spotNbr = view.findViewById(R.id.spot_nbr);
-        total_likes = view.findViewById(R.id.total_rating);
+        total_likes = view.findViewById(R.id.total_rate);
         starsValue = view.findViewById(R.id.nbr_stars);
         modifierSpot = view.findViewById(R.id.modifier_spot);
         btnCreatSpot = view.findViewById(R.id.btnCreateSpot);
@@ -113,10 +113,26 @@ public class ProfileFragment extends Fragment {
                 spotAdapter.setSpot(spots);
                 int nbrSpot = spots.size();
                 spotNbr.setText(String.valueOf(nbrSpot));
+
+                double sumAvrgRate = 0;
+                int totalRate = 0;
+
+                for(com.example.appbienvenidos.model.Spot spot : spots){
+                    sumAvrgRate += spot.getAverage_Rating();
+                    totalRate += spot.getTotal_Rating();
+                }
+
+                double moyRate = sumAvrgRate / nbrSpot;
+                String c = String.valueOf(moyRate);
+
+                total_likes.setText(String.valueOf(totalRate));
+                starsValue.setText(c + " ⭐");
             } else {
                 recyclerSpotsLocal.setVisibility(View.GONE);
                 nodata.setVisibility(View.VISIBLE);
                 spotNbr.setText("0");
+                total_likes.setText("0");
+                starsValue.setText("0.0  ⭐");
             }
         });
         spotViewModel.loadSpotByPublisher(currentUserId);

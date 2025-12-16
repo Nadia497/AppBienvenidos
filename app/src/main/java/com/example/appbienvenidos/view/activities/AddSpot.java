@@ -253,7 +253,7 @@ public class AddSpot extends AppCompatActivity {
         String desc = description.getText().toString().trim();
 
 
-        viewModel.publishSpot(title, map, desc, imagesSelected, selectedCategoryId, currentUserId);
+        viewModel.publishSpot(title, map, desc,selectedLat, selectedLng, imagesSelected, selectedCategoryId, currentUserId);
     }
 
     private void selectedCategory(){

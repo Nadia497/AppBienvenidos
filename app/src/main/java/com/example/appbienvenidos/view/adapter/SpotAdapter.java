@@ -96,7 +96,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         public void bind(Spot currentSpot, Context context){
             SpotName.setText(currentSpot.getTitle());
-            SpotCity.setText(currentSpot.getAdress());
+            //SpotCity.setText(currentSpot.getAdress());
             SpotDescription.setText(currentSpot.getDescription());
             SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
 
@@ -131,7 +131,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         public HomeViewHolder(@Nullable View itemView) {
             super(itemView);
             SpotName = itemView.findViewById(R.id.cardSpotTitle);
-            SpotCity = itemView.findViewById(R.id.SpotCity);
+            //SpotCity = itemView.findViewById(R.id.SpotCity);
             SpotRating = itemView.findViewById(R.id.cardSpotRating);
             SpotImage = itemView.findViewById(R.id.SpotImage);
             SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
