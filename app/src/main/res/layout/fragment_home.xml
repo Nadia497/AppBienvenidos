@@ -21,28 +21,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="0dp">
 
             <!-- 1. HEADER : Titre + Logo -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="10dp">
-
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="@dimen/_20sdp">
 
                 <ImageView
-                    android:id="@+id/headerLogo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/petitlogo"
-                    android:layout_centerInParent="true"/>
+                    android:id="@+id/imageView2"
+                    android:layout_width="55dp"
+                    android:layout_height="33dp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:src="@drawable/petitlogo" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="115dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="119dp"
+                    android:layout_toEndOf="@+id/imageView2"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="Bienvenidos"
+                    style="@style/AppTitleStyle"
+                    android:textColor="@color/black_pure"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="-10dp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:backgroundTint="@color/creme_base"
+                    android:src="@drawable/ic_more_vert_n" />
             </RelativeLayout>
+
 
             <!-- 2. BARRE DE RECHERCHE -->
             <EditText
+                android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
                 android:background="@drawable/bg_search"
                 android:backgroundTint="@color/surface_card"
                 android:hint="Rechercher une ville, un spot..."
@@ -61,15 +89,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
-                android:layout_marginBottom="25dp">
+                android:layout_marginBottom="25dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <!-- Chip 1 : Gastronomie (Rose) -->
                     <LinearLayout
+                        android:id="@+id/chipTout"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
@@ -83,9 +114,33 @@
                             android:src="@android:drawable/ic_menu_myplaces"
                             app:tint="@color/brand_pink"/>
                         <TextView
-                            android:layout_width="50dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Gastronomie"
+                            android:text="Tout"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:layout_marginStart="6dp"/>-->
+                    </LinearLayout>
+                    <!--chip café-->
+                    <LinearLayout
+                        android:id="@+id/chipCafe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginEnd="10dp">
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            app:tint="@color/brand_pink"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Café"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -94,6 +149,7 @@
 
                     <!-- Chip 2 : Culture (Orange) -->
                     <LinearLayout
+                        android:id="@+id/chipCulture"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
@@ -107,7 +163,7 @@
                             android:src="@android:drawable/ic_menu_agenda"
                             app:tint="@color/brand_yellow"/>
                         <TextView
-                            android:layout_width="50dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Culture"
                             android:textSize="13sp"
@@ -118,6 +174,7 @@
 
                     <!-- Chip 3 : Nature (Vert) -->
                     <LinearLayout
+                        android:id="@+id/chipRestaurant"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
@@ -131,9 +188,9 @@
                             android:src="@android:drawable/ic_menu_mapmode"
                             app:tint="#66BB6A"/>
                         <TextView
-                            android:layout_width="50dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nature"
+                            android:text="Restaurant"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -142,6 +199,7 @@
 
                     <!-- Chip 4 : Événements (Rouge) -->
                     <LinearLayout
+                        android:id="@+id/chipShopping"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:background="@drawable/bg_chip"
@@ -154,9 +212,75 @@
                             android:src="@android:drawable/ic_menu_today"
                             app:tint="#EF5350"/>
                         <TextView
-                            android:layout_width="50dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Événem."
+                            android:text="Shopping"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:layout_marginStart="6dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/chipNature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp">
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@android:drawable/ic_menu_today"
+                            app:tint="#EF5350"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nature"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:layout_marginStart="6dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/chipPayasage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp">
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@android:drawable/ic_menu_today"
+                            app:tint="#EF5350"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Payasage"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:layout_marginStart="6dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/chipHotel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="@color/surface_card"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp">
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@android:drawable/ic_menu_today"
+                            app:tint="#EF5350"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hotel"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -170,214 +294,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
                 android:text="Itinéraires du Jour"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"
                 android:layout_marginBottom="15dp"/>
 
-            <!-- SCROLL HORIZONTAL DES CARTES -->
-            <HorizontalScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerItineraries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
                 android:clipToPadding="false"
-                android:layout_marginBottom="25dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <!-- CARTE 1 : Marrakech -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardItineraryMarrakech"
-                        android:layout_width="260dp"
-                        android:layout_height="200dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        android:layout_marginEnd="15dp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <!-- Image de fond -->
-                            <ImageView
-                                android:id="@+id/imgMarrakech"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/koutoubia"
-                                android:background="#E0E0E0" />
-
-                            <!-- Contenu Textuel -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="12dp"
-                                android:background="#CCFFFDF5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="1 journée à Marrakech\ncomme un local"
-                                    android:textStyle="bold"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"
-                                    android:maxLines="2"
-                                    android:ellipsize="end"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Fatima L., habitante"
-                                    android:textSize="12sp"
-                                    android:textColor="#757575"
-                                    android:layout_marginTop="4dp"/>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical"
-                                    android:layout_marginTop="6dp">
-                                    <RatingBar
-                                        style="?android:attr/ratingBarStyleSmall"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginEnd="10dp"
-                                        android:isIndicator="false"
-                                        android:numStars="5"
-                                        android:progressTint="@color/Gold"
-                                        android:rating="0"
-                                        android:scaleX="1"
-                                        android:scaleY="1"
-                                        android:stepSize="1" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text=" 4.8"
-                                        android:textColor="#333"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <!-- Coeur favoris -->
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@android:drawable/ic_menu_save"
-                                app:tint="#333"
-                                android:layout_margin="10dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- CARTE 2 (Juste le début pour l'exemple) -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="260dp"
-                        android:layout_height="200dp"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        android:layout_marginEnd="15dp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <!-- Image de fond -->
-                            <ImageView
-                                android:id="@+id/img2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/img2"
-                                android:background="#E0E0E0" />
-
-                            <!-- Contenu Textuel -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="12dp"
-                                android:background="#BBFFFDF5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="1 journée à Marrakech\ncomme un local"
-                                    android:textStyle="bold"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"
-                                    android:maxLines="2"
-                                    android:ellipsize="end"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Fatima L., habitante"
-                                    android:textSize="12sp"
-                                    android:textColor="#757575"
-                                    android:layout_marginTop="4dp"/>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="6dp"
-                                    android:gravity="center_vertical"
-                                    android:orientation="horizontal">
-
-                                    <RatingBar
-                                        android:id="@+id/ratingbar"
-                                        style="?android:attr/ratingBarStyleSmall"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginEnd="10dp"
-                                        android:isIndicator="false"
-                                        android:numStars="5"
-                                        android:progressTint="@color/Gold"
-                                        android:rating="0"
-                                        android:scaleX="1"
-                                        android:scaleY="1"
-                                        android:stepSize="1" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text=" 4.8"
-                                        android:textColor="#333"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <!-- Coeur favoris -->
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@android:drawable/ic_menu_save"
-                                app:tint="#333"
-                                android:layout_margin="10dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"/>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-            </HorizontalScrollView>
+                android:layout_marginBottom="25dp"/>
+            <!-- SCROLL HORIZONTAL DES CARTES -->
 
 
             <!-- 5. SECTION NOUVEAUX SPOTS -->
@@ -390,130 +322,15 @@
                 android:textColor="@color/text_primary"
                 android:layout_marginBottom="15dp"/>
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerNewSpots"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
-
-                <!-- Spot 1 : Carte -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="140dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    android:layout_marginEnd="8dp">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@android:drawable/ic_dialog_map"
-                        android:padding="30dp"
-                        android:background="#E1F5FE"/> <!-- Fond bleu carte -->
-                </androidx.cardview.widget.CardView>
-
-                <!-- Spot 2 : Jardin Oublié -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="140dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    android:layout_marginStart="8dp">
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#C8E6C9"
-                            android:scaleType="centerCrop"/>
-
-                        <!-- Texte en superposition -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:background="#AAFFFFFF"
-                            android:padding="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent">
-                            <!--<TextView
-                                android:text="Le Jardin Oublié"
-                                android:textStyle="bold"
-                                android:textSize="14sp"
-                                android:textColor="#000"/>
-                            <TextView
-                                android:text="Café &amp; galerie"
-                                android:textSize="10sp"
-                                android:textColor="#555"/>-->
-                        </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <!-- Spot 1 : Carte -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="140dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    android:layout_marginEnd="8dp">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@android:drawable/ic_dialog_map"
-                        android:padding="30dp"
-                        android:background="#E1F5FE"/> <!-- Fond bleu carte -->
-                </androidx.cardview.widget.CardView>
-
-                <!-- Spot 2 : Jardin Oublié -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="140dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    android:layout_marginStart="8dp">
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#C8E6C9"
-                            android:scaleType="centerCrop"/>
-
-                        <!-- Texte en superposition -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:background="#AAFFFFFF"
-                            android:padding="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent">
-                            <!--<TextView
-                                android:text="Le Jardin Oublié"
-                                android:textStyle="bold"
-                                android:textSize="14sp"
-                                android:textColor="#000"/>
-                            <TextView
-                                android:text="Café &amp; galerie"
-                                android:textSize="10sp"
-                                android:textColor="#555"/>-->
-                        </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
+                android:paddingStart="20dp"
+                android:clipToPadding="false"
+                android:layout_marginBottom="25dp"/>
+            
 
         </LinearLayout>
     </ScrollView>

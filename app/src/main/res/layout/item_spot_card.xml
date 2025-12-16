@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="260dp"
+    android:layout_height="200dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginBottom="5dp"> <!-- Petite marge en bas pour éviter que l'ombre soit coupée -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 1. LE DIAPORAMA (Remplace ton ImageView "imgMarrakech") -->
+        <!-- C'est ici que les images vont défiler -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/cardViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 2. LA ZONE DE TEXTE (Fond crème semi-transparent) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#CCFFFDF5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Titre du spot -->
+            <TextView
+                android:id="@+id/cardSpotTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Titre du Spot"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+
+            <!-- Catégorie (Remplace "Fatima L.") -->
+            <TextView
+                android:id="@+id/cardSpotCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Catégorie"
+                android:textSize="12sp"
+                android:textColor="#757575"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Note (Étoiles) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp">
+
+                <RatingBar
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:progressTint="@color/Gold"
+                    android:rating="5"
+                    android:scaleX="1"
+                    android:scaleY="1"
+                    android:stepSize="1" />
+
+                <TextView
+                    android:id="@+id/cardSpotRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 4.8"
+                    android:textColor="#333"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 3. BOUTON FAVORIS (En bas à droite, par dessus le texte) -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_save"
+            app:tint="#333"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
