@@ -44,7 +44,5 @@ public class FullMapActivity extends AppCompatActivity {
         // marker.setIcon(...) // Tu peux remettre ton icône personnalisée ici aussi
         map.getOverlays().add(marker);
 
-        // Bouton retour
-        findViewById(R.id.btnBackMap).setOnClickListener(v -> finish());
     }
 }

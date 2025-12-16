@@ -96,7 +96,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         public void bind(Spot currentSpot, Context context){
             SpotName.setText(currentSpot.getTitle());
-            //SpotCity.setText(currentSpot.getAdress());
+            PublicationDate.setText(currentSpot.getPublication_Date());
             SpotDescription.setText(currentSpot.getDescription());
             SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
 
