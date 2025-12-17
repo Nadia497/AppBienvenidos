@@ -40,11 +40,11 @@
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="115dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center"
-                    android:layout_marginStart="80dp"
+                    android:layout_marginStart="70dp"
                     android:layout_marginEnd="119dp"
                     android:layout_toEndOf="@+id/imageView2"
                     android:layout_marginTop="@dimen/_4sdp"
@@ -54,14 +54,6 @@
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="-10dp"
-                    android:layout_marginRight="@dimen/_8sdp"
-                    android:backgroundTint="@color/creme_base"
-                    android:src="@drawable/ic_more_vert_n" />
             </RelativeLayout>
 
 
@@ -78,6 +70,9 @@
                 android:textColorHint="@color/text_secondary"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
                 android:drawableStart="@android:drawable/ic_menu_search"
                 android:drawableEnd="@android:drawable/ic_menu_sort_by_size"
                 android:drawablePadding="12dp"
@@ -98,21 +93,21 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Chip 1 : Gastronomie (Rose) -->
+                    <!-- Chip 1 :  (Rose) -->
                     <LinearLayout
                         android:id="@+id/chipTout"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
                         android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_myplaces"
-                            app:tint="@color/brand_pink"/>
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_secondary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -126,17 +121,16 @@
                     <LinearLayout
                         android:id="@+id/chipCafe"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
                         android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_myplaces"
-                            app:tint="@color/brand_pink"/>
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_secondary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -151,17 +145,16 @@
                     <LinearLayout
                         android:id="@+id/chipCulture"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
                         android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_agenda"
-                            app:tint="@color/brand_yellow"/>
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_secondary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -176,17 +169,16 @@
                     <LinearLayout
                         android:id="@+id/chipRestaurant"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
                         android:backgroundTint="@color/surface_card"
                         android:gravity="center"
                         android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_mapmode"
-                            app:tint="#66BB6A"/>
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_secondary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -201,16 +193,16 @@
                     <LinearLayout
                         android:id="@+id/chipShopping"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
                         android:backgroundTint="@color/surface_card"
                         android:gravity="center"
-                        android:paddingHorizontal="12dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_today"
-                            app:tint="#EF5350"/>
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_secondary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -220,41 +212,20 @@
                             android:textColor="@color/text_primary"
                             android:layout_marginStart="6dp"/>
                     </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/chipNature"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_today"
-                            app:tint="#EF5350"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nature"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>
-                    </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/chipPayasage"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
                         android:backgroundTint="@color/surface_card"
                         android:gravity="center"
-                        android:paddingHorizontal="12dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_today"
-                            app:tint="#EF5350"/>
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_secondary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -267,16 +238,16 @@
                     <LinearLayout
                         android:id="@+id/chipHotel"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_chip"
                         android:backgroundTint="@color/surface_card"
                         android:gravity="center"
-                        android:paddingHorizontal="12dp">
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@android:drawable/ic_menu_today"
-                            app:tint="#EF5350"/>
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_chip_unselected_n"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_secondary"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -326,8 +297,8 @@
                 android:id="@+id/recyclerNewSpots"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="20dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
                 android:clipToPadding="false"
                 android:layout_marginBottom="25dp"/>
             

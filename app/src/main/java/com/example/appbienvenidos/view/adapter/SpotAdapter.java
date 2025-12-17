@@ -17,14 +17,14 @@ import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.Spot;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
-import com.example.appbienvenidos.viewmodel.SpotViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static final int TYPE_PROFILE_GUIDE=0;
-    public static final int TYPE_HOME_CARD=1;
+    public static final int TYPE_HOME_CARD=1;//bestrated
+    public static final int TYPE_HOME_MINI=2;//newSpot
     private List<Spot> spots = new ArrayList<>() ;
     private Context context ;
     private int displayMode =TYPE_PROFILE_GUIDE;
@@ -55,8 +55,11 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         LayoutInflater inflater = LayoutInflater.from(context);
 
         if(viewType == TYPE_HOME_CARD) {
-            View view =  inflater.inflate(R.layout.item_spot_card,parent,false);
+            View view =  inflater.inflate(R.layout.item_spot_home1,parent,false);
             return new HomeViewHolder(view);
+        }else if(viewType == TYPE_HOME_MINI){
+            View view = inflater.inflate(R.layout.item_spot_home2, parent,false);
+            return new MiniViewHolder(view);
         }else {
             View view = inflater.inflate(R.layout.item_spot_profile_guide, parent, false);
             return new SpotViewHolder(view);
@@ -78,6 +81,8 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             ((HomeViewHolder) holder).bind(currentSpot, context);
         }else if(holder instanceof SpotViewHolder){
             ((SpotViewHolder) holder).bind(currentSpot, context);
+        }else if(holder instanceof MiniViewHolder){
+            ((MiniViewHolder) holder).bind(currentSpot, context);
         }
     }
 
@@ -162,13 +167,13 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 } else {
                     stopAutoScroll();
                 }
-                itemView.setOnClickListener(v -> {
-                    Intent intent = new Intent(context, SpotDetailActivity.class);
-                    intent.putExtra("SPOT_KEY", currentSpot);
-                    context.startActivity(intent);
-                });
 
             }
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, SpotDetailActivity.class);
+                intent.putExtra("SPOT_KEY", currentSpot);
+                context.startActivity(intent);
+            });
         }
 
         public void startAutoScroll(int totalImages) {
@@ -192,6 +197,34 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
 
 
+    }
+    static class MiniViewHolder extends RecyclerView.ViewHolder{
+        TextView SpotName,SpotCategory;
+        ImageView SpotImage;
+        public MiniViewHolder(@Nullable View itemView){
+            super(itemView);
+            SpotName = itemView.findViewById(R.id.cardSpotTitle);
+            //SpotCity = itemView.findViewById(R.id.SpotCity);
+            SpotImage = itemView.findViewById(R.id.SpotImage);
+            SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
+        }
+        public void bind(Spot currentSpot, Context context){
+            if(SpotName != null) SpotName.setText(currentSpot.getTitle());
+            //if(SpotCity != null) SpotCity.setText(currentSpot.getAdress);
+
+            if(currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()){
+                Glide.with(context)
+                        .load(currentSpot.getImage_URL().get(0))
+                        .centerCrop()
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(SpotImage);
+            }
+            itemView.setOnClickListener(v->{
+                Intent intent = new Intent(context, SpotDetailActivity.class);
+                intent.putExtra("SPOT_KEY", currentSpot);
+                context.startActivity(intent);
+            });
+        }
     }
 
     }
