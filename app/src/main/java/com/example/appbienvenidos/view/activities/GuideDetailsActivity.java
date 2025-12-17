@@ -1,5 +1,6 @@
 package com.example.appbienvenidos.view.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -96,7 +97,28 @@ public class GuideDetailsActivity extends AppCompatActivity {
 
     private void setupButtons(Guide guide) {
         btnCallGuide.setOnClickListener(v -> {
-            Toast.makeText(this, "Contacter " + guide.getFirstName(), Toast.LENGTH_SHORT).show();
+            // 1. On récupère le numéro depuis l'objet Guide
+            String phoneNumber = guide.getPhoneNumber();
+
+            // 2. On vérifie que le numéro n'est pas vide
+            if (phoneNumber != null && !phoneNumber.trim().isEmpty()) {
+
+                // 3. On crée l'Intent pour ouvrir le téléphone
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+
+                intent.setData(android.net.Uri.parse("tel:" + phoneNumber));
+
+                // 5. On lance l'application
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(this, "Impossible d'ouvrir le téléphone", Toast.LENGTH_SHORT).show();
+                }
+
+            } else {
+                // Si le guide n'a pas mis de numéro
+                Toast.makeText(this, "Numéro de téléphone non disponible", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

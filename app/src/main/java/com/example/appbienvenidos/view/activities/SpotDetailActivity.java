@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -25,7 +28,9 @@ import com.google.android.material.imageview.ShapeableImageView;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpotDetailActivity extends AppCompatActivity {
@@ -125,49 +130,103 @@ public class SpotDetailActivity extends AppCompatActivity {
     }
 
     private void setupImages() {
-
         List<String> listePhotos = currentSpot.getImage_URL();
 
+        // 1. On cache tout le monde au début
         FirstImage.setVisibility(View.GONE);
         SecondImage.setVisibility(View.GONE);
         ThirdImage.setVisibility(View.GONE);
 
         if (listePhotos == null || listePhotos.isEmpty()) {
+            LayoutImage.setVisibility(View.GONE);
             return;
         }
+        LayoutImage.setVisibility(View.VISIBLE);
 
-        int nombrePhoto = listePhotos.size();
+        int nombre = listePhotos.size();
 
-        if (nombrePhoto >= 1) {
-            FirstImage.setVisibility(View.VISIBLE);
-            Glide.with(this).load(listePhotos.get(0)).centerCrop().into(FirstImage);
+        // 2. On affiche et configure seulement celles qui existent
+        if (nombre >= 1) {
+            configureImage(FirstImage, listePhotos.get(0), 0, listePhotos);
         }
-
-        if (nombrePhoto >= 2) {
-            SecondImage.setVisibility(View.VISIBLE);
-            Glide.with(this).load(listePhotos.get(1)).centerCrop().into(SecondImage);
+        if (nombre >= 2) {
+            configureImage(SecondImage, listePhotos.get(1), 1, listePhotos);
         }
-
-        // Photo 3
-        if (nombrePhoto >= 3) {
-            ThirdImage.setVisibility(View.VISIBLE);
-            Glide.with(this).load(listePhotos.get(2)).centerCrop().into(ThirdImage);
+        if (nombre >= 3) {
+            configureImage(ThirdImage, listePhotos.get(2), 2, listePhotos);
         }
     }
 
+    private void configureImage(ShapeableImageView imageView, String url, int position, List<String> allPhotos) {
+        imageView.setVisibility(View.VISIBLE);
+
+        // --- LA PARTIE IMPORTANTE POUR LA TAILLE ---
+        // On récupère les règles de mise en page de l'image
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageView.getLayoutParams();
+
+        // On dit : "Ta largeur est flexible (0dp)"
+        params.width = 0;
+
+        // On dit : "Tu pèses 1 unité".
+        // Si tu es seule, tu prends 100% de la place.
+        // Si vous êtes deux, vous prenez 50% chacune.
+        params.weight = 1;
+
+        // On applique les nouvelles règles
+        imageView.setLayoutParams(params);
+        // -------------------------------------------
+
+        // Chargement avec Glide
+        Glide.with(this)
+                .load(url)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(imageView);
+
+        // Clic pour agrandir
+        imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(SpotDetailActivity.this, FullScreenActivity.class);
+            intent.putStringArrayListExtra("IMAGES_LIST", new ArrayList<>(allPhotos));
+            intent.putExtra("SELECTED_POSITION", position);
+            startActivity(intent);
+        });
+    }
     private void setupMap() {
         if (map == null) return;
 
-        map.setMultiTouchControls(true);
+        // On bloque les mouvements sur la petite carte pour éviter les conflits avec le scroll de la page
+        map.setMultiTouchControls(false);
 
-        double lat = 31.6295; // Marrakech par défaut
-        double lon = -7.9811;
+        double lat = currentSpot.getLatitude();
+        double lon = currentSpot.getLongitude();
 
-        GeoPoint startPoint = new GeoPoint(lat, lon);
-        map.getController().setZoom(15.0);
-        map.getController().setCenter(startPoint);
+
+        GeoPoint spotPoint = new GeoPoint(lat, lon);
+        map.getController().setZoom(16.0);
+        map.getController().setCenter(spotPoint);
+
+        Marker startMarker = new Marker(map);
+        startMarker.setPosition(spotPoint);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        startMarker.setTitle(currentSpot.getTitle());
+
+
+        startMarker.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_location_n));
+
+        map.getOverlays().clear();
+        map.getOverlays().add(startMarker);
+        map.invalidate();
+
+        View mapOverlay = findViewById(R.id.mapOverlay);
+
+        mapOverlay.setOnClickListener(v -> {
+            Intent intent = new Intent(SpotDetailActivity.this, FullMapActivity.class);
+            intent.putExtra("LAT", currentSpot.getLatitude());
+            intent.putExtra("LON", currentSpot.getLongitude());
+            intent.putExtra("TITLE", currentSpot.getTitle());
+            startActivity(intent);
+        });
     }
-
     private void setupButtons() {
         AskUser.setOnClickListener(v -> {
             Toast.makeText(SpotDetailActivity.this, "Ouvrir le chat avec le créateur...", Toast.LENGTH_SHORT).show();
