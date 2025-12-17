@@ -15,6 +15,9 @@ import com.example.appbienvenidos.view.fragments.HomeFragment;
 import com.example.appbienvenidos.view.fragments.GuideFragment;
 import com.example.appbienvenidos.view.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -28,6 +31,15 @@ public class MainActivity extends AppCompatActivity{
         } catch (Exception e) {
             // Déjà initialisé, on ignore
         }
+
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(token -> {
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            // On enregistre le token dans la fiche de l'utilisateur
+            FirebaseFirestore.getInstance().collection("users")
+                    .document(userId)
+                    .update("fcmToken", token);
+        });
 
        BottomNavigationView bottomNav = findViewById(R.id.navigation_bar);
 

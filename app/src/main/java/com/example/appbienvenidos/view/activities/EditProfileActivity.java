@@ -161,12 +161,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 else{
                     roleswitch.setVisibility(View.VISIBLE);
                     role_travler.setVisibility(View.GONE);
+                    infos_guide.setVisibility(View.GONE);
 
-                    if("Guide".equalsIgnoreCase(selectedRole)){
-                        infos_guide.setVisibility(View.VISIBLE);
-                    }else {
-                        infos_guide.setVisibility(View.GONE);
-                    }
 
                     updateRoleUI();
                 }
