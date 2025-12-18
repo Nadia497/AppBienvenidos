@@ -98,36 +98,57 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/NomDuSpot" />
 
-            <RatingBar
-                android:id="@+id/ratingbar"
-                style="?android:attr/ratingBarStyleSmall"
+            <LinearLayout
+                android:id="@+id/LayoutAverageRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="15dp"
-                android:isIndicator="false"
-                android:numStars="5"
-                android:progressTint="@color/Gold"
-                android:rating="0"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                android:stepSize="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toBottomOf="@+id/SpotAdress"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/SpotAdress" />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp">
+                <!-- J'ai mis wrap_content en width pour éviter de couper -->
 
+                <RatingBar
+                    android:id="@+id/ratingbar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:progressTint="@color/Gold"
+                    android:rating="0"
+                    android:stepSize="1"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="10dp"
+                    android:layout_marginEnd="55dp" />
+
+                <TextView
+                    android:id="@+id/txtAverageScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/UserPublicationDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="serif"
                 android:text="User and Publication date"
                 android:textColor="@color/pink_base"
                 android:textSize="@dimen/_11sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ratingbar" />
+                app:layout_constraintTop_toBottomOf="@id/LayoutAverageRating" />
 
             <TextView
                 android:id="@+id/textviewaction"

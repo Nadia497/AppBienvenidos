@@ -34,5 +34,9 @@ public class SpotViewModel extends ViewModel {
         repository.getSpotByPublisher(guideId ,spots);
     }
 
+    public void rateSpot(String spotId, float rating, double currentAvg, double currentCount) {
+        repository.updateSpotRating(spotId, rating, currentAvg, currentCount);
+    }
+
 
 }
