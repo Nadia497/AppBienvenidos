@@ -32,6 +32,7 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SpotDetailActivity extends BaseActivity {
@@ -286,12 +287,40 @@ public class SpotDetailActivity extends BaseActivity {
                 Intent shareIntent = Intent.createChooser(sendIntent, getString(R.string.send));
                 startActivity(shareIntent);
 
+                //notification interne
+                creerNotificationInterne("a partager votre spot");
+
             } catch (Exception e) {
                 Toast.makeText(SpotDetailActivity.this, getString(R.string.send_error), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    private void creerNotificationInterne(String actions){
+        String publisherId = currentSpot.getPublisher_id();
+        String currentUserId = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        if(publisherId != null && !publisherId.equals(currentUserId)){
+            com.google.firebase.firestore.FirebaseFirestore db =
+                com.google.firebase.firestore.FirebaseFirestore.getInstance();
+
+            db.collection("users").document(currentUserId).get().addOnSuccessListener(doc -> {
+                String name = "";
+                if(doc.exists() && doc.getString("firstName") != null){
+                    name = doc.getString("firstName") + " " + doc.getString("lastName");
+                }
+
+                com.example.appbienvenidos.model.Notifications notif = new com.example.appbienvenidos.model.Notifications(
+                        publisherId,
+                        name,
+                        actions,
+                        currentSpot.getTitle()
+                );
+
+                db.collection("Notifications").add(notif);
+            });
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();

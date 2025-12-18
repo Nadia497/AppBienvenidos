@@ -158,5 +158,6 @@
     <string name="user_not_found">Profil introuvable</string>
     <string name="loading_error">Erreur de chargement</string>
     <string name="activer">Activées</string>
+    <string name="mes_spots_sur_carte">Mes spots sur carte</string>
 
 </resources>

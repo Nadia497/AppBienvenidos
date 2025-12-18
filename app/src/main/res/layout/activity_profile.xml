@@ -221,7 +221,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="16dp">
@@ -238,10 +238,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_3sdp"
                             android:text="@string/avis_moyens"
-                            android:textSize="10sp"
                             android:textColor="@color/text_secondary"
-                            android:layout_marginBottom="@dimen/_3sdp"/>
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
@@ -310,37 +310,38 @@
                 android:weightSum="2">
 
                 <!-- Bouton 1 : Créer Spot (Jaune) -->
+
+                <!-- Bouton 2 : Imaginer Itinéraire (Rose) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCreateSpot"
                     style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/add_spot"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/brand_yellow"
-                    android:textSize="12sp"
+                    android:text="@string/add_spot"
                     android:textAllCaps="false"
                     android:textColor="@android:color/black"
+                    android:textSize="12sp"
                     app:cornerRadius="12dp"
                     app:icon="@drawable/ic_add_24_n"
-                    app:iconTint="@android:color/black"
-                    app:iconPadding="4dp" />
+                    app:iconPadding="4dp"
+                    app:iconTint="@android:color/black" />
 
-                <!-- Bouton 2 : Imaginer Itinéraire (Rose) -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCreateItinerary"
+                    android:id="@+id/btnMapUser"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     style="@style/Widget.MaterialComponents.Button"
-                    android:text="Imaginer un Itinéraire"
+                    android:text="@string/mes_spots_sur_carte"
                     android:backgroundTint="#F4B7B8"
                     android:textSize="12sp"
                     android:textAllCaps="false"
                     android:textColor="@android:color/black"
                     app:cornerRadius="12dp"
-                    app:icon="@drawable/ic_route_24_n"
+                    app:icon="@android:drawable/ic_dialog_map"
                     app:iconTint="@android:color/black"
                     app:iconPadding="4dp"
                     />

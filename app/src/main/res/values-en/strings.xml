@@ -159,5 +159,6 @@
     <string name="user_not_found">Profile not found</string>
     <string name="loading_error">Loading error</string>
     <string name="activer">On</string>
+    <string name="mes_spots_sur_carte">Mes spots sur carte</string>
 
 </resources>

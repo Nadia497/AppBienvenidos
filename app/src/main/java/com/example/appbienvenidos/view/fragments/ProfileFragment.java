@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.User;
 import com.example.appbienvenidos.view.activities.AddSpot;
+import com.example.appbienvenidos.view.activities.FullMapActivity;
 import com.example.appbienvenidos.view.activities.ParametreActivity;
 import com.example.appbienvenidos.view.adapter.SpotAdapter;
 import com.example.appbienvenidos.viewmodel.ProfileViewModel;
@@ -47,7 +48,7 @@ public class ProfileFragment extends Fragment {
     private SpotAdapter spotAdapter;
 
     private ImageButton parametre;
-    private  com.google.android.material.button.MaterialButton btnCreatSpot;
+    private  com.google.android.material.button.MaterialButton btnCreatSpot, btnMapUser;
     private User user;
     private ProfileViewModel viewModel;
     private SpotViewModel spotViewModel;
@@ -91,6 +92,7 @@ public class ProfileFragment extends Fragment {
         starsValue = view.findViewById(R.id.nbr_stars);
         modifierSpot = view.findViewById(R.id.modifier_spot);
         btnCreatSpot = view.findViewById(R.id.btnCreateSpot);
+        btnMapUser = view.findViewById(R.id.btnMapUser);
         parametre = view.findViewById(R.id.parametre);
         recyclerSpotsLocal = view.findViewById(R.id.recyclerSpotsLocal);
         nodata = view.findViewById(R.id.layoutNoData);
@@ -186,6 +188,12 @@ public class ProfileFragment extends Fragment {
         //Ajouter un spot
         btnCreatSpot.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), AddSpot.class);
+            startActivity(intent);
+        });
+
+        btnMapUser.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), FullMapActivity.class);
+            intent.putExtra("Filter_par_user_id", currentUserId);
             startActivity(intent);
         });
     }
