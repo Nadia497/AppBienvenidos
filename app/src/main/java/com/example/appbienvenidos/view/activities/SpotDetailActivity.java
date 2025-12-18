@@ -89,7 +89,7 @@ public class SpotDetailActivity extends BaseActivity {
             setupButtons();
 
         } else {
-            Toast.makeText(this, "Erreur : Spot introuvable", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.no_spot), Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -162,7 +162,7 @@ public class SpotDetailActivity extends BaseActivity {
                 if(txtAverageScore != null) {
                     txtAverageScore.setText(String.format("%.1f", newAvg));
                 }
-                Toast.makeText(this, "Note prise en compte : " + userRating + "/5", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,  getString(R.string.rate) + userRating + "/5", Toast.LENGTH_SHORT).show();
 
                 // Envoi à Firebase
                 spotViewModel.rateSpot(currentSpot.getId(), userRating, oldAvg, oldCount);
@@ -270,24 +270,24 @@ public class SpotDetailActivity extends BaseActivity {
     }
     private void setupButtons() {
         AskUser.setOnClickListener(v -> {
-            Toast.makeText(SpotDetailActivity.this, "Ouvrir le chat avec le créateur...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SpotDetailActivity.this, getString(R.string.open_chat), Toast.LENGTH_SHORT).show();
         });
 
         Share.setOnClickListener(v -> {
             try {
                 String nom = currentSpot.getTitle();
-                String message = "Regarde ce spot incroyable sur Bienvenidos : " + nom;
+                String message = getString(R.string.partage_msg) + nom;
 
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, message);
                 sendIntent.setType("text/plain");
 
-                Intent shareIntent = Intent.createChooser(sendIntent, "Partager via");
+                Intent shareIntent = Intent.createChooser(sendIntent, getString(R.string.send));
                 startActivity(shareIntent);
 
             } catch (Exception e) {
-                Toast.makeText(SpotDetailActivity.this, "Erreur de partage", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SpotDetailActivity.this, getString(R.string.send_error), Toast.LENGTH_SHORT).show();
             }
         });
     }

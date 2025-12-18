@@ -76,7 +76,7 @@ public class ProfileFragment extends Fragment {
             currentUserId = mAuth.getCurrentUser().getUid();
         } else {
             // Si pas connecté, on arrête tout pour éviter le crash
-            Toast.makeText(requireContext(), "Erreur : Utilisateur non connecté", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.user_no_cnx), Toast.LENGTH_SHORT).show();
             return;
         }
 

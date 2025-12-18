@@ -54,7 +54,7 @@ public class GuideDetailsActivity extends BaseActivity {
             // C. Charger et afficher les spots du guide
             setupSpotsList(guide);
         } else {
-            Toast.makeText(this, "Erreur : Guide introuvable", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.guide_introuvable), Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -112,12 +112,12 @@ public class GuideDetailsActivity extends BaseActivity {
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    Toast.makeText(this, "Impossible d'ouvrir le téléphone", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.no_phone), Toast.LENGTH_SHORT).show();
                 }
 
             } else {
                 // Si le guide n'a pas mis de numéro
-                Toast.makeText(this, "Numéro de téléphone non disponible", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.no_number), Toast.LENGTH_SHORT).show();
             }
         });
     }

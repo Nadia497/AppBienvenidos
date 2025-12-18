@@ -68,7 +68,7 @@ public class EditProfileActivity extends BaseActivity {
         if(mAuth.getCurrentUser() != null){
             currrentUserId = mAuth.getCurrentUser().getUid();
         } else {
-            Toast.makeText(this,"Erreur : Utilisateur non connecté", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.error_user_not_cncted), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -134,7 +134,7 @@ public class EditProfileActivity extends BaseActivity {
                     infos_guide.setVisibility(View.GONE);
                     roleswitch.setVisibility(View.GONE);
                     role_travler.setVisibility(View.VISIBLE);
-                    role_travler.setText("Voyageur");
+                    role_travler.setText(getString(R.string.voyageur));
                 }
                 else if("Guide".equalsIgnoreCase(userRole)) {
                     roleswitch.setVisibility(View.GONE);
@@ -227,7 +227,7 @@ public class EditProfileActivity extends BaseActivity {
 
             if("Guide".equalsIgnoreCase(selectedRole)){
                 if(updateSpec.isEmpty() || updateLang.isEmpty() || updateCity.isEmpty() || updateRate.isEmpty() || updateTele.isEmpty()){
-                    Toast.makeText(this, "Veuillez remplir les informations du guide", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.error_info_guide), Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
@@ -264,17 +264,17 @@ public class EditProfileActivity extends BaseActivity {
                 guidereRepository.addGuide(guide, new GuideRepository.GuideCallback() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(EditProfileActivity.this, "Profil et Guide mis à jour avec succès !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfileActivity.this, getString(R.string.profile_guide_success), Toast.LENGTH_SHORT).show();
                         finish();
                     }
 
                     @Override
                     public void onError(String msg) {
-                        Toast.makeText(EditProfileActivity.this, "Erreur : "+ msg, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfileActivity.this, getString(R.string.erreur)+ msg, Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
-                Toast.makeText(EditProfileActivity.this, "Profil mis à jour avec succès !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditProfileActivity.this, getString(R.string.profile_success), Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -376,7 +376,7 @@ public class EditProfileActivity extends BaseActivity {
             String telephone = tele.getText().toString().trim();
 
             if(specialities.isEmpty() || langue.isEmpty() || ville.isEmpty() || hourlyRate.isEmpty() || telephone.isEmpty()){
-                Toast.makeText(this, "Veuillez tout remplir" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.remplir_tous) , Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -414,15 +414,15 @@ public class EditProfileActivity extends BaseActivity {
 
             // 1. Vérifications de base
             if (oldPass.isEmpty() || newPass.isEmpty() || confirmPass.isEmpty()) {
-                Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.remplir_tous), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (!newPass.equals(confirmPass)) {
-                Toast.makeText(this, "Les nouveaux mots de passe ne correspondent pas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_pwd), Toast.LENGTH_SHORT).show();
                 return;
             }
             if (newPass.length() < 6) {
-                Toast.makeText(this, "Le mot de passe doit contenir au moins 6 caractères", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.condition_pwd), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -438,15 +438,15 @@ public class EditProfileActivity extends BaseActivity {
                         // L'ancien mot de passe est correct, on peut mettre à jour
                         user.updatePassword(newPass).addOnCompleteListener(taskUpdate -> {
                             if (taskUpdate.isSuccessful()) {
-                                Toast.makeText(this, "Mot de passe modifié avec succès !", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, getString(R.string.success_pwd), Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             } else {
-                                Toast.makeText(this, "Erreur mise à jour : " + taskUpdate.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, getString(R.string.erreur_update) + taskUpdate.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     } else {
                         // L'ancien mot de passe est incorrect
-                        Toast.makeText(this, "L'ancien mot de passe est incorrect", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.pwd_incorrect), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

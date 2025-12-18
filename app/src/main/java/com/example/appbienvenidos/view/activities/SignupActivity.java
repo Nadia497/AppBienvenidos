@@ -46,7 +46,7 @@ public class SignupActivity extends BaseActivity {
     private SignupViewModel viewModel;
 
     // Variables logiques
-    String selectedRole = "Voyageur";
+    String selectedRole = getString(R.string.voyageur);
     String imageUriString = "";
 
     // --- FIREBASE ---
@@ -80,14 +80,14 @@ public class SignupActivity extends BaseActivity {
         initViews();
         viewModel.isSuccess.observe(this, success -> {
             if (success){
-                Toast.makeText(this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.cmpt_success), Toast.LENGTH_SHORT).show();
                 startActivity((new Intent(this, MainActivity.class)));
                 finish();
             }
         });
         viewModel.errorMessage.observe(this, message -> {
             if (message != null && !message.isEmpty()) {
-                Toast.makeText(this, "Erreur : " + message, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erreur)+ ": " + message, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -96,11 +96,11 @@ public class SignupActivity extends BaseActivity {
 
         // Gestion Rôles
         btnRoleTraveler.setOnClickListener(v -> {
-            selectedRole = "Voyageur";
+            selectedRole = getString(R.string.voyageur);
             updateRoleUI();
         });
         btnRoleLocal.setOnClickListener(v -> {
-            selectedRole = "Local";
+            selectedRole = getString(R.string.local);
             updateRoleUI();
         });
 
@@ -143,7 +143,7 @@ public class SignupActivity extends BaseActivity {
     }
 
     private void updateRoleUI() {
-        if (selectedRole.equals("Voyageur")) {
+        if (selectedRole.equals(getString(R.string.voyageur))) {
             btnRoleTraveler.setBackgroundResource(R.drawable.bg_role_active);
             btnRoleTraveler.setTextColor(Color.WHITE);
             btnRoleLocal.setBackgroundResource(0);

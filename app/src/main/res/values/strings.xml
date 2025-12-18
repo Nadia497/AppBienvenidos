@@ -114,7 +114,49 @@
     <string name="en">Anglais</string>
     <string name="fr">Français</string>
     <string name="lng_choice">Choisir la langue</string>
-
-
+    <string name="entrer_ville_ou_place">Entrez une ville ou un lieu</string>
+    <string name="cliquer_recherche">Veuillez cliquer sur la loupe pour valider la localisation</string>
+    <string name="pub_en_cours">Publication en cours…</string>
+    <string name="loc_trouvee">Localisation trouvée ! ✅</string>
+    <string name="loc_introuvee">Lieu introuvable ❌ Essayez d\'être plus précis (Ajoutez la ville)</string>
+    <string name="error_cnx">Erreur de connexion internet</string>
+    <string name="error_user_not_cncted">Erreur : Utilisateur non connecté</string>
+    <string name="error_info_guide">Veuillez remplir les informations du guide</string>
+    <string name="profile_guide_success">Profil et Guide mis à jour avec succès !</string>
+    <string name="erreur">Erreur </string>
+    <string name="profile_success">Profil mis à jour avec succès !</string>
+    <string name="remplir_tous">Veuillez tout remplir </string>
+    <string name="error_pwd">Les nouveaux mots de passe ne correspondent pas </string>
+    <string name="condition_pwd">Le mot de passe doit contenir au moins 6 caractères </string>
+    <string name="success_pwd">Mot de passe modifié avec succès ! </string>
+    <string name="erreur_update">Erreur mise à jour : </string>
+    <string name="pwd_incorrect">L\'ancien mot de passe est incorrect </string>
+    <string name="guide_introuvable">Erreur : Guide introuvable </string>
+    <string name="no_phone">Impossible d\'ouvrir le téléphone </string>
+    <string name="no_number">Numéro de téléphone non disponible </string>
+    <string name="email_re">Entrez votre email dans la case ci-dessus pour réinitialiser. </string>
+    <string name="cnx_success">Connexion réussie ! </string>
+    <string name="email_envoyer">Email de réinitialisation envoyé ! </string>
+    <string name="info_pers">informations personnelles </string>
+    <string name="lang">Langue </string>
+    <string name="theme">Thème </string>
+    <string name="decnx">Déconnexion </string>
+    <string name="msg_dcnx">Voulez-vous vraiment vous déconnecter ? </string>
+    <string name="annuler">Annuler </string>
+    <string name="log_out">Déconnecter</string>
+    <string name="clair">Mode clair</string>
+    <string name="sombre">Mode sombre</string>
+    <string name="choix_theme">Choisir le thème</string>
+    <string name="cmpt_success">Compte créé avec succès !</string>
+    <string name="no_spot">Erreur : Spot introuvable !</string>
+    <string name="rate">Note prise en compte :</string>
+    <string name="open_chat">Ouvrir le chat avec le créateur…</string>
+    <string name="partage_msg">Regarde ce spot incroyable sur Bienvenidos : </string>
+    <string name="send">Partager via</string>
+    <string name="send_error">Erreur de partage</string>
+    <string name="user_no_cnx">Erreur : Utilisateur non connecté</string>
+    <string name="user_not_found">Profil introuvable</string>
+    <string name="loading_error">Erreur de chargement</string>
+    <string name="activer">Activées</string>
 
 </resources>
