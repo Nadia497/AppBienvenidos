@@ -3,6 +3,7 @@ package com.example.appbienvenidos.view.activities;
 import static android.app.ProgressDialog.show;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -18,10 +19,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.utils.LocaleHelper;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ParametreActivity extends AppCompatActivity {
+import java.util.Locale;
+
+public class ParametreActivity extends BaseActivity {
     private ImageButton btnback;
     private View info_pers, notifs, theme, language, logout;
     @Override
@@ -43,6 +47,9 @@ public class ParametreActivity extends AppCompatActivity {
         //language
         language = findViewById(R.id.language);
         reglage(language, "Language",R.drawable.ic_language ,"Français");
+        language.setOnClickListener(v -> {
+            showChangeLanguageDialog();
+        });
 
         //theme
         theme = findViewById(R.id.theme);
@@ -119,4 +126,33 @@ public class ParametreActivity extends AppCompatActivity {
                 .setNegativeButton("Annuler", null)
                 .show();
     }
+
+    private void showChangeLanguageDialog(){
+        final String[] langs = {getString(R.string.fr) , getString(R.string.en)};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.lng_choice));
+
+        builder.setSingleChoiceItems(langs, -1, (dialogInterface, i) -> {
+            if(i == 0){
+                LocaleHelper.setLocale(this,"fr");
+                recreate();
+                ((TextView)
+                        language.findViewById(R.id.rowValue)).setText(getString(R.string.fr));
+            } else if (i == 1){
+                LocaleHelper.setLocale(this,"en");
+                recreate();
+                ((TextView)
+                        language.findViewById(R.id.rowValue)).setText(getString(R.string.en));
+            }
+
+            dialogInterface.dismiss();
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }

@@ -21,7 +21,7 @@ import com.example.appbienvenidos.viewmodel.SpotViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
-public class GuideDetailsActivity extends AppCompatActivity {
+public class GuideDetailsActivity extends BaseActivity {
 
     ShapeableImageView imgProfileGuide;
     TextView GuideName, GuideCity, GuideHourlyRate, GuideSpecialities, GuideLanguages;

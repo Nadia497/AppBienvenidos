@@ -33,7 +33,7 @@ import org.osmdroid.views.overlay.Marker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpotDetailActivity extends AppCompatActivity {
+public class SpotDetailActivity extends BaseActivity {
 
     // --- 1. Variables UI ---
     LinearLayout LayoutImage;

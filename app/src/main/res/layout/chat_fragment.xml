@@ -86,7 +86,7 @@
                 android:id="@+id/searchField"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Rechercher"
+                android:hint="@string/rechercher"
                 android:textSize="@dimen/_18sdp"
                 android:textColor="@color/text_primary"
                 android:background="@drawable/bg_white_profile_n"
@@ -122,7 +122,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pas de discussion encore"
+                    android:text="@string/pas_de_discussion_encore"
                     android:textColor="@color/text_secondary"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />

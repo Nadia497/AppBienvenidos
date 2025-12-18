@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.appbienvenidos.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     // Déclaration des variables
     private EditText editEmail, editPassword;

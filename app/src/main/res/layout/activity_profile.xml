@@ -40,12 +40,12 @@
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="241dp"
+                    android:layout_width="247dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="12dp"
                     android:gravity="center"
-                    android:text="Profile"
+                    android:text="@string/profile"
                     android:textColor="@color/text_primary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="Aperçu de mes contributions"
+                android:text="@string/statistique"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -167,7 +167,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Spots Partagés"
+                            android:text="@string/spots_partages"
                             android:textSize="10sp"
                             android:textColor="@color/text_secondary" />
                     </LinearLayout>
@@ -203,7 +203,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nombre de likes"
+                            android:text="@string/nombre_de_likes"
                             android:textSize="10sp"
                             android:textColor="@color/text_secondary" />
                     </LinearLayout>
@@ -238,7 +238,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Avis Moyens          "
+                            android:text="@string/avis_moyens"
                             android:textSize="10sp"
                             android:textColor="@color/text_secondary"
                             android:layout_marginBottom="@dimen/_3sdp"/>
@@ -251,7 +251,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="Mes Spots &amp; Itinéraires"
+                android:text="@string/mes_spots_et_itineraires"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -286,7 +286,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aucun spot publié pour le moment"
+                    android:text="@string/aucun_spot"
                     android:textColor="#BDBDBD"
                     android:textSize="14sp" />
 
@@ -298,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="12dp"
-                android:text="Actions Rapides"
+                android:text="@string/actions_rapides"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -317,7 +317,7 @@
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="Créer un nouveau Spot"
+                    android:text="@string/add_spot"
                     android:backgroundTint="@color/brand_yellow"
                     android:textSize="12sp"
                     android:textAllCaps="false"

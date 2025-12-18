@@ -44,7 +44,7 @@ import com.google.firebase.auth.TotpSecret;
 
 import static android.app.Activity.RESULT_OK;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends BaseActivity {
     private static final int PICK_IMAGE = 100;
     private ImageButton btnback;
     private ImageView user_photo, btn_add_img;

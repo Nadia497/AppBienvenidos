@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Devenir un Guide"
+        android:text="@string/devenir_un_guide"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold"
         android:textColor="@color/text_primary"
@@ -20,35 +20,35 @@
         android:id="@+id/specialities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Vos spécialités (ex: Histoire, Cuisine)"
+        android:hint="@string/specialiter"
         android:layout_marginBottom="@dimen/_8sdp"/>
 
     <EditText
         android:id="@+id/language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Langues parlées"
+        android:hint="@string/langues"
         android:layout_marginBottom="@dimen/_8sdp"/>
 
     <EditText
         android:id="@+id/city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ville desservie"
+        android:hint="@string/ville_desservie"
         android:layout_marginBottom="@dimen/_8sdp"/>
 
     <EditText
         android:id="@+id/Rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tarif horaire (MAD)"
+        android:hint="@string/tarif_horaire_mad"
         android:inputType="numberDecimal"/>
 
     <EditText
         android:id="@+id/tele"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Votre numéros de Téléphone"
+        android:hint="@string/votre_num_ros_de_t_l_phone"
         android:inputType="numberDecimal"/>
 
 </LinearLayout>

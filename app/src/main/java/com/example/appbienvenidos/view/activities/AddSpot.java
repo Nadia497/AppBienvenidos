@@ -33,7 +33,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import java.util.Locale;
 
-public class AddSpot extends AppCompatActivity {
+public class AddSpot extends BaseActivity {
 
     private static final int PICK_IMAGE = 100;
 
