@@ -24,6 +24,7 @@ import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.Spot;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.example.appbienvenidos.viewmodel.SpotViewModel ;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
@@ -40,10 +41,11 @@ public class SpotDetailActivity extends AppCompatActivity {
     MaterialButton AskUser, Share;
     ShapeableImageView FirstImage, SecondImage, ThirdImage;
     TextView NomDuSpot, UserPublicationDate, textviewaction,
-            textviewDescription, Description, SpotAdress,
+            textviewDescription, Description, SpotAdress, txtAverageScore,
             infoAdresse;
     RatingBar ratingbar;
     MapView map;
+    SpotViewModel spotViewModel ;
 
 
     private Spot currentSpot;
@@ -113,6 +115,8 @@ public class SpotDetailActivity extends AppCompatActivity {
         NomDuSpot = findViewById(R.id.NomDuSpot);
         SpotAdress = findViewById(R.id.SpotAdress);
         UserPublicationDate = findViewById(R.id.UserPublicationDate);
+
+        txtAverageScore = findViewById(R.id.txtAverageScore);
     }
 
     private void fillData() {
@@ -127,6 +131,43 @@ public class SpotDetailActivity extends AppCompatActivity {
         }
 
         ratingbar.setRating((float) currentSpot.getAverage_Rating());
+
+        // --- GESTION DU RATING ---
+
+        // 1. Initialiser le ViewModel
+        spotViewModel = new androidx.lifecycle.ViewModelProvider(this).get(com.example.appbienvenidos.viewmodel.SpotViewModel.class);
+
+        // 2. Afficher la moyenne actuelle
+        float moyenne = (float) currentSpot.getAverage_Rating();
+        ratingbar.setRating(moyenne);
+        ratingbar.setIsIndicator(false); // Important : on autorise le clic !
+
+        if(txtAverageScore != null) {
+            txtAverageScore.setText(String.format("%.1f", moyenne));
+        }
+
+        // 3. Écouter le clic sur les étoiles
+        ratingbar.setOnRatingBarChangeListener((ratingBar, userRating, fromUser) -> {
+            if (fromUser) {
+                // On bloque la barre pour ne pas voter 2 fois
+                ratingbar.setIsIndicator(true);
+
+                // Calcul mathématique de la nouvelle moyenne (Simulation visuelle immédiate)
+                double oldAvg = currentSpot.getAverage_Rating();
+                double oldCount = currentSpot.getTotal_Rating();
+                double newCount = oldCount + 1;
+                double newAvg = ((oldAvg * oldCount) + userRating) / newCount;
+
+                // Mise à jour visuelle
+                if(txtAverageScore != null) {
+                    txtAverageScore.setText(String.format("%.1f", newAvg));
+                }
+                Toast.makeText(this, "Note prise en compte : " + userRating + "/5", Toast.LENGTH_SHORT).show();
+
+                // Envoi à Firebase
+                spotViewModel.rateSpot(currentSpot.getId(), userRating, oldAvg, oldCount);
+            }
+        });
     }
 
     private void setupImages() {

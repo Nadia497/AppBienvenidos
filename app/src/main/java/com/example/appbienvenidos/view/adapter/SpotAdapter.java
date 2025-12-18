@@ -98,7 +98,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             SpotName.setText(currentSpot.getTitle());
             PublicationDate.setText(currentSpot.getPublication_Date());
             SpotDescription.setText(currentSpot.getDescription());
-            SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
+            SpotRating.setText(String.format("%.1f", currentSpot.getAverage_Rating()));
 
             if (currentSpot.getImage_URL()!= null && !currentSpot.getImage_URL().isEmpty()){
                 Glide.with(context)
@@ -140,13 +140,12 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         public void bind(Spot currentSpot, Context context) {
             SpotName.setText(currentSpot.getTitle());
-            SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
+            SpotRating.setText(String.format("%.1f", currentSpot.getAverage_Rating()));
             if (SpotName != null){
                 SpotName.setText(currentSpot.getTitle());
             }
             if (SpotRating != null){
-                SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
-            }
+                SpotRating.setText(String.format("%.1f", currentSpot.getAverage_Rating()));            }
 
             if (SpotCategory != null) {
                 String cat =  currentSpot.getCategoryNameDisplay();
