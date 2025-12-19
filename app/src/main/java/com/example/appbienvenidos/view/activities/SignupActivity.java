@@ -46,7 +46,7 @@ public class SignupActivity extends BaseActivity {
     private SignupViewModel viewModel;
 
     // Variables logiques
-    String selectedRole = getString(R.string.voyageur);
+    String selectedRole;
     String imageUriString = "";
 
     // --- FIREBASE ---
@@ -58,6 +58,8 @@ public class SignupActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup);
+
+        selectedRole = getString(R.string.voyageur);
 
         try {
             Map config = new HashMap();
