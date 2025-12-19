@@ -55,7 +55,7 @@ public class HomeViewModel extends ViewModel{
             if(spots != null){
                 allSpotsCache = spots;
                 for(Spot spot : allSpotsCache){
-                    String id = spot.getCategory_id().toLowerCase();
+                    String id = spot.getCategory_id();
                     if (categoryMap.containsKey(id)){
                         spot.setCategoryNameDisplay(categoryMap.get(id));
                     }else{
@@ -70,12 +70,20 @@ public class HomeViewModel extends ViewModel{
     private void applyFilters(){
         List<Spot> filtredList = new ArrayList<>();
         for (Spot spot : allSpotsCache) {
-            String ville = spot.getAdress().toLowerCase() != null ? spot.getAdress().toLowerCase() : "";
+            String ville = spot.getAdress() != null ? spot.getAdress().toLowerCase() : "";
             String catName = spot.getCategoryNameDisplay() != null ? spot.getCategoryNameDisplay() : "";
+            boolean matchesSpotName=catName.contains((currentSearchCity).toLowerCase());
             boolean matchesCity = ville.contains(currentSearchCity.toLowerCase());
-            boolean matchesCategory = currentCategory.equals("Tout") || catName.equalsIgnoreCase(currentCategory);
+            boolean matchesCategory ;
+            String catId =  spot.getCategory_id();
 
-            if (matchesCity && matchesCategory) {
+            if(currentCategory.equals("Tout")){
+                matchesCategory=true;
+            }else{
+                matchesCategory= (catId != null && catId.equals(currentCategory));
+            }
+
+            if (    matchesCity && matchesCategory) {
                 filtredList.add(spot);
             }
         }
@@ -93,8 +101,8 @@ public class HomeViewModel extends ViewModel{
         this.currentSearchCity = query;
         applyFilters();
     }
-    public void setCategory(String category){
-        this.currentCategory = category;
+    public void setCategory(String categoryId){
+        this.currentCategory = categoryId;
         applyFilters();
     }
     public LiveData<List<Spot>> getBestRatedSpots(){
