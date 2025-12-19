@@ -40,12 +40,12 @@
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="241dp"
+                    android:layout_width="247dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="12dp"
                     android:gravity="center"
-                    android:text="Profile"
+                    android:text="@string/profile"
                     android:textColor="@color/text_primary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="Aperçu de mes contributions"
+                android:text="@string/statistique"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -150,7 +150,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_65sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_14sdp">
@@ -167,7 +167,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Spots Partagés"
+                            android:text="@string/spots_partages"
                             android:textSize="10sp"
                             android:textColor="@color/text_secondary" />
                     </LinearLayout>
@@ -186,7 +186,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_65sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_14sdp">
@@ -203,7 +203,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nombre de likes"
+                            android:text="@string/nombre_de_likes"
                             android:textSize="10sp"
                             android:textColor="@color/text_secondary" />
                     </LinearLayout>
@@ -221,7 +221,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_65sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="16dp">
@@ -238,10 +238,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Avis Moyens          "
-                            android:textSize="10sp"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:text="@string/avis_moyens"
                             android:textColor="@color/text_secondary"
-                            android:layout_marginBottom="@dimen/_3sdp"/>
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
@@ -251,7 +251,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="Mes Spots &amp; Itinéraires"
+                android:text="@string/mes_spots_et_itineraires"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -286,7 +286,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aucun spot publié pour le moment"
+                    android:text="@string/aucun_spot"
                     android:textColor="#BDBDBD"
                     android:textSize="14sp" />
 
@@ -298,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="12dp"
-                android:text="Actions Rapides"
+                android:text="@string/actions_rapides"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -310,37 +310,38 @@
                 android:weightSum="2">
 
                 <!-- Bouton 1 : Créer Spot (Jaune) -->
+
+                <!-- Bouton 2 : Imaginer Itinéraire (Rose) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCreateSpot"
                     style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="Créer un nouveau Spot"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/brand_yellow"
-                    android:textSize="12sp"
+                    android:text="@string/add_spot"
                     android:textAllCaps="false"
                     android:textColor="@android:color/black"
+                    android:textSize="12sp"
                     app:cornerRadius="12dp"
                     app:icon="@drawable/ic_add_24_n"
-                    app:iconTint="@android:color/black"
-                    app:iconPadding="4dp" />
+                    app:iconPadding="4dp"
+                    app:iconTint="@android:color/black" />
 
-                <!-- Bouton 2 : Imaginer Itinéraire (Rose) -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCreateItinerary"
+                    android:id="@+id/btnMapUser"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     style="@style/Widget.MaterialComponents.Button"
-                    android:text="Imaginer un Itinéraire"
+                    android:text="@string/mes_spots_sur_carte"
                     android:backgroundTint="#F4B7B8"
                     android:textSize="12sp"
                     android:textAllCaps="false"
                     android:textColor="@android:color/black"
                     app:cornerRadius="12dp"
-                    app:icon="@drawable/ic_route_24_n"
+                    app:icon="@android:drawable/ic_dialog_map"
                     app:iconTint="@android:color/black"
                     app:iconPadding="4dp"
                     />

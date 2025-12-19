@@ -30,7 +30,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_black"
         android:paddingLeft="20sp"
-        android:text="Découvrez des pépites locales"
+        android:text="@string/d_couvrez_des_p_pites_locales"
         android:textColor="@color/text_primary"
         android:textSize="40sp" />
 

@@ -73,7 +73,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/bg_search"
                 android:backgroundTint="@color/surface_card"
-                android:hint="Rechercher une ville, un spot..."
+                android:hint="@string/rechercher_une_ville_un_spot"
                 android:textSize="14sp"
                 android:textColorHint="@color/text_secondary"
                 android:paddingStart="16dp"
@@ -116,7 +116,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tout"
+                            android:text="@string/tout"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -140,7 +140,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Café"
+                            android:text="@string/caf"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -165,7 +165,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Culture"
+                            android:text="@string/culture"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -190,7 +190,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Restaurant"
+                            android:text="@string/restaurant"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -214,7 +214,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Shopping"
+                            android:text="@string/shopping"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -258,7 +258,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Payasage"
+                            android:text="@string/paysage"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -280,7 +280,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hotel"
+                            android:text="@string/h_tel"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"
@@ -295,7 +295,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:text="Itinéraires du Jour"
+                android:text="@string/itin_raires_du_jour"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"
@@ -316,7 +316,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nouveaux Spots à Proximité"
+                android:text="@string/nouveaux_spots_proximit"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"

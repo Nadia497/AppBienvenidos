@@ -26,7 +26,7 @@
         android:id="@+id/phrase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="                  Vivez des expériences uniques "
+        android:text="@string/vivez_des_exp_riences_uniques"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp"
         android:paddingLeft="20sp"

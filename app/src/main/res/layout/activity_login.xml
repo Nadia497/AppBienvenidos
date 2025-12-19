@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="serif"
-                android:text="Bon retour parmi nous !"
+                android:text="@string/welcome_retour"
                 android:textColor="@color/pink_300"
                 android:textSize="13sp" />
 
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/text_primary"
-                    android:text="Email"
+                    android:text="@string/email"
                     android:textSize="@dimen/_13sdp"/>
 
                 <EditText
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/text_primary"
-                    android:text="Mot de passe"
+                    android:text="@string/mot_de_passe"
                     android:textSize="@dimen/_13sdp"/>
 
                 <EditText
@@ -118,14 +118,14 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
                     android:textColor="@color/text_secondary"
-                    android:text="Mot de passe oublié ?"
+                    android:text="@string/mdp_oublier"
                     android:clickable="true"
                     android:focusable="true"/>
 
                 <!-- BOUTON CONNEXION -->
                 <Button
                     android:id="@+id/btnSeConnecter"
-                    android:text="Se connecter"
+                    android:text="@string/se_connecter"
                     android:textColor="@color/surface_card"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_secondary"
-                    android:text="Pas encore de compte ? "/>
+                    android:text="@string/pas_encore_de_compte"/>
 
                 <TextView
                     android:id="@+id/textGoToRegister"
@@ -157,7 +157,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/brand_yellow"
                     android:padding="5dp"
-                    android:text="S'inscrire"/>
+                    android:text="@string/sign_up"/>
             </LinearLayout>
 
         </LinearLayout>

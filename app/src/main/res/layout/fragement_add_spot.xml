@@ -32,7 +32,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter un Spot"
+        android:text="@string/ajouter_un_spot"
         android:textColor="@color/text_primary"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -84,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Ajouter une photo"
+                        android:text="@string/ajouter_une_photo"
                         android:textColor="@color/text_secondary" />
                 </LinearLayout>
 
@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Nom du lieu"
+                android:text="@string/nom_du_lieu"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
 
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Localisation"
+                android:text="@string/localisation"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
 
@@ -200,7 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Catégorie"
+                android:text="@string/cat_gorie"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
 
@@ -222,7 +222,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@drawable/bg_chip_selected_n"
-                        android:text="Restaurant"
+                        android:text="@string/restaurant"
                         android:id="@+id/restaurant"
                         android:textAllCaps="false"
                         android:textColor="@color/text_secondary"
@@ -235,7 +235,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@drawable/bg_chip_unselected_n"
-                        android:text="Café"
+                        android:text="@string/caf"
                         android:id="@+id/cafe"
                         android:textAllCaps="false"
                         android:textColor="@color/text_secondary"
@@ -247,7 +247,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@drawable/bg_chip_unselected_n"
-                        android:text="Paysage"
+                        android:text="@string/paysage"
                         android:id="@+id/paysage"
                         android:textAllCaps="false"
                         android:textColor="@color/text_secondary"
@@ -259,7 +259,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@drawable/bg_chip_unselected_n"
-                        android:text="Culture"
+                        android:text="@string/culture"
                         android:id="@+id/culture"
                         android:textAllCaps="false"
                         android:textColor="@color/text_secondary"
@@ -270,7 +270,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@drawable/bg_chip_unselected_n"
-                        android:text="Shopping"
+                        android:text="@string/shopping"
                         android:id="@+id/shopping"
                         android:textAllCaps="false"
                         android:textColor="@color/text_secondary"
@@ -281,7 +281,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@drawable/bg_chip_unselected_n"
-                        android:text="Hôtel"
+                        android:text="@string/h_tel"
                         android:id="@+id/hotel"
                         android:textAllCaps="false"
                         android:textColor="@color/text_secondary"
@@ -299,7 +299,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description"
+                    android:text="@string/descriptions"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
                     android:layout_centerVertical="true"/>
@@ -309,7 +309,7 @@
                     android:id="@+id/ai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✨ Aide-moi à écrire"
+                    android:text="@string/aide_moi_crire"
                     android:textSize="10sp"
                     android:textColor="#8A2BE2"
                     android:background="@drawable/bg_badge_purple_n"
@@ -338,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
 
-                    android:hint="Partagez votre expérience, ce que vous avez aimé..."
+                    android:hint="@string/partagez_votre_exp_rience_ce_que_vous_avez_aim"
                     android:textColorHint="@color/text_secondary"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
@@ -358,7 +358,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_button_yellow_n"
-                android:text="Publier le Spot"
+                android:text="@string/publier_le_spot"
                 android:id="@+id/btnpublier"
                 android:textAllCaps="false"
                 android:textColor="#1A1A1A"

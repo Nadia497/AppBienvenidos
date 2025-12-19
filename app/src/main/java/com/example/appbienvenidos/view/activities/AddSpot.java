@@ -33,7 +33,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import java.util.Locale;
 
-public class AddSpot extends AppCompatActivity {
+public class AddSpot extends BaseActivity {
 
     private static final int PICK_IMAGE = 100;
 
@@ -121,7 +121,7 @@ public class AddSpot extends AppCompatActivity {
                     if (!adresseTapee.isEmpty()){
                         chercherLocalisation(adresseTapee);
                     } else {
-                        Toast.makeText(AddSpot.this, "Entrez une ville ou un lieu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddSpot.this, getString(R.string.entrer_ville_ou_place), Toast.LENGTH_SHORT).show();
                     }
                     return true;
                 }
@@ -149,7 +149,7 @@ public class AddSpot extends AppCompatActivity {
         //gestion du btn publier
         publier.setOnClickListener(v -> {
             if(!isLocationValid){
-                Toast.makeText(AddSpot.this, "Veuillez cliquer sur la loupe pour valider la localisation", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddSpot.this, getString(R.string.cliquer_recherche), Toast.LENGTH_SHORT).show();
                 return;
             }
             startPublishProcess();
@@ -187,7 +187,7 @@ public class AddSpot extends AppCompatActivity {
         viewModel.getIsLoading().observe(this, isLoading -> {
             publier.setEnabled(!isLoading); // On désactive le bouton pendant le chargement
             if (isLoading) {
-                Toast.makeText(AddSpot.this, "Publication en cours...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddSpot.this, getString(R.string.pub_en_cours), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -354,16 +354,16 @@ public class AddSpot extends AppCompatActivity {
                         }
 
                         localisation.setText(cleanAddress);
-                        Toast.makeText(this,"Localisation trouvée ! ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.loc_trouvee), Toast.LENGTH_SHORT).show();
                     } else {
                         isLocationValid = false;
-                        Toast.makeText(this,"Lieu introuvable ❌ Essayez d'être plus précis (Ajoutez la ville)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.loc_introuvee), Toast.LENGTH_SHORT).show();
                     }
                 });
             } catch(IOException e){
                 runOnUiThread(() -> {
                     isLocationValid = false;
-                    Toast.makeText(this,"Erreur de connexion internet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.error_cnx), Toast.LENGTH_SHORT).show();
                 });
             }
         }).start();

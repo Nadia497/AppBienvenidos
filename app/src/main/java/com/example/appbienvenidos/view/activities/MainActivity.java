@@ -15,7 +15,7 @@ import com.example.appbienvenidos.view.fragments.HomeFragment;
 import com.example.appbienvenidos.view.fragments.GuideFragment;
 import com.example.appbienvenidos.view.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);

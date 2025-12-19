@@ -38,7 +38,7 @@
             android:layout_width="230dp"
             android:layout_height="45dp"
             android:gravity="center"
-            android:text="Modifier le profil"
+            android:text="@string/modifier_le_profil"
             android:textColor="@color/text_primary"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold" />
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/surface_card"
-            android:text="Enregistrer"
+            android:text="@string/enregistrer"
             android:textColor="@color/enregistrer"
             app:backgroundTint="@null"/>
 
@@ -160,7 +160,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_14sdp"
                     android:inputType="textPersonName"
-                    android:text="  Nom "
+                    android:text="@string/_nom"
+                    android:paddingStart="@dimen/_6sdp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"/>
 
@@ -168,13 +169,14 @@
                 <TextView
                     android:id="@+id/labelFirstName"
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/_14sdp"
+                    android:layout_weight="1"
                     android:inputType="textPersonName"
-                    android:text="     Prénom"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"/>
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/prenom"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,7 +195,7 @@
                     android:paddingStart="16dp"
                     android:textSize="14sp"
                     android:inputType="textPersonName"
-                    android:hint="Nom"
+                    android:hint="@string/nom_"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"/>
 
@@ -208,7 +210,7 @@
                     android:paddingStart="16dp"
                     android:textSize="14sp"
                     android:inputType="textPersonName"
-                    android:hint="Prénom"
+                    android:hint="@string/preenom"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"/>
             </LinearLayout>
@@ -221,8 +223,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="  Localisation "
+                android:text="@string/location"
                 android:textColor="@color/text_primary"
+                android:paddingStart="@dimen/_6sdp"
                 android:textSize="@dimen/_14sdp"
                 android:layout_marginBottom="2dp"
                 android:textStyle="bold" />
@@ -238,7 +241,7 @@
                 android:textSize="14sp"
                 android:drawableTint="#BDBDBD"
                 android:inputType="textPostalAddress"
-                android:hint="Ville, Pays"
+                android:hint="@string/ville"
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"/>
 
@@ -250,8 +253,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="  E-mail "
+                android:text="@string/e_mail"
                 android:textColor="@color/text_primary"
+                android:paddingStart="@dimen/_6sdp"
                 android:textSize="@dimen/_14sdp"
                 android:layout_marginBottom="2dp"
                 android:textStyle="bold" />
@@ -273,7 +277,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="  L'adresse email ne peut pas être modifiée."
+                android:text="@string/l_adresse_email_ne_peut_pas_tre_modifi_e"
                 android:textColor="@color/text_secondary"
                 android:textSize="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_8sdp" />
@@ -285,8 +289,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="  Rôle"
+                android:text="@string/r_le"
                 android:textStyle="bold"
+                android:paddingStart="@dimen/_6sdp"
                 android:textSize="@dimen/_14sdp"
                 android:textColor="@color/text_primary"/>
 
@@ -309,7 +314,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_role_active"
                     android:gravity="center"
-                    android:text="Local"
+                    android:text="@string/locale"
                     android:textColor="@color/white_pure"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -324,7 +329,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/surface_card"
                     android:gravity="center"
-                    android:text="Guide"
+                    android:text="@string/guide"
                     android:textColor="@color/pink_300"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -338,7 +343,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_role_active"
                 android:gravity="center"
-                android:text="Voyageur"
+                android:text="@string/voyageurs"
                 android:textColor="@color/white_pure"
                 android:textStyle="bold"
                 android:textSize="14sp"
@@ -358,7 +363,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="  Spécialité "
+                android:text="@string/sp_cialit"
+                android:paddingStart="@dimen/_6sdp"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/_14sdp"
                 android:layout_marginTop="@dimen/_8sdp"
@@ -373,7 +379,7 @@
                 android:padding="10dp"
                 android:textSize="14sp"
                 android:inputType="textPostalAddress"
-                android:hint="Spécialité (ex : Cuisine, Tradition, Aventure, ...)"
+                android:hint="@string/specialiter"
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"/>
 
@@ -383,7 +389,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="  Région servie "
+                    android:text="@string/r_gion_servie"
+                    android:paddingStart="@dimen/_6sdp"
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginBottom="2dp"
@@ -397,7 +404,7 @@
                     android:padding="10dp"
                     android:textSize="14sp"
                     android:inputType="textPostalAddress"
-                    android:hint="Villes ou région servie"
+                    android:hint="@string/villes_ou_r_gion_servie"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"/>
 
@@ -407,7 +414,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="  Langues "
+                    android:text="@string/langue"
+                    android:paddingStart="@dimen/_6sdp"
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginBottom="2dp"
@@ -421,7 +429,7 @@
                     android:padding="10dp"
                     android:textSize="14sp"
                     android:inputType="textPostalAddress"
-                    android:hint="ex : Français, Anglais, Arabe, ..."
+                    android:hint="@string/ex_fran_ais_anglais_arabe"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"/>
 
@@ -431,7 +439,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="  Taux horaire "
+                    android:paddingStart="@dimen/_6sdp"
+                    android:text="@string/taux_horaire"
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginBottom="2dp"
@@ -445,7 +454,7 @@
                     android:padding="10dp"
                     android:textSize="14sp"
                     android:inputType="numberDecimal"
-                    android:hint=" Le montant est en MAD"
+                    android:hint="@string/le_montant_est_en_mad"
                     android:textColor="@color/text_primary"
                     android:textColorHint="@color/text_secondary"/>
 
@@ -455,7 +464,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="  Numéro de téléphone "
+                    android:text="@string/num_ro_de_t_l_phone"
+                    android:paddingStart="@dimen/_6sdp"
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginBottom="2dp"
@@ -478,7 +488,8 @@
                     android:id="@+id/labelAvailability"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  Statut"
+                    android:text="@string/statut"
+                    android:paddingStart="@dimen/_6sdp"
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginBottom="4dp"
@@ -526,7 +537,7 @@
                                 android:id="@+id/tvAvailabilityTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Disponible pour des visites"
+                                android:text="@string/disponible_pour_des_visites"
                                 android:textColor="@color/text_primary"
                                 android:textSize="@dimen/_12sdp"
                                 android:textStyle="bold" />
@@ -535,7 +546,7 @@
                                 android:id="@+id/tvAvailabilitySubtitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Visible dans les recherches"
+                                android:text="@string/visible_dans_les_recherches"
                                 android:textColor="@color/text_secondary"
                                 android:textSize="@dimen/_8sdp" />
                         </LinearLayout>
@@ -562,7 +573,8 @@
                 android:inputType="textPersonName"
                 android:drawableStart="@drawable/ic_gpp_maybe_n"
                 android:drawableTint="@color/enregistrer"
-                android:text=" Sécurité"
+                android:text="@string/securite"
+                android:paddingStart="@dimen/_6sdp"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/_14sdp"
                 android:layout_marginBottom="4dp"
@@ -612,7 +624,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Changer de mot de passe"
+                            android:text="@string/changer_de_mot_de_passe"
                             android:textColor="@color/text_primary"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold" />

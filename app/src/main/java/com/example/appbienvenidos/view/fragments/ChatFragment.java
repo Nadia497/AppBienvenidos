@@ -33,7 +33,7 @@ public class ChatFragment extends Fragment {
             currentUser = mAuth.getCurrentUser().getUid();
         }else {
             // Si pas connecté, on arrête tout pour éviter le crash
-            Toast.makeText(requireContext(), "Erreur : Utilisateur non connecté", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.user_no_cnx), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -45,11 +45,11 @@ public class ChatFragment extends Fragment {
                                 if(user != null){
                                     userName.setText(user.getFullName());
                                 } else {
-                                    Toast.makeText(requireContext(),"Profile introuvable", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(requireContext(),getString(R.string.user_not_found), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }).addOnFailureListener(e ->{
-                            Toast.makeText(requireContext(), "Erreur : "+ e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), getString(R.string.erreur)+": "+ e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
 
     }
