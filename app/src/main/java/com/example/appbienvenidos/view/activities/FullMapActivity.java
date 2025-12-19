@@ -1,9 +1,14 @@
 package com.example.appbienvenidos.view.activities;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
@@ -42,6 +47,23 @@ public class FullMapActivity extends AppCompatActivity {
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
         marker.setTitle(title);
         // marker.setIcon(...) // Tu peux remettre ton icône personnalisée ici aussi
+        try {
+            // 1. On reprend ton image
+            Drawable logoOriginal = ContextCompat.getDrawable(this, R.drawable.logomap);
+
+            // 2. On convertit en Bitmap
+            Bitmap bitmapOriginal = ((BitmapDrawable) logoOriginal).getBitmap();
+
+            // 3. On redimensionne (Même taille que l'autre : 100x100)
+            Drawable petitLogo = new BitmapDrawable(getResources(),
+                    Bitmap.createScaledBitmap(bitmapOriginal, 30, 30, true));
+
+            // 4. On l'applique
+            marker.setIcon(petitLogo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         map.getOverlays().add(marker);
 
     }
