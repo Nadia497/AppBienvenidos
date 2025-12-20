@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.appbienvenidos.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     // Déclaration des variables
     private EditText editEmail, editPassword;
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             String password = editPassword.getText().toString().trim();
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(LoginActivity.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, getString(R.string.remplir_tous), Toast.LENGTH_SHORT).show();
             } else {
                 loginUser(email, password);
             }
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     // Succès
-                    Toast.makeText(LoginActivity.this, "Connexion réussie !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getString(R.string.cnx_success), Toast.LENGTH_SHORT).show();
 
                     // Redirection vers l'Accueil (MainActivity)
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -99,17 +99,17 @@ public class LoginActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     // Erreur (Mauvais mot de passe, pas de compte, etc.)
-                    Toast.makeText(LoginActivity.this, "Erreur : " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, getString(R.string.erreur)+ ": " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
 
     private void resetPassword(String email) {
         mAuth.sendPasswordResetEmail(email)
                 .addOnSuccessListener(unused -> {
-                    Toast.makeText(this, "Email de réinitialisation envoyé !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getString(R.string.email_envoyer), Toast.LENGTH_LONG).show();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Erreur : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.erreur) + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
     private void showResetDialog() {

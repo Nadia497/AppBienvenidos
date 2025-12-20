@@ -72,6 +72,9 @@ dependencies {
 
     //cloudinary
     implementation("com.cloudinary:cloudinary-android:2.5.0")
+
+    //Notifications
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
 }
 
 apply(plugin = "com.google.gms.google-services")

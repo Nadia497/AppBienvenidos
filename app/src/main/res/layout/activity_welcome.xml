@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Le monde à portée de main"
+            android:text="@string/slogane"
             android:textColor="#E996C4"
             android:textSize="18dp"
             android:fontFamily="serif"
@@ -52,7 +52,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Inscrire"
-            android:text="S'insrire"
+            android:text="@string/logup"
             android:padding="12dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
 
         <Button
             android:id="@+id/Seconnecter"
-            android:text="Se connecter"
+            android:text="@string/log_in"
             android:textColor="@color/brand_yellow"
             android:padding="12dp"
             android:layout_width="300dp"
@@ -84,7 +84,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Explorer"
-            android:text="Explorer"
+            android:text="@string/explorer"
             android:padding="12dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"

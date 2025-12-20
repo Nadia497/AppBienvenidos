@@ -87,7 +87,7 @@ public class GuideFragment extends Fragment {
             if (guides != null) {
                 GuideAdapter.setGuides(guides);
             } else {
-                Toast.makeText(requireContext(), "Erreur de chargement", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.loading_error), Toast.LENGTH_SHORT).show();
             }
             progressBar.setVisibility(View.GONE);
         });

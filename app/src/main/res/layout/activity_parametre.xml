@@ -31,7 +31,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Paramètre"
+        android:text="@string/parametre"
         android:textColor="@color/text_primary"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_8sdp"
-                android:text="Compte"
+                android:text="@string/compte"
                 android:textColor="@color/text_secondary"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12sdp"/>
@@ -133,7 +133,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="@dimen/_16sdp"
-                        android:text="Se déconnecter"
+                        android:text="@string/logout"
                         android:textColor="#D32F2F"
                         android:textStyle="bold"
                         android:textSize="@dimen/_14sdp"/>

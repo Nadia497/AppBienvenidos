@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends BaseActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
@@ -46,7 +46,7 @@ public class SignupActivity extends AppCompatActivity {
     private SignupViewModel viewModel;
 
     // Variables logiques
-    String selectedRole = "Voyageur";
+    String selectedRole;
     String imageUriString = "";
 
     // --- FIREBASE ---
@@ -58,6 +58,8 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup);
+
+        selectedRole = getString(R.string.voyageur);
 
         try {
             Map config = new HashMap();
@@ -80,14 +82,14 @@ public class SignupActivity extends AppCompatActivity {
         initViews();
         viewModel.isSuccess.observe(this, success -> {
             if (success){
-                Toast.makeText(this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.cmpt_success), Toast.LENGTH_SHORT).show();
                 startActivity((new Intent(this, MainActivity.class)));
                 finish();
             }
         });
         viewModel.errorMessage.observe(this, message -> {
             if (message != null && !message.isEmpty()) {
-                Toast.makeText(this, "Erreur : " + message, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.erreur)+ ": " + message, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -96,11 +98,11 @@ public class SignupActivity extends AppCompatActivity {
 
         // Gestion Rôles
         btnRoleTraveler.setOnClickListener(v -> {
-            selectedRole = "Voyageur";
+            selectedRole = getString(R.string.voyageur);
             updateRoleUI();
         });
         btnRoleLocal.setOnClickListener(v -> {
-            selectedRole = "Local";
+            selectedRole = getString(R.string.local);
             updateRoleUI();
         });
 
@@ -143,7 +145,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void updateRoleUI() {
-        if (selectedRole.equals("Voyageur")) {
+        if (selectedRole.equals(getString(R.string.voyageur))) {
             btnRoleTraveler.setBackgroundResource(R.drawable.bg_role_active);
             btnRoleTraveler.setTextColor(Color.WHITE);
             btnRoleLocal.setBackgroundResource(0);

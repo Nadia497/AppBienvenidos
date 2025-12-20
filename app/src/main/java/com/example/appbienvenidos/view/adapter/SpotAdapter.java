@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.Spot;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
+import com.example.appbienvenidos.viewmodel.SpotViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +105,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             SpotName.setText(currentSpot.getTitle());
             PublicationDate.setText(currentSpot.getPublication_Date());
             SpotDescription.setText(currentSpot.getDescription());
-            SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
+            SpotRating.setText(String.format("%.1f", currentSpot.getAverage_Rating()));
 
             if (currentSpot.getImage_URL()!= null && !currentSpot.getImage_URL().isEmpty()){
                 Glide.with(context)
@@ -150,14 +151,13 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         public void bind(Spot currentSpot, Context context) {
             SpotName.setText(currentSpot.getTitle());
-            SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
             SpotCity.setText(currentSpot.getAdress());
+            SpotRating.setText(String.format("%.1f", currentSpot.getAverage_Rating()));
             if (SpotName != null){
                 SpotName.setText(currentSpot.getTitle());
             }
             if (SpotRating != null){
-                SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
-            }
+                SpotRating.setText(String.format("%.1f", currentSpot.getAverage_Rating()));            }
 
             if (SpotCategory != null) {
                 String cat =  currentSpot.getCategoryNameDisplay();
@@ -203,10 +203,10 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     int current = viewPagerCard.getCurrentItem();
                     int next = (current == totalImages - 1) ? 0 : current + 1;
                     viewPagerCard.setCurrentItem(next, true);
-                    sliderHandler.postDelayed(this, 3000);
+                    sliderHandler.postDelayed(this, 4000);
                 }
             };
-            sliderHandler.postDelayed(sliderRunnable, 3000);
+            sliderHandler.postDelayed(sliderRunnable, 4000);
         }
 
         public void stopAutoScroll() {

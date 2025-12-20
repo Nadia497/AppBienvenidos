@@ -69,4 +69,15 @@ public class SpotRepository {
                 .addOnFailureListener(e-> liveData.setValue(null));
     }
 
+    public void updateSpotRating(String spotId, float userRating, double oldAvg, double oldCount) {
+        // 1. Calculer la nouvelle moyenne
+        double newCount = oldCount + 1;
+        double newAvg = ((oldAvg * oldCount) + userRating) / newCount;
+
+        // 2. Mettre à jour Firebase
+        db.collection("Spot").document(spotId)
+                .update("average_Rating", newAvg, "total_Rating", newCount);
+
+     }
+
 }

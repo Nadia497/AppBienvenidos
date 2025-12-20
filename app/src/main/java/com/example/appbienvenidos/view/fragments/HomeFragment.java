@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     private EditText searchEditText;
     private View chipTout, chipCafe, chipCulture, chipRestaurant,
             chipShopping, chipPayasage, chipHotel;
-    private View layoutNoResults,layoutResults;
+    private View layoutNoResults,layoutResults, loadingProgressBar;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -125,9 +125,12 @@ public class HomeFragment extends Fragment {
 
         layoutNoResults = view.findViewById(R.id.layoutNoResults);
         layoutResults = view.findViewById(R.id.layoutResults);
-
+        loadingProgressBar = view.findViewById(R.id.loadingProgressBar);
         homeViewModel.getBestRatedSpots().observe(getViewLifecycleOwner(),spots ->
         {
+            if (loadingProgressBar != null) {
+                loadingProgressBar.setVisibility(View.GONE);
+            }
             if (spots == null || spots.isEmpty()) {
                 layoutNoResults.setVisibility(View.VISIBLE);
                 layoutResults.setVisibility(View.GONE);
