@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,19 +134,24 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         private Handler sliderHandler = new Handler(Looper.getMainLooper());
         private Runnable sliderRunnable;
 
+        View textContainer; // Ajoute cette variable
+
         public HomeViewHolder(@Nullable View itemView) {
             super(itemView);
+            textContainer = itemView.findViewById(R.id.cardTextContainer); // Récupère le conteneur de texte
+
             SpotName = itemView.findViewById(R.id.cardSpotTitle);
-            //SpotCity = itemView.findViewById(R.id.SpotCity);
+            SpotCity = itemView.findViewById(R.id.cardSpotCity);
             SpotRating = itemView.findViewById(R.id.cardSpotRating);
             SpotImage = itemView.findViewById(R.id.SpotImage);
-            SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
+            //SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
             viewPagerCard = itemView.findViewById(R.id.cardViewPager);
         }
 
         public void bind(Spot currentSpot, Context context) {
             SpotName.setText(currentSpot.getTitle());
             SpotRating.setText(String.valueOf(currentSpot.getAverage_Rating()));
+            SpotCity.setText(currentSpot.getAdress());
             if (SpotName != null){
                 SpotName.setText(currentSpot.getTitle());
             }
@@ -159,7 +165,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     SpotCategory.setText(cat);
 
                 if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
-                    CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL());
+                    CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL(), currentSpot);
                     viewPagerCard.setAdapter(imgAdapter);
 
                     startAutoScroll(currentSpot.getImage_URL().size());
@@ -169,13 +175,25 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 }
 
             }
-            itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, SpotDetailActivity.class);
-                intent.putExtra("SPOT_KEY", currentSpot);
-                context.startActivity(intent);
-            });
+            if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
+                for (String url : currentSpot.getImage_URL()) {
+                    Log.d("SpotAdapter", "Image URL: " + url);
+                }
+                // Puis la suite du code Glide...
+            }
+            itemView.setOnClickListener(v -> openDetail(context, currentSpot));
+
+            if (textContainer != null) {
+                textContainer.setOnClickListener(v -> openDetail(context, currentSpot));
+            }
         }
 
+        // Petite méthode pour éviter de copier-coller le code de l'Intent
+        private void openDetail(Context context, Spot spot) {
+            Intent intent = new Intent(context, SpotDetailActivity.class);
+            intent.putExtra("SPOT_KEY", spot);
+            context.startActivity(intent);
+        }
         public void startAutoScroll(int totalImages) {
             stopAutoScroll();
             if (totalImages <= 1) return;
@@ -199,24 +217,25 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     }
     static class MiniViewHolder extends RecyclerView.ViewHolder{
-        TextView SpotName,SpotCategory;
+        TextView SpotName,SpotCategory,SpotCity;
         ImageView SpotImage;
         public MiniViewHolder(@Nullable View itemView){
             super(itemView);
             SpotName = itemView.findViewById(R.id.cardSpotTitle);
-            //SpotCity = itemView.findViewById(R.id.SpotCity);
+            SpotCity = itemView.findViewById(R.id.cardSpotCity);
             SpotImage = itemView.findViewById(R.id.SpotImage);
-            SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
+            //SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
         }
         public void bind(Spot currentSpot, Context context){
             if(SpotName != null) SpotName.setText(currentSpot.getTitle());
             //if(SpotCity != null) SpotCity.setText(currentSpot.getAdress);
+            if(SpotCity != null) SpotCity.setText(currentSpot.getAdress());
 
             if(currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()){
                 Glide.with(context)
                         .load(currentSpot.getImage_URL().get(0))
                         .centerCrop()
-                        .placeholder(R.mipmap.ic_launcher)
+                        .placeholder(R.color.white_pure)
                         .into(SpotImage);
             }
             itemView.setOnClickListener(v->{

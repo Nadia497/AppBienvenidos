@@ -23,17 +23,18 @@
             android:background="#E0E0E0"/>
 
         <!-- Ombre en bas pour lire le texte -->
-        <View
+        <!--<View
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#80000000"
             app:layout_constraintBottom_toBottomOf="parent"/>
-
+-->
         <!-- Textes -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:orientation="vertical"
+            android:background="#CCFFFDF5"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -44,16 +45,17 @@
                 android:text="Titre"
                 android:textStyle="bold"
                 android:textSize="12sp"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/black_pure"
                 android:maxLines="1"
                 android:ellipsize="end"/>
 
             <TextView
+                android:id="@+id/cardSpotCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ville"
                 android:textSize="10sp"
-                android:textColor="#DDDDDD"
+                android:textColor="@color/black_pure"
                 android:maxLines="1"/>
         </LinearLayout>
 

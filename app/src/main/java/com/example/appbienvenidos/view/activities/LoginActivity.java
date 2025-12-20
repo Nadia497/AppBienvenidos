@@ -80,14 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // --- MOT DE PASSE OUBLIÉ ---
-        forgotPassword.setOnClickListener(v -> {
-            String email = editEmail.getText().toString().trim();
-            if (TextUtils.isEmpty(email)) {
-                Toast.makeText(this, "Entrez votre email dans la case ci-dessus pour réinitialiser.", Toast.LENGTH_LONG).show();
-            } else {
-                resetPassword(email);
-            }
-        });
+        forgotPassword.setOnClickListener(v ->showResetDialog());
     }
 
     private void loginUser(String email, String password) {
@@ -119,4 +112,25 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(this, "Erreur : " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+    private void showResetDialog() {
+        EditText emailInput = new EditText(this);
+        emailInput.setHint("Entrez votre email");
+        emailInput.setInputType(android.text.InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Réinitialisation du mot de passe")
+                .setMessage("Nous allons vous envoyer un email")
+                .setView(emailInput)
+                .setPositiveButton("Envoyer", (dialog, which) -> {
+                    String email = emailInput.getText().toString().trim();
+                    if (!TextUtils.isEmpty(email)) {
+                        resetPassword(email);
+                    } else {
+                        Toast.makeText(this, "Email requis", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Annuler", null)
+                .show();
+    }
+
 }
