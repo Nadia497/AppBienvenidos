@@ -1,9 +1,14 @@
 package com.example.appbienvenidos.view.activities;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import org.osmdroid.config.Configuration;

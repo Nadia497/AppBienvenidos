@@ -125,7 +125,7 @@ public class ProfileFragment extends Fragment {
                 }
 
                 double moyRate = sumAvrgRate / nbrSpot;
-                String c = String.valueOf(moyRate);
+                String c = String.format(java.util.Locale.US, "%.1f", (double) moyRate) ;
 
                 total_likes.setText(String.valueOf(totalRate));
                 starsValue.setText(c + " ⭐");
