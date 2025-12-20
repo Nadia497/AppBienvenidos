@@ -23,15 +23,15 @@
 
     <TextView
         android:id="@+id/phrase"
-        android:layout_width="286dp"
+        android:layout_width="352dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_black"
-        android:paddingLeft="20sp"
+        android:gravity="center"
         android:text="@string/connectez_vous_avec_des_habitants"
         android:textColor="@color/text_primary"
-        android:textSize="@dimen/_24sdp" />
+        android:textSize="@dimen/_22sdp" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img"
@@ -39,7 +39,7 @@
         android:layout_height="250dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img_deux"
         app:shapeAppearanceOverlay="@style/RoundedImageStyle" />
