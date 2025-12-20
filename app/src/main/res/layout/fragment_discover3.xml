@@ -24,16 +24,16 @@
 
     <TextView
         android:id="@+id/phrase"
-        android:layout_width="wrap_content"
+        android:layout_width="294dp"
         android:layout_height="wrap_content"
-        android:text="@string/vivez_des_exp_riences_uniques"
         android:layout_gravity="center_horizontal"
-        android:textSize="30sp"
-        android:paddingLeft="20sp"
-        android:textColor="@color/text_primary"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_black"
-        />
+        android:paddingLeft="20sp"
+        android:text="@string/vivez_des_exp_riences_uniques"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/_24sdp" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img"
         android:layout_width="250dp"

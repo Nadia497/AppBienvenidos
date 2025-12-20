@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.view.activities.NotificationActivity;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
 import com.example.appbienvenidos.view.adapter.SpotAdapter;
 import com.example.appbienvenidos.viewmodel.HomeViewModel;
@@ -26,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 
 public class HomeFragment extends Fragment {
@@ -33,6 +35,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private SpotAdapter itineraryAdapter;
     private SpotAdapter newSpotsAdapter;
+    private ImageButton notif;
 
     private EditText searchEditText;
 
@@ -43,6 +46,20 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+
+        notif = view.findViewById(R.id.notif);
+
+        com.google.firebase.auth.FirebaseUser user = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null){
+            notif.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), NotificationActivity.class);
+                startActivity(intent);
+            });
+        } else {
+            notif.setVisibility(View.GONE);
+        }
+
 
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         //Itineraire

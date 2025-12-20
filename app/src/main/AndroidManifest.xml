@@ -32,6 +32,8 @@
         <activity android:name=".view.activities.EditProfileActivity" />
         <activity android:name=".view.activities.FullScreenActivity" />
         <activity android:name=".view.activities.FullMapActivity" />
+        <activity android:name=".view.activities.NotificationActivity" />
+
         <activity
             android:name=".view.activities.SpotDetailActivity"
             android:exported="true"/>
