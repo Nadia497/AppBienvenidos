@@ -48,7 +48,7 @@ public class EditProfileActivity extends BaseActivity {
     private static final int PICK_IMAGE = 100;
     private ImageButton btnback;
     private ImageView user_photo, btn_add_img;
-    private EditText lastname, firstname, location, specialite, cityServed, languages, hourlyRate, phoneNumber;
+    private EditText lastname, firstname, location, specialite, cityServed, languages, hourlyRatee, phoneNumber;
     private TextView email, role_local, role_guide, role_travler;
     private LinearLayout password, roleswitch, infos_guide;
     private Button save;
@@ -150,7 +150,7 @@ public class EditProfileActivity extends BaseActivity {
                             specialite.setText(guideRecuperer.getSpecialities());
                             languages.setText(guideRecuperer.getLangages());
                             cityServed.setText(guideRecuperer.getCityServed());
-                            hourlyRate.setText(guideRecuperer.getHourlyRate());
+                            hourlyRatee.setText(guideRecuperer.getHourlyRate());
                             phoneNumber.setText(guideRecuperer.getPhoneNumber());
 
                             if(available != null) available.setChecked(guideRecuperer.isAvailable());
@@ -217,7 +217,7 @@ public class EditProfileActivity extends BaseActivity {
             String updateSpec = specialite.getText().toString().trim();
             String updateLang = languages.getText().toString().trim();
             String updateCity = cityServed.getText().toString().trim();
-            String updateRate = hourlyRate.getText().toString().trim();
+            String updateRate = hourlyRatee.getText().toString().trim();
             String updateTele = phoneNumber.getText().toString().trim();
 
             if(updatedLocation.isEmpty() || updateFirstName.isEmpty() || updateLastName.isEmpty()){
@@ -304,7 +304,7 @@ public class EditProfileActivity extends BaseActivity {
         specialite = findViewById(R.id.editTextSpecilite);
         cityServed = findViewById(R.id.editTextCityserved);
         languages = findViewById(R.id.editTextLanguages);
-        hourlyRate = findViewById(R.id.editTextRate);
+        hourlyRatee = findViewById(R.id.editTextRate);
         phoneNumber = findViewById(R.id.editTextTele);
         available = findViewById(R.id.switchAvailability);
     }
@@ -386,6 +386,14 @@ public class EditProfileActivity extends BaseActivity {
             guide = new Guide(currrentUserId, firstName, lastName, urlPhoto, ville, hourlyRate, specialities, langue, telephone , true);
             selectedRole  = "Guide";
             updateRoleUI();
+
+            specialite.setText(specialities);
+            cityServed.setText(ville);
+            languages.setText(langue);
+            hourlyRatee.setText(hourlyRate);
+            phoneNumber.setText(telephone);
+
+
             dialog.dismiss();
         });
 

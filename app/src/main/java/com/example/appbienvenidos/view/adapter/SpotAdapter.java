@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.appbienvenidos.R;
 import com.example.appbienvenidos.model.Spot;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
+import com.example.appbienvenidos.viewmodel.SpotViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,18 +135,23 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         private Handler sliderHandler = new Handler(Looper.getMainLooper());
         private Runnable sliderRunnable;
 
+        View textContainer; // Ajoute cette variable
+
         public HomeViewHolder(@Nullable View itemView) {
             super(itemView);
+            textContainer = itemView.findViewById(R.id.cardTextContainer); // Récupère le conteneur de texte
+
             SpotName = itemView.findViewById(R.id.cardSpotTitle);
-            //SpotCity = itemView.findViewById(R.id.SpotCity);
+            SpotCity = itemView.findViewById(R.id.cardSpotCity);
             SpotRating = itemView.findViewById(R.id.cardSpotRating);
             SpotImage = itemView.findViewById(R.id.SpotImage);
-            SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
+            //SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
             viewPagerCard = itemView.findViewById(R.id.cardViewPager);
         }
 
         public void bind(Spot currentSpot, Context context) {
             SpotName.setText(currentSpot.getTitle());
+            SpotCity.setText(currentSpot.getAdress());
             SpotRating.setText(String.format("%.1f", currentSpot.getAverage_Rating()));
             if (SpotName != null){
                 SpotName.setText(currentSpot.getTitle());
@@ -156,25 +163,29 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 String cat =  currentSpot.getCategoryNameDisplay();
 
                     SpotCategory.setText(cat);
-
-                if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
-                    CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL());
-                    viewPagerCard.setAdapter(imgAdapter);
-
-                    startAutoScroll(currentSpot.getImage_URL().size());
-
-                } else {
-                    stopAutoScroll();
-                }
-
             }
-            itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, SpotDetailActivity.class);
-                intent.putExtra("SPOT_KEY", currentSpot);
-                context.startActivity(intent);
-            });
+            if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
+                for (String url : currentSpot.getImage_URL()) {
+                    Log.d("SpotAdapter", "Image URL: " + url);
+                }
+                CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL(), currentSpot);
+                viewPagerCard.setAdapter(imgAdapter);
+
+                startAutoScroll(currentSpot.getImage_URL().size());
+
+            } else {
+                stopAutoScroll();
+            }
+            itemView.setOnClickListener(v -> openDetail(context, currentSpot));
+
         }
 
+        // Petite méthode pour éviter de copier-coller le code de l'Intent
+        private void openDetail(Context context, Spot spot) {
+            Intent intent = new Intent(context, SpotDetailActivity.class);
+            intent.putExtra("SPOT_KEY", spot);
+            context.startActivity(intent);
+        }
         public void startAutoScroll(int totalImages) {
             stopAutoScroll();
             if (totalImages <= 1) return;
@@ -184,10 +195,10 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     int current = viewPagerCard.getCurrentItem();
                     int next = (current == totalImages - 1) ? 0 : current + 1;
                     viewPagerCard.setCurrentItem(next, true);
-                    sliderHandler.postDelayed(this, 3000);
+                    sliderHandler.postDelayed(this, 4000);
                 }
             };
-            sliderHandler.postDelayed(sliderRunnable, 3000);
+            sliderHandler.postDelayed(sliderRunnable, 4000);
         }
 
         public void stopAutoScroll() {
@@ -198,24 +209,24 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     }
     static class MiniViewHolder extends RecyclerView.ViewHolder{
-        TextView SpotName,SpotCategory;
+        TextView SpotName,SpotCity;
         ImageView SpotImage;
         public MiniViewHolder(@Nullable View itemView){
             super(itemView);
             SpotName = itemView.findViewById(R.id.cardSpotTitle);
-            //SpotCity = itemView.findViewById(R.id.SpotCity);
+            SpotCity = itemView.findViewById(R.id.cardSpotCity);
             SpotImage = itemView.findViewById(R.id.SpotImage);
-            SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
+            //SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
         }
         public void bind(Spot currentSpot, Context context){
             if(SpotName != null) SpotName.setText(currentSpot.getTitle());
-            //if(SpotCity != null) SpotCity.setText(currentSpot.getAdress);
+            if(SpotCity != null) SpotCity.setText(currentSpot.getAdress());
 
             if(currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()){
                 Glide.with(context)
                         .load(currentSpot.getImage_URL().get(0))
                         .centerCrop()
-                        .placeholder(R.mipmap.ic_launcher)
+                        .placeholder(R.color.white_pure)
                         .into(SpotImage);
             }
             itemView.setOnClickListener(v->{

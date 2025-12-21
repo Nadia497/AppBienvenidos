@@ -159,5 +159,12 @@
     <string name="loading_error">Erreur de chargement</string>
     <string name="activer">Activées</string>
     <string name="mes_spots_sur_carte">Mes spots sur carte</string>
+    <string name="a_not_votre_spot">"a noté votre spot "</string>
+    <string name="a_partager_votre_spot">a partager votre spot</string>
+    <string name="accueil">Accueil</string>
+    <string name="attention">Mode Invité</string>
+    <string name="guest_message">Connectez-vous pour accéder à votre profil, vos favoris et au chat.</string>
+    <string name="les_mieux_not_s">Les mieux notés</string>
+    <string name="nouveaux_spots">Nouveaux Spots</string>
 
 </resources>

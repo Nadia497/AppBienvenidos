@@ -9,303 +9,316 @@
     android:fillViewport="true">
 
     <!-- CONTENU PRINCIPAL (SCROLLABLE) -->
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
         android:scrollbars="none"
         android:paddingBottom="80dp"
         android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="0dp">
+            android:gravity="top">
 
             <!-- 1. HEADER : Titre + Logo -->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="53dp"
                 android:layout_marginBottom="@dimen/_20sdp">
 
                 <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="55dp"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="@dimen/_3sdp"
+                    android:id="@+id/logo"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_margin="@dimen/_12sdp"
                     android:src="@drawable/petitlogo" />
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="70dp"
-                    android:layout_marginEnd="119dp"
-                    android:layout_toEndOf="@+id/imageView2"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:text="Bienvenidos"
                     style="@style/AppTitleStyle"
-                    android:textColor="@color/black_pure"
+                    android:layout_width="140dp"
+                    android:layout_height="53dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="59dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginBottom="11dp"
+                    android:layout_toEndOf="@+id/logo"
+                    android:gravity="center"
+                    android:text="Bienvenidos"
+                    android:textColor="@color/text_primary"
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
 
-            </RelativeLayout>
-
+                <ImageButton
+                    android:id="@+id/notif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/background_app"
+                    app:srcCompat="@drawable/outline_circle_notifications_24"
+                    app:tint="@color/icon_tint" />
+            </LinearLayout>
 
             <!-- 2. BARRE DE RECHERCHE -->
             <EditText
                 android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="35dp"
                 android:layout_marginHorizontal="20dp"
+                android:elevation="@dimen/_2sdp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_search"
                 android:backgroundTint="@color/surface_card"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawablePadding="10dp"
                 android:hint="@string/rechercher_une_ville_un_spot"
-                android:textSize="14sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:imeOptions="actionSearch"
+                android:textSize="15sp"
                 android:inputType="text"
                 android:maxLines="1"
-                android:drawableStart="@android:drawable/ic_menu_search"
-                android:drawableEnd="@android:drawable/ic_menu_sort_by_size"
-                android:drawablePadding="12dp"
-                android:drawableTint="@color/text_secondary"
-                android:layout_marginBottom="20dp"/>
+                android:imeOptions="actionSearch"/>
 
             <!-- 3. FILTRES (CHIPS) - Scroll Horizontal -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
+                android:layout_height="40dp"
                 android:layout_marginBottom="25dp"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp">
+                android:paddingEnd="20dp"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <!-- Chip 1 :  (Rose) -->
-                    <LinearLayout
-                        android:id="@+id/chipTout"
-                        android:layout_width="wrap_content"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_chip_unselected_n"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_secondary"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
-
-                        <TextView
+                        <!-- Chip 1 :  -->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/chipTout"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/tout"
+                            android:textAllCaps="false"
+                            android:elevation="@dimen/_2sdp"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>-->
-                    </LinearLayout>
-                    <!--chip café-->
-                    <LinearLayout
-                        android:id="@+id/chipCafe"
-                        android:layout_width="wrap_content"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_chip_unselected_n"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_secondary"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
-                        <TextView
+                            android:textColor="@drawable/chip_text_selector_z"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:stateListAnimator="@null"/>
+                        <!--chip café-->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/chipCafe"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/bg_chip_selector_z"
+                            android:elevation="@dimen/_2sdp"
                             android:text="@string/caf"
+                            android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>-->
-                    </LinearLayout>
+                            android:textColor="@drawable/chip_text_selector_z"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:stateListAnimator="@null"/>
 
-                    <!-- Chip 2 : Culture (Orange) -->
-                    <LinearLayout
-                        android:id="@+id/chipCulture"
-                        android:layout_width="wrap_content"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_chip_unselected_n"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_secondary"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
-                        <TextView
+                        <!-- Chip 2 : Culture (Orange) -->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/chipCulture"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/culture"
+                            android:textAllCaps="false"
+                            android:elevation="@dimen/_2sdp"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>
-                    </LinearLayout>
-
-                    <!-- Chip 3 : Nature (Vert) -->
-                    <LinearLayout
-                        android:id="@+id/chipRestaurant"
-                        android:layout_width="wrap_content"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_chip_unselected_n"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_secondary"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
-                        <TextView
+                            android:textColor="@drawable/chip_text_selector_z"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:stateListAnimator="@null"/>
+                        <!-- Chip 3 : Restaurant -->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/chipRestaurant"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/restaurant"
+                            android:elevation="@dimen/_2sdp"
+                            android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>
-                    </LinearLayout>
+                            android:textColor="@drawable/chip_text_selector_z"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:stateListAnimator="@null"/>
 
-                    <!-- Chip 4 : Événements (Rouge) -->
-                    <LinearLayout
-                        android:id="@+id/chipShopping"
-                        android:layout_width="wrap_content"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_chip_unselected_n"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_secondary"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
-                        <TextView
+                        <!-- Chip 4 : Shopping -->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/chipShopping"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/shopping"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/bg_chip_selector_z"
+                            android:text="Shopping"
+                            android:elevation="@dimen/_2sdp"
+                            android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/chipPayasage"
-                        android:layout_width="wrap_content"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_chip_unselected_n"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_secondary"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
-                        <TextView
+                            android:textColor="@drawable/chip_text_selector_z"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:stateListAnimator="@null"/>
+                        <!--chip payasage-->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/chipPayasage"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/paysage"
+                            android:elevation="@dimen/_2sdp"
+                            android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/chipHotel"
-                        android:layout_width="wrap_content"
-                        android:backgroundTint="@color/surface_card"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/bg_chip_unselected_n"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_secondary"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
-                        <TextView
+                            android:textColor="@drawable/chip_text_selector_z"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:stateListAnimator="@null"/>
+                        <!--chip : Hotel-->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/chipHotel"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/h_tel"
+                            android:elevation="@dimen/_2sdp"
+                            android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:layout_marginStart="6dp"/>
+                            android:textColor="@drawable/chip_text_selector_z"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:stateListAnimator="@null"/>
+
                     </LinearLayout>
+                </HorizontalScrollView>
 
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <!-- 4. SECTION ITINÉRAIRES -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:text="@string/itin_raires_du_jour"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginBottom="15dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerItineraries"
+            <LinearLayout
+                android:id="@+id/layoutNoResults"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="20dp"
-                android:clipToPadding="false"
-                android:layout_marginBottom="25dp"/>
-            <!-- SCROLL HORIZONTAL DES CARTES -->
-
-
-            <!-- 5. SECTION NOUVEAUX SPOTS -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nouveaux_spots_proximit"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginBottom="15dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerNewSpots"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="top|center_horizontal"
+                android:visibility="gone"
+                android:padding="30dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    app:tint="#CCC"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aucun spot trouvé"
+                    android:textSize="16sp"
+                    android:textColor="#555"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Essayez une autre ville ou catégory"
+                    android:textSize="14sp"
+                    android:textColor="#999"/>
+            </LinearLayout>
+            <!-- 4. SECTION Best rated -->
+            <LinearLayout
+                android:id="@+id/layoutResults"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:clipToPadding="false"
-                android:layout_marginBottom="25dp"/>
-            
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/titleBestRated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:text="@string/les_mieux_not_s"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="15dp"/>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerBestRated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="20dp"
+                    android:clipToPadding="false"
+                    android:layout_marginBottom="25dp"/>
+
+
+                <!-- 5. SECTION NOUVEAUX SPOTS -->
+
+                <TextView
+                    android:id="@+id/titleNewSpots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:text="@string/nouveaux_spots"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="15dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerNewSpots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:clipToPadding="false"
+                    android:layout_marginBottom="25dp"/>
+
+            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
+
+    </androidx.core.widget.NestedScrollView>
+    <!--loading cercle-->
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="10dp"/>
     <!-- 6. BARRE DE NAVIGATION EN BAS -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.view.activities.NotificationActivity;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
 import com.example.appbienvenidos.view.adapter.SpotAdapter;
 import com.example.appbienvenidos.viewmodel.HomeViewModel;
@@ -31,16 +32,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 
 public class HomeFragment extends Fragment {
     @Nullable
     private HomeViewModel homeViewModel;
-    private SpotAdapter itineraryAdapter;
+    private SpotAdapter BestRatedAdapter;
     private SpotAdapter newSpotsAdapter;
+    private ImageButton notif;
 
     private EditText searchEditText;
-
+    private View chipTout, chipCafe, chipCulture, chipRestaurant,
+            chipShopping, chipPayasage, chipHotel;
+    private View layoutNoResults,layoutResults, loadingProgressBar;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -49,12 +54,28 @@ public class HomeFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
+        //bestRted
+
+        notif = view.findViewById(R.id.notif);
+
+        com.google.firebase.auth.FirebaseUser user = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null){
+            notif.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), NotificationActivity.class);
+                startActivity(intent);
+            });
+        } else {
+            notif.setVisibility(View.GONE);
+        }
+
+
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         //Itineraire
-        RecyclerView recyclerItin= view.findViewById(R.id.recyclerItineraries);
-        recyclerItin.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        itineraryAdapter = new SpotAdapter(SpotAdapter.TYPE_HOME_CARD);
-        recyclerItin.setAdapter(itineraryAdapter);
+        RecyclerView recyclerBest= view.findViewById(R.id.recyclerBestRated);
+        recyclerBest.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        BestRatedAdapter = new SpotAdapter(SpotAdapter.TYPE_HOME_CARD);
+        recyclerBest.setAdapter(BestRatedAdapter);
         //Newspots
         RecyclerView recyclerNew = view.findViewById(R.id.recyclerNewSpots);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(), 2);
@@ -62,6 +83,8 @@ public class HomeFragment extends Fragment {
         recyclerNew.setNestedScrollingEnabled(false);
         newSpotsAdapter = new SpotAdapter(SpotAdapter.TYPE_HOME_MINI);
         recyclerNew.setAdapter(newSpotsAdapter);
+
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         //Gestion de recherche
         searchEditText = view.findViewById(R.id.searchEditText);
         searchEditText.addTextChangedListener((new TextWatcher() {
@@ -72,7 +95,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                homeViewModel.setSearchQuery(s.toString());
 
             }
 
@@ -96,25 +118,49 @@ public class HomeFragment extends Fragment {
             }
             return false;
         });
-        view.findViewById(R.id.chipCulture).setOnClickListener(v->
-                homeViewModel.setCategory("NTI14ykiVgCF6a9FdRAA"));
-        view.findViewById(R.id.chipPayasage).setOnClickListener(v->
-                        homeViewModel.setCategory("HBgPMXEAwwRo0jxkOFBl"));
-        view.findViewById(R.id.chipTout).setOnClickListener(v->
-                        homeViewModel.setCategory("Tout"));
-        view.findViewById(R.id.chipCafe).setOnClickListener(v->
-                        homeViewModel.setCategory("5FQ5xnOM63VR0jCEaUgx"));
-        view.findViewById(R.id.chipRestaurant).setOnClickListener(v->
-                homeViewModel.setCategory("kzQGD3FoEiqb0w4ojEoR"));
-        view.findViewById(R.id.chipShopping).setOnClickListener(v->
-                homeViewModel.setCategory("XBYKfhJM221pCHY9a1oM"));
-        view.findViewById(R.id.chipHotel).setOnClickListener(v->
-                homeViewModel.setCategory("Z3276a3S3WXTurMqmqPO"));
+        chipTout = view.findViewById(R.id.chipTout);
+        chipCulture = view.findViewById(R.id.chipCulture);
+        chipPayasage = view.findViewById(R.id.chipPayasage);
+        chipCafe = view.findViewById(R.id.chipCafe);
+        chipRestaurant = view.findViewById(R.id.chipRestaurant);
+        chipShopping = view.findViewById(R.id.chipShopping);
+        chipHotel = view.findViewById(R.id.chipHotel);
+
+        chipTout.setOnClickListener(v->
+                selectCategory(chipTout,"Tout"));
+        chipCulture.setOnClickListener(v->
+                selectCategory(chipCulture,"NTI14ykiVgCF6a9FdRAA"));
+        chipPayasage.setOnClickListener(v->
+                        selectCategory(chipPayasage,"HBgPMXEAwwRo0jxkOFBl"));
+        chipCafe.setOnClickListener(v->
+                        selectCategory(chipCafe,"5FQ5xnOM63VR0jCEaUgx"));
+        chipRestaurant.setOnClickListener(v->
+                selectCategory(chipRestaurant,"kzQGD3FoEiqb0w4ojEoR"));
+        chipShopping.setOnClickListener(v->
+                selectCategory(chipShopping,"XBYKfhJM221pCHY9a1oM"));
+        chipHotel.setOnClickListener(v->
+                selectCategory(chipHotel,"Z3276a3S3WXTurMqmqPO"));
+        selectCategory(chipTout, "Tout");
+
+        layoutNoResults = view.findViewById(R.id.layoutNoResults);
+        layoutResults = view.findViewById(R.id.layoutResults);
+        loadingProgressBar = view.findViewById(R.id.loadingProgressBar);
         homeViewModel.getBestRatedSpots().observe(getViewLifecycleOwner(),spots ->
         {
-            if (spots != null) {
-                itineraryAdapter.setSpot(spots);
+            if (loadingProgressBar != null) {
+                loadingProgressBar.setVisibility(View.GONE);
             }
+            if (spots == null || spots.isEmpty()) {
+                layoutNoResults.setVisibility(View.VISIBLE);
+                layoutResults.setVisibility(View.GONE);
+
+            } else {
+                BestRatedAdapter.setSpot(spots);
+
+                layoutNoResults.setVisibility(View.GONE);
+                layoutResults.setVisibility(View.VISIBLE);
+            }
+
         });
         homeViewModel.getNewSpots().observe(getViewLifecycleOwner(),spots ->
         {
@@ -123,6 +169,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+    }
+    private void resetChips() {
+        chipTout.setSelected(false);
+        chipCafe.setSelected(false);
+        chipCulture.setSelected(false);
+        chipRestaurant.setSelected(false);
+        chipShopping.setSelected(false);
+        chipPayasage.setSelected(false);
+        chipHotel.setSelected(false);
+    }
+    private void selectCategory(View chip, String categoryId) {
+        resetChips();
+        chip.setSelected(true);
+        homeViewModel.setCategory(categoryId);
     }
 
     }

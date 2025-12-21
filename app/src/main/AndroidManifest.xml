@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- Pour Android 13+ -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -33,6 +34,8 @@
         <activity android:name=".view.activities.EditProfileActivity" />
         <activity android:name=".view.activities.FullScreenActivity" />
         <activity android:name=".view.activities.FullMapActivity" />
+        <activity android:name=".view.activities.NotificationActivity" />
+
         <activity
             android:name=".view.activities.SpotDetailActivity"
             android:exported="true"/>

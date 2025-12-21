@@ -159,6 +159,13 @@
     <string name="user_not_found">Profile not found</string>
     <string name="loading_error">Loading error</string>
     <string name="activer">On</string>
-    <string name="mes_spots_sur_carte">Mes spots sur carte</string>
+    <string name="mes_spots_sur_carte">My Spots on the Map</string>
+    <string name="a_not_votre_spot">rated your spot</string>
+    <string name="a_partager_votre_spot">shared your spot</string>
+    <string name="accueil">Home</string>
+    <string name="attention">Guest Mode</string>
+    <string name="guest_message">Please login to access your profile, favorites, and chat.</string>
+    <string name="les_mieux_not_s">Top Rated</string>
+    <string name="nouveaux_spots">New Spots</string>
 
 </resources>

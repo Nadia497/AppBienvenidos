@@ -170,6 +170,8 @@ public class SpotDetailActivity extends BaseActivity {
 
                 // Envoi à Firebase
                 spotViewModel.rateSpot(currentSpot.getId(), userRating, oldAvg, oldCount);
+
+                creerNotificationInterne(getString(R.string.a_not_votre_spot) +" "+ (int)userRating + "/5");
             }
         });
     }
@@ -328,7 +330,7 @@ public class SpotDetailActivity extends BaseActivity {
                 startActivity(shareIntent);
 
                 //notification interne
-                creerNotificationInterne("a partager votre spot");
+                creerNotificationInterne(getString(R.string.a_partager_votre_spot));
 
             } catch (Exception e) {
                 Toast.makeText(SpotDetailActivity.this, getString(R.string.send_error), Toast.LENGTH_SHORT).show();

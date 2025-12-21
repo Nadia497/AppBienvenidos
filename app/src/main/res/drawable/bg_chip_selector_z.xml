@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ÉTAT 1 : SÉLECTIONNÉ (Rose) -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/surface_card"/>
+            <stroke android:width="2dp" android:color="#E91E63"/> <!-- Bordure rose -->
+            <corners android:radius="50dp" /> <!-- Coins très ronds -->
+        </shape>
+    </item>
+
+    <!-- ÉTAT 2 : PAR DÉFAUT (Blanc/Crème avec bordure) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/surface_card"/>
+            <stroke android:width="2dp" android:color="@color/surface_card"/>
+            <corners android:radius="50dp"/>
+        </shape>
+    </item>
+
+</selector>

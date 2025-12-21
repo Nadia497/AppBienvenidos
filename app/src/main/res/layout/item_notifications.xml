@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_14sdp"
+    android:background="@drawable/bg_white_profile_n"
+    android:elevation="@dimen/_2sdp"
+    android:padding="@dimen/_14sdp"
+>
+    <TextView
+        android:id="@+id/notif_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mohammed a partager votre spot"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/_14sdp"/>
+
+    <TextView
+        android:id="@+id/notif_spot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Titre du spot"
+        android:textColor="#D72F2F"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_3sdp"/>
+
+    <TextView
+        android:id="@+id/notif_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Il y a 2 min"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/_12sdp"
+        android:gravity="end"
+        android:layout_marginTop="@dimen/_6sdp"/>
+
+</LinearLayout>

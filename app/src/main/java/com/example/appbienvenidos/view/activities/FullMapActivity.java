@@ -27,13 +27,12 @@ public class FullMapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_map);
 
 
         // Config OSM
         Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
-
-        setContentView(R.layout.activity_full_map);
 
         map = findViewById(R.id.fullMap);
         map.setMultiTouchControls(true); // ICI on autorise le zoom et le déplacement !

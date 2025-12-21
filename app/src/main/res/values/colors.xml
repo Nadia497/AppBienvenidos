@@ -20,7 +20,6 @@
 
     <!-- Fond des cartes/boutons blancs : blanc le jour-->
     <color name="surface_card">@color/white_pure</color>
-
     <!-- Text principale : black le jour-->
     <color name="text_primary">@color/black_pure</color>
 
