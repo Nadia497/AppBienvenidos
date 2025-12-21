@@ -163,29 +163,21 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 String cat =  currentSpot.getCategoryNameDisplay();
 
                     SpotCategory.setText(cat);
-
-                if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
-                    CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL(), currentSpot);
-                    viewPagerCard.setAdapter(imgAdapter);
-
-                    startAutoScroll(currentSpot.getImage_URL().size());
-
-                } else {
-                    stopAutoScroll();
-                }
-
             }
             if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
                 for (String url : currentSpot.getImage_URL()) {
                     Log.d("SpotAdapter", "Image URL: " + url);
                 }
-                // Puis la suite du code Glide...
+                CardImageAdapter imgAdapter = new CardImageAdapter(context, currentSpot.getImage_URL(), currentSpot);
+                viewPagerCard.setAdapter(imgAdapter);
+
+                startAutoScroll(currentSpot.getImage_URL().size());
+
+            } else {
+                stopAutoScroll();
             }
             itemView.setOnClickListener(v -> openDetail(context, currentSpot));
 
-            if (textContainer != null) {
-                textContainer.setOnClickListener(v -> openDetail(context, currentSpot));
-            }
         }
 
         // Petite méthode pour éviter de copier-coller le code de l'Intent
@@ -217,7 +209,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     }
     static class MiniViewHolder extends RecyclerView.ViewHolder{
-        TextView SpotName,SpotCategory,SpotCity;
+        TextView SpotName,SpotCity;
         ImageView SpotImage;
         public MiniViewHolder(@Nullable View itemView){
             super(itemView);
@@ -228,7 +220,6 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         public void bind(Spot currentSpot, Context context){
             if(SpotName != null) SpotName.setText(currentSpot.getTitle());
-            //if(SpotCity != null) SpotCity.setText(currentSpot.getAdress);
             if(SpotCity != null) SpotCity.setText(currentSpot.getAdress());
 
             if(currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()){

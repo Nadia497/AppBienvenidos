@@ -22,14 +22,14 @@ public class HomeViewModel extends ViewModel{
     private final MutableLiveData<List<Spot>> bestRatedSpots = new MutableLiveData<>();
     private final MutableLiveData<List<Spot>> newSpots = new MutableLiveData<>();
 
-    private String currentSearchCity ="";
+    private String currentSearch ="";
     private String currentCategory = "Tout";
-    public MutableLiveData<List<Spot>> getItineraires() {
-        return bestRatedSpots;
-    }
-    public MutableLiveData<List<Spot>> getNouveauxSpots() {
+   /* public MutableLiveData<List<Spot>> getBestRated() {
+       return bestRatedSpots;
+    }*/
+   /* public MutableLiveData<List<Spot>> getNewSpots() {
         return newSpots;
-    }
+    }*/
     public HomeViewModel(){
         repository = new SpotRepository();
         loadData();
@@ -71,9 +71,9 @@ public class HomeViewModel extends ViewModel{
         List<Spot> filtredList = new ArrayList<>();
         for (Spot spot : allSpotsCache) {
             String ville = spot.getAdress() != null ? spot.getAdress().toLowerCase() : "";
-            String catName = spot.getCategoryNameDisplay() != null ? spot.getCategoryNameDisplay() : "";
-            boolean matchesSpotName=catName.contains((currentSearchCity).toLowerCase());
-            boolean matchesCity = ville.contains(currentSearchCity.toLowerCase());
+            String title = spot.getTitle() != null ? spot.getTitle() : "";
+            boolean matchesSearch = title.contains(currentSearch.toLowerCase()) ||
+                    ville.contains(currentSearch.toLowerCase());
             boolean matchesCategory ;
             String catId =  spot.getCategory_id();
 
@@ -83,7 +83,7 @@ public class HomeViewModel extends ViewModel{
                 matchesCategory= (catId != null && catId.equals(currentCategory));
             }
 
-            if (    matchesCity && matchesCategory) {
+            if ( matchesSearch && matchesCategory) {
                 filtredList.add(spot);
             }
         }
@@ -98,7 +98,7 @@ public class HomeViewModel extends ViewModel{
 
     }
     public void setSearchQuery(String query){
-        this.currentSearchCity = query;
+        this.currentSearch = query;
         applyFilters();
     }
     public void setCategory(String categoryId){
