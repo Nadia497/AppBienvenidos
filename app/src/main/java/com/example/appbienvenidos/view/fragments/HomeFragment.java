@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.appbienvenidos.R;
+import com.example.appbienvenidos.view.activities.NotificationActivity;
 import com.example.appbienvenidos.view.activities.SpotDetailActivity;
 import com.example.appbienvenidos.view.adapter.SpotAdapter;
 import com.example.appbienvenidos.viewmodel.HomeViewModel;
@@ -31,6 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 
 public class HomeFragment extends Fragment {
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private SpotAdapter BestRatedAdapter;
     private SpotAdapter newSpotsAdapter;
+    private ImageButton notif;
 
     private EditText searchEditText;
     private View chipTout, chipCafe, chipCulture, chipRestaurant,
@@ -57,6 +60,26 @@ public class HomeFragment extends Fragment {
         BestRatedAdapter = new SpotAdapter(SpotAdapter.TYPE_HOME_CARD);
         recyclerBest.setAdapter(BestRatedAdapter);
 
+        notif = view.findViewById(R.id.notif);
+
+        com.google.firebase.auth.FirebaseUser user = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null){
+            notif.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), NotificationActivity.class);
+                startActivity(intent);
+            });
+        } else {
+            notif.setVisibility(View.GONE);
+        }
+
+
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        //Itineraire
+        RecyclerView recyclerItin= view.findViewById(R.id.recyclerItineraries);
+        recyclerItin.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        itineraryAdapter = new SpotAdapter(SpotAdapter.TYPE_HOME_CARD);
+        recyclerItin.setAdapter(itineraryAdapter);
         //Newspots
         RecyclerView recyclerNew = view.findViewById(R.id.recyclerNewSpots);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(), 2);

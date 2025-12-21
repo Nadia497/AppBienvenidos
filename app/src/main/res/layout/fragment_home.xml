@@ -21,83 +21,87 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="top">
 
+            <!-- 1. HEADER : Titre + Logo -->
             <LinearLayout
-                android:id="@+id/topFixedContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="top"
-                android:padding="0dp">
+                android:layout_height="53dp"
+                android:layout_marginBottom="@dimen/_20sdp">
 
-                <!-- 1. HEADER : Titre + Logo -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:src="@drawable/petitlogo" />
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/AppTitleStyle"
+                    android:layout_width="140dp"
+                    android:layout_height="53dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="59dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginBottom="11dp"
+                    android:layout_toEndOf="@+id/logo"
+                    android:gravity="center"
+                    android:text="Bienvenidos"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/notif"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="@dimen/_20sdp">
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="55dp"
-                        android:layout_height="33dp"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:src="@drawable/petitlogo" />
-
-                    <TextView
-                        android:id="@+id/title"
-                        android:layout_width="@dimen/_150sdp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="50dp"
-                        android:layout_marginEnd="100dp"
-                        android:layout_toEndOf="@+id/imageView2"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:text="Bienvenidos"
-                        style="@style/AppTitleStyle"
-                        android:textColor="@color/text_primary"
-                        android:textSize="@dimen/_16sdp"
-                        android:textStyle="bold" />
+                    android:layout_gravity="center"
+                    android:background="@color/background_app"
+                    app:srcCompat="@drawable/outline_circle_notifications_24"
+                    app:tint="@color/icon_tint" />
+            </LinearLayout>
 
                 </RelativeLayout>
 
-
-                <!-- 2. BARRE DE RECHERCHE -->
-                <EditText
-                    android:id="@+id/searchEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:background="@drawable/bg_search"
-                    android:backgroundTint="@color/surface_card"
-                    android:hint="Rechercher une ville, un spot..."
-                    android:textSize="14sp"
-                    android:textColorHint="@color/text_secondary"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:imeOptions="actionSearch"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:drawableStart="@android:drawable/ic_menu_search"
-                    android:drawablePadding="12dp"
-                    android:drawableTint="@color/text_secondary"
-                    android:layout_marginBottom="20dp"/>
+            <!-- 2. BARRE DE RECHERCHE -->
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_search"
+                android:backgroundTint="@color/surface_card"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawableEnd="@android:drawable/ic_menu_sort_by_size"
+                android:drawablePadding="12dp"
+                android:drawableTint="@color/text_secondary"
+                android:hint="@string/rechercher_une_ville_un_spot"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="14sp" />
 
             <!-- 3. FILTRES (CHIPS) - Scroll Horizontal -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
                 android:layout_marginBottom="25dp"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp">
+                android:paddingEnd="20dp"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"

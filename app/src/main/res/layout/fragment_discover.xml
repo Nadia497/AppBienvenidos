@@ -24,22 +24,22 @@
 
     <TextView
         android:id="@+id/phrase"
-        android:layout_width="wrap_content"
+        android:layout_width="328dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_black"
-        android:paddingLeft="20sp"
+        android:gravity="center"
         android:text="@string/d_couvrez_des_p_pites_locales"
         android:textColor="@color/text_primary"
-        android:textSize="40sp" />
+        android:textSize="@dimen/_24sdp" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="55dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img"
