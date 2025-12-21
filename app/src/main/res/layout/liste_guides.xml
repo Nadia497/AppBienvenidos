@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="@string/o_souhaitez_vous_aller"
-            android:textColorHint="@color/gray_light"
+            android:textColorHint="@color/text_secondary"
             android:textColor="@color/text_primary"
             android:drawableStart="@android:drawable/ic_menu_search"
             android:textSize="15sp"

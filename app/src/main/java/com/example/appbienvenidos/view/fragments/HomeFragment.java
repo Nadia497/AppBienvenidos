@@ -46,6 +46,7 @@ public class HomeFragment extends Fragment {
     private View chipTout, chipCafe, chipCulture, chipRestaurant,
             chipShopping, chipPayasage, chipHotel;
     private View layoutNoResults,layoutResults, loadingProgressBar;
+    private SpotAdapter itineraryAdapter;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -76,7 +77,7 @@ public class HomeFragment extends Fragment {
 
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         //Itineraire
-        RecyclerView recyclerItin= view.findViewById(R.id.recyclerItineraries);
+        RecyclerView recyclerItin= view.findViewById(R.id.recyclerBestRated);
         recyclerItin.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         itineraryAdapter = new SpotAdapter(SpotAdapter.TYPE_HOME_CARD);
         recyclerItin.setAdapter(itineraryAdapter);

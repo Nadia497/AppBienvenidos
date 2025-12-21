@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintTop_toTopOf="parent">
 
 
@@ -73,8 +73,6 @@
                     app:tint="@color/icon_tint" />
             </LinearLayout>
 
-                </RelativeLayout>
-
             <!-- 2. BARRE DE RECHERCHE -->
             <EditText
                 android:id="@+id/searchEditText"
@@ -115,7 +113,7 @@
                             android:layout_height="35dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
-                            android:text="Tout"
+                            android:text="@string/tout"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -130,7 +128,7 @@
                             android:layout_height="35dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
-                            android:text="Café"
+                            android:text="@string/caf"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -146,7 +144,7 @@
                             android:layout_height="35dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
-                            android:text="Culture"
+                            android:text="@string/culture"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -161,7 +159,7 @@
                             android:layout_height="35dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
-                            android:text="Restaurant"
+                            android:text="@string/restaurant"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -192,7 +190,7 @@
                             android:layout_height="35dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
-                            android:text="Payasage"
+                            android:text="@string/paysage"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -207,7 +205,7 @@
                             android:layout_height="35dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
-                            android:text="Hotel"
+                            android:text="@string/h_tel"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -218,7 +216,6 @@
 
                     </LinearLayout>
                 </HorizontalScrollView>
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layoutNoResults"
@@ -258,7 +255,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:text="Les mieux notés"
+                    android:text="@string/les_mieux_not_s"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
@@ -281,7 +278,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:text="Nouveaux Spots"
+                    android:text="@string/nouveaux_spots"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
@@ -298,6 +295,7 @@
 
             </LinearLayout>
         </LinearLayout>
+
 
     </androidx.core.widget.NestedScrollView>
     <!--loading cercle-->
