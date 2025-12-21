@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    android:layout_margin="8dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Image simple (Pas de ViewPager ici pour alléger) -->
+        <ImageView
+            android:id="@+id/SpotImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:background="#E0E0E0"/>
+
+        <!-- Ombre en bas pour lire le texte -->
+        <!--<View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#80000000"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+-->
+        <!-- Textes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:background="#CCFFFDF5"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/cardSpotTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Titre"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/black_pure"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/cardSpotCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ville"
+                android:textSize="10sp"
+                android:textColor="@color/black_pure"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

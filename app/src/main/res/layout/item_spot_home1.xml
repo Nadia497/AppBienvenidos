@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="260dp"
+    android:layout_width="@dimen/_250sdp"
     android:layout_height="200dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- 1. LE DIAPORAMA (Remplace ton ImageView "imgMarrakech") -->
+        <!-- 1. LE DIAPORAMA -->
         <!-- C'est ici que les images vont défiler -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/cardViewPager"
@@ -26,11 +26,14 @@
 
         <!-- 2. LA ZONE DE TEXTE (Fond crème semi-transparent) -->
         <LinearLayout
+            android:id="@+id/cardTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_75sdp"
             android:orientation="vertical"
             android:padding="12dp"
             android:background="#CCFFFDF5"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -39,7 +42,7 @@
             <TextView
                 android:id="@+id/cardSpotTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_15sdp"
                 android:text="Titre du Spot"
                 android:textStyle="bold"
                 android:textColor="#000"
@@ -47,12 +50,12 @@
                 android:maxLines="2"
                 android:ellipsize="end"/>
 
-            <!-- Catégorie (Remplace "Fatima L.") -->
+            <!-- CITY -->
             <TextView
-                android:id="@+id/cardSpotCategory"
+                android:id="@+id/cardSpotCity"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Catégorie"
+                android:layout_height="@dimen/_15sdp"
+                android:text="City"
                 android:textSize="12sp"
                 android:textColor="#757575"
                 android:layout_marginTop="4dp"/>
@@ -60,7 +63,7 @@
             <!-- Note (Étoiles) -->
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_20sdp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_marginTop="6dp">
