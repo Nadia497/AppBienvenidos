@@ -153,6 +153,17 @@ public class SpotDetailActivity extends BaseActivity {
         // 3. Écouter le clic sur les étoiles
         ratingbar.setOnRatingBarChangeListener((ratingBar, userRating, fromUser) -> {
             if (fromUser) {
+
+                if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+
+                    // 1. Message d'erreur
+                    Toast.makeText(this, "Vous devez être connecté pour noter !", Toast.LENGTH_SHORT).show();
+
+                    ratingBar.setRating(moyenne);
+
+                    return;
+                }
+
                 // On bloque la barre pour ne pas voter 2 fois
                 ratingbar.setIsIndicator(true);
 
@@ -317,6 +328,11 @@ public class SpotDetailActivity extends BaseActivity {
         });
 
         Share.setOnClickListener(v -> {
+
+            if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+                Toast.makeText(this, "Connectez-vous pour partager ce spot !", Toast.LENGTH_SHORT).show();
+                return;
+            }
             try {
                 String nom = currentSpot.getTitle();
                 String message = getString(R.string.partage_msg) + nom;

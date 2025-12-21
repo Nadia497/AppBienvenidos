@@ -38,7 +38,7 @@
             android:shadowColor="#55000000"
             android:textColor="#FBC02D"
             android:text="Bienvenidos"
-            android:textSize="@dimen/_25sdp"
+            android:textSize="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo"/>
@@ -47,10 +47,10 @@
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="cursive"
+            android:fontFamily="serif"
             android:text="@string/slogan"
             android:textColor="#E996C4"
-            android:textSize="20sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Bienvenidos"/>
@@ -200,6 +200,7 @@
                     android:inputType="textEmailAddress"
                     android:hint="exemple@email.com"
                     android:textColor="@color/text_primary"
+                    android:textSize="14sp"
                     android:textColorHint="@color/text_secondary"/>
 
                 <!-- LOCATION -->
