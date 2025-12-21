@@ -98,7 +98,7 @@
             <!-- 3. FILTRES (CHIPS) - Scroll Horizontal -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="25dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
@@ -106,7 +106,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                         <!-- Chip 1 :  -->
@@ -118,6 +118,7 @@
                             android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/tout"
                             android:textAllCaps="false"
+                            android:elevation="@dimen/_2sdp"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@drawable/chip_text_selector_z"
@@ -131,6 +132,7 @@
                             android:layout_height="35dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
+                            android:elevation="@dimen/_2sdp"
                             android:text="@string/caf"
                             android:textAllCaps="false"
                             android:textSize="13sp"
@@ -149,6 +151,7 @@
                             android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/culture"
                             android:textAllCaps="false"
+                            android:elevation="@dimen/_2sdp"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             android:textColor="@drawable/chip_text_selector_z"
@@ -163,6 +166,7 @@
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/restaurant"
+                            android:elevation="@dimen/_2sdp"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -179,6 +183,7 @@
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
                             android:text="Shopping"
+                            android:elevation="@dimen/_2sdp"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -194,6 +199,7 @@
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/paysage"
+                            android:elevation="@dimen/_2sdp"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -209,6 +215,7 @@
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/bg_chip_selector_z"
                             android:text="@string/h_tel"
+                            android:elevation="@dimen/_2sdp"
                             android:textAllCaps="false"
                             android:textSize="13sp"
                             android:textStyle="bold"
