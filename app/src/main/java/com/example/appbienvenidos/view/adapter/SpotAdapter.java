@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -132,6 +133,7 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         TextView SpotName, SpotCity, SpotRating, SpotCategory;
         ImageView SpotImage;
         ViewPager2 viewPagerCard;
+        RatingBar ratingStars;
         private Handler sliderHandler = new Handler(Looper.getMainLooper());
         private Runnable sliderRunnable;
 
@@ -147,6 +149,8 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             SpotImage = itemView.findViewById(R.id.SpotImage);
             //SpotCategory = itemView.findViewById(R.id.cardSpotCategory);
             viewPagerCard = itemView.findViewById(R.id.cardViewPager);
+            ratingStars = itemView.findViewById(R.id.ratingBarStars);
+
         }
 
         public void bind(Spot currentSpot, Context context) {
@@ -163,6 +167,10 @@ public class SpotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 String cat =  currentSpot.getCategoryNameDisplay();
 
                     SpotCategory.setText(cat);
+            }
+            if (ratingStars != null) {
+                // On convertit le double en float pour le RatingBar
+                ratingStars.setRating((float) currentSpot.getAverage_Rating());
             }
             if (currentSpot.getImage_URL() != null && !currentSpot.getImage_URL().isEmpty()) {
                 for (String url : currentSpot.getImage_URL()) {
