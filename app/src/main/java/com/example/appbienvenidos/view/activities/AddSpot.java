@@ -59,6 +59,9 @@ public class AddSpot extends BaseActivity {
 
     private AddSpotViewmodel viewModel;
 
+    private com.example.appbienvenidos.model.Spot spotToEdit;
+    private boolean isEditMode = false;
+
     // 1. La liste des 30 phrases
     private final String[] suggestionsDescription = {
             "Ce lieu est absolument magique, une expérience inoubliable !",
@@ -110,6 +113,8 @@ public class AddSpot extends BaseActivity {
 
         // Initialisation des vues
          initViews();
+
+         checkEditMode();
 
         //gestion de la recherche gratitude
         localisation.setOnTouchListener((v, event) -> {
@@ -183,6 +188,54 @@ public class AddSpot extends BaseActivity {
         container_photo = findViewById(R.id.container_photo);
         aideEcrire = findViewById(R.id.ai);
     }
+
+
+    private void checkEditMode() {
+        if (getIntent().hasExtra("SPOT_TO_EDIT")) {
+            // 1. On récupère l'objet
+            spotToEdit = (com.example.appbienvenidos.model.Spot) getIntent().getSerializableExtra("SPOT_TO_EDIT");
+            isEditMode = true;
+
+            // 2. On change le texte du bouton et le titre
+            publier.setText("Mettre à jour");
+
+            // 3. On pré-remplit les champs
+            nomLieu.setText(spotToEdit.getTitle());
+            description.setText(spotToEdit.getDescription());
+            localisation.setText(spotToEdit.getAdress());
+
+            // 4. On récupère les coordonnées existantes pour éviter de bloquer la validation
+            selectedLat = spotToEdit.getLatitude();
+            selectedLng = spotToEdit.getLongitude();
+            isLocationValid = true;
+
+            // 5. On pré-sélectionne la catégorie (Visuel)
+            selectedCategoryId = spotToEdit.getCategory_id();
+            highlightCategory(selectedCategoryId);
+
+        }
+    }
+
+    // Petite méthode pour colorier la bonne catégorie au démarrage
+    private void highlightCategory(String catId) {
+        // Reset tout (copié de ton code existant)
+        restaurant.setBackgroundResource(R.drawable.bg_chip_unselected_n);
+        cafe.setBackgroundResource(R.drawable.bg_chip_unselected_n);
+        paysage.setBackgroundResource(R.drawable.bg_chip_unselected_n);
+        culture.setBackgroundResource(R.drawable.bg_chip_unselected_n);
+        shopping.setBackgroundResource(R.drawable.bg_chip_unselected_n);
+        hotel.setBackgroundResource(R.drawable.bg_chip_unselected_n);
+
+        // Active le bon
+        switch (catId) {
+            case "kzQGD3FoEiqb0w4ojEoR": restaurant.setBackgroundResource(R.drawable.bg_chip_selected_n); break;
+            case "5FQ5xnOM63VR0jCEaUgx": cafe.setBackgroundResource(R.drawable.bg_chip_selected_n); break;
+            case "HBgPMXEAwwRo0jxkOFBl": paysage.setBackgroundResource(R.drawable.bg_chip_selected_n); break;
+            case "NTI14ykiVgCF6a9FdRAA": culture.setBackgroundResource(R.drawable.bg_chip_selected_n); break;
+            case "XBYKfhJM221pCHY9a1oM": shopping.setBackgroundResource(R.drawable.bg_chip_selected_n); break;
+            case "Z3276a3S3WXTurMqmqPO": hotel.setBackgroundResource(R.drawable.bg_chip_selected_n); break;
+        }
+    }
     private void setupObservers(){
         viewModel.getIsLoading().observe(this, isLoading -> {
             publier.setEnabled(!isLoading); // On désactive le bouton pendant le chargement
@@ -252,8 +305,21 @@ public class AddSpot extends BaseActivity {
         String map = localisation.getText().toString().trim();
         String desc = description.getText().toString().trim();
 
-
-        viewModel.publishSpot(title, map, desc,selectedLat, selectedLng, imagesSelected, selectedCategoryId, currentUserId);
+        if (isEditMode) {
+            // --- MODE MISE À JOUR ---
+            viewModel.updateSpot(
+                    spotToEdit.getId(), // L'ID du document à modifier
+                    title,
+                    map,
+                    desc,
+                    selectedLat,
+                    selectedLng,
+                    selectedCategoryId,
+                    imagesSelected
+            );
+        } else {
+            viewModel.publishSpot(title, map, desc, selectedLat, selectedLng, imagesSelected, selectedCategoryId, currentUserId);
+        }
     }
 
     private void selectedCategory(){

@@ -54,6 +54,58 @@ public class AddSpotViewmodel extends ViewModel{
         });
     }
 
+    public void updateSpot(String spotId, String title, String address, String description, double lat, double lng, String categoryId, List<Uri> newImageUris) {
+
+        if(title.isEmpty() || address.isEmpty() || description.isEmpty()){
+            toastMessage.setValue("Veuillez remplir tous les champs !");
+            return;
+        }
+
+        isLoading.setValue(true);
+
+        // SCÉNARIO A : L'utilisateur a choisi de nouvelles photos
+        if (newImageUris != null && !newImageUris.isEmpty()) {
+
+            // 1. On upload les nouvelles images d'abord
+            repository.UploadImages(newImageUris, new AddSpotRepository.ImagesCallback() {
+                @Override
+                public void onSuccess(List<String> newImageUrls) {
+                    // 2. Une fois uploadées, on met à jour le spot AVEC les nouvelles URLs
+                    updateSpotInFirestore(spotId, title, address, description, lat, lng, categoryId, newImageUrls);
+                }
+
+                @Override
+                public void onError(String error) {
+                    isLoading.setValue(false);
+                    toastMessage.setValue(error);
+                }
+            });
+
+        }
+        // SCÉNARIO B : L'utilisateur a gardé les anciennes photos (liste vide)
+        else {
+            updateSpotInFirestore(spotId, title, address, description, lat, lng, categoryId, null);
+        }
+    }
+
+    private void updateSpotInFirestore(String spotId, String title, String address, String description, double lat, double lng, String categoryId, List<String> newImageUrls) {
+
+        repository.updateSpot(spotId, title, address, description, lat, lng, categoryId, newImageUrls, new AddSpotRepository.SpotCallback() {
+            @Override
+            public void onSuccess(String result) {
+                isLoading.setValue(false);
+                toastMessage.setValue("Spot mis à jour avec succès !");
+                isPublished.setValue(true);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                isLoading.setValue(false);
+                toastMessage.setValue("Erreur lors de la mise à jour : " + e.getMessage());
+            }
+        });
+    }
+
     public void creatSpotInFirestore(String title, String address, String description, double lat, double lng, List<String> imageUrls, String categoryId, String userId){
         String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 

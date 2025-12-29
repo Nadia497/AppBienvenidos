@@ -107,14 +107,29 @@ public class SignupActivity extends BaseActivity {
         });
 
         // Gestion Inscription
+        // Gestion Inscription
         btnSinscrire.setOnClickListener(v -> {
+            // 1. On récupère le mot de passe dans une variable
+            String password = editTextPasswordHash.getText().toString().trim();
+
+            if (password.isEmpty() || password.length() < 6) {
+                // Affiche un message rouge sur le champ
+                editTextPasswordHash.setError("Le mot de passe doit contenir au moins 6 caractères");
+                // Met le curseur dans la case pour corriger
+                editTextPasswordHash.requestFocus();
+                // STOP : on s'arrête là, on n'appelle pas le ViewModel
+                return;
+            }
+            // ---------------------------------------------
+
+            // Si le mot de passe est bon, on continue comme avant
             viewModel.signup(
-                    editTextEmail.getText().toString().trim(),        // 1. Email
-                    editTextPasswordHash.getText().toString().trim(), // 2. Password (Mot de passe)
-                    editTextFirstName.getText().toString().trim(),    // 3. FirstName (Prénom)
-                    editTextLastName.getText().toString().trim(),     // 4. LastName (Nom)
-                    editTextLocation.getText().toString().trim(),     // 5. Location
-                    selectedRole,                                     // 6. Role
+                    editTextEmail.getText().toString().trim(),
+                    password, // On utilise la variable qu'on a vérifiée
+                    editTextFirstName.getText().toString().trim(),
+                    editTextLastName.getText().toString().trim(),
+                    editTextLocation.getText().toString().trim(),
+                    selectedRole,
                     imageUriString
             );
         });

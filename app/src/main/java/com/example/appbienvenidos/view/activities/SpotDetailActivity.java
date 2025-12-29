@@ -42,7 +42,7 @@ public class SpotDetailActivity extends BaseActivity {
 
     // --- 1. Variables UI ---
     LinearLayout LayoutImage;
-    MaterialButton AskUser, Share;
+    MaterialButton AskUser, Share , btnDelete,btnEdit;
     ShapeableImageView FirstImage, SecondImage, ThirdImage;
     TextView NomDuSpot, UserPublicationDate, textviewaction,
             textviewDescription, Description, SpotAdress, txtAverageScore,
@@ -103,6 +103,8 @@ public class SpotDetailActivity extends BaseActivity {
 
         AskUser = findViewById(R.id.AskUser);
         Share = findViewById(R.id.Share);
+        btnDelete = findViewById(R.id.btnDelete);
+        btnEdit = findViewById(R.id.btnEdit);
 
         FirstImage = findViewById(R.id.FirstImage);
         SecondImage = findViewById(R.id.SecondImage);
@@ -218,7 +220,6 @@ public class SpotDetailActivity extends BaseActivity {
     private void configureImage(ShapeableImageView imageView, String url, int position, List<String> allPhotos) {
         imageView.setVisibility(View.VISIBLE);
 
-        // --- LA PARTIE IMPORTANTE POUR LA TAILLE ---
         // On récupère les règles de mise en page de l'image
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageView.getLayoutParams();
 
@@ -352,6 +353,63 @@ public class SpotDetailActivity extends BaseActivity {
                 Toast.makeText(SpotDetailActivity.this, getString(R.string.send_error), Toast.LENGTH_SHORT).show();
             }
         });
+
+        // 1. On récupère l'utilisateur connecté
+        com.google.firebase.auth.FirebaseUser currentUser = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser();
+
+        // 2. Vérification de sécurité
+        if (currentUser != null && currentSpot != null) {
+            String myId = currentUser.getUid();                 // Mon ID à moi
+            String creatorId = currentSpot.getPublisher_id();   // L'ID de celui qui a créé le spot
+
+            if (myId.equals(creatorId)) {
+                btnDelete.setVisibility(View.VISIBLE);
+                btnEdit.setVisibility(View.VISIBLE);
+
+                btnEdit.setOnClickListener(v -> {
+                    Intent intent = new Intent(SpotDetailActivity.this, AddSpot.class); // Vérifie le nom de ta classe AddSpot
+                    intent.putExtra("SPOT_TO_EDIT", currentSpot);
+                    startActivity(intent);
+
+                });
+
+                // 4. Action du clic
+                btnDelete.setOnClickListener(v -> {
+                    // On demande confirmation (Dialog)
+                    new android.app.AlertDialog.Builder(this)
+                            .setTitle("Supprimer le spot")
+                            .setMessage("Voulez-vous vraiment supprimer ce spot définitivement ?")
+                            .setPositiveButton("Oui", (dialog, which) -> deleteSpotFromFirebase())
+                            .setNegativeButton("Non", null)
+                            .show();
+                });
+            } else {
+                btnDelete.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void deleteSpotFromFirebase() {
+        if (currentSpot.getId() == null) {
+            Toast.makeText(this, "Erreur : ID du spot introuvable", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // On affiche un petit message
+        Toast.makeText(this, "Suppression en cours...", Toast.LENGTH_SHORT).show();
+
+        // Appel à Firebase
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                .collection("Spot")
+                .document(currentSpot.getId())
+                .delete()
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(SpotDetailActivity.this, "Spot supprimé !", Toast.LENGTH_SHORT).show();
+                    finish(); // On ferme la page pour revenir en arrière
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(SpotDetailActivity.this, "Erreur : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 
     private void showContactChoiceDialog(String email, String telephone) {

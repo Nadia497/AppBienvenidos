@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Spot"
-    android:background="@color/background_app"
-    >
+    android:background="@color/background_app">
 
     <LinearLayout
         android:id="@+id/LayoutImage"
@@ -84,6 +84,32 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEdit"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="#2196F3"
+                app:icon="@drawable/ic_edit"
+                android:visibility="gone"
+                app:iconGravity="textStart"
+                app:layout_constraintBottom_toBottomOf="@+id/NomDuSpot"
+                app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:backgroundTint="#FF0000"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:icon="@drawable/ic_delete"
+                app:iconGravity="textStart"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/NomDuSpot"
+                app:layout_constraintHorizontal_bias="0.571"
+                tools:layout_editor_absoluteY="10dp" />
 
             <TextView
                 android:id="@+id/SpotAdress"

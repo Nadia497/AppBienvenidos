@@ -82,4 +82,33 @@ public class AddSpotRepository {
                 .addOnFailureListener(callback::onError);
     }
 
+    public void updateSpot(String spotId, String title, String address, String description, double lat, double lng, String categoryId, List<String> newImageUrls, SpotCallback callback) {
+
+        // 1. On prépare les données à changer
+        java.util.Map<String, Object> updates = new java.util.HashMap<>();
+        updates.put("title", title);
+        updates.put("adress", address);
+        updates.put("description", description);
+        updates.put("category_id", categoryId);
+
+        // On ne met à jour la position que si elle est valide (non nulle)
+        if (lat != 0.0 && lng != 0.0) {
+            updates.put("latitude", lat);
+            updates.put("longitude", lng);
+        }
+
+        // On ne met à jour les images que si on en a reçu des nouvelles
+        if (newImageUrls != null && !newImageUrls.isEmpty()) {
+            updates.put("image_URL", newImageUrls);
+        }
+
+        // 2. Appel Firebase (UPDATE)
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                .collection("Spot")
+                .document(spotId)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> callback.onSuccess("Success"))
+                .addOnFailureListener(callback::onError);
+    }
+
 }
